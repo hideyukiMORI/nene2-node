@@ -27,6 +27,9 @@ jobs:
           node-version: '22'
           registry-url: https://registry.npmjs.org
 
+      - name: Activate npm 11 for OIDC trusted publishing
+        run: corepack enable && corepack prepare npm@11.6.2 --activate && npm --version
+
       - name: Verify tag matches package.json version
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
