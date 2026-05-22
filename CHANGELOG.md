@@ -6,7 +6,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
-_No changes yet — next patch ships with the next completed Phase 2 FT._
+_No changes yet._
+
+## [0.1.9] - 2026-05-22
+
+### Added
+
+- `classifyDatabaseError()` and automatic **409** / **422** mapping in `resolveHttpError` (FT127, FT129)
+- `idempotencyMiddleware()`, `InMemoryIdempotencyStorage`, `requestBodyHash` (FT128)
+- [database-constraint-errors.md](docs/development/database-constraint-errors.md)
 
 ## [0.1.8] - 2026-05-22
 

@@ -13,7 +13,7 @@
 
 **Observed:** Exercised or inferred during high-friction campaign FT84.  
 **Action:** —  
-**Status:** **open**
+**Status:** **resolved** — FT128 / v0.1.9 (in-memory; Redis open FT95)
 
 ## Follow-up
 

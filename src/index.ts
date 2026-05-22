@@ -37,6 +37,10 @@ export {
   type SimpleDomainHandlerOptions,
 } from './error/domain-exception-handler.js';
 export { resolveHttpError, type ResolveHttpErrorOptions } from './error/resolve-http-error.js';
+export {
+  classifyDatabaseError,
+  type DatabaseConstraintKind,
+} from './error/classify-database-error.js';
 export { ValidationError, type ValidationErrorJSON } from './validation/validation-error.js';
 export { ValidationException } from './validation/validation-exception.js';
 export { LocalBearerTokenVerifier } from './auth/local-bearer-token-verifier.js';
@@ -54,6 +58,16 @@ export {
   type RateLimitStorage,
 } from './middleware/rate-limit-storage.js';
 export { throttleMiddleware, type ThrottleOptions } from './middleware/throttle.js';
+export {
+  idempotencyMiddleware,
+  requestBodyHash,
+  type IdempotencyOptions,
+} from './middleware/idempotency.js';
+export {
+  InMemoryIdempotencyStorage,
+  type IdempotencyRecord,
+  type IdempotencyStorage,
+} from './middleware/idempotency-storage.js';
 export type { DatabaseQueryExecutor } from './database/database-query-executor.js';
 export type { DatabaseTransactionManager } from './database/database-transaction-manager.js';
 export { createDatabaseHealthCheck } from './database/database-health-check.js';

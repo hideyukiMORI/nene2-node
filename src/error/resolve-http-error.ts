@@ -5,6 +5,7 @@ import { ValidationException } from '../validation/validation-exception.js';
 import type { ProblemDetailsFactory } from '../http/problem-details.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
 import type { DomainExceptionHandler } from './domain-exception-handler.js';
+import { classifyDatabaseError } from './classify-database-error.js';
 
 export interface ResolveHttpErrorOptions {
   readonly problems: ProblemDetailsFactory;
@@ -37,6 +38,28 @@ export function resolveHttpError(options: ResolveHttpErrorOptions): Response {
       422,
       'The request contains invalid values.',
       { errors: error.errors.map((item) => item.toJSON()) },
+    );
+  }
+
+  const constraint = classifyDatabaseError(error);
+  if (constraint === 'unique') {
+    return problemDetailsFromContext(
+      problems,
+      c,
+      'conflict',
+      'Conflict',
+      409,
+      'A resource with the same unique key already exists.',
+    );
+  }
+  if (constraint === 'foreign_key') {
+    return problemDetailsFromContext(
+      problems,
+      c,
+      'validation-failed',
+      'Validation Failed',
+      422,
+      'The request references a related resource that does not exist.',
     );
   }
 

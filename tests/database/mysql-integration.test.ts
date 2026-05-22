@@ -83,4 +83,35 @@ describe.skipIf(mysqlUrl === undefined)('MySQL integration (CI service container
 
     await shutdown?.();
   });
+
+  it('maps MySQL ER_DUP_ENTRY to 409 via onError', async () => {
+    const settings = loadAppSettings({
+      NODE_ENV: 'test',
+      NENE2_NODE_APP_ENV: 'test',
+      NENE2_NODE_DATABASE_URL: mysqlUrl,
+    });
+    const { app, database, shutdown } = await createApp({ settings });
+    const executor = database?.executor;
+    expect(executor).toBeDefined();
+
+    await executor!.execute(`
+      CREATE TABLE IF NOT EXISTS ft127_slots (
+        id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        code VARCHAR(32) NOT NULL UNIQUE
+      )
+    `);
+    await executor!.insert('INSERT INTO ft127_slots (code) VALUES (?)', ['taken']);
+
+    app.post('/_test/ft127-dup', async () => {
+      await executor!.insert('INSERT INTO ft127_slots (code) VALUES (?)', ['taken']);
+      return new Response(null, { status: 201 });
+    });
+
+    const response = await app.request('http://localhost/_test/ft127-dup', { method: 'POST' });
+    expect(response.status).toBe(409);
+    const body = (await response.json()) as { title: string };
+    expect(body.title).toBe('Conflict');
+
+    await shutdown?.();
+  });
 });

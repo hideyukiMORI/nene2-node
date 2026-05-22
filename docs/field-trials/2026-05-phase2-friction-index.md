@@ -37,9 +37,13 @@ See individual reports `2026-05-field-trial-NN-*.md`. Highlights:
 | 80  | This index       | Central index missing   | resolved   |
 | 81  | Postgres TX      | No `transactionManager` | resolved   |
 | 82  | Postgres CI      | No CI job               | resolved   |
-| 84  | Idempotency-Key  | No middleware           | open       |
+| 84  | Idempotency-Key  | No middleware           | resolved   |
 | 95  | Throttle Redis   | In-memory only          | open       |
-| 112 | Unique → 409     | No mapper               | open       |
+| 112 | Unique → 409     | No mapper               | resolved   |
+| 113 | FK → 422         | No mapper               | resolved   |
+| 127 | Unique sandbox   | 500 on dup              | resolved   |
+| 128 | Idempotency      | No middleware           | resolved   |
+| 129 | FK sandbox       | 500 on bad FK           | resolved   |
 | 118 | Read replica     | Not supported           | open       |
 
 Full table: [backlog.md](backlog.md) FT77–126 rows.
