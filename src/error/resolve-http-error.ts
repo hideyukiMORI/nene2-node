@@ -1,5 +1,6 @@
 import type { Context } from 'hono';
 
+import { JsonBodyParseException } from '../http/json-body-parse-exception.js';
 import { ValidationException } from '../validation/validation-exception.js';
 import type { ProblemDetailsFactory } from '../http/problem-details.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
@@ -15,6 +16,17 @@ export interface ResolveHttpErrorOptions {
 
 export function resolveHttpError(options: ResolveHttpErrorOptions): Response {
   const { problems, c, error, appDebug, domainHandlers } = options;
+
+  if (error instanceof JsonBodyParseException) {
+    return problemDetailsFromContext(
+      problems,
+      c,
+      'invalid-json',
+      'Invalid JSON',
+      400,
+      error.message,
+    );
+  }
 
   if (error instanceof ValidationException) {
     return problemDetailsFromContext(

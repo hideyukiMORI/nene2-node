@@ -19,6 +19,10 @@ import { requestIdMiddleware } from '../middleware/request-id.js';
 import { requestSizeLimitMiddleware } from '../middleware/request-size-limit.js';
 import { securityHeadersMiddleware } from '../middleware/security-headers.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
+import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
+import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
+import type { NoteRepository } from '../example/note/note-repository.js';
+import { registerNoteRoutes } from '../example/note/register-note-routes.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -26,6 +30,7 @@ export interface CreateAppOptions {
   readonly machineApiKey?: string | undefined;
   readonly tokenVerifier?: TokenVerifier | undefined;
   readonly domainHandlers?: readonly DomainExceptionHandler[];
+  readonly noteRepository?: NoteRepository;
 }
 
 export interface Nene2App {
@@ -39,7 +44,8 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
   const healthChecks = options.healthChecks ?? [];
   const machineApiKey = options.machineApiKey ?? settings.machineApiKey;
-  const domainHandlers = options.domainHandlers ?? [];
+  const noteRepository = options.noteRepository ?? new InMemoryNoteRepository();
+  const domainHandlers = [createNoteNotFoundHandler(problems), ...(options.domainHandlers ?? [])];
   const tokenVerifier =
     options.tokenVerifier ??
     (settings.localJwtSecret !== undefined
@@ -166,6 +172,8 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   });
 
   app.post('/examples/protected', (c) => methodNotAllowed(c, 'GET'));
+
+  registerNoteRoutes(app, { repository: noteRepository, problems });
 
   return { app, settings, problems };
 }
