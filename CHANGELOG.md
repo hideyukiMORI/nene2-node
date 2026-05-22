@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.17] - 2026-05-22
+
+### Added
+
+- UseCase not-found tests for note/tag update and delete paths
+- Per-file **90%** coverage gate for example UseCase modules (nene2-python parity)
+
 ## [0.1.16] - 2026-05-22
 
 ### Added

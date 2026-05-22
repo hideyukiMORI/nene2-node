@@ -44,6 +44,16 @@ describe('Note use cases', () => {
     await expect(getNote.execute({ noteId: 9999 })).rejects.toThrow(NoteNotFoundError);
   });
 
+  it('throws NoteNotFoundError on update when missing', async () => {
+    await expect(updateNote.execute({ noteId: 9999, title: 'x', body: 'y' })).rejects.toThrow(
+      NoteNotFoundError,
+    );
+  });
+
+  it('throws NoteNotFoundError on delete when missing', async () => {
+    await expect(deleteNote.execute({ noteId: 9999 })).rejects.toThrow(NoteNotFoundError);
+  });
+
   it('updates and deletes a note', async () => {
     const created = await createNote.execute({ title: 'Old', body: 'Old body' });
     const updated = await updateNote.execute({

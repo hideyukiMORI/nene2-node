@@ -1,15 +1,15 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** v0.1.16 coverage 80% — [#92](https://github.com/hideyukiMORI/nene2-node/issues/92)
+**Sprint:** v0.1.17 UseCase 90% — [#94](https://github.com/hideyukiMORI/nene2-node/issues/94)
 
 ## Released
 
-- **npm:** [v0.1.15](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.15) — commercial readiness (examples toggle, jose JWT, shutdown)
+- **npm:** [v0.1.16](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.16) — 80% coverage gate
 
 ## In progress
 
-- **#92** — 80% coverage gate (143 unit tests, ~85% lines)
+- **#94** — UseCase 90% per-file gate (note/tag update/delete not-found)
 
 ## Verification
 
