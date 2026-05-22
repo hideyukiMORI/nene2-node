@@ -2,6 +2,7 @@ import type { Pool, PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql
 import { createPool } from 'mysql2/promise';
 
 import type { DatabaseQueryExecutor } from './database-query-executor.js';
+import { readPoolMaxEnv } from './read-pool-max-env.js';
 import type { SqlParameter, SqlRow } from './sql-types.js';
 
 function rowToSqlRow(row: RowDataPacket): SqlRow {
@@ -34,7 +35,7 @@ export function createMysqlPool(databaseUrl: string): Pool {
     password: config.password,
     database: config.database,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: readPoolMaxEnv('NENE2_MYSQL_POOL_MAX'),
   });
 }
 

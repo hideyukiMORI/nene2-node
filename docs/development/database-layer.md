@@ -51,7 +51,7 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 
 ## MySQL / PostgreSQL
 
-`createDatabaseRuntime()` opens `mysql2` or `pg` pools, runs **example** DDL, and wires `SqliteNoteRepository` / `SqliteTagRepository` (SQL uses `?`; PostgreSQL translates to `$n` in `PostgresQueryExecutor`). `createApp()` is async; optional `shutdown()` closes pools.
+`createDatabaseRuntime()` opens `mysql2` or `pg` pools, runs **example** DDL, and wires `SqliteNoteRepository` / `SqliteTagRepository` (SQL uses `?`; PostgreSQL translates to `$n` in `PostgresQueryExecutor`). `createApp()` is async; optional `shutdown()` closes pools. Pool sizing: [database-connection-pool.md](database-connection-pool.md).
 
 URLs: `mysql://user:pass@host:port/db`, `postgresql://…` or `postgres://…`. SQLite: `:memory:` or `file:./path.sqlite`.
 
