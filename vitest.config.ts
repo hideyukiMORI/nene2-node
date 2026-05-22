@@ -11,13 +11,13 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['src/**/*.ts'],
-      exclude: ['src/server/dev-server.ts'],
+      exclude: ['src/server/dev-server.ts', 'src/index.ts'],
       reporter: ['text', 'text-summary'],
       thresholds: {
-        lines: 75,
-        statements: 75,
-        functions: 78,
-        branches: 69,
+        lines: 80,
+        statements: 80,
+        functions: 80,
+        branches: 70,
         'src/example/note/note-use-cases.ts': { lines: 88 },
         'src/example/tag/tag-use-cases.ts': { lines: 88 },
       },

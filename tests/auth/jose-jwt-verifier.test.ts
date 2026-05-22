@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { generateKeyPair, exportJWK, SignJWT } from 'jose';
 
 import { createJoseJwtVerifier } from '../../src/auth/jose-jwt-verifier.js';
+import { TokenVerificationException } from '../../src/auth/token-verification-exception.js';
 import { createApp } from '../../src/app/create-app.js';
 import { loadAppSettings } from '../../src/config/app-settings.js';
 
@@ -50,5 +51,18 @@ describe('createJoseJwtVerifier', () => {
     });
     expect(ok.status).toBe(200);
     expect((await ok.json()).sub).toBe('prod-user');
+  });
+
+  it('throws when jwksUri and jwks are both missing', async () => {
+    await expect(createJoseJwtVerifier({})).rejects.toThrow('jwksUri or jwks');
+  });
+
+  it('throws TokenVerificationException for invalid tokens', async () => {
+    const { publicKey } = await generateKeyPair('RS256');
+    const jwk = await exportJWK(publicKey);
+    const verifier = await createJoseJwtVerifier({
+      jwks: { keys: [{ ...jwk, kid: 'k', alg: 'RS256' }] },
+    });
+    await expect(verifier.verify('not-a-jwt')).rejects.toBeInstanceOf(TokenVerificationException);
   });
 });

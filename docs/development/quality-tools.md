@@ -45,7 +45,7 @@ Equivalent to:
 type-check → lint → format → test
 ```
 
-Coverage is measured separately (`npm run test:coverage`) and reported in CI. Thresholds target **≥80%** lines overall and **≥88%** for example UseCase modules (Phase 3+ goal: 90%, parity with nene2-python). MySQL/PostgreSQL integration tests live under `tests/integration/` and run via dedicated CI jobs (`npm run test:integration`), not the default unit suite.
+Coverage is measured separately (`npm run test:coverage`) and enforced in CI with **≥80%** lines/statements (see `vitest.config.ts`). Barrel `src/index.ts` and `dev-server.ts` are excluded from the denominator. MySQL/PostgreSQL integration tests live under `tests/integration/`.
 
 ## TypeScript strictness (parity target)
 
@@ -89,7 +89,7 @@ Mirrors nene2-python dependency rules:
 
 - Adding every possible linter plugin before there is code to check.
 - Mandatory 80% coverage gate in Phase 0 (target documented in `coding-standards.md` for Phase 3+).
-- **Implemented (v0.1.14):** `npm run test:coverage` with CI reporting; thresholds in `vitest.config.ts` (raising toward 80%/90% as coverage grows).
+- **Implemented (v0.1.14+):** `npm run test:coverage` with CI gate at **80%** lines/statements; per-file UseCase floors in `vitest.config.ts`.
 - Bundling frontend lint tooling (no `frontend/` in this repo).
 
 ## References
