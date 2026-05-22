@@ -10,9 +10,9 @@ Last updated: 2026-05-22
 
 ## Up next
 
-| ID  | Task                                              | npm     |
-| --- | ------------------------------------------------- | ------- |
-| —   | Release **v0.1.9**                                | `0.1.9` |
+| ID  | Task                                                                     | npm     |
+| --- | ------------------------------------------------------------------------ | ------- |
+| —   | Release **v0.1.9**                                                       | `0.1.9` |
 | —   | **FT130+** — optimistic lock (85), Redis throttle (95), BOLA enforcement | `0.2.0` |
 
 ## Completed this session
