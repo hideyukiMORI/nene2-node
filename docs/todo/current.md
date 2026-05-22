@@ -5,7 +5,7 @@ Last updated: 2026-05-22 (repository bootstrap)
 ## Active
 
 - [x] Bootstrap at `/home/xi/docker/nene2-node` (sibling of `NENE2`, `nene2-js`)
-- [ ] GitHub repo `hideyukiMORI/nene2-node` created and `main` pushed
+- [x] GitHub repo https://github.com/hideyukiMORI/nene2-node created and `main` pushed
 - [x] `npm run check` passes locally
 
 ## Next Issues (to create on GitHub)

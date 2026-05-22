@@ -15,7 +15,7 @@ Establish nene2-node as a sibling repository with clear framework scope, English
 - [x] ADR 0002 — HTTP runtime direction (draft)
 - [x] README with sibling clone layout
 - [x] ESLint, Prettier, Vitest wired (`npm run check` green)
-- [ ] GitHub repo `hideyukiMORI/nene2-node` and remote `main`
+- [x] GitHub repo https://github.com/hideyukiMORI/nene2-node and remote `main`
 - [ ] Starter Issues for Phase 1
 
 ## Acceptance criteria
