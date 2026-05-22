@@ -12,6 +12,7 @@ describe('createApp database handle', () => {
     const nene2 = await createApp({ settings });
     expect(nene2.database?.backend).toBe('sqlite');
     expect(nene2.database?.executor).toBeDefined();
+    expect(nene2.database?.transactionManager).toBeDefined();
     await nene2.shutdown?.();
   });
 

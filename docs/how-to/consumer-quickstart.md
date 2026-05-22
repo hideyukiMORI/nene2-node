@@ -60,6 +60,9 @@ NENE2_NODE_PORT=3000
 const nene2 = await createApp({ settings });
 const executor = nene2.database?.executor;
 // run your DDL / repositories, then mount routes on nene2.app
+await nene2.database?.transactionManager?.transactional(async (tx) => {
+  // multi-statement business write (MySQL / SQLite)
+});
 await nene2.shutdown?.();
 ```
 
