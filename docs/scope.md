@@ -26,14 +26,15 @@ The **contract source of truth** remains **NENE2** `docs/openapi/openapi.yaml`. 
 
 ## Out of scope
 
-| Area                                    | Owner instead                                                                       |
-| --------------------------------------- | ----------------------------------------------------------------------------------- |
-| PHP HTTP runtime, OpenAPI **authoring** | [NENE2](https://github.com/hideyukiMORI/NENE2)                                      |
-| Typed fetch client for consumers        | [nene2-js](https://github.com/hideyukiMORI/nene2-js) (`@hideyukimori/nene2-client`) |
-| stdio MCP server (PHP)                  | [nene-mcp](https://github.com/hideyukiMORI/nene-mcp)                                |
-| React/Vite SPA starter                  | NENE2 `frontend/` or consumer apps                                                  |
-| Production deployment playbooks for PHP | NENE2 docs                                                                          |
-| Application-specific domain logic       | Consumer repos / NENE2-FT trials                                                    |
+| Area                                      | Owner instead                                                                                  |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| PHP HTTP runtime, OpenAPI **authoring**   | [NENE2](https://github.com/hideyukiMORI/NENE2)                                                 |
+| Typed fetch client for consumers          | [nene2-js](https://github.com/hideyukiMORI/nene2-js) (`@hideyukimori/nene2-client`)            |
+| stdio MCP server (PHP)                    | [nene-mcp](https://github.com/hideyukiMORI/nene-mcp)                                           |
+| React/Vite SPA starter                    | NENE2 `frontend/` or consumer apps                                                             |
+| Production deployment playbooks for PHP   | NENE2 docs                                                                                     |
+| Application-specific domain logic         | Consumer repos / [NENE2-FT](https://github.com/hideyukiMORI) PHP sandboxes                     |
+| High-volume PHP howto FT loop (100+ apps) | NENE2 — learn via docs; optional Node FT in nene2-node after Phase 1 (see field-trial-culture) |
 
 ## Boundary rules
 

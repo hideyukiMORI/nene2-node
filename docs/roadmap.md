@@ -57,10 +57,23 @@ nene2-node is the Node.js framework port of [NENE2](https://github.com/hideyukiM
 - README quick start, migration guide from PHP NENE2
 - `0.1.0` publish of `@hideyukimori/nene2-framework` when API stable
 
+## Field trials (culture — after Phase 1)
+
+Inherited from NENE2 and nene2-python: small sandboxes, tests, English reports, friction → Issues. See `docs/development/field-trial-culture.md`.
+
+| When      | Focus                                                                           |
+| --------- | ------------------------------------------------------------------------------- |
+| Phase 2–3 | Framework FT (middleware, Note CRUD, auth)                                      |
+| Phase 4+  | DB adapter FT; optional Node API FT with security cadence (FT# % 3 = 0)         |
+| Ongoing   | Read sibling FT/howto when implementing parity — do not duplicate 165+ PHP apps |
+
+Reports: `docs/field-trials/` · Template: `docs/templates/field-trial-report.md`
+
 ## Non-goals
 
 - Replacing nene2-js client packages
 - Replacing nene-mcp stdio servers
 - Full feature parity with every NENE2 field trial on day one
+- Running a high-volume FT loop before Phase 1 runtime lands
 
 See `docs/scope.md` for the authoritative boundary list.

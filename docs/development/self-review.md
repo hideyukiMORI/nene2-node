@@ -22,6 +22,7 @@ Self-review: backend-api, openapi-contract
 | `docs/review/middleware-security.md` | Middleware, auth, headers, CORS, throttle            |
 | `docs/review/openapi-contract.md`    | OpenAPI pin, contract tests, Problem Details types   |
 | `docs/review/docs-policy.md`         | Documentation-only PRs                               |
+| `docs/review/field-trial.md`         | Field trial sandbox, report, and tests               |
 
 ## Design rules for checklists
 
