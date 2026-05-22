@@ -22,11 +22,11 @@ When FT# is divisible by **12**, both reviews are required (e.g. FT12, FT24).
 
 ## Index
 
-| FT# | Report | Theme                                       | 🔒  | 🔍  |
-| --- | ------ | ------------------------------------------- | --- | --- |
-| —   | —      | _(none yet — starts after Phase 1 runtime)_ | —   | —   |
+See **[INDEX.md](INDEX.md)** for the full table.
 
-When the first FT lands, add `INDEX.md` (mirror `../nene2-python/docs/field-trials/INDEX.md`) and link rows from this table.
+| FT# | Report                                                                     | Theme                       | 🔒  | 🔍  |
+| --- | -------------------------------------------------------------------------- | --------------------------- | --- | --- |
+| 1   | [2026-05-field-trial-1-middleware.md](2026-05-field-trial-1-middleware.md) | Middleware stack validation | —   | —   |
 
 ## Sibling indexes
 

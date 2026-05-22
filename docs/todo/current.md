@@ -15,13 +15,14 @@ npm install @hideyukimori/nene2-framework
 
 ## Up next (ordered)
 
-| ID  | Task                                                                                      |
-| --- | ----------------------------------------------------------------------------------------- |
-| —   | Framework FT#1 (middleware) — [#26](https://github.com/hideyukiMORI/nene2-node/issues/26) |
-| —   | nene2-js examples → Node URL (optional)                                                   |
+| ID  | Task                                              |
+| --- | ------------------------------------------------- |
+| —   | nene2-js examples → Node URL (optional)           |
+| —   | FT#2+ or 0.1.1 release when shipping more surface |
 
 ## Completed (recent)
 
+- [x] Framework FT#1 middleware report ([#26](https://github.com/hideyukiMORI/nene2-node/issues/26)) — [report](../field-trials/2026-05-field-trial-1-middleware.md)
 - [x] Phase 6 Tag CRUD ([#25](https://github.com/hideyukiMORI/nene2-node/issues/25))
 - [x] npm publish + GitHub Release v0.1.0 ([#21](https://github.com/hideyukiMORI/nene2-node/issues/21))
 - [x] Phases 0–5 (Issues [#7](https://github.com/hideyukiMORI/nene2-node/issues/7)–[#17](https://github.com/hideyukiMORI/nene2-node/issues/17))
