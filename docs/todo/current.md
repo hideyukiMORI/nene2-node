@@ -1,38 +1,33 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** npm publish `0.1.0`  
+**Sprint:** Post v0.1.0 — FT / Tag parity  
 **Master plan:** [milestones/2026-05-master-plan.md](milestones/2026-05-master-plan.md)
 
-## In progress
+## Released
 
-| ID  | Task        | Issue                                                       |
-| --- | ----------- | ----------------------------------------------------------- |
-| —   | npm publish | [#21](https://github.com/hideyukiMORI/nene2-node/issues/21) |
-
-## Maintainer commands
+- **GitHub:** [v0.1.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.0) (tag `62df4a7`)
+- **npm:** `@hideyukimori/nene2-framework@0.1.0`
 
 ```bash
-npm login
-npm publish --access public
-gh release create v0.1.0 --title "v0.1.0" --notes "See CHANGELOG.md"
+npm install @hideyukimori/nene2-framework
 ```
 
 ## Up next (ordered)
 
-| ID  | Task                        |
-| --- | --------------------------- |
-| —   | Framework FT#1 (middleware) |
-| —   | Tag CRUD parity             |
+| ID  | Task                                    |
+| --- | --------------------------------------- |
+| —   | Framework FT#1 (middleware)             |
+| —   | Tag CRUD parity                         |
+| —   | nene2-js examples → Node URL (optional) |
 
 ## Completed (recent)
 
-- [x] Phases 0–5 + publish prep ([#17](https://github.com/hideyukiMORI/nene2-node/issues/17))
-- [x] Release branch: `private: false`, `prepack` / `prepublishOnly`
+- [x] npm publish + GitHub Release v0.1.0 ([#21](https://github.com/hideyukiMORI/nene2-node/issues/21))
+- [x] Phases 0–5 (Issues [#7](https://github.com/hideyukiMORI/nene2-node/issues/7)–[#17](https://github.com/hideyukiMORI/nene2-node/issues/17))
 
 ## Verification
 
 ```bash
 npm run check   # 55 tests + build
-npm pack --dry-run
 ```
