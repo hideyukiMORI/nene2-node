@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.16] - 2026-05-22
+
+### Added
+
+- Unit tests for MySQL/Postgres executors (mocked), health-check, throttle factories, redis wrapper
+- Coverage gate raised to **80%** lines/statements in CI
+
 ## [0.1.15] - 2026-05-22
 
 ### Added
