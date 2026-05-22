@@ -68,28 +68,47 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 
 ## Category C — Node / security / DX (FT51–FT80)
 
-| FT#   | Theme                                       | 🔒    | 🔍    | Status     |
-| ----- | ------------------------------------------- | ----- | ----- | ---------- |
-| 51    | Timing-safe secret compare                  | 🔒    | —     | ✅ batch 5 |
-| 52    | `crypto` secrets vs `Math.random`           | —     | 🔍    | ✅ batch 5 |
-| 53    | `npm audit` / dependency cadence            | —     | —     | ✅ batch 5 |
-| 54    | Logging redaction                           | 🔒    | —     | ✅ batch 5 |
-| 55    | Production Problem Details redaction        | —     | —     | ✅ batch 6 |
-| 56    | Env leak prevention                         | —     | 🔍    | ✅ batch 6 |
-| 57    | Throttle exclude bypass risk                | 🔒    | —     | ✅ batch 6 |
-| 58    | Prototype pollution guards                  | —     | —     | ✅ batch 6 |
-| 59    | Parameterized SQL reaffirmation             | —     | —     | ✅ batch 6 |
-| 60    | Production deployment security pass         | 🔒    | 🔍    | ✅ batch 6 |
-| 61    | Health 503 disclosure                       | —     | —     | ✅ batch 6 |
-| 62    | Request size DoS edge                       | —     | 🔍    | ✅ batch 6 |
-| 63    | Single env reader (`loadAppSettings`)       | 🔒    | —     | ✅ batch 6 |
-| 64    | Cross-repo parity checklist                 | —     | 🔍    | ✅ batch 6 |
-| 65    | OIDC release / Trusted Publisher            | —     | —     | ✅ batch 6 |
-| 66    | CHANGELOG + version discipline              | 🔒    | —     | ✅ batch 6 |
-| 67–70 | Reserve: coverage gates, deprecation policy | mixed | mixed | planned    |
-| 71–80 | Observability & disclosure                  | mixed | mixed | planned    |
+| FT# | Theme                                 | 🔒  | 🔍  | Status     |
+| --- | ------------------------------------- | --- | --- | ---------- |
+| 51  | Timing-safe secret compare            | 🔒  | —   | ✅ batch 5 |
+| 52  | `crypto` secrets vs `Math.random`     | —   | 🔍  | ✅ batch 5 |
+| 53  | `npm audit` / dependency cadence      | —   | —   | ✅ batch 5 |
+| 54  | Logging redaction                     | 🔒  | —   | ✅ batch 5 |
+| 55  | Production Problem Details redaction  | —   | —   | ✅ batch 6 |
+| 56  | Env leak prevention                   | —   | 🔍  | ✅ batch 6 |
+| 57  | Throttle exclude bypass risk          | 🔒  | —   | ✅ batch 6 |
+| 58  | Prototype pollution guards            | —   | —   | ✅ batch 6 |
+| 59  | Parameterized SQL reaffirmation       | —   | —   | ✅ batch 6 |
+| 60  | Production deployment security pass   | 🔒  | 🔍  | ✅ batch 6 |
+| 61  | Health 503 disclosure                 | —   | —   | ✅ batch 6 |
+| 62  | Request size DoS edge                 | —   | 🔍  | ✅ batch 6 |
+| 63  | Single env reader (`loadAppSettings`) | 🔒  | —   | ✅ batch 6 |
+| 64  | Cross-repo parity checklist           | —   | 🔍  | ✅ batch 6 |
+| 65  | OIDC release / Trusted Publisher      | —   | —   | ✅ batch 6 |
+| 66  | CHANGELOG + version discipline        | 🔒  | —   | ✅ batch 6 |
 
-## Category D — Ecosystem & publish (FT81–FT100)
+## Category E — Application & data plane (FT67–FT80) **Phase 2**
+
+**Plan:** [2026-05-ft-phase2-application-integration.md](2026-05-ft-phase2-application-integration.md)
+
+| FT# | Theme                                            | 🔒  | 🔍  | Status  |
+| --- | ------------------------------------------------ | --- | --- | ------- |
+| 67  | npm install greenfield consumer project          | —   | —   | next    |
+| 68  | MySQL: Docker Compose + connection friction      | 🔒  | —   | planned |
+| 69  | PostgreSQL: Docker Compose + connection friction | —   | —   | planned |
+| 70  | CI service container (MySQL) job design          | —   | 🔍  | planned |
+| 71  | Migration story (app-owned vs framework)         | —   | —   | planned |
+| 72  | Connection settings / pool documentation         | 🔒  | —   | planned |
+| 73  | Business app: nested REST slice (order/items)    | —   | —   | planned |
+| 74  | Bearer on business routes + SQLite/MySQL         | 🔒  | —   | planned |
+| 75  | Multi-step transaction (business UseCase)        | —   | —   | planned |
+| 76  | List + filter + pagination at app scale          | —   | 🔍  | planned |
+| 77  | Compose: app + DB + env template                 | —   | —   | planned |
+| 78  | BOLA / ownership in UseCase                      | 🔒  | —   | planned |
+| 79  | Deploy checklist with real DB                    | —   | —   | planned |
+| 80  | Phase 2 wrap + friction index                    | —   | —   | planned |
+
+## Category F — Ecosystem & publish (FT81–FT100)
 
 Themes: npm consumer DX, Trusted Publisher release, CHANGELOG discipline, nene2-js integration sample, ADR for new public APIs, coverage gates, contributor onboarding, AI agent (`AGENTS.md`) accuracy, cross-repo parity checklist, post-1.0 deprecation policy.
 
@@ -100,15 +119,17 @@ Themes: npm consumer DX, Trusted Publisher release, CHANGELOG discipline, nene2-
 
 ## Execution batches
 
-| Batch | FT range                   | PR target                 |
-| ----- | -------------------------- | ------------------------- |
-| 1     | FT2–FT12 + docs foundation | ✅ PR #30                 |
-| 2     | FT13–FT18                  | ✅ PR #31                 |
-| 3     | FT19–FT30                  | ✅ PR #32                 |
-| 4     | FT31–FT42                  | ✅ PR #33                 |
-| 5     | FT43–FT54                  | ✅ PR #34                 |
-| 6     | FT55–FT66                  | `docs/29-ft-loop-batch-6` |
-| 7     | FT67–FT78                  | TBD                       |
-| …     | …                          | ~10–12 FTs per PR         |
+| Batch | FT range                   | PR target         |
+| ----- | -------------------------- | ----------------- |
+| 1     | FT2–FT12 + docs foundation | ✅ PR #30         |
+| 2     | FT13–FT18                  | ✅ PR #31         |
+| 3     | FT19–FT30                  | ✅ PR #32         |
+| 4     | FT31–FT42                  | ✅ PR #33         |
+| 5     | FT43–FT54                  | ✅ PR #34         |
+| 6     | FT55–FT66                  | ✅ PR #35         |
+| 7     | FT67–FT72 (install + DB)   | next — Phase 2    |
+| 8     | FT73–FT80 (business apps)  | TBD               |
+| 9     | FT81–FT100 (publish/gov)   | TBD               |
+| …     | …                          | ~10–12 FTs per PR |
 
 Update [INDEX.md](INDEX.md) when each FT report lands.
