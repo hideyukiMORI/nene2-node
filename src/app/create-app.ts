@@ -25,6 +25,11 @@ import { problemDetailsFromContext } from '../http/problem-details.js';
 import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
 import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
 import type { NoteRepository } from '../example/note/note-repository.js';
+import { createDatabaseHealthCheck } from '../database/database-health-check.js';
+import { openSqliteDatabase } from '../database/open-sqlite-database.js';
+import { SqliteQueryExecutor } from '../database/sqlite-query-executor.js';
+import { ensureNotesSchema } from '../example/note/sqlite-note-schema.js';
+import { SqliteNoteRepository } from '../example/note/sqlite-note-repository.js';
 import { registerNoteRoutes } from '../example/note/register-note-routes.js';
 
 export interface CreateAppOptions {
@@ -45,9 +50,24 @@ export interface Nene2App {
 export function createApp(options: CreateAppOptions = {}): Nene2App {
   const settings = options.settings ?? loadAppSettings();
   const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
-  const healthChecks = options.healthChecks ?? [];
   const machineApiKey = options.machineApiKey ?? settings.machineApiKey;
-  const noteRepository = options.noteRepository ?? new InMemoryNoteRepository();
+
+  let healthChecks = options.healthChecks ?? [];
+  let noteRepository = options.noteRepository;
+
+  if (noteRepository === undefined && settings.databaseUrl !== undefined) {
+    const database = openSqliteDatabase(settings.databaseUrl);
+    ensureNotesSchema(database);
+    const executor = new SqliteQueryExecutor(database);
+    noteRepository = new SqliteNoteRepository(executor);
+    if (!healthChecks.some((check) => check.name === 'database')) {
+      healthChecks = [...healthChecks, createDatabaseHealthCheck(executor)];
+    }
+  }
+
+  if (noteRepository === undefined) {
+    noteRepository = new InMemoryNoteRepository();
+  }
   const domainHandlers = [createNoteNotFoundHandler(problems), ...(options.domainHandlers ?? [])];
   const tokenVerifier =
     options.tokenVerifier ??

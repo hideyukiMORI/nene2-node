@@ -2,9 +2,11 @@ import { DatabaseSync } from 'node:sqlite';
 
 import { describe, expect, it } from 'vitest';
 
+import { SqliteQueryExecutor } from '../../../src/database/sqlite-query-executor.js';
 import { InMemoryNoteRepository } from '../../../src/example/note/in-memory-note-repository.js';
 import type { NoteRepository } from '../../../src/example/note/note-repository.js';
 import { SqliteNoteRepository } from '../../../src/example/note/sqlite-note-repository.js';
+import { ensureNotesSchema } from '../../../src/example/note/sqlite-note-schema.js';
 
 function runRepositoryContract(name: string, createRepository: () => NoteRepository): void {
   describe(`NoteRepository (${name})`, () => {
@@ -47,4 +49,8 @@ function runRepositoryContract(name: string, createRepository: () => NoteReposit
 }
 
 runRepositoryContract('in-memory', () => new InMemoryNoteRepository());
-runRepositoryContract('sqlite', () => new SqliteNoteRepository(new DatabaseSync(':memory:')));
+runRepositoryContract('sqlite', () => {
+  const database = new DatabaseSync(':memory:');
+  ensureNotesSchema(database);
+  return new SqliteNoteRepository(new SqliteQueryExecutor(database));
+});
