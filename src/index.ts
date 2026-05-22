@@ -62,6 +62,7 @@ export { MysqlQueryExecutor, createMysqlPool } from './database/mysql-query-exec
 export { MysqlTransactionManager } from './database/mysql-transaction-manager.js';
 export { parseDatabaseUrl, type DatabaseBackend } from './database/parse-database-url.js';
 export { PostgresQueryExecutor } from './database/postgres-query-executor.js';
+export { PostgresTransactionManager } from './database/postgres-transaction-manager.js';
 export { openSqliteDatabase } from './database/open-sqlite-database.js';
 export { SqliteQueryExecutor } from './database/sqlite-query-executor.js';
 export { SqliteTransactionManager } from './database/sqlite-transaction-manager.js';

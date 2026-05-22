@@ -9,6 +9,7 @@ import { MysqlTransactionManager } from './mysql-transaction-manager.js';
 import { parseDatabaseUrl, type DatabaseBackend } from './parse-database-url.js';
 import { openSqliteDatabase } from './open-sqlite-database.js';
 import { PostgresQueryExecutor } from './postgres-query-executor.js';
+import { PostgresTransactionManager } from './postgres-transaction-manager.js';
 import { SqliteQueryExecutor } from './sqlite-query-executor.js';
 import { SqliteTransactionManager } from './sqlite-transaction-manager.js';
 
@@ -61,6 +62,7 @@ export async function createDatabaseRuntime(databaseUrl: string): Promise<Databa
   return {
     executor,
     backend,
+    transactionManager: new PostgresTransactionManager(pool),
     shutdown: async () => {
       await executor.close();
     },

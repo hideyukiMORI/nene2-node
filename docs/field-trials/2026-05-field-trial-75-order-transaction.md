@@ -15,10 +15,10 @@
 **Observed:** Apps could not run multi-statement business writes atomically on MySQL without raw `mysql2` connections.  
 **Resolution:** `MysqlTransactionManager` wired in `createDatabaseRuntime()` / `Nene2App.database`.
 
-### F-2: PostgreSQL lacks `transactionManager` (severity: medium) — **open**
+### F-2: PostgreSQL lacks `transactionManager` (severity: medium) — **resolved** (FT81)
 
-**Observed:** `database.transactionManager` is undefined for `postgresql://` URLs.  
-**Follow-up:** Add `PostgresTransactionManager` in a later FT.
+**Observed:** `database.transactionManager` was undefined for `postgresql://` URLs.  
+**Resolution:** `PostgresTransactionManager` in v0.1.8.
 
 ## Probes
 
