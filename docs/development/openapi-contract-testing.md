@@ -28,6 +28,14 @@ import { resolveOpenApiPath, openApiFileExists } from '@hideyukimori/nene2-frame
 | ------------------------- | -------------------------------------------------------- |
 | `NENE2_NODE_OPENAPI_PATH` | `../NENE2/docs/openapi/openapi.yaml` (relative to `cwd`) |
 
+## Maintenance checklist (when OpenAPI changes)
+
+1. Diff NENE2 `openapi.yaml` example values for affected operations.
+2. Update matching `tests/fixtures/contract/*.json`.
+3. Bump `tests/fixtures/contract/openapi-pin.txt` (upstream ref or date).
+4. Run `npm run check`.
+5. Note revision in PR description — no secrets in fixtures.
+
 ## Adding a new contract test
 
 1. Add fixture under `tests/fixtures/contract/`.
