@@ -1,7 +1,7 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** FT loop (docs-first) → FT100 — [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)  
+**Sprint:** FT Phase 2 — app integration (MySQL/Postgres, business apps) — [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)  
 **Master plan:** [milestones/2026-05-master-plan.md](milestones/2026-05-master-plan.md)
 
 ## Released
@@ -15,11 +15,13 @@ npm install @hideyukimori/nene2-framework
 
 ## Up next (ordered)
 
-| ID  | Task                                    |
-| --- | --------------------------------------- |
-| —   | FT batch 7: FT67–FT78                   |
-| —   | FT batches 8–9: FT79–FT100              |
-| —   | nene2-js examples → Node URL (optional) |
+| ID  | Task                                              |
+| --- | ------------------------------------------------- |
+| —   | **FT67** npm greenfield install (Phase 2 kickoff) |
+| —   | FT68–72 MySQL/Postgres + Compose + migrations     |
+| —   | FT73–80 business-app obstacle FTs                 |
+| —   | FT81–100 publish / governance                     |
+| —   | nene2-js examples → Node URL (optional)           |
 
 ## Completed (recent)
 

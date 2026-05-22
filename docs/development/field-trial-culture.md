@@ -59,12 +59,13 @@ See `docs/scope.md` non-goals: full NENE2 FT parity on day one.
 
 ## When to run an FT in nene2-node
 
-| Phase          | FT focus                                                                                           |
-| -------------- | -------------------------------------------------------------------------------------------------- |
-| **Phase 0–1**  | No FT loop — governance and `/health` / `/examples/ping` only                                      |
-| **Phase 2–3**  | **Framework FT** — middleware stack, Note CRUD, Problem Details (mirror nene2-python FT1–18 style) |
-| **Phase 4+**   | DB adapter FT, optional **Node API FT** (crypto, fetch, streams) with security cadence             |
-| **Post-0.1.0** | Optional continuous FT for DX; feed friction into ADRs and `docs/how-to/` (when introduced)        |
+| Phase                   | FT focus                                                                                                                                             |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Phase 0–1**           | No FT loop — governance and `/health` / `/examples/ping` only                                                                                        |
+| **Phase 2–3**           | **Framework FT** — middleware stack, Note CRUD, Problem Details (mirror nene2-python FT1–18 style)                                                   |
+| **Phase 4+**            | DB adapter FT, optional **Node API FT** (crypto, fetch, streams) with security cadence                                                               |
+| **Post-0.1.0 (FT1–66)** | Framework module + docs validation — largely complete                                                                                                |
+| **FT67+ (Phase 2)**     | Application integration: install, MySQL/Postgres, Compose, business-app obstacles — `docs/field-trials/2026-05-ft-phase2-application-integration.md` |
 
 Do not start a high-volume FT loop before Phase 1 runtime exists.
 

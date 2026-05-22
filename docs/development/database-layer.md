@@ -49,7 +49,18 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 
 **v0.1.x:** no automatic migrations — delete the SQLite file or bump schema with a documented breaking change in CHANGELOG. Production apps should version migrations outside the framework (ADR if we ship a migrator later).
 
+## MySQL / PostgreSQL (planned)
+
+**Not implemented in v0.1.x.** The port (`DatabaseQueryExecutor`, `DatabaseTransactionManager`) is ready; adapters need driver choice (e.g. `mysql2`, `pg`), Issues, and Phase 2 FTs (FT68–FT72).
+
+Until adapters ship:
+
+- Use SQLite via `NENE2_NODE_DATABASE_URL=file:…` for local/dev parity.
+- Run application FTs against Docker MySQL/Postgres in `../nene2-node-FT/` and file friction Issues.
+
+See `../field-trials/2026-05-ft-phase2-application-integration.md`.
+
 ## References
 
 - Phase 4 milestone: `../milestones/2026-05-phase4-database-health.md`
-- FT backlog: `../field-trials/backlog.md` (FT16–FT18, FT26)
+- FT backlog: `../field-trials/backlog.md` (FT16–FT18, FT26, FT67+)
