@@ -9,7 +9,12 @@ import {
   createProblemDetailsFactory,
   type ProblemDetailsFactory,
 } from '../http/problem-details.js';
+import { LocalBearerTokenVerifier } from '../auth/local-bearer-token-verifier.js';
+import type { TokenVerifier } from '../auth/token-verifier.js';
+import type { DomainExceptionHandler } from '../error/domain-exception-handler.js';
+import { resolveHttpError } from '../error/resolve-http-error.js';
 import { apiKeyAuthMiddleware } from '../middleware/api-key-auth.js';
+import { bearerTokenMiddleware } from '../middleware/bearer-token.js';
 import { requestIdMiddleware } from '../middleware/request-id.js';
 import { requestSizeLimitMiddleware } from '../middleware/request-size-limit.js';
 import { securityHeadersMiddleware } from '../middleware/security-headers.js';
@@ -19,6 +24,8 @@ export interface CreateAppOptions {
   readonly settings?: AppSettings;
   readonly healthChecks?: readonly HealthCheck[];
   readonly machineApiKey?: string | undefined;
+  readonly tokenVerifier?: TokenVerifier | undefined;
+  readonly domainHandlers?: readonly DomainExceptionHandler[];
 }
 
 export interface Nene2App {
@@ -32,6 +39,12 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
   const healthChecks = options.healthChecks ?? [];
   const machineApiKey = options.machineApiKey ?? settings.machineApiKey;
+  const domainHandlers = options.domainHandlers ?? [];
+  const tokenVerifier =
+    options.tokenVerifier ??
+    (settings.localJwtSecret !== undefined
+      ? new LocalBearerTokenVerifier(settings.localJwtSecret)
+      : undefined);
 
   const app = new Hono();
 
@@ -61,20 +74,23 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
       protectedPaths: ['/machine/health'],
     }),
   );
+  app.use(
+    '*',
+    bearerTokenMiddleware(problems, {
+      verifier: tokenVerifier,
+      includePaths: ['/examples/protected'],
+    }),
+  );
 
-  app.onError((error, c) => {
-    if (settings.appDebug) {
-      console.error(error);
-    }
-    return problemDetailsFromContext(
+  app.onError((error, c) =>
+    resolveHttpError({
       problems,
       c,
-      'internal-server-error',
-      'Internal Server Error',
-      500,
-      'An unexpected error occurred.',
-    );
-  });
+      error,
+      appDebug: settings.appDebug,
+      domainHandlers,
+    }),
+  );
 
   app.notFound((c) =>
     problemDetailsFromContext(
@@ -136,6 +152,20 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   );
 
   app.post('/examples/ping', (c) => methodNotAllowed(c, 'GET'));
+
+  app.get('/examples/protected', (c) => {
+    const claims = c.get('authClaims');
+    return c.json(
+      {
+        message: 'Welcome, authenticated user.',
+        claims,
+      },
+      200,
+      { 'Content-Type': 'application/json; charset=utf-8' },
+    );
+  });
+
+  app.post('/examples/protected', (c) => methodNotAllowed(c, 'GET'));
 
   return { app, settings, problems };
 }

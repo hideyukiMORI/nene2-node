@@ -1,6 +1,6 @@
 # Milestone — Phase 1b: OpenAPI contract and dev server
 
-**Status:** Complete (pending merge)  
+**Status:** Complete (2026-05-22) — [#9](https://github.com/hideyukiMORI/nene2-node/issues/9) / [#10](https://github.com/hideyukiMORI/nene2-node/pull/10)  
 **Depends on:** Phase 1 complete
 
 ## Goal
