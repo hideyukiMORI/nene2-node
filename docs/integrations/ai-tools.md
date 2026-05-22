@@ -40,3 +40,5 @@ When unsure about behavior, compare with:
 - OpenAPI: `../NENE2/docs/openapi/openapi.yaml`
 
 Record intentional Node-specific deviations in an ADR.
+
+Field trials (sandbox + report + friction Issues): `docs/development/field-trial-culture.md`.

@@ -37,6 +37,7 @@ Upstream references:
 | Security prohibitions and requirements | `security-policy.md`                      | nene2-python CLAUDE §3         |
 | Pre-PR checklists                      | `self-review.md` + `docs/review/*.md`     | NENE2 `self-review.md`         |
 | Issue-driven lifecycle                 | `../workflow.md`                          | NENE2 `workflow.md`            |
+| Field trial (FT) culture               | `field-trial-culture.md`                  | NENE2 / nene2-python FT loops  |
 | Commits and branches                   | `commit-conventions.md`, `../workflow.md` | Shared ecosystem               |
 | Scope boundaries                       | `../scope.md`                             | ADR 0001                       |
 
@@ -66,6 +67,6 @@ PR descriptions should name applicable self-review checklists (see `self-review.
 
 ## Non-goals
 
-- Copying NENE2 field-trial application code or PHP file structure mechanically.
-- Matching nene2-python’s FT loop or Japanese-only agent files in this repo.
+- Copying every NENE2 FT application (`*log` sandboxes) into this repo.
+- Matching nene2-python’s FT volume or Japanese-only report files here (culture yes, locale English).
 - Replacing upstream policy docs — link and adapt, do not fork full NENE2 doc trees here.

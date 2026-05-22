@@ -18,6 +18,7 @@ nene2-node is built through small, Issue-driven changes. This document is the sh
 | API errors               | `docs/development/api-error-responses.md`        |
 | Security                 | `docs/development/security-policy.md`            |
 | Self-review              | `docs/development/self-review.md`                |
+| Field trial culture      | `docs/development/field-trial-culture.md`        |
 | AI tools                 | `docs/integrations/ai-tools.md`                  |
 | NENE2 relationship       | `docs/integrations/relationship-to-nene2.md`     |
 | nene2-js sibling         | `docs/integrations/relationship-to-nene2-js.md`  |

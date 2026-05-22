@@ -12,6 +12,7 @@ Entry point for AI agents working on **nene2-node**.
 - Quality / security: `docs/development/quality-tools.md`, `docs/development/security-policy.md`
 - Domain / errors: `docs/development/domain-layer.md`, `docs/development/api-error-responses.md`
 - Self-review: `docs/development/self-review.md`, `docs/review/`
+- Field trials: `docs/development/field-trial-culture.md`
 - Commits: `docs/development/commit-conventions.md`
 - NENE2 boundary: `docs/integrations/relationship-to-nene2.md`
 - Client sibling: `docs/integrations/relationship-to-nene2-js.md`
