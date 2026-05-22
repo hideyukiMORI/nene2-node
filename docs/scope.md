@@ -18,11 +18,11 @@ The **contract source of truth** remains **NENE2** `docs/openapi/openapi.yaml`. 
 | **Error model**       | RFC 9457 Problem Details, validation-failed mapping, domain exception handlers       |
 | **Auth**              | Bearer JWT verification, API key middleware, composite auth patterns                 |
 | **Configuration**     | Typed settings from environment (Node-native, no raw `process.env` in domain code)   |
-| **Database adapters** | Executor/transaction interfaces; SQLite for tests; optional MySQL/Postgres later     |
+| **Database adapters** | Executor/transaction interfaces; SQLite, MySQL, PostgreSQL (pools, read replica URL) |
 | **Examples**          | Health, ping, Note/Tag-style reference domains (not stability-guaranteed public API) |
 | **MCP integration**   | HTTP-aligned MCP client/server hooks compatible with NENE2 catalog format            |
 | **Documentation**     | English Diátaxis-style guides, ADRs, roadmap, AI agent entry                         |
-| **npm package**       | `@hideyukimori/nene2-framework` (private until first publish)                        |
+| **npm package**       | `@hideyukimori/nene2-framework` — published on npm (OIDC Trusted Publisher)          |
 
 ## Out of scope
 
@@ -60,11 +60,13 @@ The **contract source of truth** remains **NENE2** `docs/openapi/openapi.yaml`. 
   [nene2-js client]  <-- consumer apps
 ```
 
-## Versioning (planned)
+## Versioning
 
-- `0.x` while public framework API is forming.
+- **`0.1.x`** — active patch cadence during Phase 2 field trials; latest release tracked in [CHANGELOG.md](../CHANGELOG.md).
+- Bump **patch** when FT work ships on `main` (`docs/development/release-process.md`).
+- Move to **`0.2.0`** when a breaking change to the published `@hideyukimori/nene2-framework` API is required (see FT#123 / semver policy report).
 - Align **major** bumps with breaking framework surface or incompatible OpenAPI tracking changes; document NENE2 tag mapping in CHANGELOG.
-- Pin OpenAPI input revision when contract tests land (ADR follow-up).
+- Contract tests use pinned JSON fixtures; revision noted in `tests/fixtures/contract/openapi-pin.txt`.
 
 ## When to open an Issue here vs NENE2
 

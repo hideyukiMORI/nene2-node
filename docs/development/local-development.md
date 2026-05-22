@@ -12,14 +12,14 @@ Default server: `http://localhost:3000` (override with `NENE2_NODE_PORT`).
 
 ## Endpoints to try
 
-| Method | Path                                | Auth                                  |
-| ------ | ----------------------------------- | ------------------------------------- |
-| GET    | `/`                                 | —                                     |
-| GET    | `/health`                           | —                                     |
-| GET    | `/examples/ping`                    | —                                     |
-| GET    | `/examples/protected`               | Bearer (`NENE2_LOCAL_JWT_SECRET`)     |
-| GET    | `/machine/health`                   | `X-Api-Key` (`NENE2_MACHINE_API_KEY`) |
-| CRUD   | `/examples/notes`, `/examples/tags` | — (public in v0.1.x)                  |
+| Method | Path                                | Auth                                                    |
+| ------ | ----------------------------------- | ------------------------------------------------------- |
+| GET    | `/`                                 | —                                                       |
+| GET    | `/health`                           | —                                                       |
+| GET    | `/examples/ping`                    | —                                                       |
+| GET    | `/examples/protected`               | Bearer (`NENE2_LOCAL_JWT_SECRET`)                       |
+| GET    | `/machine/health`                   | `X-Api-Key` (`NENE2_MACHINE_API_KEY`)                   |
+| CRUD   | `/examples/notes`, `/examples/tags` | Bearer (`NENE2_LOCAL_JWT_SECRET`) — scoped to JWT `sub` |
 
 ## SQLite examples
 

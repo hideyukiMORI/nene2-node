@@ -59,17 +59,17 @@ See `docs/scope.md` non-goals: full NENE2 FT parity on day one.
 
 ## When to run an FT in nene2-node
 
-| Phase                   | FT focus                                                                                                                                             |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Phase 0–1**           | No FT loop — governance and `/health` / `/examples/ping` only                                                                                        |
-| **Phase 2–3**           | **Framework FT** — middleware stack, Note CRUD, Problem Details (mirror nene2-python FT1–18 style)                                                   |
-| **Phase 4+**            | DB adapter FT, optional **Node API FT** (crypto, fetch, streams) with security cadence                                                               |
-| **Post-0.1.0 (FT1–66)** | Framework module + docs validation — largely complete                                                                                                |
-| **FT67+ (Phase 2)**     | Application integration: install, MySQL/Postgres, Compose, business-app obstacles — `docs/field-trials/2026-05-ft-phase2-application-integration.md` |
+| Phase                   | FT focus                                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Phase 0–1**           | No FT loop — governance and `/health` / `/examples/ping` only                                         |
+| **Phase 2–3**           | **Framework FT** — middleware stack, Note CRUD, Problem Details (mirror nene2-python FT1–18 style)    |
+| **Phase 4+**            | DB adapter FT, optional **Node API FT** (crypto, fetch, streams) with security cadence                |
+| **Post-0.1.0 (FT1–66)** | Framework module + docs validation — ✅ complete                                                      |
+| **FT67–148 (Phase 2)**  | Application integration campaign — ✅ complete (see `backlog.md`, `2026-05-phase2-friction-index.md`) |
 
 Do not start a high-volume FT loop before Phase 1 runtime exists.
 
-## FT categories (planned)
+## FT categories
 
 ### Category A — Framework integration
 
@@ -169,7 +169,7 @@ NENE2 turns many FTs into `docs/howto/*.md`. nene2-node will introduce `docs/how
 
 ## Docs-first during the FT loop
 
-When running FT2–FT100 (see `docs/field-trials/backlog.md`):
+When running FT2–FT148 (see `docs/field-trials/backlog.md`):
 
 1. **Update documentation before or with each report** — prefer `docs/development/*`, `environment-variables.md`, `production-deployment.md`, or ADRs over report-only prose.
 2. Record friction as **F-1** with a concrete doc path or Issue; do not leave “undocumented behavior” for consumers.

@@ -46,11 +46,11 @@ At minimum:
 
 ## Authentication extension points
 
-- **Bearer JWT** — `bearerTokenMiddleware` with `includePaths: ['/examples/protected']` by default. Options also support `excludePaths` when `includePaths` is empty. Requires `NENE2_LOCAL_JWT_SECRET`. Verifier: `LocalBearerTokenVerifier` (HS256).
+- **Bearer JWT** — `bearerTokenMiddleware` with default `includePaths`: `/examples/protected`, `/examples/notes`, `/examples/tags` (when examples enabled). Options also support `excludePaths` when `includePaths` is empty. Requires `NENE2_LOCAL_JWT_SECRET` (dev) or `createJoseJwtVerifier` (production). Verifier: `LocalBearerTokenVerifier` (HS256) or async JWKS.
 - **API key** — `apiKeyAuthMiddleware` on `/machine/health`. Requires `NENE2_MACHINE_API_KEY` header `X-Api-Key`.
-- Composite auth: public vs Bearer vs API key routes — document per example app.
+- Composite auth: public vs Bearer vs API key routes — see `composite-auth.md`.
 
-Example routes (`/examples/notes`, `/examples/tags`) are **public** in v0.1.x; protect at the gateway or add Bearer in your fork following the protected route pattern.
+Example routes `/examples/notes` and `/examples/tags` require **Bearer JWT** when `includeExamples` is enabled (v0.1.19+). List queries are scoped to JWT `sub`; cross-user access returns **403**. Disable example routes in production via `NENE2_NODE_INCLUDE_EXAMPLES=false` or `createApp({ includeExamples: false })`.
 
 ## Rate limiting
 

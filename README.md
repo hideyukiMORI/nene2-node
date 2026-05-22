@@ -63,7 +63,7 @@ cp .env.example .env
 
 ## Status
 
-**v0.1.0 released** — [GitHub Release](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.0) · npm `@hideyukimori/nene2-framework@0.1.0`
+**Latest: v0.1.21** — [GitHub Release](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21) · npm [`@hideyukimori/nene2-framework`](https://www.npmjs.com/package/@hideyukimori/nene2-framework)
 
 ```bash
 npm install @hideyukimori/nene2-framework @hono/node-server
@@ -71,7 +71,7 @@ npm install @hideyukimori/nene2-framework @hono/node-server
 
 New project guide: [docs/how-to/consumer-quickstart.md](docs/how-to/consumer-quickstart.md).
 
-Hono runtime, middleware, `/examples/notes` CRUD, SQLite layer. Roadmap: [docs/roadmap.md](docs/roadmap.md).
+Hono runtime, middleware stack, MySQL/PostgreSQL adapters, example Note/Tag CRUD (Bearer + BOLA when `includeExamples` is enabled). Roadmap: [docs/roadmap.md](docs/roadmap.md).
 
 ## Contributing
 
