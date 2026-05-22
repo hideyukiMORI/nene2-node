@@ -63,7 +63,13 @@ cp .env.example .env
 
 ## Status
 
-**Phases 0–5 complete** on `main`: Hono runtime, middleware (auth, throttle, CORS, logging), `/examples/notes` CRUD, SQLite database layer, and `npm run build` for `@hideyukimori/nene2-framework@0.1.0`. See [docs/roadmap.md](docs/roadmap.md). npm publish: [docs/publish-checklist.md](docs/publish-checklist.md).
+**v0.1.0 released** — [GitHub Release](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.0) · npm `@hideyukimori/nene2-framework@0.1.0`
+
+```bash
+npm install @hideyukimori/nene2-framework
+```
+
+Hono runtime, middleware, `/examples/notes` CRUD, SQLite layer. Roadmap: [docs/roadmap.md](docs/roadmap.md).
 
 ## Contributing
 
