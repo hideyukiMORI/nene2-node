@@ -37,6 +37,14 @@ describe('Tag use cases', () => {
     await expect(getTag.execute({ tagId: 99 })).rejects.toThrow(TagNotFoundError);
   });
 
+  it('throws TagNotFoundError on update when missing', async () => {
+    await expect(updateTag.execute({ tagId: 99, name: 'n' })).rejects.toThrow(TagNotFoundError);
+  });
+
+  it('throws TagNotFoundError on delete when missing', async () => {
+    await expect(deleteTag.execute({ tagId: 99 })).rejects.toThrow(TagNotFoundError);
+  });
+
   it('updates and deletes a tag', async () => {
     const created = await createTag.execute({ name: 'old' });
     await updateTag.execute({ tagId: created.id, name: 'new' });
