@@ -4,6 +4,20 @@ All notable changes to `@hideyukimori/nene2-framework` are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning follows [SemVer](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- MySQL (`mysql2`) and PostgreSQL (`pg`) `DatabaseQueryExecutor` adapters via `createDatabaseRuntime()`
+- Async `DatabaseQueryExecutor`, repositories, use cases, and `createApp()` (returns `Promise<Nene2App>`)
+- Optional `shutdown()` on `Nene2App` for connection pool cleanup
+- `peerDependencies` on `@hono/node-server` for consumers
+
+### Changed
+
+- `/health` uses `buildHealthResponseAsync` when database checks are registered
+- Removed `assertSqliteDatabaseUrl()` — non-SQLite URLs connect through `createApp()`
+
 ## [0.1.0] - 2026-05-22
 
 ### Added

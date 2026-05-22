@@ -1,7 +1,7 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** FT Phase 2 — app integration (MySQL/Postgres, business apps) — [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)  
+**Sprint:** FT Phase 2 — close FT67–68 Issues ([#37](https://github.com/hideyukiMORI/nene2-node/issues/37)–[#39](https://github.com/hideyukiMORI/nene2-node/issues/39)), then FT69+ — [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)  
 **Master plan:** [milestones/2026-05-master-plan.md](milestones/2026-05-master-plan.md)
 
 ## Released
@@ -15,17 +15,18 @@ npm install @hideyukimori/nene2-framework
 
 ## Up next (ordered)
 
-| ID  | Task                                                |
-| --- | --------------------------------------------------- |
-| —   | **FT69** PostgreSQL Compose + **#37** MySQL adapter |
-| —   | FT70–72 migrations, CI DB, pool docs                |
-| —   | FT73–80 business-app obstacle FTs                   |
-| —   | FT81–100 publish / governance                       |
-| —   | nene2-js examples → Node URL (optional)             |
+| ID  | Task                                                                 |
+| --- | -------------------------------------------------------------------- |
+| —   | PR: MySQL/Postgres adapters + async DB layer (closes #37, #38, #39) |
+| —   | **FT69** PostgreSQL Compose sandbox (after Issues closed)            |
+| —   | FT70–72 migrations, CI DB, pool docs                                   |
+| —   | FT73–80 business-app obstacle FTs                                    |
+| —   | FT81–100 publish / governance                                        |
 
 ## Completed (recent)
 
-- [x] FT67–68 sandboxes + Issues [#37](https://github.com/hideyukiMORI/nene2-node/issues/37)–[#40](https://github.com/hideyukiMORI/nene2-node/issues/40) ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
+- [x] Issue gate documented in `field-trial-culture.md` + `backlog.md`
+- [x] FT67–68 sandboxes + friction Issues [#37](https://github.com/hideyukiMORI/nene2-node/issues/37)–[#40](https://github.com/hideyukiMORI/nene2-node/issues/40) ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 6: FT55–FT66 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 5: FT43–FT54 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 4: FT31–FT42 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
@@ -40,5 +41,5 @@ npm install @hideyukimori/nene2-framework
 ## Verification
 
 ```bash
-npm run check   # 66 tests + build
+npm run check
 ```

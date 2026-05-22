@@ -5,36 +5,36 @@ export class InMemoryTagRepository implements TagRepository {
   private readonly store = new Map<number, Tag>();
   private nextId = 1;
 
-  findAll(limit: number, offset: number): Tag[] {
+  findAll(limit: number, offset: number): Promise<Tag[]> {
     const tags = [...this.store.values()].sort((a, b) => a.id - b.id);
-    return tags.slice(offset, offset + limit);
+    return Promise.resolve(tags.slice(offset, offset + limit));
   }
 
-  findById(tagId: number): Tag | undefined {
-    return this.store.get(tagId);
+  findById(tagId: number): Promise<Tag | undefined> {
+    return Promise.resolve(this.store.get(tagId));
   }
 
-  save(name: string): Tag {
+  save(name: string): Promise<Tag> {
     const tag: Tag = { id: this.nextId, name };
     this.store.set(this.nextId, tag);
     this.nextId += 1;
-    return tag;
+    return Promise.resolve(tag);
   }
 
-  update(tagId: number, name: string): Tag | undefined {
+  update(tagId: number, name: string): Promise<Tag | undefined> {
     if (!this.store.has(tagId)) {
-      return undefined;
+      return Promise.resolve(undefined);
     }
     const updated: Tag = { id: tagId, name };
     this.store.set(tagId, updated);
-    return updated;
+    return Promise.resolve(updated);
   }
 
-  delete(tagId: number): boolean {
-    return this.store.delete(tagId);
+  delete(tagId: number): Promise<boolean> {
+    return Promise.resolve(this.store.delete(tagId));
   }
 
-  count(): number {
-    return this.store.size;
+  count(): Promise<number> {
+    return Promise.resolve(this.store.size);
   }
 }

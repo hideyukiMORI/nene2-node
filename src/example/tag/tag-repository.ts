@@ -1,10 +1,10 @@
 import type { Tag } from './tag.js';
 
 export interface TagRepository {
-  findAll(limit: number, offset: number): Tag[];
-  findById(tagId: number): Tag | undefined;
-  save(name: string): Tag;
-  update(tagId: number, name: string): Tag | undefined;
-  delete(tagId: number): boolean;
-  count(): number;
+  findAll(limit: number, offset: number): Promise<Tag[]>;
+  findById(tagId: number): Promise<Tag | undefined>;
+  save(name: string): Promise<Tag>;
+  update(tagId: number, name: string): Promise<Tag | undefined>;
+  delete(tagId: number): Promise<boolean>;
+  count(): Promise<number>;
 }

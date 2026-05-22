@@ -12,34 +12,34 @@ export class SqliteQueryExecutor implements DatabaseQueryExecutor {
 
   constructor(private readonly database: DatabaseSync) {}
 
-  execute(sql: string, parameters: readonly SqlParameter[] = []): number {
+  execute(sql: string, parameters: readonly SqlParameter[] = []): Promise<number> {
     const result = this.database.prepare(sql).run(...parameters);
-    return Number(result.changes);
+    return Promise.resolve(Number(result.changes));
   }
 
-  insert(sql: string, parameters: readonly SqlParameter[] = []): number {
-    this.execute(sql, parameters);
+  async insert(sql: string, parameters: readonly SqlParameter[] = []): Promise<number> {
+    await this.execute(sql, parameters);
     return this.lastInsertId();
   }
 
-  lastInsertId(): number {
+  lastInsertId(): Promise<number> {
     const row = this.database.prepare('SELECT last_insert_rowid() AS id').get() as
       | { id: number | bigint }
       | undefined;
     const id = row === undefined ? 0 : Number(row.id);
     this.lastId = id;
-    return id;
+    return Promise.resolve(id);
   }
 
-  fetchOne(sql: string, parameters: readonly SqlParameter[] = []): SqlRow | undefined {
+  fetchOne(sql: string, parameters: readonly SqlParameter[] = []): Promise<SqlRow | undefined> {
     const row = this.database.prepare(sql).get(...parameters) as
       | Record<string, unknown>
       | undefined;
-    return row === undefined ? undefined : rowToSqlRow(row);
+    return Promise.resolve(row === undefined ? undefined : rowToSqlRow(row));
   }
 
-  fetchAll(sql: string, parameters: readonly SqlParameter[] = []): readonly SqlRow[] {
+  fetchAll(sql: string, parameters: readonly SqlParameter[] = []): Promise<readonly SqlRow[]> {
     const rows = this.database.prepare(sql).all(...parameters) as Record<string, unknown>[];
-    return rows.map(rowToSqlRow);
+    return Promise.resolve(rows.map(rowToSqlRow));
   }
 }

@@ -10,40 +10,40 @@ import { ensureExamplesSchema } from '../../../src/example/example-sqlite-schema
 
 function runRepositoryContract(name: string, createRepository: () => NoteRepository): void {
   describe(`NoteRepository (${name})`, () => {
-    it('saves and finds by id', () => {
+    it('saves and finds by id', async () => {
       const repo = createRepository();
-      const note = repo.save('Hello', 'World');
-      expect(repo.findById(note.id)).toEqual(note);
+      const note = await repo.save('Hello', 'World');
+      expect(await repo.findById(note.id)).toEqual(note);
     });
 
-    it('returns undefined for missing id', () => {
+    it('returns undefined for missing id', async () => {
       const repo = createRepository();
-      expect(repo.findById(9999)).toBeUndefined();
+      expect(await repo.findById(9999)).toBeUndefined();
     });
 
-    it('lists with limit and offset', () => {
+    it('lists with limit and offset', async () => {
       const repo = createRepository();
-      repo.save('A', 'a');
-      repo.save('B', 'b');
-      repo.save('C', 'c');
-      const page = repo.findAll(2, 1);
+      await repo.save('A', 'a');
+      await repo.save('B', 'b');
+      await repo.save('C', 'c');
+      const page = await repo.findAll(2, 1);
       expect(page.map((n) => n.title)).toEqual(['B', 'C']);
     });
 
-    it('updates and deletes', () => {
+    it('updates and deletes', async () => {
       const repo = createRepository();
-      const note = repo.save('T', 'B');
-      const updated = repo.update(note.id, 'T2', 'B2');
+      const note = await repo.save('T', 'B');
+      const updated = await repo.update(note.id, 'T2', 'B2');
       expect(updated?.title).toBe('T2');
-      expect(repo.delete(note.id)).toBe(true);
-      expect(repo.findById(note.id)).toBeUndefined();
+      expect(await repo.delete(note.id)).toBe(true);
+      expect(await repo.findById(note.id)).toBeUndefined();
     });
 
-    it('counts notes', () => {
+    it('counts notes', async () => {
       const repo = createRepository();
-      repo.save('A', 'a');
-      repo.save('B', 'b');
-      expect(repo.count()).toBe(2);
+      await repo.save('A', 'a');
+      await repo.save('B', 'b');
+      expect(await repo.count()).toBe(2);
     });
   });
 }

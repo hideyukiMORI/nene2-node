@@ -19,26 +19,31 @@ interface SqlRowNote {
 export class SqliteNoteRepository implements NoteRepository {
   constructor(private readonly query: DatabaseQueryExecutor) {}
 
-  findAll(limit: number, offset: number): Note[] {
-    const rows = this.query.fetchAll(
+  async findAll(limit: number, offset: number): Promise<Note[]> {
+    const rows = await this.query.fetchAll(
       'SELECT id, title, body FROM notes ORDER BY id LIMIT ? OFFSET ?',
       [limit, offset],
     );
     return rows.map((row) => rowToNote(row as unknown as SqlRowNote));
   }
 
-  findById(noteId: number): Note | undefined {
-    const row = this.query.fetchOne('SELECT id, title, body FROM notes WHERE id = ?', [noteId]);
+  async findById(noteId: number): Promise<Note | undefined> {
+    const row = await this.query.fetchOne('SELECT id, title, body FROM notes WHERE id = ?', [
+      noteId,
+    ]);
     return row === undefined ? undefined : rowToNote(row as unknown as SqlRowNote);
   }
 
-  save(title: string, body: string): Note {
-    const id = this.query.insert('INSERT INTO notes (title, body) VALUES (?, ?)', [title, body]);
+  async save(title: string, body: string): Promise<Note> {
+    const id = await this.query.insert('INSERT INTO notes (title, body) VALUES (?, ?)', [
+      title,
+      body,
+    ]);
     return { id, title, body };
   }
 
-  update(noteId: number, title: string, body: string): Note | undefined {
-    const changes = this.query.execute('UPDATE notes SET title = ?, body = ? WHERE id = ?', [
+  async update(noteId: number, title: string, body: string): Promise<Note | undefined> {
+    const changes = await this.query.execute('UPDATE notes SET title = ?, body = ? WHERE id = ?', [
       title,
       body,
       noteId,
@@ -49,12 +54,12 @@ export class SqliteNoteRepository implements NoteRepository {
     return { id: noteId, title, body };
   }
 
-  delete(noteId: number): boolean {
-    return this.query.execute('DELETE FROM notes WHERE id = ?', [noteId]) > 0;
+  async delete(noteId: number): Promise<boolean> {
+    return (await this.query.execute('DELETE FROM notes WHERE id = ?', [noteId])) > 0;
   }
 
-  count(): number {
-    const row = this.query.fetchOne('SELECT COUNT(*) AS cnt FROM notes');
+  async count(): Promise<number> {
+    const row = await this.query.fetchOne('SELECT COUNT(*) AS cnt FROM notes');
     return row === undefined ? 0 : Number(row['cnt']);
   }
 }

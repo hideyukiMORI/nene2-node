@@ -4,10 +4,17 @@ import { createApp } from '../app/create-app.js';
 import { loadAppSettings } from '../config/app-settings.js';
 
 const settings = loadAppSettings();
-const { app } = createApp({ settings });
+const { app, shutdown } = await createApp({ settings });
 
 const port = Number.parseInt(process.env['NENE2_NODE_PORT'] ?? '3000', 10);
 const listenPort = Number.isFinite(port) && port > 0 ? port : 3000;
+
+const stop = (): void => {
+  void shutdown?.();
+};
+
+process.on('SIGINT', stop);
+process.on('SIGTERM', stop);
 
 serve(
   {

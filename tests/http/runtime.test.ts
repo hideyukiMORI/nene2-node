@@ -10,7 +10,7 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('HTTP runtime', () => {
   it('returns framework smoke JSON at GET /', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' }),
     });
 
@@ -28,7 +28,7 @@ describe('HTTP runtime', () => {
   });
 
   it('returns Problem Details for unknown routes', async () => {
-    const { app } = createApp();
+    const { app } = await createApp();
 
     const response = await app.request('http://localhost/missing');
     const body = await jsonBody<{ type: string; title: string; status: number }>(response);
@@ -40,7 +40,7 @@ describe('HTTP runtime', () => {
   });
 
   it('returns health JSON at GET /health', async () => {
-    const { app } = createApp();
+    const { app } = await createApp();
 
     const response = await app.request('http://localhost/health');
     const body = await jsonBody<{ status: string; service: string }>(response);
@@ -55,7 +55,7 @@ describe('HTTP runtime', () => {
       name: 'database',
       check: () => 'error',
     };
-    const { app } = createApp({ healthChecks: [failingCheck] });
+    const { app } = await createApp({ healthChecks: [failingCheck] });
 
     const response = await app.request('http://localhost/health');
     const body = await jsonBody<{
@@ -70,7 +70,7 @@ describe('HTTP runtime', () => {
   });
 
   it('requires API key for GET /machine/health', async () => {
-    const { app } = createApp({ machineApiKey: 'test-key' });
+    const { app } = await createApp({ machineApiKey: 'test-key' });
 
     const response = await app.request('http://localhost/machine/health');
     const body = await jsonBody<{ type: string }>(response);
@@ -80,7 +80,7 @@ describe('HTTP runtime', () => {
   });
 
   it('accepts configured API key for GET /machine/health', async () => {
-    const { app } = createApp({ machineApiKey: 'test-key' });
+    const { app } = await createApp({ machineApiKey: 'test-key' });
 
     const response = await app.request('http://localhost/machine/health', {
       headers: { 'X-NENE2-API-Key': 'test-key' },
@@ -98,7 +98,7 @@ describe('HTTP runtime', () => {
   });
 
   it('returns example ping JSON at GET /examples/ping', async () => {
-    const { app } = createApp();
+    const { app } = await createApp();
 
     const response = await app.request('http://localhost/examples/ping');
     const body = await jsonBody<{ message: string; status: string }>(response);
@@ -109,7 +109,7 @@ describe('HTTP runtime', () => {
   });
 
   it('returns 405 Problem Details for unsupported methods', async () => {
-    const { app } = createApp();
+    const { app } = await createApp();
 
     const response = await app.request('http://localhost/', { method: 'POST' });
     const body = await jsonBody<{ type: string }>(response);
@@ -120,7 +120,7 @@ describe('HTTP runtime', () => {
   });
 
   it('returns 413 when Content-Length exceeds limit', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({
         NENE2_NODE_REQUEST_MAX_BODY_BYTES: '1048576',
       }),

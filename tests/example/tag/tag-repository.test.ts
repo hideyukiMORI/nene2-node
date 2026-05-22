@@ -10,17 +10,17 @@ import { SqliteTagRepository } from '../../../src/example/tag/sqlite-tag-reposit
 
 function runRepositoryContract(name: string, createRepository: () => TagRepository): void {
   describe(`TagRepository (${name})`, () => {
-    it('saves and finds by id', () => {
+    it('saves and finds by id', async () => {
       const repo = createRepository();
-      const tag = repo.save('php');
-      expect(repo.findById(tag.id)).toEqual(tag);
+      const tag = await repo.save('php');
+      expect(await repo.findById(tag.id)).toEqual(tag);
     });
 
-    it('updates and deletes', () => {
+    it('updates and deletes', async () => {
       const repo = createRepository();
-      const tag = repo.save('php');
-      expect(repo.update(tag.id, 'php8')?.name).toBe('php8');
-      expect(repo.delete(tag.id)).toBe(true);
+      const tag = await repo.save('php');
+      expect((await repo.update(tag.id, 'php8'))?.name).toBe('php8');
+      expect(await repo.delete(tag.id)).toBe(true);
     });
   });
 }

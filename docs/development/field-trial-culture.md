@@ -176,6 +176,14 @@ When running FT2–FT100 (see `docs/field-trials/backlog.md`):
 3. Use `docs/templates/field-trial-report-compact.md` for framework validation FTs; full template + security/adversarial appendices when cadence requires.
 4. Batch ~10–12 FTs per PR under parent Issue [#29](https://github.com/hideyukiMORI/nene2-node/issues/29); keep `INDEX.md` and `backlog.md` status in sync.
 
+## Resolve Issues before the next FT (Phase 2+)
+
+When a sandbox FT opens GitHub Issues (e.g. #37, #38):
+
+1. **Do not start the next FT number** until every Issue opened for the current FT is **closed** (fixed in `main` or explicitly wont-fix with ADR).
+2. Order: **code fix → tests → docs → close Issue** → then FT report “Follow-up: none”.
+3. Parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29) tracks batches; **blocking Issues take priority over FT count**.
+
 ## AI agent responsibilities
 
 When asked to run or document an FT:

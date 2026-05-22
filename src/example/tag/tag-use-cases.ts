@@ -16,9 +16,9 @@ export interface ListTagsOutput {
 export class ListTagsUseCase {
   constructor(private readonly repository: TagRepository) {}
 
-  execute(input: ListTagsInput): ListTagsOutput {
+  async execute(input: ListTagsInput): Promise<ListTagsOutput> {
     return {
-      items: this.repository.findAll(input.limit, input.offset),
+      items: await this.repository.findAll(input.limit, input.offset),
       limit: input.limit,
       offset: input.offset,
     };
@@ -32,7 +32,7 @@ export interface CreateTagInput {
 export class CreateTagUseCase {
   constructor(private readonly repository: TagRepository) {}
 
-  execute(input: CreateTagInput): Tag {
+  async execute(input: CreateTagInput): Promise<Tag> {
     return this.repository.save(input.name);
   }
 }
@@ -44,8 +44,8 @@ export interface GetTagByIdInput {
 export class GetTagByIdUseCase {
   constructor(private readonly repository: TagRepository) {}
 
-  execute(input: GetTagByIdInput): Tag {
-    const tag = this.repository.findById(input.tagId);
+  async execute(input: GetTagByIdInput): Promise<Tag> {
+    const tag = await this.repository.findById(input.tagId);
     if (tag === undefined) {
       throw new TagNotFoundError(input.tagId);
     }
@@ -61,8 +61,8 @@ export interface UpdateTagInput {
 export class UpdateTagUseCase {
   constructor(private readonly repository: TagRepository) {}
 
-  execute(input: UpdateTagInput): Tag {
-    const tag = this.repository.update(input.tagId, input.name);
+  async execute(input: UpdateTagInput): Promise<Tag> {
+    const tag = await this.repository.update(input.tagId, input.name);
     if (tag === undefined) {
       throw new TagNotFoundError(input.tagId);
     }
@@ -77,8 +77,8 @@ export interface DeleteTagByIdInput {
 export class DeleteTagByIdUseCase {
   constructor(private readonly repository: TagRepository) {}
 
-  execute(input: DeleteTagByIdInput): void {
-    const deleted = this.repository.delete(input.tagId);
+  async execute(input: DeleteTagByIdInput): Promise<void> {
+    const deleted = await this.repository.delete(input.tagId);
     if (!deleted) {
       throw new TagNotFoundError(input.tagId);
     }

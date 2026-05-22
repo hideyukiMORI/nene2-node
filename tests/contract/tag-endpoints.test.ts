@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
+import type { Hono } from 'hono';
 
 import { createApp } from '../../src/app/create-app.js';
 
@@ -17,7 +18,11 @@ async function jsonBody<T>(response: Response): Promise<T> {
 }
 
 describe('OpenAPI contract — tag endpoints', () => {
-  const { app } = createApp();
+  let app: Hono;
+
+  beforeAll(async () => {
+    app = (await createApp()).app;
+  });
 
   it('GET /examples/tags matches empty list fixture', async () => {
     const expected = loadFixture<{ items: unknown[]; limit: number; offset: number }>(

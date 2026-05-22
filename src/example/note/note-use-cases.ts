@@ -16,9 +16,9 @@ export interface ListNotesOutput {
 export class ListNotesUseCase {
   constructor(private readonly repository: NoteRepository) {}
 
-  execute(input: ListNotesInput): ListNotesOutput {
+  async execute(input: ListNotesInput): Promise<ListNotesOutput> {
     return {
-      items: this.repository.findAll(input.limit, input.offset),
+      items: await this.repository.findAll(input.limit, input.offset),
       limit: input.limit,
       offset: input.offset,
     };
@@ -33,7 +33,7 @@ export interface CreateNoteInput {
 export class CreateNoteUseCase {
   constructor(private readonly repository: NoteRepository) {}
 
-  execute(input: CreateNoteInput): Note {
+  async execute(input: CreateNoteInput): Promise<Note> {
     return this.repository.save(input.title, input.body);
   }
 }
@@ -45,8 +45,8 @@ export interface GetNoteByIdInput {
 export class GetNoteByIdUseCase {
   constructor(private readonly repository: NoteRepository) {}
 
-  execute(input: GetNoteByIdInput): Note {
-    const note = this.repository.findById(input.noteId);
+  async execute(input: GetNoteByIdInput): Promise<Note> {
+    const note = await this.repository.findById(input.noteId);
     if (note === undefined) {
       throw new NoteNotFoundError(input.noteId);
     }
@@ -63,8 +63,8 @@ export interface UpdateNoteInput {
 export class UpdateNoteUseCase {
   constructor(private readonly repository: NoteRepository) {}
 
-  execute(input: UpdateNoteInput): Note {
-    const note = this.repository.update(input.noteId, input.title, input.body);
+  async execute(input: UpdateNoteInput): Promise<Note> {
+    const note = await this.repository.update(input.noteId, input.title, input.body);
     if (note === undefined) {
       throw new NoteNotFoundError(input.noteId);
     }
@@ -79,8 +79,8 @@ export interface DeleteNoteByIdInput {
 export class DeleteNoteByIdUseCase {
   constructor(private readonly repository: NoteRepository) {}
 
-  execute(input: DeleteNoteByIdInput): void {
-    const deleted = this.repository.delete(input.noteId);
+  async execute(input: DeleteNoteByIdInput): Promise<void> {
+    const deleted = await this.repository.delete(input.noteId);
     if (!deleted) {
       throw new NoteNotFoundError(input.noteId);
     }

@@ -53,9 +53,18 @@
     "problem-details",
     "clean-architecture"
   ],
+  "peerDependencies": {
+    "@hono/node-server": "^1.19.0 || ^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@hono/node-server": {
+      "optional": false
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
     "@types/node": "^25.9.1",
+    "@types/pg": "^8.18.0",
     "eslint": "^9.39.3",
     "prettier": "^3.8.1",
     "tsx": "^4.22.3",
@@ -65,6 +74,8 @@
   },
   "dependencies": {
     "@hono/node-server": "^2.0.3",
-    "hono": "^4.12.21"
+    "hono": "^4.12.21",
+    "mysql2": "^3.18.2",
+    "pg": "^8.20.0"
   }
 }

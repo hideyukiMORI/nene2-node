@@ -25,7 +25,7 @@ npm install -D typescript tsx @types/node
 import { serve } from '@hono/node-server';
 import { createApp, loadAppSettings } from '@hideyukimori/nene2-framework';
 
-const { app } = createApp({ settings: loadAppSettings() });
+const { app } = await createApp({ settings: loadAppSettings() });
 
 app.get('/hello', (c) => c.json({ message: 'ok' }));
 
@@ -46,11 +46,13 @@ Copy variables from [environment-variables.md](../development/environment-variab
 ```bash
 NENE2_NODE_APP_ENV=local
 NENE2_NODE_PORT=3000
-# SQLite only in v0.1.x:
+# SQLite (default local):
 # NENE2_NODE_DATABASE_URL=file:./var/app.sqlite
+# MySQL: mysql://user:pass@localhost:3306/dbname
+# PostgreSQL: postgresql://user:pass@localhost:5432/dbname
 ```
 
-**MySQL / PostgreSQL:** not supported yet — see [GitHub #37](https://github.com/hideyukiMORI/nene2-node/issues/37).
+`createApp()` is **async** — it connects to the database, runs example schema bootstrap, and registers the database health check when `NENE2_NODE_DATABASE_URL` is set.
 
 ## Reference sandbox
 

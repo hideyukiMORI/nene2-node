@@ -27,20 +27,20 @@ describe('Tag use cases', () => {
     deleteTag = new DeleteTagByIdUseCase(repository);
   });
 
-  it('creates and lists tags', () => {
-    createTag.execute({ name: 'php' });
-    const output = listTags.execute({ limit: 20, offset: 0 });
+  it('creates and lists tags', async () => {
+    await createTag.execute({ name: 'php' });
+    const output = await listTags.execute({ limit: 20, offset: 0 });
     expect(output.items[0]?.name).toBe('php');
   });
 
-  it('throws TagNotFoundError when missing', () => {
-    expect(() => getTag.execute({ tagId: 99 })).toThrow(TagNotFoundError);
+  it('throws TagNotFoundError when missing', async () => {
+    await expect(getTag.execute({ tagId: 99 })).rejects.toThrow(TagNotFoundError);
   });
 
-  it('updates and deletes a tag', () => {
-    const created = createTag.execute({ name: 'old' });
-    updateTag.execute({ tagId: created.id, name: 'new' });
-    deleteTag.execute({ tagId: created.id });
-    expect(() => getTag.execute({ tagId: created.id })).toThrow(TagNotFoundError);
+  it('updates and deletes a tag', async () => {
+    const created = await createTag.execute({ name: 'old' });
+    await updateTag.execute({ tagId: created.id, name: 'new' });
+    await deleteTag.execute({ tagId: created.id });
+    await expect(getTag.execute({ tagId: created.id })).rejects.toThrow(TagNotFoundError);
   });
 });

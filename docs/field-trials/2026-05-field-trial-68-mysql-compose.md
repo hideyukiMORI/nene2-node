@@ -5,27 +5,28 @@
 ## Validated
 
 - `docker compose up` — MySQL 8.4 healthy on port **3308**
-- `NENE2_NODE_DATABASE_URL=mysql://...` + `createApp()` — **fails** (expected: no adapter)
+- `mysql://ft068:ft068_pass@127.0.0.1:3308/ft068_app` + `await createApp()` — **works** (health 200, note CRUD 201)
 
-## Friction
+## Friction (resolved)
 
 ### F-1: Misleading SQLite error for mysql:// URL (severity: high)
 
 **Observed:** Error was `unable to open database file` (SQLite driver).  
-**Action:** [#40](https://github.com/hideyukiMORI/nene2-node/issues/40) — `assertSqliteDatabaseUrl()` with message pointing to #37
+**Action:** [#40](https://github.com/hideyukiMORI/nene2-node/issues/40) — interim `assertSqliteDatabaseUrl()` (PR #41)  
+**Resolution:** MySQL adapter + `createDatabaseRuntime()` — no longer rejects `mysql://`
 
-### F-2: No MySQL executor (severity: high — known gap)
+### F-2: No MySQL executor (severity: high)
 
-**Observed:** Framework has port only; no `mysql2` adapter.  
-**Action:** [#37](https://github.com/hideyukiMORI/nene2-node/issues/37)
+**Observed:** Framework had port only; no `mysql2` adapter.  
+**Action:** [#37](https://github.com/hideyukiMORI/nene2-node/issues/37)  
+**Resolution:** `MysqlQueryExecutor`, async `createApp()`
 
 ## Doc updates
 
-- `database-layer.md` — non-SQLite URLs
+- `database-layer.md` — MySQL/PostgreSQL URLs
+- `consumer-quickstart.md` — async `createApp`, peer dep
 - Compose recipe in sandbox README
 
 ## Follow-up Issues
 
-- #37 — MySQL adapter
-- #38 — PostgreSQL adapter
-- #40 — clear URL validation (fix in PR)
+- **None** — #37, #38, #39, #40 addressed in framework PR (closes via PR body)

@@ -36,9 +36,9 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
   const updateNote = new UpdateNoteUseCase(deps.repository);
   const deleteNote = new DeleteNoteByIdUseCase(deps.repository);
 
-  app.get('/examples/notes', (c) => {
+  app.get('/examples/notes', async (c) => {
     const pagination = parsePaginationQuery(new URL(c.req.url).searchParams);
-    const output = listNotes.execute(pagination);
+    const output = await listNotes.execute(pagination);
     return c.json(
       {
         items: output.items.map(noteToJSON),
@@ -52,7 +52,7 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
 
   app.post('/examples/notes', async (c) => {
     const body = validateCreateNoteBody(await parseJsonObjectBody(c.req.raw));
-    const note = createNote.execute(body);
+    const note = await createNote.execute(body);
     const location = `/examples/notes/${String(note.id)}`;
     return c.json(noteToJSON(note), 201, {
       'Content-Type': 'application/json; charset=utf-8',
@@ -60,8 +60,8 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
     });
   });
 
-  app.get('/examples/notes/:id', (c) => {
-    const note = getNote.execute({ noteId: parseNoteId(c.req.param('id')) });
+  app.get('/examples/notes/:id', async (c) => {
+    const note = await getNote.execute({ noteId: parseNoteId(c.req.param('id')) });
     return c.json(noteToJSON(note), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
@@ -70,14 +70,14 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
   app.put('/examples/notes/:id', async (c) => {
     const noteId = parseNoteId(c.req.param('id'));
     const body = validateCreateNoteBody(await parseJsonObjectBody(c.req.raw));
-    const note = updateNote.execute({ noteId, title: body.title, body: body.body });
+    const note = await updateNote.execute({ noteId, title: body.title, body: body.body });
     return c.json(noteToJSON(note), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
   });
 
-  app.delete('/examples/notes/:id', (c) => {
-    deleteNote.execute({ noteId: parseNoteId(c.req.param('id')) });
+  app.delete('/examples/notes/:id', async (c) => {
+    await deleteNote.execute({ noteId: parseNoteId(c.req.param('id')) });
     return c.body(null, 204);
   });
 

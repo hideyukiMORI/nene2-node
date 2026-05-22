@@ -3,8 +3,8 @@ import '../hono-context.js';
 import { Hono } from 'hono';
 
 import { loadAppSettings, type AppSettings } from '../config/app-settings.js';
-import { buildHealthResponse } from '../http/health-check.js';
-import type { HealthCheck } from '../http/health-check.js';
+import { buildHealthResponseAsync } from '../http/health-check.js';
+import type { AsyncHealthCheck, HealthCheck } from '../http/health-check.js';
 import {
   createProblemDetailsFactory,
   type ProblemDetailsFactory,
@@ -22,7 +22,6 @@ import { requestSizeLimitMiddleware } from '../middleware/request-size-limit.js'
 import { securityHeadersMiddleware } from '../middleware/security-headers.js';
 import { throttleMiddleware } from '../middleware/throttle.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
-import { ensureExamplesSchema } from '../example/example-sqlite-schema.js';
 import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
 import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
 import type { NoteRepository } from '../example/note/note-repository.js';
@@ -34,8 +33,7 @@ import type { TagRepository } from '../example/tag/tag-repository.js';
 import { registerTagRoutes } from '../example/tag/register-tag-routes.js';
 import { SqliteTagRepository } from '../example/tag/sqlite-tag-repository.js';
 import { createDatabaseHealthCheck } from '../database/database-health-check.js';
-import { openSqliteDatabase } from '../database/open-sqlite-database.js';
-import { SqliteQueryExecutor } from '../database/sqlite-query-executor.js';
+import { createDatabaseRuntime } from '../database/create-database-runtime.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -51,21 +49,30 @@ export interface Nene2App {
   readonly app: Hono;
   readonly settings: AppSettings;
   readonly problems: ProblemDetailsFactory;
+  readonly shutdown?: () => Promise<void>;
 }
 
-export function createApp(options: CreateAppOptions = {}): Nene2App {
+function wrapSyncHealthChecks(checks: readonly HealthCheck[]): readonly AsyncHealthCheck[] {
+  return checks.map((check) => ({
+    name: check.name,
+    check: () => Promise.resolve(check.check()),
+  }));
+}
+
+export async function createApp(options: CreateAppOptions = {}): Promise<Nene2App> {
   const settings = options.settings ?? loadAppSettings();
   const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
   const machineApiKey = options.machineApiKey ?? settings.machineApiKey;
 
-  let healthChecks = options.healthChecks ?? [];
+  let healthChecks: readonly AsyncHealthCheck[] = wrapSyncHealthChecks(options.healthChecks ?? []);
   let noteRepository = options.noteRepository;
   let tagRepository = options.tagRepository;
+  let shutdown: (() => Promise<void>) | undefined;
 
   if (settings.databaseUrl !== undefined) {
-    const database = openSqliteDatabase(settings.databaseUrl);
-    ensureExamplesSchema(database);
-    const executor = new SqliteQueryExecutor(database);
+    const runtime = await createDatabaseRuntime(settings.databaseUrl);
+    shutdown = runtime.shutdown;
+    const executor = runtime.executor;
     if (noteRepository === undefined) {
       noteRepository = new SqliteNoteRepository(executor);
     }
@@ -194,8 +201,8 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
 
   app.post('/', (c) => methodNotAllowed(c, 'GET'));
 
-  app.get('/health', (c) => {
-    const result = buildHealthResponse(settings.serviceName, healthChecks);
+  app.get('/health', async (c) => {
+    const result = await buildHealthResponseAsync(settings.serviceName, healthChecks);
     return c.json(
       {
         status: result.status,
@@ -247,5 +254,8 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   registerNoteRoutes(app, { repository: noteRepository, problems });
   registerTagRoutes(app, { repository: tagRepository, problems });
 
-  return { app, settings, problems };
+  if (shutdown === undefined) {
+    return { app, settings, problems };
+  }
+  return { app, settings, problems, shutdown };
 }

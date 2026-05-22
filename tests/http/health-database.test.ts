@@ -9,7 +9,7 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('GET /health with database', () => {
   it('returns 503 degraded when database check fails', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       healthChecks: [
         {
           name: 'database',
@@ -27,7 +27,7 @@ describe('GET /health with database', () => {
   });
 
   it('returns 200 when sqlite database is healthy', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({
         NODE_ENV: 'test',
         NENE2_NODE_APP_ENV: 'test',
