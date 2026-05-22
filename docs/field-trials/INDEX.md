@@ -82,3 +82,54 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 76  | 2026-05-22 | [2026-05-field-trial-76-orders-list-filter.md](2026-05-field-trial-76-orders-list-filter.md)           | Orders pagination   | —   | 🔍  |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
+
+| 77 | 2026-05-22 | [2026-05-field-trial-77-compose-app-db-env-template.md](2026-05-field-trial-77-compose-app-db-env-template.md) | compose app db env templ | — | — |
+| 78 | 2026-05-22 | [2026-05-field-trial-78-bola-row-ownership-in-usecase.md](2026-05-field-trial-78-bola-row-ownership-in-usecase.md) | bola row ownership in us | — | — |
+| 79 | 2026-05-22 | [2026-05-field-trial-79-deploy-checklist-with-real-db.md](2026-05-field-trial-79-deploy-checklist-with-real-db.md) | deploy checklist with re | — | — |
+| 80 | 2026-05-22 | [2026-05-field-trial-80-phase-2-friction-index.md](2026-05-field-trial-80-phase-2-friction-index.md) | phase 2 friction index | — | — |
+| 81 | 2026-05-22 | [2026-05-field-trial-81-postgresql-transactionmanager.md](2026-05-field-trial-81-postgresql-transactionmanager.md) | postgresql transactionma | — | — |
+| 82 | 2026-05-22 | [2026-05-field-trial-82-postgresql-ci-service-job.md](2026-05-field-trial-82-postgresql-ci-service-job.md) | postgresql ci service jo | — | — |
+| 83 | 2026-05-22 | [2026-05-field-trial-83-composite-auth-api-key-bearer.md](2026-05-field-trial-83-composite-auth-api-key-bearer.md) | composite auth api key b | — | — |
+| 84 | 2026-05-22 | [2026-05-field-trial-84-idempotency-key-header.md](2026-05-field-trial-84-idempotency-key-header.md) | idempotency key header | — | — |
+| 85 | 2026-05-22 | [2026-05-field-trial-85-optimistic-concurrency-version-.md](2026-05-field-trial-85-optimistic-concurrency-version-.md) | optimistic concurrency v | — | — |
+| 86 | 2026-05-22 | [2026-05-field-trial-86-graceful-shutdown-pool-drain.md](2026-05-field-trial-86-graceful-shutdown-pool-drain.md) | graceful shutdown pool d | — | — |
+| 87 | 2026-05-22 | [2026-05-field-trial-87-pool-exhaustion-under-burst.md](2026-05-field-trial-87-pool-exhaustion-under-burst.md) | pool exhaustion under bu | — | — |
+| 88 | 2026-05-22 | [2026-05-field-trial-88-invalid-database-url-at-boot.md](2026-05-field-trial-88-invalid-database-url-at-boot.md) | invalid database url at | — | — |
+| 89 | 2026-05-22 | [2026-05-field-trial-89-sqlite-file-lock-on-wal.md](2026-05-field-trial-89-sqlite-file-lock-on-wal.md) | sqlite file lock on wal | — | — |
+| 90 | 2026-05-22 | [2026-05-field-trial-90-example-schema-on-business-db.md](2026-05-field-trial-90-example-schema-on-business-db.md) | example schema on busine | — | — |
+| 91 | 2026-05-22 | [2026-05-field-trial-91-export-surface-for-validationexception.md](2026-05-field-trial-91-export-surface-for-validationexception.md) | export surface for valid | — | — |
+| 92 | 2026-05-22 | [2026-05-field-trial-92-domain-handler-registration-order.md](2026-05-field-trial-92-domain-handler-registration-order.md) | domain handler registrat | — | — |
+| 93 | 2026-05-22 | [2026-05-field-trial-93-problem-details-instance-uri.md](2026-05-field-trial-93-problem-details-instance-uri.md) | problem details instance | — | — |
+| 94 | 2026-05-22 | [2026-05-field-trial-94-cors-preflight-bearer.md](2026-05-field-trial-94-cors-preflight-bearer.md) | cors preflight bearer | — | — |
+| 95 | 2026-05-22 | [2026-05-field-trial-95-throttle-redis-storage.md](2026-05-field-trial-95-throttle-redis-storage.md) | throttle redis storage | — | — |
+| 96 | 2026-05-22 | [2026-05-field-trial-96-bulk-json-import-size.md](2026-05-field-trial-96-bulk-json-import-size.md) | bulk json import size | — | — |
+| 97 | 2026-05-22 | [2026-05-field-trial-97-sql-injection-probe.md](2026-05-field-trial-97-sql-injection-probe.md) | sql injection probe | — | — |
+| 98 | 2026-05-22 | [2026-05-field-trial-98-jwt-exp-clock-skew.md](2026-05-field-trial-98-jwt-exp-clock-skew.md) | jwt exp clock skew | — | — |
+| 99 | 2026-05-22 | [2026-05-field-trial-99-jwt-alg-none-rejected.md](2026-05-field-trial-99-jwt-alg-none-rejected.md) | jwt alg none rejected | — | — |
+| 100 | 2026-05-22 | [2026-05-field-trial-100-api-key-rotation-story.md](2026-05-field-trial-100-api-key-rotation-story.md) | api key rotation story | — | — |
+| 101 | 2026-05-22 | [2026-05-field-trial-101-openapi-path-in-monorepo.md](2026-05-field-trial-101-openapi-path-in-monorepo.md) | openapi path in monorepo | — | — |
+| 102 | 2026-05-22 | [2026-05-field-trial-102-peer-dep-hono-version-drift.md](2026-05-field-trial-102-peer-dep-hono-version-drift.md) | peer dep hono version dr | — | — |
+| 103 | 2026-05-22 | [2026-05-field-trial-103-esm-js-import-in-consumer-ts.md](2026-05-field-trial-103-esm-js-import-in-consumer-ts.md) | esm js import in consume | — | — |
+| 104 | 2026-05-22 | [2026-05-field-trial-104-npm-provenance-verify.md](2026-05-field-trial-104-npm-provenance-verify.md) | npm provenance verify | — | — |
+| 105 | 2026-05-22 | [2026-05-field-trial-105-double-createdatabaseruntime-pools.md](2026-05-field-trial-105-double-createdatabaseruntime-pools.md) | double createdatabaserun | — | — |
+| 106 | 2026-05-22 | [2026-05-field-trial-106-partial-tx-failure-messaging.md](2026-05-field-trial-106-partial-tx-failure-messaging.md) | partial tx failure messa | — | — |
+| 107 | 2026-05-22 | [2026-05-field-trial-107-nested-route-invalid-id.md](2026-05-field-trial-107-nested-route-invalid-id.md) | nested route invalid id | — | — |
+| 108 | 2026-05-22 | [2026-05-field-trial-108-n-1-list-queries.md](2026-05-field-trial-108-n-1-list-queries.md) | n 1 list queries | — | — |
+| 109 | 2026-05-22 | [2026-05-field-trial-109-health-check-slow-db-timeout.md](2026-05-field-trial-109-health-check-slow-db-timeout.md) | health check slow db tim | — | — |
+| 110 | 2026-05-22 | [2026-05-field-trial-110-partial-degraded-health.md](2026-05-field-trial-110-partial-degraded-health.md) | partial degraded health | — | — |
+| 111 | 2026-05-22 | [2026-05-field-trial-111-missing-content-type-json.md](2026-05-field-trial-111-missing-content-type-json.md) | missing content type jso | — | — |
+| 112 | 2026-05-22 | [2026-05-field-trial-112-unique-violation-409.md](2026-05-field-trial-112-unique-violation-409.md) | unique violation 409 | — | — |
+| 113 | 2026-05-22 | [2026-05-field-trial-113-fk-violation-422.md](2026-05-field-trial-113-fk-violation-422.md) | fk violation 422 | — | — |
+| 114 | 2026-05-22 | [2026-05-field-trial-114-utf8mb4-emoji-in-mysql.md](2026-05-field-trial-114-utf8mb4-emoji-in-mysql.md) | utf8mb4 emoji in mysql | — | — |
+| 115 | 2026-05-22 | [2026-05-field-trial-115-timestamp-timezone-semantics.md](2026-05-field-trial-115-timestamp-timezone-semantics.md) | timestamp timezone seman | — | — |
+| 116 | 2026-05-22 | [2026-05-field-trial-116-null-vs-undefined-in-repos.md](2026-05-field-trial-116-null-vs-undefined-in-repos.md) | null vs undefined in rep | — | — |
+| 117 | 2026-05-22 | [2026-05-field-trial-117-serverless-pool-lifecycle.md](2026-05-field-trial-117-serverless-pool-lifecycle.md) | serverless pool lifecycl | — | — |
+| 118 | 2026-05-22 | [2026-05-field-trial-118-read-replica-url.md](2026-05-field-trial-118-read-replica-url.md) | read replica url | — | — |
+| 119 | 2026-05-22 | [2026-05-field-trial-119-ssl-in-mysql-postgres-urls.md](2026-05-field-trial-119-ssl-in-mysql-postgres-urls.md) | ssl in mysql postgres ur | — | — |
+| 120 | 2026-05-22 | [2026-05-field-trial-120-compose-profiles-dev-prod.md](2026-05-field-trial-120-compose-profiles-dev-prod.md) | compose profiles dev pro | — | — |
+| 121 | 2026-05-22 | [2026-05-field-trial-121-nene2-js-error-shape-parity.md](2026-05-field-trial-121-nene2-js-error-shape-parity.md) | nene2 js error shape par | — | — |
+| 122 | 2026-05-22 | [2026-05-field-trial-122-agents-md-accuracy.md](2026-05-field-trial-122-agents-md-accuracy.md) | agents md accuracy | — | — |
+| 123 | 2026-05-22 | [2026-05-field-trial-123-semver-breaking-policy.md](2026-05-field-trial-123-semver-breaking-policy.md) | semver breaking policy | — | — |
+| 124 | 2026-05-22 | [2026-05-field-trial-124-rate-limit-per-jwt-sub.md](2026-05-field-trial-124-rate-limit-per-jwt-sub.md) | rate limit per jwt sub | — | — |
+| 125 | 2026-05-22 | [2026-05-field-trial-125-webhook-hmac-middleware.md](2026-05-field-trial-125-webhook-hmac-middleware.md) | webhook hmac middleware | — | — |
+| 126 | 2026-05-22 | [2026-05-field-trial-126-campaign-wrap-ft127-.md](2026-05-field-trial-126-campaign-wrap-ft127-.md) | campaign wrap ft127 | — | — |

@@ -8,6 +8,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet — next patch ships with the next completed Phase 2 FT._
 
+## [0.1.8] - 2026-05-22
+
+### Added
+
+- `PostgresTransactionManager` on `Nene2App.database.transactionManager` (FT81)
+- CI `postgres-integration` job (FT82)
+- Phase 2 friction index and deploy checklist docs (FT79–80, campaign #71)
+
 ## [0.1.7] - 2026-05-22
 
 ### Added
