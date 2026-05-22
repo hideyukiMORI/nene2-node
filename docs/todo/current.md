@@ -1,28 +1,43 @@
 # Current work
 
-Last updated: 2026-05-22
+Last updated: 2026-05-22  
+**Sprint:** Phase 2 — middleware and auth (next)  
+**Master plan:** [milestones/2026-05-master-plan.md](milestones/2026-05-master-plan.md)
 
-## Active
+## In progress
 
-- [x] Governance, engineering policy, FT culture, Issue-driven workflow
-- [x] Phase 1 core: Hono runtime, Problem Details, `/health`, `/examples/ping`, smoke `/`, machine health + API key
-- [x] ADR 0002 Accepted (Hono on Node)
-- [x] `npm run check` — 9 HTTP runtime tests
+| ID   | Task                                | Milestone                                                 | Status     |
+| ---- | ----------------------------------- | --------------------------------------------------------- | ---------- |
+| P1b  | OpenAPI contract + dev server       | [phase1b](milestones/2026-05-phase1b-contract-and-dev.md) | PR pending |
+| P2-1 | Domain exception + error middleware | [phase2](milestones/2026-05-phase2-middleware-auth.md)    | Next Issue |
 
-## Next Issues
+## Up next (ordered)
 
-| Priority | Title                                                                    |
-| -------- | ------------------------------------------------------------------------ |
-| High     | OpenAPI contract test harness (pin `../NENE2/docs/openapi/openapi.yaml`) |
-| High     | Error handler middleware + domain exception mapping pattern              |
-| High     | Validation layer + `validation-failed` Problem Details                   |
-| Medium   | Bearer token middleware + `/examples/protected`                          |
-| Medium   | Throttle, CORS, structured logging (Phase 2)                             |
-| Medium   | Note example domain — UseCase / Repository / Handler (Phase 3)           |
+| ID   | Task                                 | Phase |
+| ---- | ------------------------------------ | ----- |
+| P2-2 | Validation + `validation-failed`     | 2     |
+| P2-3 | Bearer token + `/examples/protected` | 2     |
+| P2-4 | Throttle + CORS + structured logging | 2     |
+| P3-1 | Note domain (interfaces + in-memory) | 3     |
+| P3-2 | Note HTTP + SQLite                   | 3     |
+| P3-3 | OpenAPI contract tests for notes     | 3     |
+
+## Completed (recent)
+
+- [x] Phase 0 governance + FT culture
+- [x] Phase 1 Hono runtime ([#7](https://github.com/hideyukiMORI/nene2-node/issues/7))
+- [x] Master plan + milestones `2026-05-phase*` (7 docs)
+- [x] Phase 1b contract fixtures + `npm run dev` (this sprint)
+
+## Verification
+
+```bash
+npm run check   # 14 tests
+npm run dev     # http://localhost:3000
+```
 
 ## Handoff
 
-- Contract source: `../NENE2/docs/openapi/openapi.yaml`
-- Parity reference: `../nene2-python/src/nene2/`
-- Runtime entry: `createApp()` in `src/app/create-app.ts`
-- Client library: `../nene2-js` — do not duplicate here
+- OpenAPI: `resolveOpenApiPath()` → `../NENE2/docs/openapi/openapi.yaml`
+- Fixtures: `tests/fixtures/contract/`
+- Runtime: `createApp()` in `src/app/create-app.ts`

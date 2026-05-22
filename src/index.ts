@@ -19,5 +19,10 @@ export {
   type ProblemDetailsFactory,
   type ValidationErrorItem,
 } from './http/problem-details.js';
+export {
+  DEFAULT_OPENAPI_RELATIVE,
+  openApiFileExists,
+  resolveOpenApiPath,
+} from './openapi/resolve-openapi-path.js';
 
 export const FRAMEWORK_PACKAGE_NAME = '@hideyukimori/nene2-framework' as const;
