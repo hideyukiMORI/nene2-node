@@ -4,11 +4,11 @@ Parent: [#29](https://github.com/hideyukiMORI/nene2-node/issues/29). Culture rul
 
 ## Why FT71 felt “too easy”
 
-| FT band | Difficulty | Friction signal |
-| ------- | ---------- | ---------------- |
-| FT67–68 | D1 | Install, MySQL URL, adapters → Issues #37–#40 |
-| FT69–70 | D1–D2 | Postgres `RETURNING`, CI `LIMIT ?` → code fixes |
-| **FT71** | **D0** | Desk research only — **no sandbox, no F-1** |
+| FT band  | Difficulty | Friction signal                                 |
+| -------- | ---------- | ----------------------------------------------- |
+| FT67–68  | D1         | Install, MySQL URL, adapters → Issues #37–#40   |
+| FT69–70  | D1–D2      | Postgres `RETURNING`, CI `LIMIT ?` → code fixes |
+| **FT71** | **D0**     | Desk research only — **no sandbox, no F-1**     |
 
 “Friction: none” on D0 is **not** evidence that business apps are smooth.
 
