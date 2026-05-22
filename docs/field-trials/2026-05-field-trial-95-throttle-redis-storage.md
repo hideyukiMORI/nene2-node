@@ -13,7 +13,7 @@
 
 **Observed:** Exercised or inferred during high-friction campaign FT95.  
 **Action:** production-deployment.md  
-**Status:** **partial** — FT135 FileRateLimitStorage; Redis still open
+**Status:** **resolved** — FT141 RedisRateLimitStorage (optional peer `redis`)
 
 ## Follow-up
 

@@ -40,4 +40,27 @@ describe('webhookSignatureMiddleware', () => {
     });
     expect(response.status).toBe(401);
   });
+
+  it('rejects stale timestamp replay', async () => {
+    const { app } = await createApp({ settings });
+    app.use(
+      '/webhooks/*',
+      webhookSignatureMiddleware(problems, { secret, maxTimestampSkewSeconds: 60 }),
+    );
+    app.post('/webhooks/stripe', (c) => c.json({ ok: true }));
+
+    const body = JSON.stringify({ event: 'old' });
+    const ts = String(Math.floor(Date.now() / 1000) - 120);
+    const sig = `sha256=${computeWebhookSignature(body, secret, ts)}`;
+    const response = await app.request('http://localhost/webhooks/stripe', {
+      method: 'POST',
+      headers: {
+        'X-Webhook-Signature-256': sig,
+        'X-Webhook-Timestamp': ts,
+        'Content-Type': 'application/json',
+      },
+      body,
+    });
+    expect(response.status).toBe(401);
+  });
 });

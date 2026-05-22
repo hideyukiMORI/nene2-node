@@ -78,9 +78,18 @@ export { FileIdempotencyStorage } from './middleware/file-idempotency-storage.js
 export {
   createThrottleStorage,
   createThrottleStorageFromEnv,
+  createThrottleStorageFromEnvAsync,
   type CreateThrottleStorageOptions,
   type ThrottleStorageKind,
 } from './middleware/create-throttle-storage.js';
+export {
+  wrapNodeRedisClient,
+  type NodeRedisLikeClient,
+  type RedisKeyValueClient,
+} from './middleware/redis-key-value-client.js';
+export { createRedisKeyValueClientFromUrl } from './middleware/create-redis-client.js';
+export { RedisRateLimitStorage } from './middleware/redis-rate-limit-storage.js';
+export { RedisIdempotencyStorage } from './middleware/redis-idempotency-storage.js';
 export {
   webhookSignatureMiddleware,
   computeWebhookSignature,
