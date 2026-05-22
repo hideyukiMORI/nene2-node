@@ -184,6 +184,7 @@ When a sandbox FT opens GitHub Issues (e.g. #37, #38):
 2. Order: **code fix → tests → docs → close Issue** → then FT report “Follow-up: none”.
 3. Parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29) tracks batches; **blocking Issues take priority over FT count**.
 4. **npm:** after FT work merges, bump patch (`0.1.2`, `0.1.3`, …) and publish per [release-process.md](release-process.md) before starting the next FT number.
+5. **Issue per FT:** open a dedicated GitHub Issue (not only parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)); branch `feat/<issue>-ftNN-summary`; PR `Closes #N`. See [workflow.md](../workflow.md).
 
 ## AI agent responsibilities
 

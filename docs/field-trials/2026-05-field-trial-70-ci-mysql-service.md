@@ -1,6 +1,6 @@
 # Field trial report — FT70: CI MySQL service container
 
-**Date:** 2026-05-22 | **Issue:** [#29](https://github.com/hideyukiMORI/nene2-node/issues/29) | **Security:** N/A | **Adversarial:** required (🔍)
+**Date:** 2026-05-22 | **Issue:** [#50](https://github.com/hideyukiMORI/nene2-node/issues/50) (parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)) | **Security:** N/A | **Adversarial:** required (🔍)
 
 ## Validated
 

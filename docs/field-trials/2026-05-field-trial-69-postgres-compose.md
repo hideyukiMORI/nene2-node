@@ -1,6 +1,6 @@
 # Field trial report — FT69: PostgreSQL Docker Compose
 
-**Date:** 2026-05-22 | **Issue:** [#29](https://github.com/hideyukiMORI/nene2-node/issues/29) | **Sandbox:** `../nene2-node-FT/ft069-postgres-compose/`
+**Date:** 2026-05-22 | **Issue:** [#47](https://github.com/hideyukiMORI/nene2-node/issues/47) (parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)) | **Sandbox:** `../nene2-node-FT/ft069-postgres-compose/`
 
 ## Validated
 

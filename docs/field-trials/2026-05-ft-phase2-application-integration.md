@@ -1,7 +1,7 @@
 # FT Phase 2 — Application integration (FT67+)
 
 **Status:** Active from 2026-05-22  
-**Parent Issue:** [#29](https://github.com/hideyukiMORI/nene2-node/issues/29)  
+**Issue:** [#51](https://github.com/hideyukiMORI/nene2-node/issues/51) (parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29))  
 **Prior phase:** FT1–66 validated framework modules + docs (see [INDEX.md](INDEX.md)).
 
 ## Why pivot now
