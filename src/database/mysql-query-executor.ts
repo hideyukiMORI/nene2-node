@@ -61,14 +61,22 @@ export class MysqlQueryExecutor implements DatabaseQueryExecutor {
     }
   }
 
+  /** Use `query` not `execute` — prepared statements break `LIMIT ? OFFSET ?` on MySQL 8.4. */
+  private async run(
+    sql: string,
+    parameters: readonly SqlParameter[],
+  ): Promise<[ResultSetHeader | RowDataPacket[], unknown]> {
+    return this.runner.query(sql, [...parameters]);
+  }
+
   async execute(sql: string, parameters: readonly SqlParameter[] = []): Promise<number> {
-    const [result] = await this.runner.execute<ResultSetHeader>(sql, [...parameters]);
-    return result.affectedRows;
+    const [result] = await this.run(sql, parameters);
+    return (result as ResultSetHeader).affectedRows;
   }
 
   async insert(sql: string, parameters: readonly SqlParameter[] = []): Promise<number> {
-    const [result] = await this.runner.execute<ResultSetHeader>(sql, [...parameters]);
-    this.lastId = result.insertId;
+    const [result] = await this.run(sql, parameters);
+    this.lastId = (result as ResultSetHeader).insertId;
     return this.lastId;
   }
 
@@ -80,8 +88,8 @@ export class MysqlQueryExecutor implements DatabaseQueryExecutor {
     sql: string,
     parameters: readonly SqlParameter[] = [],
   ): Promise<SqlRow | undefined> {
-    const [rows] = await this.runner.execute<RowDataPacket[]>(sql, [...parameters]);
-    const first = rows[0];
+    const [rows] = await this.run(sql, parameters);
+    const first = (rows as RowDataPacket[])[0];
     return first === undefined ? undefined : rowToSqlRow(first);
   }
 
@@ -89,7 +97,7 @@ export class MysqlQueryExecutor implements DatabaseQueryExecutor {
     sql: string,
     parameters: readonly SqlParameter[] = [],
   ): Promise<readonly SqlRow[]> {
-    const [rows] = await this.runner.execute<RowDataPacket[]>(sql, [...parameters]);
-    return rows.map(rowToSqlRow);
+    const [rows] = await this.run(sql, parameters);
+    return (rows as RowDataPacket[]).map(rowToSqlRow);
   }
 }

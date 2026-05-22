@@ -6,7 +6,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
-_No changes yet — next patch (e.g. `0.1.2`) ships with the next completed Phase 2 FT._
+_No changes yet — next patch ships with the next completed Phase 2 FT._
+
+## [0.1.2] - 2026-05-22
+
+### Added
+
+- GitHub Actions `mysql-integration` job (MySQL 8.4 service container)
+- `tests/database/mysql-integration.test.ts` (skipped unless `NENE2_NODE_TEST_MYSQL_URL` is set)
+- `docs/development/ci-mysql-service.md`
+
+### Fixed
+
+- MySQL adapter uses `query()` instead of `execute()` so `LIMIT ? OFFSET ?` works under MySQL 8.4
 
 ## [0.1.1] - 2026-05-22
 

@@ -55,6 +55,8 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 
 URLs: `mysql://user:pass@host:port/db`, `postgresql://…` or `postgres://…`. SQLite remains `:memory:` or `file:./path.sqlite`.
 
+**CI:** GitHub Actions runs MySQL 8.4 as a service container — see [ci-mysql-service.md](ci-mysql-service.md).
+
 Until adapters ship:
 
 - Use SQLite via `NENE2_NODE_DATABASE_URL=file:…` for local/dev parity.
