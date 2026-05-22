@@ -2,6 +2,19 @@
 
 Automated publish via OIDC Trusted Publisher — see `.github/workflows/release.yml`.
 
+## Version cadence (Phase 2 field trials)
+
+During **FT67–100** (application integration), bump the **patch** version when a field trial ships on `main`:
+
+| Event                         | Version example                                                     |
+| ----------------------------- | ------------------------------------------------------------------- |
+| FT work merged, ready for npm | `0.1.1` → `0.1.2` → `0.1.3` …                                       |
+| Pre-1.0 API                   | Stay on `0.1.x` until a breaking public API change warrants `0.2.0` |
+
+Each release: update `package.json`, `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z]`), merge to `main`, then create GitHub Release tag `vX.Y.Z` (workflow publishes npm).
+
+Do **not** skip versions; consumers can map FT reports to npm tags via CHANGELOG dates.
+
 ## Steps
 
 1. **PR on `main`:** bump `version` in `package.json` and `CHANGELOG.md` (Keep a Changelog format).

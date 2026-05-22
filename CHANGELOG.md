@@ -6,6 +6,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
+_No changes yet — next patch (e.g. `0.1.2`) ships with the next completed Phase 2 FT._
+
+## [0.1.1] - 2026-05-22
+
 ### Fixed
 
 - PostgreSQL `insert()` now appends `RETURNING id` so example CRUD receives correct primary keys
