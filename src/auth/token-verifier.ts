@@ -1,3 +1,5 @@
 export interface TokenVerifier {
-  verify(token: string): Readonly<Record<string, unknown>>;
+  verify(
+    token: string,
+  ): Readonly<Record<string, unknown>> | Promise<Readonly<Record<string, unknown>>>;
 }

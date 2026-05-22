@@ -59,6 +59,7 @@ export {
 export { ValidationError, type ValidationErrorJSON } from './validation/validation-error.js';
 export { ValidationException } from './validation/validation-exception.js';
 export { LocalBearerTokenVerifier } from './auth/local-bearer-token-verifier.js';
+export { createJoseJwtVerifier, type JoseJwtVerifierOptions } from './auth/jose-jwt-verifier.js';
 export { TokenVerificationException } from './auth/token-verification-exception.js';
 export type { TokenVerifier } from './auth/token-verifier.js';
 export { bearerTokenMiddleware, type BearerTokenOptions } from './middleware/bearer-token.js';
@@ -127,5 +128,6 @@ export {
   type McpHttpClient,
 } from './mcp/mcp-http-client.js';
 export type { McpHttpResponse } from './mcp/mcp-http-response.js';
+export { registerProcessShutdown } from './server/register-process-shutdown.js';
 
 export const FRAMEWORK_PACKAGE_NAME = '@hideyukimori/nene2-framework' as const;

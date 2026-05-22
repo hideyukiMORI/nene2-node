@@ -20,6 +20,8 @@ export interface AppSettings {
   readonly requestLoggingExcludePaths: readonly string[];
   readonly databaseUrl: string | undefined;
   readonly databaseReadUrl: string | undefined;
+  /** When false, `/examples/*` routes and note/tag reference CRUD are not registered. */
+  readonly includeExamples: boolean;
 }
 
 const DEFAULT_SERVICE_NAME = 'NENE2';
@@ -103,5 +105,6 @@ export function loadAppSettings(env: NodeJS.ProcessEnv = process.env): AppSettin
     requestLoggingExcludePaths: readStringList(env, 'NENE2_NODE_REQUEST_LOGGING_EXCLUDE_PATHS'),
     databaseUrl: readOptionalString(env, 'NENE2_NODE_DATABASE_URL'),
     databaseReadUrl: readOptionalString(env, 'NENE2_NODE_DATABASE_READ_URL'),
+    includeExamples: readBoolean(env, 'NENE2_NODE_INCLUDE_EXAMPLES', appEnv !== 'production'),
   };
 }

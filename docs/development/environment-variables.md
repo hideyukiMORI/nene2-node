@@ -50,6 +50,7 @@
 | --------------------------------- | ---------------------- | ------------------------------------------------------------------------------------- |
 | `NENE2_NODE_DATABASE_URL`         | unset                  | SQLite file path (`file:…`); enables notes + tags SQLite repos and DB health          |
 | `NENE2_NODE_DATABASE_READ_URL`    | unset                  | Optional read replica pool → `database.readExecutor` (see `database-read-replica.md`) |
+| `NENE2_NODE_INCLUDE_EXAMPLES`     | `false` in production  | Register `/examples/*` reference routes when `true` (see `commercial-readiness.md`)   |
 | `NENE2_NODE_THROTTLE_STORAGE`     | `memory`               | `memory`, `file`, or `redis` — see `throttle-storage-adapters.md`                     |
 | `NENE2_NODE_THROTTLE_STORAGE_DIR` | `/tmp/nene2-ratelimit` | Directory when throttle storage is `file`                                             |
 | `NENE2_NODE_REDIS_URL`            | unset                  | Required for `redis` throttle — `createThrottleStorageFromEnvAsync()`                 |

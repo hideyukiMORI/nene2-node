@@ -29,7 +29,7 @@ import type { DatabaseTransactionManager } from '../database/database-transactio
 import type { DatabaseBackend } from '../database/parse-database-url.js';
 import type { NoteRepository } from '../example/note/note-repository.js';
 import type { TagRepository } from '../example/tag/tag-repository.js';
-import { registerExampleModule, resolveExampleModule } from './wire-example-module.js';
+import { registerExampleHttpRoutes, resolveExampleModule } from './wire-example-module.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -41,6 +41,8 @@ export interface CreateAppOptions {
   readonly tagRepository?: TagRepository;
   /** Extra path prefixes protected by bearer middleware (e.g. `/orders`). */
   readonly bearerIncludePaths?: readonly string[];
+  /** Register `/examples/*` reference routes (default: from settings / env). */
+  readonly includeExamples?: boolean;
 }
 
 export interface Nene2AppDatabase {
@@ -71,6 +73,8 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
   const machineApiKey = options.machineApiKey ?? settings.machineApiKey;
 
+  const includeExamples = options.includeExamples ?? settings.includeExamples;
+
   let healthChecks: readonly AsyncHealthCheck[] = wrapSyncHealthChecks(options.healthChecks ?? []);
   let shutdown: (() => Promise<void>) | undefined;
   let database: Nene2AppDatabase | undefined;
@@ -93,16 +97,18 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
     }
   }
 
-  const exampleModule = resolveExampleModule({
-    problems,
-    ...(executor !== undefined ? { executor } : {}),
-    ...(options.noteRepository !== undefined ? { noteRepository: options.noteRepository } : {}),
-    ...(options.tagRepository !== undefined ? { tagRepository: options.tagRepository } : {}),
-    ...(options.domainHandlers !== undefined
-      ? { extraDomainHandlers: options.domainHandlers }
-      : {}),
-  });
-  const domainHandlers = exampleModule.domainHandlers;
+  const exampleModule = includeExamples
+    ? resolveExampleModule({
+        problems,
+        ...(executor !== undefined ? { executor } : {}),
+        ...(options.noteRepository !== undefined ? { noteRepository: options.noteRepository } : {}),
+        ...(options.tagRepository !== undefined ? { tagRepository: options.tagRepository } : {}),
+        ...(options.domainHandlers !== undefined
+          ? { extraDomainHandlers: options.domainHandlers }
+          : {}),
+      })
+    : undefined;
+  const domainHandlers = exampleModule?.domainHandlers ?? [...(options.domainHandlers ?? [])];
   const tokenVerifier =
     options.tokenVerifier ??
     (settings.localJwtSecret !== undefined
@@ -166,7 +172,10 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
       protectedPaths: ['/machine/health'],
     }),
   );
-  const bearerIncludePaths = ['/examples/protected', ...(options.bearerIncludePaths ?? [])];
+  const bearerIncludePaths = [
+    ...(includeExamples ? ['/examples/protected'] : []),
+    ...(options.bearerIncludePaths ?? []),
+  ];
   app.use(
     '*',
     bearerTokenMiddleware(problems, {
@@ -238,29 +247,9 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
     );
   });
 
-  app.get('/examples/ping', (c) =>
-    c.json({ message: 'pong', status: 'ok' }, 200, {
-      'Content-Type': 'application/json; charset=utf-8',
-    }),
-  );
-
-  app.post('/examples/ping', (c) => methodNotAllowed(c, 'GET'));
-
-  app.get('/examples/protected', (c) => {
-    const claims = c.get('authClaims');
-    return c.json(
-      {
-        message: 'Welcome, authenticated user.',
-        claims,
-      },
-      200,
-      { 'Content-Type': 'application/json; charset=utf-8' },
-    );
-  });
-
-  app.post('/examples/protected', (c) => methodNotAllowed(c, 'GET'));
-
-  registerExampleModule(app, exampleModule, problems);
+  if (includeExamples && exampleModule !== undefined) {
+    registerExampleHttpRoutes(app, exampleModule, problems, methodNotAllowed);
+  }
 
   const base = { app, settings, problems };
   if (database === undefined && shutdown === undefined) {
