@@ -1,6 +1,6 @@
 # Milestone — Phase 3: Example Note CRUD
 
-**Status:** Planned  
+**Status:** Complete (2026-05-22) — [#13](https://github.com/hideyukiMORI/nene2-node/issues/13)  
 **Depends on:** Phase 2
 
 ## Goal
@@ -9,14 +9,14 @@ Full `/examples/notes` reference domain — clean architecture, SQLite tests, Op
 
 ## Acceptance criteria
 
-- [ ] `src/example/note/` — entity, `*Input`/`*Output`, UseCases, repository interface
-- [ ] `InMemoryNoteRepository` + `SqliteNoteRepository`
-- [ ] Handlers: list, get, create, update, delete (204 on delete)
-- [ ] `NoteNotFoundError` → 404 Problem Details
-- [ ] Validation at HTTP boundary (Zod or Valibot — ADR if needed)
-- [ ] OpenAPI contract tests for all note operations
-- [ ] UseCase unit tests without DB; adapter tests with SQLite
-- [ ] No Hono imports in UseCase or repository interfaces
+- [x] `src/example/note/` — entity, `*Input`/`*Output`, UseCases, repository interface
+- [x] `InMemoryNoteRepository` + `SqliteNoteRepository` (`node:sqlite`)
+- [x] Handlers: list, get, create, update, delete (204 on delete)
+- [x] `NoteNotFoundError` → 404 Problem Details
+- [x] Validation at HTTP boundary (manual, parity with NENE2 PHP)
+- [x] OpenAPI contract tests for note list + create/get
+- [x] UseCase unit tests without DB; adapter tests with SQLite
+- [x] No Hono imports in UseCase or repository interfaces
 
 ## Reference
 

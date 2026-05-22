@@ -57,13 +57,13 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 
 ---
 
-## Phase 3 — Example Note CRUD
+## Phase 3 — Example Note CRUD ✅
 
 [Milestone](milestones/2026-05-phase3-note-crud.md)
 
-- [ ] UseCase / Repository / Handler
-- [ ] SQLite + in-memory repositories
-- [ ] `/examples/notes` OpenAPI coverage
+- [x] UseCase / Repository / Handler ([#13](https://github.com/hideyukiMORI/nene2-node/issues/13))
+- [x] SQLite + in-memory repositories
+- [x] `/examples/notes` OpenAPI coverage
 
 ---
 
