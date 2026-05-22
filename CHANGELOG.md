@@ -8,6 +8,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.12] - 2026-05-22
+
+### Added
+
+- `runTransaction`, `TransactionAbortedError`, `createTransactionAbortedHandler` (FT137 / FT106)
+- UTC timestamp helpers `parseUtcIsoTimestamp`, `formatUtcIsoTimestamp`, `utcNowIso` (FT138 / FT115)
+- `FileIdempotencyStorage` (FT139)
+- `createThrottleStorage`, `createThrottleStorageFromEnv` (FT140)
+
 ## [0.1.11] - 2026-05-22
 
 ### Added

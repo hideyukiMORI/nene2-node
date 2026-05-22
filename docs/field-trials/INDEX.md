@@ -143,3 +143,7 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 134 | 2026-05-22 | [2026-05-field-trial-134-read-replica-url.md](2026-05-field-trial-134-read-replica-url.md) | read replica url | — | — |
 | 135 | 2026-05-22 | [2026-05-field-trial-135-file-throttle-storage.md](2026-05-field-trial-135-file-throttle-storage.md) | file throttle | — | — |
 | 136 | 2026-05-22 | [2026-05-field-trial-136-idempotency-inflight-dedupe.md](2026-05-field-trial-136-idempotency-inflight-dedupe.md) | idempotency inflight | — | — |
+| 137 | 2026-05-22 | [2026-05-field-trial-137-transaction-aborted-error.md](2026-05-field-trial-137-transaction-aborted-error.md) | transaction aborted | — | — |
+| 138 | 2026-05-22 | [2026-05-field-trial-138-utc-timestamp-helpers.md](2026-05-field-trial-138-utc-timestamp-helpers.md) | utc timestamps | — | — |
+| 139 | 2026-05-22 | [2026-05-field-trial-139-file-idempotency-storage.md](2026-05-field-trial-139-file-idempotency-storage.md) | file idempotency | — | — |
+| 140 | 2026-05-22 | [2026-05-field-trial-140-throttle-storage-from-env.md](2026-05-field-trial-140-throttle-storage-from-env.md) | throttle storage env | — | — |
