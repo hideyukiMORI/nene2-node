@@ -30,6 +30,7 @@ import type { DatabaseBackend } from '../database/parse-database-url.js';
 import type { NoteRepository } from '../example/note/note-repository.js';
 import type { TagRepository } from '../example/tag/tag-repository.js';
 import { registerExampleHttpRoutes, resolveExampleModule } from './wire-example-module.js';
+import { createDefaultDomainHandlers } from './default-domain-handlers.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -108,7 +109,11 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
           : {}),
       })
     : undefined;
-  const domainHandlers = exampleModule?.domainHandlers ?? [...(options.domainHandlers ?? [])];
+  const domainHandlers = [
+    ...createDefaultDomainHandlers(problems),
+    ...(exampleModule?.domainHandlers ?? []),
+    ...(options.domainHandlers ?? []),
+  ];
   const tokenVerifier =
     options.tokenVerifier ??
     (settings.localJwtSecret !== undefined

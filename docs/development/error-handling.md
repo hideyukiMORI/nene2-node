@@ -15,7 +15,7 @@ Central mapping from thrown errors to RFC 9457 responses in `createApp()` via Ho
 
 ## Domain handlers
 
-Register with `createApp({ domainHandlers: [...] })`. Built-in handlers cover note/tag not-found. Handlers run in array order; first `supports(error)` wins.
+Register with `createApp({ domainHandlers: [...] })` to append handlers after the **default** set (`transaction-aborted`, `version-conflict`, `forbidden`). Built-in example handlers cover note/tag not-found. Handlers run in array order; first `supports(error)` wins.
 
 ## Debug mode
 

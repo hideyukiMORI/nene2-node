@@ -134,7 +134,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 103 | ESM `.js` imports in consumer TS                 | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 104 | npm provenance verify                            | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 105 | Double `createDatabaseRuntime` pool              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
-| 106 | Partial TX failure messaging                     | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 106 | Partial TX failure messaging                     | —   | —   | done — FT147 / [#100](https://github.com/hideyukiMORI/nene2-node/issues/100) **D3**                                                       |
 | 107 | Nested route invalid id 404/422                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 108 | N+1 / unpaginated list                           | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 109 | Health check slow DB                             | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
@@ -159,8 +159,10 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 122 | AGENTS.md accuracy                               | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 123 | Semver / breaking policy                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 124 | Rate limit per JWT `sub`                         | 🔒  | —   | done — FT131 / [#75](https://github.com/hideyukiMORI/nene2-node/issues/75) **D3**                                                         |
-| 125 | Webhook HMAC middleware                          | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 125 | Webhook HMAC middleware                          | 🔒  | —   | done — FT133 / v0.1.11                                                                                                                    |
 | 126 | Campaign wrap / FT127+ plan                      | —   | —   | done — [report](2026-05-field-trial-126-campaign-wrap-ft127-.md) **D0**                                                                   |
+| 146 | BOLA in example note/tag UseCases                | 🔒  | —   | done — [report](2026-05-field-trial-146-bola-example-usecases.md) **D4** [#98](https://github.com/hideyukiMORI/nene2-node/issues/98)      |
+| 147 | Default domain handlers in createApp             | —   | —   | done — [report](2026-05-field-trial-147-default-domain-handlers.md) **D3** [#100](https://github.com/hideyukiMORI/nene2-node/issues/100)  |
 
 ## Category F — Ecosystem & publish (FT81–FT100)
 

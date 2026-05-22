@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.20] - 2026-05-22
+
+### Changed
+
+- `createApp()` registers default domain handlers: `transaction-aborted` (422), `version-conflict` (409), `forbidden` (403)
+- Resolves FT106 gap — transaction rollback errors no longer require manual handler wiring
+
 ## [0.1.19] - 2026-05-22
 
 ### Changed

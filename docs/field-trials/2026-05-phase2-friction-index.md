@@ -29,27 +29,27 @@ Master index for application-integration friction. Campaign **FT77–126** ([#71
 
 See individual reports `2026-05-field-trial-NN-*.md`. Highlights:
 
-| FT  | Theme            | F-1 (short)             | Status     |
-| --- | ---------------- | ----------------------- | ---------- |
-| 77  | Compose stack    | No compose recipe       | resolved   |
-| 78  | BOLA             | Cross-user order access | documented |
-| 79  | Deploy checklist | Scattered ops docs      | resolved   |
-| 80  | This index       | Central index missing   | resolved   |
-| 81  | Postgres TX      | No `transactionManager` | resolved   |
-| 82  | Postgres CI      | No CI job               | resolved   |
-| 84  | Idempotency-Key  | No middleware           | resolved   |
-| 95  | Throttle Redis   | In-memory only          | resolved   |
-| 112 | Unique → 409     | No mapper               | resolved   |
-| 113 | FK → 422         | No mapper               | resolved   |
-| 127 | Unique sandbox   | 500 on dup              | resolved   |
-| 128 | Idempotency      | No middleware           | resolved   |
-| 129 | FK sandbox       | 500 on bad FK           | resolved   |
-| 85  | Optimistic lock  | No version helper       | resolved   |
-| 124 | Throttle per sub | IP only                 | resolved   |
-| 130 | Version sandbox  | Stale UPDATE → 500      | resolved   |
-| 131 | JWT sub key      | IP default              | resolved   |
-| 132 | BOLA guard       | No helper               | documented |
-| 118 | Read replica     | Not supported           | resolved   |
+| FT  | Theme            | F-1 (short)             | Status           |
+| --- | ---------------- | ----------------------- | ---------------- |
+| 77  | Compose stack    | No compose recipe       | resolved         |
+| 78  | BOLA             | Cross-user order access | resolved (FT146) |
+| 79  | Deploy checklist | Scattered ops docs      | resolved         |
+| 80  | This index       | Central index missing   | resolved         |
+| 81  | Postgres TX      | No `transactionManager` | resolved         |
+| 82  | Postgres CI      | No CI job               | resolved         |
+| 84  | Idempotency-Key  | No middleware           | resolved         |
+| 95  | Throttle Redis   | In-memory only          | resolved         |
+| 112 | Unique → 409     | No mapper               | resolved         |
+| 113 | FK → 422         | No mapper               | resolved         |
+| 127 | Unique sandbox   | 500 on dup              | resolved         |
+| 128 | Idempotency      | No middleware           | resolved         |
+| 129 | FK sandbox       | 500 on bad FK           | resolved         |
+| 85  | Optimistic lock  | No version helper       | resolved         |
+| 124 | Throttle per sub | IP only                 | resolved         |
+| 130 | Version sandbox  | Stale UPDATE → 500      | resolved         |
+| 131 | JWT sub key      | IP default              | resolved         |
+| 132 | BOLA guard       | No helper               | resolved (FT146) |
+| 118 | Read replica     | Not supported           | resolved         |
 
 Full table: [backlog.md](backlog.md) FT77–126 rows.
 
