@@ -49,7 +49,10 @@ describe('OpenAPI contract — tag endpoints', () => {
       body: JSON.stringify({ name: example.name }),
     });
     expect(createResponse.status).toBe(201);
-    const created = await jsonBody<{ id: number; name: string }>(createResponse);
+    const created = await jsonBody<{ id: number; name: string; created_at: string }>(
+      createResponse,
+    );
     expect(created.name).toBe(example.name);
+    expect(created.created_at.endsWith('Z')).toBe(true);
   });
 });

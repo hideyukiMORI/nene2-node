@@ -36,7 +36,10 @@ describe('HTTP /examples/tags', () => {
       body: JSON.stringify({ name: 'php' }),
     });
     expect(createResponse.status).toBe(201);
-    const created = await jsonBody<{ id: number; name: string }>(createResponse);
+    const created = await jsonBody<{ id: number; name: string; created_at: string }>(
+      createResponse,
+    );
+    expect(created.created_at.endsWith('Z')).toBe(true);
 
     const getResponse = await app.request(`http://localhost/examples/tags/${String(created.id)}`, {
       headers: bearerAuth(verifier),

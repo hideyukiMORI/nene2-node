@@ -67,7 +67,7 @@ describe('Tag use cases', () => {
   });
 
   it('throws TagNotFoundError when update returns undefined after ownership check', async () => {
-    const owned = { id: 1, name: 't', ownerId: USER_A };
+    const owned = { id: 1, name: 't', ownerId: USER_A, createdAt: '2026-05-22T12:00:00.000Z' };
     const repository = {
       findAll: vi.fn(),
       findById: vi.fn().mockResolvedValue(owned),
@@ -83,7 +83,7 @@ describe('Tag use cases', () => {
   });
 
   it('throws TagNotFoundError when delete returns false after ownership check', async () => {
-    const owned = { id: 1, name: 't', ownerId: USER_A };
+    const owned = { id: 1, name: 't', ownerId: USER_A, createdAt: '2026-05-22T12:00:00.000Z' };
     const repository = {
       findAll: vi.fn(),
       findById: vi.fn().mockResolvedValue(owned),

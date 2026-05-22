@@ -46,13 +46,18 @@ describe('HTTP /examples/notes', () => {
     expect(createResponse.status).toBe(201);
     expect(createResponse.headers.get('Location')).toMatch(/^\/examples\/notes\/\d+$/);
 
-    const created = await jsonBody<{ id: number; title: string; body: string }>(createResponse);
+    const created = await jsonBody<{ id: number; title: string; body: string; created_at: string }>(
+      createResponse,
+    );
 
     const getResponse = await app.request(`http://localhost/examples/notes/${String(created.id)}`, {
       headers: bearerAuth(verifier),
     });
     expect(getResponse.status).toBe(200);
-    expect((await jsonBody(getResponse)).title).toBe('Hello');
+    const fetched = await jsonBody<{ title: string; created_at: string }>(getResponse);
+    expect(fetched.title).toBe('Hello');
+    expect(fetched.created_at).toBe(created.created_at);
+    expect(created.created_at.endsWith('Z')).toBe(true);
 
     const updateResponse = await app.request(
       `http://localhost/examples/notes/${String(created.id)}`,

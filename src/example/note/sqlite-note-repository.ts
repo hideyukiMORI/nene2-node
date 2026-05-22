@@ -1,3 +1,4 @@
+import { utcNowIso } from '../../domain/timestamps.js';
 import type { DatabaseQueryExecutor } from '../../database/database-query-executor.js';
 import type { Note } from './note.js';
 import type { NoteRepository } from './note-repository.js';
@@ -8,6 +9,7 @@ function rowToNote(row: SqlRowNote): Note {
     title: row.title,
     body: row.body,
     ownerId: row.owner_id,
+    createdAt: row.created_at,
   };
 }
 
@@ -16,6 +18,7 @@ interface SqlRowNote {
   readonly title: string;
   readonly body: string;
   readonly owner_id: string;
+  readonly created_at: string;
 }
 
 export class SqliteNoteRepository implements NoteRepository {
@@ -23,7 +26,7 @@ export class SqliteNoteRepository implements NoteRepository {
 
   async findAll(limit: number, offset: number, ownerId: string): Promise<Note[]> {
     const rows = await this.query.fetchAll(
-      'SELECT id, title, body, owner_id FROM notes WHERE owner_id = ? ORDER BY id LIMIT ? OFFSET ?',
+      'SELECT id, title, body, owner_id, created_at FROM notes WHERE owner_id = ? ORDER BY id LIMIT ? OFFSET ?',
       [ownerId, limit, offset],
     );
     return rows.map((row) => rowToNote(row as unknown as SqlRowNote));
@@ -31,18 +34,19 @@ export class SqliteNoteRepository implements NoteRepository {
 
   async findById(noteId: number): Promise<Note | undefined> {
     const row = await this.query.fetchOne(
-      'SELECT id, title, body, owner_id FROM notes WHERE id = ?',
+      'SELECT id, title, body, owner_id, created_at FROM notes WHERE id = ?',
       [noteId],
     );
     return row === undefined ? undefined : rowToNote(row as unknown as SqlRowNote);
   }
 
   async save(title: string, body: string, ownerId: string): Promise<Note> {
+    const createdAt = utcNowIso();
     const id = await this.query.insert(
-      'INSERT INTO notes (title, body, owner_id) VALUES (?, ?, ?)',
-      [title, body, ownerId],
+      'INSERT INTO notes (title, body, owner_id, created_at) VALUES (?, ?, ?, ?)',
+      [title, body, ownerId, createdAt],
     );
-    return { id, title, body, ownerId };
+    return { id, title, body, ownerId, createdAt };
   }
 
   async update(noteId: number, title: string, body: string): Promise<Note | undefined> {
@@ -58,7 +62,7 @@ export class SqliteNoteRepository implements NoteRepository {
     if (changes === 0) {
       return undefined;
     }
-    return { id: noteId, title, body, ownerId: existing.ownerId };
+    return { id: noteId, title, body, ownerId: existing.ownerId, createdAt: existing.createdAt };
   }
 
   async delete(noteId: number): Promise<boolean> {

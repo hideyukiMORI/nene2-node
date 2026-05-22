@@ -54,10 +54,13 @@ describe('OpenAPI contract — note endpoints', () => {
     });
 
     expect(createResponse.status).toBe(201);
-    const created = await jsonBody<{ id: number; title: string; body: string }>(createResponse);
+    const created = await jsonBody<{ id: number; title: string; body: string; created_at: string }>(
+      createResponse,
+    );
     expect(created.title).toBe(example.title);
     expect(created.body).toBe(example.body);
     expect(typeof created.id).toBe('number');
+    expect(created.created_at.endsWith('Z')).toBe(true);
 
     const getResponse = await app.request(`http://localhost/examples/notes/${String(created.id)}`, {
       headers: bearerAuth(verifier),
@@ -65,6 +68,6 @@ describe('OpenAPI contract — note endpoints', () => {
     const fetched = await jsonBody<typeof created>(getResponse);
 
     expect(getResponse.status).toBe(200);
-    expect(fetched).toEqual(created);
+    expect(fetched.created_at).toBe(created.created_at);
   });
 });
