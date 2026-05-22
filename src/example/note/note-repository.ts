@@ -1,10 +1,10 @@
 import type { Note } from './note.js';
 
 export interface NoteRepository {
-  findAll(limit: number, offset: number): Note[];
-  findById(noteId: number): Note | undefined;
-  save(title: string, body: string): Note;
-  update(noteId: number, title: string, body: string): Note | undefined;
-  delete(noteId: number): boolean;
-  count(): number;
+  findAll(limit: number, offset: number): Promise<Note[]>;
+  findById(noteId: number): Promise<Note | undefined>;
+  save(title: string, body: string): Promise<Note>;
+  update(noteId: number, title: string, body: string): Promise<Note | undefined>;
+  delete(noteId: number): Promise<boolean>;
+  count(): Promise<number>;
 }

@@ -14,38 +14,41 @@ function rowToTag(row: SqlRowTag): Tag {
 export class SqliteTagRepository implements TagRepository {
   constructor(private readonly query: DatabaseQueryExecutor) {}
 
-  findAll(limit: number, offset: number): Tag[] {
-    const rows = this.query.fetchAll('SELECT id, name FROM tags ORDER BY id LIMIT ? OFFSET ?', [
-      limit,
-      offset,
-    ]);
+  async findAll(limit: number, offset: number): Promise<Tag[]> {
+    const rows = await this.query.fetchAll(
+      'SELECT id, name FROM tags ORDER BY id LIMIT ? OFFSET ?',
+      [limit, offset],
+    );
     return rows.map((row) => rowToTag(row as unknown as SqlRowTag));
   }
 
-  findById(tagId: number): Tag | undefined {
-    const row = this.query.fetchOne('SELECT id, name FROM tags WHERE id = ?', [tagId]);
+  async findById(tagId: number): Promise<Tag | undefined> {
+    const row = await this.query.fetchOne('SELECT id, name FROM tags WHERE id = ?', [tagId]);
     return row === undefined ? undefined : rowToTag(row as unknown as SqlRowTag);
   }
 
-  save(name: string): Tag {
-    const id = this.query.insert('INSERT INTO tags (name) VALUES (?)', [name]);
+  async save(name: string): Promise<Tag> {
+    const id = await this.query.insert('INSERT INTO tags (name) VALUES (?)', [name]);
     return { id, name };
   }
 
-  update(tagId: number, name: string): Tag | undefined {
-    const changes = this.query.execute('UPDATE tags SET name = ? WHERE id = ?', [name, tagId]);
+  async update(tagId: number, name: string): Promise<Tag | undefined> {
+    const changes = await this.query.execute('UPDATE tags SET name = ? WHERE id = ?', [
+      name,
+      tagId,
+    ]);
     if (changes === 0) {
       return undefined;
     }
     return { id: tagId, name };
   }
 
-  delete(tagId: number): boolean {
-    return this.query.execute('DELETE FROM tags WHERE id = ?', [tagId]) > 0;
+  async delete(tagId: number): Promise<boolean> {
+    return (await this.query.execute('DELETE FROM tags WHERE id = ?', [tagId])) > 0;
   }
 
-  count(): number {
-    const row = this.query.fetchOne('SELECT COUNT(*) AS cnt FROM tags');
+  async count(): Promise<number> {
+    const row = await this.query.fetchOne('SELECT COUNT(*) AS cnt FROM tags');
     return row === undefined ? 0 : Number(row['cnt']);
   }
 }

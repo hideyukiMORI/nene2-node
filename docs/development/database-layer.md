@@ -51,7 +51,9 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 
 ## MySQL / PostgreSQL (planned)
 
-**Not implemented in v0.1.x.** The port (`DatabaseQueryExecutor`, `DatabaseTransactionManager`) is ready; adapters need driver choice (e.g. `mysql2`, `pg`), Issues, and Phase 2 FTs (FT68–FT72).
+**MySQL / PostgreSQL (v0.1.1+):** `createDatabaseRuntime()` opens `mysql2` or `pg` pools, runs example DDL, and wires the same `SqliteNoteRepository` / `SqliteTagRepository` classes (SQL uses `?` placeholders; PostgreSQL translates to `$n` in `PostgresQueryExecutor`). `createApp()` is async and calls `shutdown()` on SIGTERM when a pool is used.
+
+URLs: `mysql://user:pass@host:port/db`, `postgresql://…` or `postgres://…`. SQLite remains `:memory:` or `file:./path.sqlite`.
 
 Until adapters ship:
 

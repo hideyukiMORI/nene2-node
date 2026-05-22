@@ -9,7 +9,7 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('ValidationException', () => {
   it('maps to validation-failed Problem Details with errors[]', async () => {
-    const { app } = createApp();
+    const { app } = await createApp();
 
     app.get('/_test/validation', () => {
       throw ValidationException.single(

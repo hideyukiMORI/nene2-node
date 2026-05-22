@@ -7,11 +7,11 @@ import { SqliteQueryExecutor } from './sqlite-query-executor.js';
 export class SqliteTransactionManager implements DatabaseTransactionManager {
   constructor(private readonly database: DatabaseSync) {}
 
-  transactional<T>(callback: (executor: DatabaseQueryExecutor) => T): T {
+  async transactional<T>(callback: (executor: DatabaseQueryExecutor) => Promise<T>): Promise<T> {
     this.database.exec('BEGIN');
     const executor = new SqliteQueryExecutor(this.database);
     try {
-      const result = callback(executor);
+      const result = await callback(executor);
       this.database.exec('COMMIT');
       return result;
     } catch (error) {

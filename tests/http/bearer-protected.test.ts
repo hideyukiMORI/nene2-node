@@ -10,7 +10,7 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('GET /examples/protected', () => {
   it('returns 401 without Bearer token', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({
         NODE_ENV: 'test',
         NENE2_NODE_APP_ENV: 'test',
@@ -29,7 +29,7 @@ describe('GET /examples/protected', () => {
     const verifier = new LocalBearerTokenVerifier('secret');
     const token = verifier.issue({ sub: 'user-42', scope: 'read:system' });
 
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({
         NODE_ENV: 'test',
         NENE2_NODE_APP_ENV: 'test',
@@ -52,7 +52,7 @@ describe('GET /examples/protected', () => {
   });
 
   it('returns 401 when JWT secret is not configured', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({
         NODE_ENV: 'test',
         NENE2_NODE_APP_ENV: 'test',

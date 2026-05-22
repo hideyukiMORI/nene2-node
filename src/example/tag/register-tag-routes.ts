@@ -36,9 +36,9 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
   const updateTag = new UpdateTagUseCase(deps.repository);
   const deleteTag = new DeleteTagByIdUseCase(deps.repository);
 
-  app.get('/examples/tags', (c) => {
+  app.get('/examples/tags', async (c) => {
     const pagination = parsePaginationQuery(new URL(c.req.url).searchParams);
-    const output = listTags.execute(pagination);
+    const output = await listTags.execute(pagination);
     return c.json(
       {
         items: output.items.map(tagToJSON),
@@ -52,15 +52,15 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
 
   app.post('/examples/tags', async (c) => {
     const body = validateTagBody(await parseJsonObjectBody(c.req.raw));
-    const tag = createTag.execute(body);
+    const tag = await createTag.execute(body);
     return c.json(tagToJSON(tag), 201, {
       'Content-Type': 'application/json; charset=utf-8',
       Location: `/examples/tags/${String(tag.id)}`,
     });
   });
 
-  app.get('/examples/tags/:id', (c) => {
-    const tag = getTag.execute({ tagId: parseTagId(c.req.param('id')) });
+  app.get('/examples/tags/:id', async (c) => {
+    const tag = await getTag.execute({ tagId: parseTagId(c.req.param('id')) });
     return c.json(tagToJSON(tag), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
@@ -69,14 +69,14 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
   app.put('/examples/tags/:id', async (c) => {
     const tagId = parseTagId(c.req.param('id'));
     const body = validateTagBody(await parseJsonObjectBody(c.req.raw));
-    const tag = updateTag.execute({ tagId, name: body.name });
+    const tag = await updateTag.execute({ tagId, name: body.name });
     return c.json(tagToJSON(tag), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
   });
 
-  app.delete('/examples/tags/:id', (c) => {
-    deleteTag.execute({ tagId: parseTagId(c.req.param('id')) });
+  app.delete('/examples/tags/:id', async (c) => {
+    await deleteTag.execute({ tagId: parseTagId(c.req.param('id')) });
     return c.body(null, 204);
   });
 

@@ -21,7 +21,7 @@ describe('domain exception mapping', () => {
   it('maps registered domain errors to Problem Details', async () => {
     const settings = loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' });
     const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
-    const { app } = createApp({
+    const { app } = await createApp({
       settings,
       domainHandlers: [
         createSimpleDomainHandler(problems, {
@@ -51,7 +51,7 @@ describe('domain exception mapping', () => {
   });
 
   it('returns 500 for unregistered errors', async () => {
-    const { app } = createApp({
+    const { app } = await createApp({
       settings: loadAppSettings({
         NODE_ENV: 'test',
         NENE2_NODE_APP_ENV: 'test',

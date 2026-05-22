@@ -11,8 +11,8 @@ async function jsonBody<T>(response: Response): Promise<T> {
 describe('HTTP /examples/tags', () => {
   let app: Nene2App['app'];
 
-  beforeEach(() => {
-    ({ app } = createApp({
+  beforeEach(async () => {
+    ({ app } = await createApp({
       settings: loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' }),
     }));
   });

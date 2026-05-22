@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
+import type { Hono } from 'hono';
 
 import { createApp } from '../../src/app/create-app.js';
 import { openApiFileExists, resolveOpenApiPath } from '../../src/openapi/resolve-openapi-path.js';
@@ -15,7 +16,11 @@ function loadFixture<T>(name: string): T {
 }
 
 describe('OpenAPI contract — system endpoints', () => {
-  const { app } = createApp();
+  let app: Hono;
+
+  beforeAll(async () => {
+    app = (await createApp()).app;
+  });
 
   it('GET / matches framework-smoke fixture', async () => {
     const expected = loadFixture<Record<string, string>>('framework-smoke-200.json');

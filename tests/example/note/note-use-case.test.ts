@@ -27,33 +27,33 @@ describe('Note use cases', () => {
     deleteNote = new DeleteNoteByIdUseCase(repository);
   });
 
-  it('lists empty notes', () => {
-    const output = listNotes.execute({ limit: 20, offset: 0 });
+  it('lists empty notes', async () => {
+    const output = await listNotes.execute({ limit: 20, offset: 0 });
     expect(output.items).toEqual([]);
     expect(output.limit).toBe(20);
     expect(output.offset).toBe(0);
   });
 
-  it('creates and retrieves a note', () => {
-    const created = createNote.execute({ title: 'Hello', body: 'World' });
-    const found = getNote.execute({ noteId: created.id });
+  it('creates and retrieves a note', async () => {
+    const created = await createNote.execute({ title: 'Hello', body: 'World' });
+    const found = await getNote.execute({ noteId: created.id });
     expect(found.title).toBe('Hello');
   });
 
-  it('throws NoteNotFoundError when missing', () => {
-    expect(() => getNote.execute({ noteId: 9999 })).toThrow(NoteNotFoundError);
+  it('throws NoteNotFoundError when missing', async () => {
+    await expect(getNote.execute({ noteId: 9999 })).rejects.toThrow(NoteNotFoundError);
   });
 
-  it('updates and deletes a note', () => {
-    const created = createNote.execute({ title: 'Old', body: 'Old body' });
-    const updated = updateNote.execute({
+  it('updates and deletes a note', async () => {
+    const created = await createNote.execute({ title: 'Old', body: 'Old body' });
+    const updated = await updateNote.execute({
       noteId: created.id,
       title: 'New',
       body: 'New body',
     });
     expect(updated.title).toBe('New');
 
-    deleteNote.execute({ noteId: created.id });
-    expect(() => getNote.execute({ noteId: created.id })).toThrow(NoteNotFoundError);
+    await deleteNote.execute({ noteId: created.id });
+    await expect(getNote.execute({ noteId: created.id })).rejects.toThrow(NoteNotFoundError);
   });
 });

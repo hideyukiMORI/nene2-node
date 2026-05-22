@@ -51,9 +51,14 @@ export { throttleMiddleware, type ThrottleOptions } from './middleware/throttle.
 export type { DatabaseQueryExecutor } from './database/database-query-executor.js';
 export type { DatabaseTransactionManager } from './database/database-transaction-manager.js';
 export { createDatabaseHealthCheck } from './database/database-health-check.js';
+export { createDatabaseRuntime, type DatabaseRuntime } from './database/create-database-runtime.js';
+export { MysqlQueryExecutor, createMysqlPool } from './database/mysql-query-executor.js';
+export { parseDatabaseUrl, type DatabaseBackend } from './database/parse-database-url.js';
+export { PostgresQueryExecutor } from './database/postgres-query-executor.js';
 export { openSqliteDatabase } from './database/open-sqlite-database.js';
 export { SqliteQueryExecutor } from './database/sqlite-query-executor.js';
 export { SqliteTransactionManager } from './database/sqlite-transaction-manager.js';
+export { translateQuestionPlaceholders } from './database/translate-sql-placeholders.js';
 export type { SqlParameter, SqlRow } from './database/sql-types.js';
 export {
   FetchMcpHttpClient,
