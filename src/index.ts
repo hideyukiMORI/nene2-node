@@ -24,6 +24,7 @@ export {
   type ProblemDetailsFactory,
   type ValidationErrorItem,
 } from './http/problem-details.js';
+export { parsePaginationQuery, type PaginationQuery } from './http/pagination-query.js';
 export {
   DEFAULT_OPENAPI_RELATIVE,
   openApiFileExists,

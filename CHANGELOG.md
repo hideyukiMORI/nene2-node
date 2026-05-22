@@ -8,6 +8,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet — next patch ships with the next completed Phase 2 FT._
 
+## [0.1.7] - 2026-05-22
+
+### Added
+
+- Export `parsePaginationQuery` and `PaginationQuery` for business-app list endpoints (FT76)
+
 ## [0.1.6] - 2026-05-22
 
 ### Added

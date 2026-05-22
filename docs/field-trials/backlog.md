@@ -104,7 +104,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 73  | Business app: nested REST slice (order/items)    | —   | 🔍  | done — [report](2026-05-field-trial-73-orders-nested.md) **D3** `ft073-orders-nested` |
 | 74  | Bearer on business routes + SQLite/MySQL         | 🔒  | 🔍  | done — [report](2026-05-field-trial-74-bearer-business-routes.md) **D4**              |
 | 75  | Multi-step transaction (business UseCase)        | —   | —   | done — [report](2026-05-field-trial-75-order-transaction.md) **D4**                   |
-| 76  | List + filter + pagination at app scale          | —   | 🔍  | planned                                                                               |
+| 76  | List + filter + pagination at app scale          | —   | 🔍  | done — [report](2026-05-field-trial-76-orders-list-filter.md) **D4**                  |
 | 77  | Compose: app + DB + env template                 | —   | —   | planned                                                                               |
 | 78  | BOLA / ownership in UseCase                      | 🔒  | —   | planned                                                                               |
 | 79  | Deploy checklist with real DB                    | —   | —   | planned                                                                               |
