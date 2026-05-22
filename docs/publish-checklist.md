@@ -22,6 +22,8 @@
 
 ### Next releases (automated)
 
+See **`docs/development/release-process.md`** for full steps.
+
 1. Bump `version` in `package.json` + `CHANGELOG.md` on `main` (PR).
 2. Publish GitHub Release with tag `vX.Y.Z` matching `package.json`.
 3. `.github/workflows/release.yml` runs `npm publish --provenance` (no `NPM_TOKEN` secret).

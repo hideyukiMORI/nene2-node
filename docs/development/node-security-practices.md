@@ -35,6 +35,17 @@ Never use `Math.random()` for security-sensitive values.
 
 Do not merge unvalidated user objects into prototypes or global objects. Prefer readonly DTOs and explicit field mapping.
 
+## Environment leaks
+
+- Only `loadAppSettings()` reads `process.env` in `src/`.
+- Tests inject env via `loadAppSettings({ ... })` — never commit `.env`.
+- CI must not print secrets in logs (GitHub masks known secrets when configured).
+
+## Throttle bypass
+
+- Review `NENE2_NODE_THROTTLE_EXCLUDE_PATHS` — each entry skips rate limiting entirely.
+- Prefer edge proxy limits for public deployments.
+
 ## Dependencies
 
 Run `npm audit` before release; document accepted risks in PR when ignoring findings.

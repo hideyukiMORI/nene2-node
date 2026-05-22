@@ -19,6 +19,9 @@ Entry point for AI agents working on **nene2-node**.
 - Roadmap: `docs/roadmap.md`
 - Current work: `docs/todo/current.md`
 - Field trials: `docs/field-trials/backlog.md`, `docs/field-trials/INDEX.md` (docs-first loop to ~FT100)
+- Cross-repo parity: `docs/integrations/cross-repo-parity.md`
+- Contributor path: `docs/development/contributor-onboarding.md`
+- Release: `docs/development/release-process.md`
 
 ## Operating rules
 
