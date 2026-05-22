@@ -6,14 +6,14 @@ Last updated: 2026-05-22
 
 ## In progress
 
-| ID   | Task                              | Milestone                                              | Issue                                                       |
-| ---- | --------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------- |
-| P4-1 | DB executor + transactions        | [phase4](milestones/2026-05-phase4-database-health.md) | [#16](https://github.com/hideyukiMORI/nene2-node/issues/16) |
+| ID   | Task                       | Milestone                                              | Issue                                                       |
+| ---- | -------------------------- | ------------------------------------------------------ | ----------------------------------------------------------- |
+| P4-1 | DB executor + transactions | [phase4](milestones/2026-05-phase4-database-health.md) | [#16](https://github.com/hideyukiMORI/nene2-node/issues/16) |
 
 ## Up next (ordered)
 
-| ID   | Task                      | Phase |
-| ---- | ------------------------- | ----- |
+| ID   | Task                       | Phase |
+| ---- | -------------------------- | ----- |
 | P5-1 | Build + MCP + publish prep | 5     |
 
 ## Completed (recent)
