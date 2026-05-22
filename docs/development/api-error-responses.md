@@ -101,6 +101,18 @@ Each item requires `field`, `message`, and `code` (stable machine-readable Engli
 - Log unexpected errors with request id (Phase 2).
 - Never log secrets, passwords, or full auth headers.
 
+## Factory usage (handlers and middleware)
+
+Inject `ProblemDetailsFactory` from `createApp()` — do not construct Problem JSON by hand.
+
+```typescript
+// createApp returns problems: ProblemDetailsFactory
+const body = problems.validationFailed(c, errors);
+return c.json(body, 422);
+```
+
+Global hooks in `createApp()` use `resolveHttpError()` and `problemDetailsFromContext()` for uncaught errors and 404.
+
 ## Testing
 
 Every error path test should assert:

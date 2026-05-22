@@ -23,7 +23,8 @@ Middleware must **not** encode route-specific business rules (e.g. “email must
 
 ## Handler boundary
 
-- Parse JSON once; malformed JSON → Problem Details (400/422 per OpenAPI).
+- Parse JSON via `parseJsonBody()`; malformed JSON → `JsonBodyParseException` → **400** Problem Details (`invalid-json` type).
+- Field-level rules → `ValidationException` → **422** with `errors[]`.
 - Map to readonly input types before `useCase.execute()`.
 - Use a schema library at the HTTP boundary when adopted (Zod/Valibot/etc.) — choice via ADR in Phase 1/3.
 - Do not pass `c.req` / raw `Request` into UseCases.

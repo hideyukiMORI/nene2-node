@@ -18,6 +18,7 @@ Entry point for AI agents working on **nene2-node**.
 - Client sibling: `docs/integrations/relationship-to-nene2-js.md`
 - Roadmap: `docs/roadmap.md`
 - Current work: `docs/todo/current.md`
+- Field trials: `docs/field-trials/backlog.md`, `docs/field-trials/INDEX.md` (docs-first loop to ~FT100)
 
 ## Operating rules
 

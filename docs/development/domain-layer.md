@@ -13,6 +13,14 @@ HTTP Handler (thin adapter)
 
 Framework infrastructure lives under `src/http/`, `src/middleware/`, `src/config/`, `src/database/`, etc. Example domains live under `src/example/` and are **not** stability-guaranteed public API.
 
+## Domain exception → HTTP
+
+1. Define `DomainError` subclass (e.g. `NoteNotFoundError`).
+2. Implement `DomainExceptionHandler` (see `createSimpleDomainHandler` pattern in `note-not-found-handler.ts`).
+3. Register in `createApp({ domainHandlers })` — default app includes note + tag not-found handlers.
+
+Handlers call UseCases; catch is not required when the handler is registered.
+
 ## UseCase rules
 
 - One public method per use case: `execute(input): output`.

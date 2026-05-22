@@ -22,11 +22,7 @@ When FT# is divisible by **12**, both reviews are required (e.g. FT12, FT24).
 
 ## Index
 
-See **[INDEX.md](INDEX.md)** for the full table.
-
-| FT# | Report                                                                     | Theme                       | 🔒  | 🔍  |
-| --- | -------------------------------------------------------------------------- | --------------------------- | --- | --- |
-| 1   | [2026-05-field-trial-1-middleware.md](2026-05-field-trial-1-middleware.md) | Middleware stack validation | —   | —   |
+See **[INDEX.md](INDEX.md)** (FT1–15). Planned themes: **[backlog.md](backlog.md)** (FT2–100). Compact template: `docs/templates/field-trial-report-compact.md`.
 
 ## Sibling indexes
 

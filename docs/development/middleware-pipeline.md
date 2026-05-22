@@ -1,6 +1,12 @@
 # Middleware pipeline (Hono)
 
-Order in `createApp()` — outermost first:
+Order in `createApp()` — outermost first. **Production:** see [production-deployment.md](production-deployment.md) and [environment-variables.md](environment-variables.md).
+
+### Review checklist (FT#1)
+
+- [ ] New `app.use` matches table order below
+- [ ] Example route registrars listed in row 10 when adding domains
+- [ ] Env vars documented in `environment-variables.md`
 
 | #   | Middleware             | Notes                                                |
 | --- | ---------------------- | ---------------------------------------------------- |
@@ -15,4 +21,6 @@ Order in `createApp()` — outermost first:
 | 9   | Bearer token           | `/examples/protected`                                |
 | 10  | Routes                 | Handlers + `registerNoteRoutes`, `registerTagRoutes` |
 
-Environment variables: see `src/config/app-settings.ts`.
+Environment variables: [environment-variables.md](environment-variables.md) (`loadAppSettings` in `src/config/app-settings.ts`).
+
+**Example registrars:** `registerNoteRoutes`, `registerTagRoutes` — add new ones to row 10 when introducing example domains.
