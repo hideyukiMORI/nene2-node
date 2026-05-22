@@ -16,13 +16,13 @@ This mirrors nene2-python **FT1–18** (sandbox apps) and NENE2 **howto / \*log*
 
 ## Current data-plane reality (honest baseline)
 
-| Capability                       | Today | Gap                                       |
-| -------------------------------- | ----- | ----------------------------------------- |
-| `DatabaseQueryExecutor` port     | ✅    | —                                         |
-| `SqliteQueryExecutor` + examples | ✅    | —                                         |
-| MySQL adapter                    | ❌    | Needs driver + adapter Issue              |
-| PostgreSQL adapter               | ❌    | Needs driver + adapter Issue              |
-| Docker Compose for FT/CI         | ❌    | Stretch in Phase 4 milestone              |
+| Capability                       | Today | Gap                                                                                                              |
+| -------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------- |
+| `DatabaseQueryExecutor` port     | ✅    | —                                                                                                                |
+| `SqliteQueryExecutor` + examples | ✅    | —                                                                                                                |
+| MySQL adapter                    | ❌    | Needs driver + adapter Issue                                                                                     |
+| PostgreSQL adapter               | ❌    | Needs driver + adapter Issue                                                                                     |
+| Docker Compose for FT/CI         | ❌    | Stretch in Phase 4 milestone                                                                                     |
 | Migrations                       | 📄    | Documented app-owned — [#54](https://github.com/hideyukiMORI/nene2-node/issues/54); not exercised in sandbox yet |
 
 Phase 2 FTs may **start with friction reports + Docker recipes** before every adapter lands in `src/`.
