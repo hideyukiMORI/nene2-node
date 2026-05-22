@@ -49,7 +49,6 @@ See individual reports `2026-05-field-trial-NN-*.md`. Highlights:
 | 130 | Version sandbox  | Stale UPDATE → 500      | resolved   |
 | 131 | JWT sub key      | IP default              | resolved   |
 | 132 | BOLA guard       | No helper               | documented |
-| 95  | Redis throttle   | In-memory only          | open       |
 | 118 | Read replica     | Not supported           | resolved   |
 
 Full table: [backlog.md](backlog.md) FT77–126 rows.
