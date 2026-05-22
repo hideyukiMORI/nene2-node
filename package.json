@@ -39,7 +39,7 @@
     "format:fix": "prettier --write .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:integration": "vitest run tests/integration",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
     "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.build.json",
     "rebuild": "npm run clean && npm run build",

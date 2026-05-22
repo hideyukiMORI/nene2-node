@@ -48,7 +48,6 @@ jobs:
         env:
           NENE2_NODE_TEST_MYSQL_URL: mysql://nene2_ci:nene2_ci@127.0.0.1:3306/nene2_ci
         run: npm run test:integration -- tests/integration/mysql-integration.test.ts
-
   postgres-integration:
     runs-on: ubuntu-latest
     services:
