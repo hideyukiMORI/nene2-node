@@ -45,13 +45,14 @@ export class PostgresQueryExecutor implements DatabaseQueryExecutor {
   }
 
   async insert(sql: string, parameters: readonly SqlParameter[] = []): Promise<number> {
-    const result = await this.runQuery(sql, parameters);
+    const insertSql = /\breturning\b/i.test(sql) ? sql : `${sql} RETURNING id`;
+    const result = await this.runQuery(insertSql, parameters);
     const inserted = result.rows[0]?.['id'];
-    this.lastId = inserted === undefined ? 0 : Number(inserted);
-    if (this.lastId === 0 && result.rows[0]?.['insert_id'] !== undefined) {
-      this.lastId = Number(result.rows[0]['insert_id']);
+    if (inserted !== undefined) {
+      this.lastId = Number(inserted);
+      return this.lastId;
     }
-    return this.lastId;
+    return this.lastInsertId();
   }
 
   async lastInsertId(): Promise<number> {
