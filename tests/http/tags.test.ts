@@ -1,8 +1,12 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { createApp } from '../../src/app/create-app.js';
 import type { Nene2App } from '../../src/app/create-app.js';
-import { loadAppSettings } from '../../src/config/app-settings.js';
+import {
+  bearerAuth,
+  createExampleTestApp,
+  jsonAuthHeaders,
+  type ExampleTestApp,
+} from '../helpers/example-test-app.js';
 
 async function jsonBody<T>(response: Response): Promise<T> {
   return (await response.json()) as T;
@@ -10,30 +14,40 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('HTTP /examples/tags', () => {
   let app: Nene2App['app'];
+  let verifier: ExampleTestApp['verifier'];
 
   beforeEach(async () => {
-    ({ app } = await createApp({
-      settings: loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' }),
-    }));
+    ({ app, verifier } = await createExampleTestApp());
+  });
+
+  it('returns 401 without bearer token', async () => {
+    const response = await app.request('http://localhost/examples/tags', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: 'php' }),
+    });
+    expect(response.status).toBe(401);
   });
 
   it('creates, reads, updates, and deletes a tag', async () => {
     const createResponse = await app.request('http://localhost/examples/tags', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ name: 'php' }),
     });
     expect(createResponse.status).toBe(201);
     const created = await jsonBody<{ id: number; name: string }>(createResponse);
 
-    const getResponse = await app.request(`http://localhost/examples/tags/${String(created.id)}`);
+    const getResponse = await app.request(`http://localhost/examples/tags/${String(created.id)}`, {
+      headers: bearerAuth(verifier),
+    });
     expect((await jsonBody(getResponse)).name).toBe('php');
 
     const updateResponse = await app.request(
       `http://localhost/examples/tags/${String(created.id)}`,
       {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: jsonAuthHeaders(verifier),
         body: JSON.stringify({ name: 'php8' }),
       },
     );
@@ -41,7 +55,7 @@ describe('HTTP /examples/tags', () => {
 
     const deleteResponse = await app.request(
       `http://localhost/examples/tags/${String(created.id)}`,
-      { method: 'DELETE' },
+      { method: 'DELETE', headers: bearerAuth(verifier) },
     );
     expect(deleteResponse.status).toBe(204);
   });
@@ -49,7 +63,7 @@ describe('HTTP /examples/tags', () => {
   it('returns 422 for empty name', async () => {
     const response = await app.request('http://localhost/examples/tags', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ name: '' }),
     });
     expect(response.status).toBe(422);

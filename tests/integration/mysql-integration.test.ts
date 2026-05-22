@@ -1,18 +1,26 @@
 import { describe, expect, it } from 'vitest';
 
 import { createApp } from '../../src/app/create-app.js';
+import { LocalBearerTokenVerifier } from '../../src/auth/local-bearer-token-verifier.js';
 import { loadAppSettings } from '../../src/config/app-settings.js';
+import {
+  bearerAuth,
+  EXAMPLE_TEST_JWT_SECRET,
+  jsonAuthHeaders,
+} from '../helpers/example-test-app.js';
 
 const mysqlUrl = process.env['NENE2_NODE_TEST_MYSQL_URL'];
 
 describe.skipIf(mysqlUrl === undefined)('MySQL integration (CI service container)', () => {
   it('bootstraps schema, passes health, and runs note CRUD', async () => {
+    const verifier = new LocalBearerTokenVerifier(EXAMPLE_TEST_JWT_SECRET);
     const settings = loadAppSettings({
       NODE_ENV: 'test',
       NENE2_NODE_APP_ENV: 'test',
       NENE2_NODE_DATABASE_URL: mysqlUrl,
+      NENE2_LOCAL_JWT_SECRET: EXAMPLE_TEST_JWT_SECRET,
     });
-    const { app, database, shutdown } = await createApp({ settings });
+    const { app, database, shutdown } = await createApp({ settings, tokenVerifier: verifier });
     expect(database?.transactionManager).toBeDefined();
 
     const health = await app.request('http://localhost/health');
@@ -25,7 +33,7 @@ describe.skipIf(mysqlUrl === undefined)('MySQL integration (CI service container
 
     const createResponse = await app.request('http://localhost/examples/notes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ title: 'ci-mysql', body: 'ft70' }),
     });
     expect(createResponse.status).toBe(201);
@@ -33,7 +41,9 @@ describe.skipIf(mysqlUrl === undefined)('MySQL integration (CI service container
     expect(created.id).toBeGreaterThan(0);
     expect(created.title).toBe('ci-mysql');
 
-    const listResponse = await app.request('http://localhost/examples/notes');
+    const listResponse = await app.request('http://localhost/examples/notes', {
+      headers: bearerAuth(verifier),
+    });
     const listBody = (await listResponse.json()) as { items: { id: number }[] };
     expect(listBody.items.some((item) => item.id === created.id)).toBe(true);
 

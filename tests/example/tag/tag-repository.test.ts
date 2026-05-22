@@ -8,17 +8,19 @@ import { InMemoryTagRepository } from '../../../src/example/tag/in-memory-tag-re
 import type { TagRepository } from '../../../src/example/tag/tag-repository.js';
 import { SqliteTagRepository } from '../../../src/example/tag/sqlite-tag-repository.js';
 
+const OWNER = 'user-test';
+
 function runRepositoryContract(name: string, createRepository: () => TagRepository): void {
   describe(`TagRepository (${name})`, () => {
     it('saves and finds by id', async () => {
       const repo = createRepository();
-      const tag = await repo.save('php');
+      const tag = await repo.save('php', OWNER);
       expect(await repo.findById(tag.id)).toEqual(tag);
     });
 
     it('updates and deletes', async () => {
       const repo = createRepository();
-      const tag = await repo.save('php');
+      const tag = await repo.save('php', OWNER);
       expect((await repo.update(tag.id, 'php8'))?.name).toBe('php8');
       expect(await repo.delete(tag.id)).toBe(true);
     });

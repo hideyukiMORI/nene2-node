@@ -3,7 +3,8 @@ import type { DatabaseSync } from 'node:sqlite';
 export const TAGS_TABLE_SQL = `
 CREATE TABLE IF NOT EXISTS tags (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL
+  name TEXT NOT NULL,
+  owner_id TEXT NOT NULL
 );
 `;
 

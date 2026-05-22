@@ -173,7 +173,7 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
     }),
   );
   const bearerIncludePaths = [
-    ...(includeExamples ? ['/examples/protected'] : []),
+    ...(includeExamples ? ['/examples/protected', '/examples/notes', '/examples/tags'] : []),
     ...(options.bearerIncludePaths ?? []),
   ];
   app.use(
