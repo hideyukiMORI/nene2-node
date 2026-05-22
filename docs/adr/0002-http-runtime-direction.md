@@ -1,8 +1,8 @@
 # ADR 0002 — HTTP Runtime Direction (Draft)
 
-**Status:** Draft  
+**Status:** Accepted  
 **Date:** 2026-05-22  
-**Issue:** (to be filed — finalize in Phase 1)
+**Issue:** Phase 1 runtime (#7)
 
 ---
 
@@ -32,9 +32,15 @@ Domain and UseCase layers must not import Hono types — only Handler/adapter mo
 
 ## Decision
 
-**Deferred** until Phase 1 Issue completes spike and updates this ADR to **Accepted** with chosen version pin.
+Adopt **Hono 4.x on Node.js** (`hono` package) with:
 
-## Consequences (when accepted)
+- Composition root in `src/app/create-app.ts` (explicit wiring, no service locator).
+- Domain and UseCase modules must not import `hono` types.
+- In-process tests via `app.request()` (Vitest).
+
+Pinned at install time in `package-lock.json` (Phase 1: `hono@^4`).
+
+## Consequences
 
 - Document middleware registration order mirroring NENE2
 - Provide test utilities to call handlers without listening on a port where possible

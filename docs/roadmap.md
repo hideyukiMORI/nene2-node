@@ -2,26 +2,27 @@
 
 nene2-node is the Node.js framework port of [NENE2](https://github.com/hideyukiMORI/NENE2), parallel to [nene2-python](https://github.com/hideyukiMORI/nene2-python). Phases are Issue-driven; update this file when scope or priority changes.
 
-## Phase 0 — Governance (current)
+## Phase 0 — Governance
 
 **Goal:** repository bootstrap with clear scope, English docs, and CI aligned with nene2-js workflow.
 
 - [x] README, LICENSE, scope, workflow, commit conventions (English)
 - [x] AGENTS.md and AI tooling policy
 - [x] ADR 0001 — scope and sibling repositories
-- [x] ADR 0002 — HTTP runtime direction (draft)
-- [ ] GitHub repository and default branch protection
-- [ ] Initial Issues for Phase 1 deliverables
+- [x] ADR 0002 — HTTP runtime direction (Hono, accepted)
+- [x] GitHub repository and default branch protection (target)
+- [x] Engineering policy and FT culture documented
 
-## Phase 1 — Runtime skeleton
+## Phase 1 — Runtime skeleton (current)
 
 **Goal:** smallest useful HTTP server matching NENE2 `/health` and `/examples/ping`.
 
-- HTTP adapter choice finalized (see ADR 0002)
-- Request/response types, JSON body parsing
-- Problem Details response factory (RFC 9457 subset used by NENE2)
-- `GET /health`, `GET /examples/ping` with Vitest HTTP-level tests
-- Contract check against pinned OpenAPI revision (fixture or live optional)
+- [x] HTTP adapter: Hono (ADR 0002)
+- [x] Problem Details factory (RFC 9457)
+- [x] `GET /`, `GET /health`, `GET /examples/ping`, `GET /machine/health` with Vitest tests
+- [x] Request id, security headers, request size limit, API key for machine health
+- [ ] Contract check against pinned OpenAPI revision (fixture or live optional)
+- [ ] Dev server entry (`npm run dev` or documented `createApp` serve)
 
 ## Phase 2 — Middleware and auth baseline
 

@@ -1,5 +1,23 @@
 /**
- * @hideyukimori/nene2-framework — bootstrap placeholder.
- * Public API lands in Phase 1+ (see docs/roadmap.md).
+ * @hideyukimori/nene2-framework — NENE2-compatible Node.js API framework.
  */
-export const NENE2_FRAMEWORK_PACKAGE = '@hideyukimori/nene2-framework' as const;
+
+export { createApp, type CreateAppOptions, type Nene2App } from './app/create-app.js';
+export { loadAppSettings, type AppSettings } from './config/app-settings.js';
+export {
+  buildHealthResponse,
+  buildHealthResponseAsync,
+  type AsyncHealthCheck,
+  type DependencyHealthValue,
+  type HealthCheck,
+  type HealthCheckResult,
+} from './http/health-check.js';
+export {
+  createProblemDetailsFactory,
+  problemDetailsFromContext,
+  type ProblemDetailsBody,
+  type ProblemDetailsFactory,
+  type ValidationErrorItem,
+} from './http/problem-details.js';
+
+export const FRAMEWORK_PACKAGE_NAME = '@hideyukimori/nene2-framework' as const;
