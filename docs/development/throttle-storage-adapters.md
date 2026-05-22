@@ -36,4 +36,27 @@ app.use('*', throttleMiddleware(problems, { limit: 100, windowSeconds: 60, stora
 
 The framework does not bundle `ioredis`. Implement `RateLimitStorage.hit()` (sync or async) with your Redis client. Use key prefix `rl:` + `jwtSubThrottleKey(c)`.
 
-FT95 friction (no built-in Redis adapter) remains **open** for true multi-node clusters.
+## Redis (`RedisRateLimitStorage`)
+
+Requires optional peer **`redis`** and a shared Redis URL:
+
+```ts
+import {
+  createRedisKeyValueClientFromUrl,
+  RedisRateLimitStorage,
+  createThrottleStorageFromEnvAsync,
+} from '@hideyukimori/nene2-framework';
+
+// NENE2_NODE_THROTTLE_STORAGE=redis + NENE2_NODE_REDIS_URL=redis://127.0.0.1:6379
+const storage = await createThrottleStorageFromEnvAsync();
+
+// Or manual:
+const client = await createRedisKeyValueClientFromUrl(process.env.REDIS_URL!);
+const storage = new RedisRateLimitStorage(client);
+```
+
+Sync `createThrottleStorageFromEnv()` cannot use `redis` kind — throws with guidance (FT141 F-2).
+
+## Idempotency (`RedisIdempotencyStorage`)
+
+Same `RedisKeyValueClient` — see FT142 report.

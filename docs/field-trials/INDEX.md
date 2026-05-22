@@ -147,3 +147,6 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 138 | 2026-05-22 | [2026-05-field-trial-138-utc-timestamp-helpers.md](2026-05-field-trial-138-utc-timestamp-helpers.md) | utc timestamps | — | — |
 | 139 | 2026-05-22 | [2026-05-field-trial-139-file-idempotency-storage.md](2026-05-field-trial-139-file-idempotency-storage.md) | file idempotency | — | — |
 | 140 | 2026-05-22 | [2026-05-field-trial-140-throttle-storage-from-env.md](2026-05-field-trial-140-throttle-storage-from-env.md) | throttle storage env | — | — |
+| 141 | 2026-05-22 | [2026-05-field-trial-141-redis-rate-limit-storage.md](2026-05-field-trial-141-redis-rate-limit-storage.md) | redis rate limit | — | — |
+| 142 | 2026-05-22 | [2026-05-field-trial-142-redis-idempotency-storage.md](2026-05-field-trial-142-redis-idempotency-storage.md) | redis idempotency | — | — |
+| 143 | 2026-05-22 | [2026-05-field-trial-143-webhook-timestamp-replay.md](2026-05-field-trial-143-webhook-timestamp-replay.md) | webhook timestamp replay | 🔒 | — |

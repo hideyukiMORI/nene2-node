@@ -8,6 +8,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.13] - 2026-05-22
+
+### Added
+
+- `RedisRateLimitStorage`, `RedisIdempotencyStorage`, `RedisKeyValueClient` (FT141–142)
+- `createRedisKeyValueClientFromUrl`, `createThrottleStorageFromEnvAsync` (FT141)
+- Webhook timestamp replay window via `X-Webhook-Timestamp` (FT143)
+- Optional peer dependency `redis`
+
 ## [0.1.12] - 2026-05-22
 
 ### Added

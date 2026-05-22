@@ -1,6 +1,6 @@
 {
   "name": "@hideyukimori/nene2-framework",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": false,
   "description": "NENE2-compatible API framework for Node.js — clean architecture, OpenAPI-aligned, AI-readable",
   "type": "module",
@@ -56,11 +56,15 @@
     "clean-architecture"
   ],
   "peerDependencies": {
-    "@hono/node-server": "^1.19.0 || ^2.0.0"
+    "@hono/node-server": "^1.19.0 || ^2.0.0",
+    "redis": "^4.7.0 || ^5.0.0"
   },
   "peerDependenciesMeta": {
     "@hono/node-server": {
       "optional": false
+    },
+    "redis": {
+      "optional": true
     }
   },
   "devDependencies": {
@@ -72,6 +76,7 @@
     "tsx": "^4.22.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.59.3",
+    "redis": "^4.7.1",
     "vitest": "^4.0.18"
   },
   "dependencies": {
