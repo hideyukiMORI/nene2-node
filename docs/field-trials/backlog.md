@@ -163,7 +163,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 126 | Campaign wrap / FT127+ plan                      | —   | —   | done — [report](2026-05-field-trial-126-campaign-wrap-ft127-.md) **D0**                                                                   |
 | 146 | BOLA in example note/tag UseCases                | 🔒  | —   | done — [report](2026-05-field-trial-146-bola-example-usecases.md) **D4** [#98](https://github.com/hideyukiMORI/nene2-node/issues/98)      |
 | 147 | Default domain handlers in createApp             | —   | —   | done — [report](2026-05-field-trial-147-default-domain-handlers.md) **D3** [#100](https://github.com/hideyukiMORI/nene2-node/issues/100)  |
-| 148 | UTC `created_at` on example note/tag             | —   | —   | done — [report](2026-05-field-trial-148-utc-created-at-example.md) **D3** [#102](https://github.com/hideyukiMORI/nene2-node/issues/102)     |
+| 148 | UTC `created_at` on example note/tag             | —   | —   | done — [report](2026-05-field-trial-148-utc-created-at-example.md) **D3** [#102](https://github.com/hideyukiMORI/nene2-node/issues/102)   |
 
 ## Category F — Ecosystem & publish (FT81–FT100)
 
