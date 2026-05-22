@@ -17,7 +17,7 @@ export default defineConfig({
         lines: 80,
         statements: 80,
         functions: 80,
-        branches: 70,
+        branches: 80,
         'src/example/note/note-use-cases.ts': { lines: 90 },
         'src/example/tag/tag-use-cases.ts': { lines: 90 },
       },
