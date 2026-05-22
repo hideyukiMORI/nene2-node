@@ -1,15 +1,16 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** v0.1.19 BOLA example UseCases — [#98](https://github.com/hideyukiMORI/nene2-node/issues/98)
+**Sprint:** v0.1.19 BOLA example UseCases — released
 
 ## Released
 
+- **npm:** [v0.1.19](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.19) — BOLA ownership in example note/tag (FT146)
 - **npm:** [v0.1.18](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.18) — 80% branch coverage gate
 
 ## In progress
 
-- **#98** — BOLA ownership in example note/tag UseCases (FT146)
+- **#29** — Phase 2 field trials (next backlog item)
 
 ## Verification
 
