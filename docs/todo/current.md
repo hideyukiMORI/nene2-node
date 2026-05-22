@@ -15,16 +15,17 @@ npm install @hideyukimori/nene2-framework
 
 ## Up next (ordered)
 
-| ID  | Task                                              |
-| --- | ------------------------------------------------- |
-| —   | **FT67** npm greenfield install (Phase 2 kickoff) |
-| —   | FT68–72 MySQL/Postgres + Compose + migrations     |
-| —   | FT73–80 business-app obstacle FTs                 |
-| —   | FT81–100 publish / governance                     |
-| —   | nene2-js examples → Node URL (optional)           |
+| ID  | Task                                                |
+| --- | --------------------------------------------------- |
+| —   | **FT69** PostgreSQL Compose + **#37** MySQL adapter |
+| —   | FT70–72 migrations, CI DB, pool docs                |
+| —   | FT73–80 business-app obstacle FTs                   |
+| —   | FT81–100 publish / governance                       |
+| —   | nene2-js examples → Node URL (optional)             |
 
 ## Completed (recent)
 
+- [x] FT67–68 sandboxes + Issues [#37](https://github.com/hideyukiMORI/nene2-node/issues/37)–[#40](https://github.com/hideyukiMORI/nene2-node/issues/40) ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 6: FT55–FT66 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 5: FT43–FT54 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 4: FT31–FT42 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
