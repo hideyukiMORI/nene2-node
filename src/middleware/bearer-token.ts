@@ -21,7 +21,10 @@ function pathRequiresBearer(
   if (includePaths.length > 0) {
     return includePaths.some((prefix) => path.startsWith(prefix));
   }
-  return !excludePaths.includes(path);
+  if (excludePaths.length > 0) {
+    return !excludePaths.includes(path);
+  }
+  return false;
 }
 
 function unauthorized(problems: ProblemDetailsFactory, c: Context, detail: string): Response {
@@ -74,7 +77,7 @@ export function bearerTokenMiddleware(
     }
 
     try {
-      const claims = options.verifier.verify(token);
+      const claims = await options.verifier.verify(token);
       c.set('authClaims', claims);
       c.set('credentialType', 'bearer');
       await next();

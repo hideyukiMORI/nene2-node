@@ -2,6 +2,7 @@ import type { Hono } from 'hono';
 
 import type { DomainExceptionHandler } from '../error/domain-exception-handler.js';
 import type { ProblemDetailsFactory } from '../http/problem-details.js';
+import { problemDetailsFromContext } from '../http/problem-details.js';
 import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
 import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
 import type { NoteRepository } from '../example/note/note-repository.js';
@@ -63,4 +64,38 @@ export function registerExampleModule(
 ): void {
   registerNoteRoutes(app, { repository: wiring.noteRepository, problems });
   registerTagRoutes(app, { repository: wiring.tagRepository, problems });
+}
+
+type MethodNotAllowed = (
+  c: Parameters<typeof problemDetailsFromContext>[1],
+  allow: string,
+) => Response;
+
+export function registerExampleHttpRoutes(
+  app: Hono,
+  wiring: ExampleModuleWiring,
+  problems: ProblemDetailsFactory,
+  methodNotAllowed: MethodNotAllowed,
+): void {
+  app.get('/examples/ping', (c) =>
+    c.json({ message: 'pong', status: 'ok' }, 200, {
+      'Content-Type': 'application/json; charset=utf-8',
+    }),
+  );
+  app.post('/examples/ping', (c) => methodNotAllowed(c, 'GET'));
+
+  app.get('/examples/protected', (c) => {
+    const claims = c.get('authClaims');
+    return c.json(
+      {
+        message: 'Welcome, authenticated user.',
+        claims,
+      },
+      200,
+      { 'Content-Type': 'application/json; charset=utf-8' },
+    );
+  });
+  app.post('/examples/protected', (c) => methodNotAllowed(c, 'GET'));
+
+  registerExampleModule(app, wiring, problems);
 }

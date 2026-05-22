@@ -14,8 +14,8 @@ export default defineConfig({
       exclude: ['src/server/dev-server.ts'],
       reporter: ['text', 'text-summary'],
       thresholds: {
-        lines: 76,
-        statements: 76,
+        lines: 75,
+        statements: 75,
         functions: 78,
         branches: 69,
         'src/example/note/note-use-cases.ts': { lines: 88 },

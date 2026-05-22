@@ -8,6 +8,20 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.15] - 2026-05-22
+
+### Added
+
+- `NENE2_NODE_INCLUDE_EXAMPLES` / `createApp({ includeExamples })` — disable reference `/examples/*` in production
+- `createJoseJwtVerifier` for production IdP JWKS (optional peer `jose`)
+- `registerProcessShutdown()` for SIGTERM/SIGINT pool cleanup
+- `docs/development/commercial-readiness.md`
+
+### Changed
+
+- `TokenVerifier.verify` may return `Promise` (async JWKS verification)
+- Production env defaults `includeExamples` to `false`
+
 ## [0.1.14] - 2026-05-22
 
 ### Changed
