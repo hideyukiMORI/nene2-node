@@ -70,5 +70,7 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 64  | 2026-05-22 | [2026-05-field-trial-64-cross-repo-parity.md](2026-05-field-trial-64-cross-repo-parity.md)             | Cross-repo parity   | —   | 🔍  |
 | 65  | 2026-05-22 | [2026-05-field-trial-65-oidc-release.md](2026-05-field-trial-65-oidc-release.md)                       | OIDC release        | —   | —   |
 | 66  | 2026-05-22 | [2026-05-field-trial-66-changelog-discipline.md](2026-05-field-trial-66-changelog-discipline.md)       | CHANGELOG           | 🔒  | —   |
+| 67  | 2026-05-22 | [2026-05-field-trial-67-greenfield-install.md](2026-05-field-trial-67-greenfield-install.md)           | Greenfield npm      | —   | —   |
+| 68  | 2026-05-22 | [2026-05-field-trial-68-mysql-compose.md](2026-05-field-trial-68-mysql-compose.md)                     | MySQL Compose       | —   | —   |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.

@@ -56,6 +56,7 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 Until adapters ship:
 
 - Use SQLite via `NENE2_NODE_DATABASE_URL=file:…` for local/dev parity.
+- **mysql://** and **postgresql://** URLs are rejected with an explicit error (issue #37) — not passed to SQLite.
 - Run application FTs against Docker MySQL/Postgres in `../nene2-node-FT/` and file friction Issues.
 
 See `../field-trials/2026-05-ft-phase2-application-integration.md`.
