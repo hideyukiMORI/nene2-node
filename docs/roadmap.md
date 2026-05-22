@@ -67,7 +67,7 @@ Inherited from NENE2 and nene2-python: small sandboxes, tests, English reports, 
 | Phase 4+  | DB adapter FT; optional Node API FT with security cadence (FT# % 3 = 0)         |
 | Ongoing   | Read sibling FT/howto when implementing parity — do not duplicate 165+ PHP apps |
 
-Reports: `docs/field-trials/` · Template: `docs/templates/field-trial-report.md`
+Reports: `docs/field-trials/` · Templates: `field-trial-report.md`, `ft-dx-personas.md`, `ft-security-diagnosis.md` (FT# % 3 = 0), `ft-adversarial-review.md` (FT# % 4 = 0)
 
 ## Non-goals
 

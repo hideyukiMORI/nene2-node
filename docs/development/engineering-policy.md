@@ -26,20 +26,21 @@ Upstream references:
 
 ## Policy documents (this repository)
 
-| Topic                                  | Document                                  | Primary upstream               |
-| -------------------------------------- | ----------------------------------------- | ------------------------------ |
-| TypeScript style and architecture      | `coding-standards.md`                     | NENE2 + nene2-python           |
-| Quality gates (`npm run check`)        | `quality-tools.md`                        | NENE2 `quality-tools.md`       |
-| UseCase / Repository / Handler         | `domain-layer.md`                         | NENE2 `domain-layer.md`        |
-| RFC 9457 errors                        | `api-error-responses.md`                  | NENE2 `api-error-responses.md` |
-| Layered validation                     | `request-validation.md`                   | NENE2 `request-validation.md`  |
-| Middleware order and security baseline | `middleware-security.md`                  | NENE2 `middleware-security.md` |
-| Security prohibitions and requirements | `security-policy.md`                      | nene2-python CLAUDE §3         |
-| Pre-PR checklists                      | `self-review.md` + `docs/review/*.md`     | NENE2 `self-review.md`         |
-| Issue-driven lifecycle                 | `../workflow.md`                          | NENE2 `workflow.md`            |
-| Field trial (FT) culture               | `field-trial-culture.md`                  | NENE2 / nene2-python FT loops  |
-| Commits and branches                   | `commit-conventions.md`, `../workflow.md` | Shared ecosystem               |
-| Scope boundaries                       | `../scope.md`                             | ADR 0001                       |
+| Topic                                   | Document                                  | Primary upstream                  |
+| --------------------------------------- | ----------------------------------------- | --------------------------------- |
+| TypeScript style and architecture       | `coding-standards.md`                     | NENE2 + nene2-python              |
+| Quality gates (`npm run check`)         | `quality-tools.md`                        | NENE2 `quality-tools.md`          |
+| UseCase / Repository / Handler          | `domain-layer.md`                         | NENE2 `domain-layer.md`           |
+| RFC 9457 errors                         | `api-error-responses.md`                  | NENE2 `api-error-responses.md`    |
+| Layered validation                      | `request-validation.md`                   | NENE2 `request-validation.md`     |
+| Middleware order and security baseline  | `middleware-security.md`                  | NENE2 `middleware-security.md`    |
+| Security prohibitions and requirements  | `security-policy.md`                      | nene2-python CLAUDE §3            |
+| Pre-PR checklists                       | `self-review.md` + `docs/review/*.md`     | NENE2 `self-review.md`            |
+| Issue-driven lifecycle                  | `../workflow.md`                          | NENE2 `workflow.md`               |
+| Field trial (FT) culture                | `field-trial-culture.md`                  | NENE2 / nene2-python FT loops     |
+| FT DX personas / security / adversarial | `../templates/ft-*.md`                    | nene2-python FT report appendices |
+| Commits and branches                    | `commit-conventions.md`, `../workflow.md` | Shared ecosystem                  |
+| Scope boundaries                        | `../scope.md`                             | ADR 0001                          |
 
 ## Mandatory verification
 

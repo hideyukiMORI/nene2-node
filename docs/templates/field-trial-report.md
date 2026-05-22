@@ -2,8 +2,8 @@
 
 **Date:** YYYY-MM-DD  
 **Theme:** One-line description  
-**Security review:** none / **required** (FT number % 3 = 0)  
-**Adversarial review:** none / optional (FT number % 4 = 0)
+**Security diagnosis:** none / **required** (FT# % 3 = 0)  
+**Adversarial review:** none / **required** (FT# % 4 = 0)
 
 **Issue:** #NN  
 **Upstream (if parity):** NENE2 FT… / nene2-python FT… / howto link
@@ -50,19 +50,31 @@ N passed
 
 If none: _No implementation friction in this FT._
 
-## Security review
+## Developer Experience (DX) review
 
-_(Required when FT# % 3 = 0; otherwise omit or mark N/A.)_
+Copy and complete: `docs/templates/ft-dx-personas.md` (all six personas + DX summary).
 
-- Threat model (short)
-- Controls verified
-- Findings fixed or filed as Issues
+---
 
-## Adversarial review
+## Security diagnosis
 
-_(Optional when FT# % 4 = 0.)_
+_(Required when FT# % 3 = 0. Otherwise write **N/A** and one-line reason.)_
 
-- Summary pass/fail — no exploit how-to in this file
+Copy and complete: `docs/templates/ft-security-diagnosis.md`.
+
+**Overall:** pass / pass with notes / fail
+
+---
+
+## Adversarial review (cracker-style)
+
+_(Required when FT# % 4 = 0. Otherwise write **N/A** and one-line reason.)_
+
+Copy and complete: `docs/templates/ft-adversarial-review.md` (phases 1–3, no exploit recipes).
+
+**Resilience rating:** robust / acceptable / weak
+
+---
 
 ## Observations
 
@@ -74,4 +86,4 @@ Bullet insights for framework consumers (English).
 
 ## Reminder
 
-This report must not include secrets, raw tokens, production URLs, or confidential client data.
+This report must not include secrets, raw tokens, production URLs, weaponized exploit steps, or confidential client data.

@@ -18,31 +18,33 @@ FT is **not** production feature shipping. It is evidence that the framework and
 
 ## How siblings practice FT
 
-| Aspect               | NENE2 (PHP)                                                        | nene2-python                                                                                 |
-| -------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| **Primary goal**     | API/how-to patterns, LLM delivery, security-heavy app examples     | Framework + stdlib DX, parity with PHP patterns                                              |
-| **Sandbox**          | `../NENE2-FT/{app}log/` (sibling repos)                            | `../nene2-python-FT/ftNNN-*`                                                                 |
-| **Reports**          | `docs/templates/field-trial-report.md`, howto links                | `docs/field-trials/2026-05-field-trial-N.md`, `INDEX.md`                                     |
-| **Artifacts**        | howto in `docs/howto/`, PHPUnit tests, tags `v1.5.x`               | pytest, mypy, report + optional MCP tools                                                    |
-| **Security cadence** | Vulnerability review on many FTs; cracker tests on selected FTs    | **FT number % 3 = 0** → security diagnosis; **% 4 = 0** → cracker pentest (python tradition) |
-| **Loop**             | High-volume FT loop → `docs/todo/current.md` table → howto library | FT1–18 framework integration, then stdlib/module loop (200+ reports)                         |
-| **Upstream doc**     | `../NENE2/docs/integrations/llm-field-trial.md`                    | `../nene2-python/CLAUDE.md`, `docs/field-trials/INDEX.md`                                    |
+| Aspect               | NENE2 (PHP)                                                        | nene2-python                                                                         |
+| -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| **Primary goal**     | API/how-to patterns, LLM delivery, security-heavy app examples     | Framework + stdlib DX, parity with PHP patterns                                      |
+| **Sandbox**          | `../NENE2-FT/{app}log/` (sibling repos)                            | `../nene2-python-FT/ftNNN-*`                                                         |
+| **Reports**          | `docs/templates/field-trial-report.md`, howto links                | `docs/field-trials/2026-05-field-trial-N.md`, `INDEX.md`                             |
+| **Artifacts**        | howto in `docs/howto/`, PHPUnit tests, tags `v1.5.x`               | pytest, mypy, report + optional MCP tools                                            |
+| **Security cadence** | Vulnerability review on many FTs; cracker tests on selected FTs    | **FT# % 3 = 0** → security diagnosis; **FT# % 4 = 0** → adversarial (cracker) review |
+| **DX review**        | howto + friction                                                   | Six **personas** per report (see `ft-dx-personas.md`)                                |
+| **Loop**             | High-volume FT loop → `docs/todo/current.md` table → howto library | FT1–18 framework integration, then stdlib/module loop (200+ reports)                 |
+| **Upstream doc**     | `../NENE2/docs/integrations/llm-field-trial.md`                    | `../nene2-python/CLAUDE.md`, `docs/field-trials/INDEX.md`                            |
 
 nene2-node does **not** copy every NENE2 FT application (`paymentlog`, `oauthlog`, …). Those prove PHP/how-to patterns. Node work tracks **OpenAPI + framework parity** first; FT here validates **Node runtime and DX**.
 
 ## What nene2-node adopts
 
-| Practice              | In this repo                                                                      |
-| --------------------- | --------------------------------------------------------------------------------- |
-| Issue per FT          | GitHub Issue before sandbox or report                                             |
-| Small scope           | One theme per FT; one PR per Issue                                                |
-| Friction → Issues     | F-1, F-2 in report → GitHub Issues, not silent fixes                              |
-| Written report        | English report under `docs/field-trials/` (template below)                        |
-| Tests required        | Vitest; UseCase tests without DB when possible                                    |
-| Security rhythm       | When FT numbering is used: **FT# % 3 = 0** → mandatory security section in report |
-| Learn from siblings   | Read matching NENE2 howto / nene2-python report before implementing parity        |
-| No secrets in reports | Same redaction rules as NENE2 `llm-field-trial.md`                                |
-| Update project memory | `docs/todo/current.md` when an FT completes or hands off                          |
+| Practice              | In this repo                                                                         |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| Issue per FT          | GitHub Issue before sandbox or report                                                |
+| Small scope           | One theme per FT; one PR per Issue                                                   |
+| Friction → Issues     | F-1, F-2 in report → GitHub Issues, not silent fixes                                 |
+| Written report        | English report under `docs/field-trials/` (template below)                           |
+| Tests required        | Vitest; UseCase tests without DB when possible                                       |
+| Security rhythm       | **FT# % 3 = 0** → security diagnosis; **FT# % 4 = 0** → adversarial (cracker) review |
+| DX personas           | Six persona blocks in every FT report (English) — `docs/templates/ft-dx-personas.md` |
+| Learn from siblings   | Read matching NENE2 howto / nene2-python report before implementing parity           |
+| No secrets in reports | Same redaction rules as NENE2 `llm-field-trial.md`                                   |
+| Update project memory | `docs/todo/current.md` when an FT completes or hands off                             |
 
 ## What nene2-node defers
 
@@ -103,26 +105,59 @@ Every nene2-node FT Issue should list:
 | Self-review    | `docs/review/field-trial.md`                  |
 | Follow-ups     | New Issues linked from report                 |
 
-### Report template
+### Report template and appendices
 
-Copy `docs/templates/field-trial-report.md`. Minimum sections:
+Main skeleton: `docs/templates/field-trial-report.md`.
+
+| Appendix                         | When                                              | File                                      |
+| -------------------------------- | ------------------------------------------------- | ----------------------------------------- |
+| **DX personas**                  | Every FT (recommended mandatory from Phase 2 FTs) | `docs/templates/ft-dx-personas.md`        |
+| **Security diagnosis**           | **FT# % 3 = 0**                                   | `docs/templates/ft-security-diagnosis.md` |
+| **Adversarial (cracker) review** | **FT# % 4 = 0**                                   | `docs/templates/ft-adversarial-review.md` |
+
+Minimum report sections:
 
 - Context (NENE2 tag, OpenAPI ops, Node version)
 - Implementation summary
 - Test results (`npm run check`, test count)
 - Friction points (F-1, F-2, …)
-- Security review (required when FT# % 3 = 0)
+- **Developer Experience (DX) review** — six personas (beginner → policy alignment)
+- **Security diagnosis** — when FT# % 3 = 0 (OWASP API + Node vectors; VULN-A… log)
+- **Adversarial review** — when FT# % 4 = 0 (phases 1–3, ATK-01… table; no exploit recipes)
 - Follow-up Issues
 - Upstream references (NENE2 / nene2-python FT#)
 
-### Security and cracker reviews
+### Security diagnosis (脆弱性診断)
 
-Inherited from sibling cadence:
+**Cadence:** `FT_number % 3 === 0` (e.g. FT3, FT6, FT9 — same rule as nene2-python).
 
-- **FT# % 3 = 0** — add a “Security review” section: threat assumptions, what was tested, VULN-style findings fixed in the same PR or filed as Issues.
-- **FT# % 4 = 0** — optional “Adversarial review” section (nene2-python tradition); document pass/fail without exploit recipes in public docs.
+Purpose: systematic checklist review — OWASP API Top 10, injection, auth/crypto, disclosure, Node-specific vectors (ReDoS, prototype pollution, strict validation).
 
-Do not publish exploit steps or client secrets in reports.
+- Use `docs/templates/ft-security-diagnosis.md`.
+- Record each finding as **VULN-A**, **VULN-B**, … with severity and fix or Issue.
+- NENE2 often fixes vulns in the same FT PR; follow that norm for high severity.
+
+“Works locally” is not evidence. Document **pass**, **fail**, or **N/A with reason**.
+
+### Adversarial review (敵対的視点 / クラッカーテスト)
+
+**Cadence:** `FT_number % 4 === 0` (e.g. FT4, FT8, FT12 — nene2-python tradition; NENE2 uses similar “クラッカー攻撃試験” on selected apps).
+
+Purpose: hostile-tester mindset — infer surface, execute bounded attack probes, summarize resilience (NENE2 style: “12 attacks, all withstood”).
+
+Three phases (see `docs/templates/ft-adversarial-review.md`):
+
+1. **Structure inference** — what an attacker learns without credentials.
+2. **Attack execution log** — ATK-01… grouped by auth, input, injection, disclosure, DoS.
+3. **Summary table** — attempts / breaches / unexpected safe behavior.
+
+Do **not** publish weaponized exploit steps, stolen tokens, or customer URLs. Report HTTP status and Problem Details `type` only.
+
+When **both** cadences apply (FT# divisible by 12), complete **both** appendices in one report.
+
+### Redaction
+
+Do not publish exploit chains, client secrets, production URLs, or confidential prompts in any FT artifact.
 
 ## Relationship to how-to docs
 
@@ -146,6 +181,7 @@ When asked to run or document an FT:
 
 - NENE2 LLM field trial: `../NENE2/docs/integrations/llm-field-trial.md`
 - NENE2 report skeleton: `../NENE2/docs/templates/field-trial-report.md`
-- nene2-python INDEX: `../nene2-python/docs/field-trials/INDEX.md`
-- nene2-python report template: `../nene2-python/docs/templates/field-trial-report.md`
+- nene2-python INDEX: `../nene2-python/docs/field-trials/INDEX.md` (🔒 security / 🔍 cracker legend)
+- nene2-python report template: `../nene2-python/docs/templates/field-trial-report.md` (full OWASP + personas, Japanese)
+- nene2-node templates: `ft-dx-personas.md`, `ft-security-diagnosis.md`, `ft-adversarial-review.md`
 - nene2-python open discussion: [Issue #540](https://github.com/hideyukiMORI/nene2-python/issues/540) (FT loop purpose)
