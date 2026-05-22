@@ -151,3 +151,4 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 142 | 2026-05-22 | [2026-05-field-trial-142-redis-idempotency-storage.md](2026-05-field-trial-142-redis-idempotency-storage.md) | redis idempotency | — | — |
 | 143 | 2026-05-22 | [2026-05-field-trial-143-webhook-timestamp-replay.md](2026-05-field-trial-143-webhook-timestamp-replay.md) | webhook timestamp replay | 🔒 | — |
 | 144 | 2026-05-22 | [2026-05-field-trial-144-redis-compose-e2e.md](2026-05-field-trial-144-redis-compose-e2e.md) | redis compose e2e | — | — |
+| 145 | 2026-05-22 | [2026-05-field-trial-145-mysql-read-replica-e2e.md](2026-05-field-trial-145-mysql-read-replica-e2e.md) | mysql read replica e2e | — | — |

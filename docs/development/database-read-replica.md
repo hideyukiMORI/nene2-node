@@ -12,6 +12,10 @@ Set **`NENE2_NODE_DATABASE_READ_URL`** alongside **`NENE2_NODE_DATABASE_URL`** t
 
 Use `database.executor` for writes and transactions; route read-only queries to `database.readExecutor` in app repositories.
 
+## Compose E2E
+
+See [mysql-read-replica-e2e.md](mysql-read-replica-e2e.md) for Docker Compose + `ft145-mysql-read-replica` probe (host port **23310**).
+
 ## Friction
 
 - Framework does not auto-route — apps must choose executor per query.

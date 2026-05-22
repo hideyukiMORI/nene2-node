@@ -152,7 +152,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 115 | TIMESTAMP timezone                               | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 116 | NULL vs undefined in repos                       | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 117 | Serverless pool lifecycle                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
-| 118 | Read replica URL                                 | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 118 | Read replica URL                                 | —   | —   | done — FT134 / FT145 [report](2026-05-field-trial-145-mysql-read-replica-e2e.md)                                                          |
 | 119 | SSL mysql/postgres URLs                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 120 | Compose profiles dev/prod                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 121 | nene2-js Problem Details parity                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
