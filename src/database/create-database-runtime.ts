@@ -1,6 +1,7 @@
 import { Pool as PgPool } from 'pg';
 
 import { ensureExamplesSchema, ensureExamplesSchemaAsync } from '../example/example-sql-schema.js';
+import { readPoolMaxEnv } from './read-pool-max-env.js';
 import type { DatabaseQueryExecutor } from './database-query-executor.js';
 import { createMysqlPool, MysqlQueryExecutor } from './mysql-query-executor.js';
 import { parseDatabaseUrl, type DatabaseBackend } from './parse-database-url.js';
@@ -44,7 +45,10 @@ export async function createDatabaseRuntime(databaseUrl: string): Promise<Databa
     };
   }
 
-  const pool = new PgPool({ connectionString: url });
+  const pool = new PgPool({
+    connectionString: url,
+    max: readPoolMaxEnv('NENE2_POSTGRES_POOL_MAX'),
+  });
   const executor = PostgresQueryExecutor.fromPool(pool);
   await ensureExamplesSchemaAsync(executor, 'postgresql');
   return {
