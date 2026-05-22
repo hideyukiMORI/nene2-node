@@ -1,10 +1,24 @@
 {
   "name": "@hideyukimori/nene2-framework",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "NENE2-compatible API framework for Node.js — clean architecture, OpenAPI-aligned, AI-readable",
   "type": "module",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hideyukiMORI/nene2-node.git"
@@ -20,8 +34,9 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json",
     "dev": "tsx src/server/dev-server.ts",
-    "check": "npm run type-check && npm run lint && npm run format && npm run test"
+    "check": "npm run type-check && npm run lint && npm run format && npm run test && npm run build"
   },
   "keywords": [
     "nene2",

@@ -50,6 +50,8 @@ git clone git@github.com:hideyukiMORI/nene2-node.git
 cd nene2-node
 npm install
 npm run check
+npm run build
+npm run dev
 ```
 
 Optional contract path (default assumes sibling clone):
@@ -61,7 +63,7 @@ cp .env.example .env
 
 ## Status
 
-**Phase 1 — runtime skeleton (in progress).** Hono-based app with `GET /`, `/health`, `/examples/ping`, `/machine/health`, RFC 9457 Problem Details, and HTTP tests. See [docs/roadmap.md](docs/roadmap.md) for Phase 2+ (middleware, Note CRUD, OpenAPI contract tests).
+**Phases 0–5 complete** on `main`: Hono runtime, middleware (auth, throttle, CORS, logging), `/examples/notes` CRUD, SQLite database layer, and `npm run build` for `@hideyukimori/nene2-framework@0.1.0`. See [docs/roadmap.md](docs/roadmap.md). npm publish: [docs/publish-checklist.md](docs/publish-checklist.md).
 
 ## Contributing
 

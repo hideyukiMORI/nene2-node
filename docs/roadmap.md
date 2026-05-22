@@ -76,12 +76,12 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 
 ---
 
-## Phase 5 — MCP and publish
+## Phase 5 — MCP and publish ✅
 
 [Milestone](milestones/2026-05-phase5-mcp-publish.md)
 
-- [ ] MCP HTTP boundary
-- [ ] `0.1.0` publish candidate
+- [x] MCP HTTP boundary ([#17](https://github.com/hideyukiMORI/nene2-node/issues/17))
+- [x] `0.1.0` publish candidate (`npm run build`, checklist)
 
 ---
 
