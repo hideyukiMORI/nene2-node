@@ -25,9 +25,9 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 13  | Request size limit        | `request-size-limit.ts`                          | —   | —   | ✅ batch 1                                       |
 | 14  | Note CRUD                 | `example/note/`                                  | —   | —   | ✅ batch 1                                       |
 | 15  | Tag CRUD                  | `example/tag/`                                   | —   | —   | ✅ batch 1                                       |
-| 16  | SQLite query executor     | `database/`, `database-layer.md`                 | 🔒  | —   | batch 2                                          |
-| 17  | Database health 503       | `database-health-check.ts`                       | —   | —   | batch 2                                          |
-| 18  | Transactions              | `sqlite-transaction-manager.ts`                  | —   | —   | batch 2                                          |
+| 16  | SQLite query executor     | `database/`, `database-layer.md`                 | —   | 🔍  | ✅ batch 2                                       |
+| 17  | Database health 503       | `database-health-check.ts`                       | —   | —   | ✅ batch 2                                       |
+| 18  | Transactions              | `sqlite-transaction-manager.ts`                  | 🔒  | —   | ✅ batch 2                                       |
 
 ## Category B — Framework deep dive (FT19–FT50)
 

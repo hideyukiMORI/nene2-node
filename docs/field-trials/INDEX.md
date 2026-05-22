@@ -19,5 +19,8 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 13  | 2026-05-22 | [2026-05-field-trial-13-request-size-limit.md](2026-05-field-trial-13-request-size-limit.md) | Request size      | —   | —   |
 | 14  | 2026-05-22 | [2026-05-field-trial-14-note-crud.md](2026-05-field-trial-14-note-crud.md)                   | Note CRUD         | —   | —   |
 | 15  | 2026-05-22 | [2026-05-field-trial-15-tag-crud.md](2026-05-field-trial-15-tag-crud.md)                     | Tag CRUD          | —   | —   |
+| 16  | 2026-05-22 | [2026-05-field-trial-16-sqlite-executor.md](2026-05-field-trial-16-sqlite-executor.md)       | SQLite executor   | —   | 🔍  |
+| 17  | 2026-05-22 | [2026-05-field-trial-17-database-health.md](2026-05-field-trial-17-database-health.md)     | DB health 503     | —   | —   |
+| 18  | 2026-05-22 | [2026-05-field-trial-18-transactions.md](2026-05-field-trial-18-transactions.md)             | Transactions      | 🔒  | —   |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
