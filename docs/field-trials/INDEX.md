@@ -73,5 +73,6 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 67  | 2026-05-22 | [2026-05-field-trial-67-greenfield-install.md](2026-05-field-trial-67-greenfield-install.md)           | Greenfield npm      | —   | —   |
 | 68  | 2026-05-22 | [2026-05-field-trial-68-mysql-compose.md](2026-05-field-trial-68-mysql-compose.md)                     | MySQL Compose       | —   | —   |
 | 69  | 2026-05-22 | [2026-05-field-trial-69-postgres-compose.md](2026-05-field-trial-69-postgres-compose.md)               | PostgreSQL Compose  | —   | —   |
+| 70  | 2026-05-22 | [2026-05-field-trial-70-ci-mysql-service.md](2026-05-field-trial-70-ci-mysql-service.md)               | CI MySQL service    | —   | 🔍  |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.

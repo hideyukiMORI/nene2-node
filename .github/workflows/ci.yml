@@ -17,3 +17,33 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+
+  mysql-integration:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: ci_root
+          MYSQL_DATABASE: nene2_ci
+          MYSQL_USER: nene2_ci
+          MYSQL_PASSWORD: nene2_ci
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -unene2_ci -pnene2_ci"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run type-check
+      - name: MySQL integration tests
+        env:
+          NENE2_NODE_TEST_MYSQL_URL: mysql://nene2_ci:nene2_ci@127.0.0.1:3306/nene2_ci
+        run: npm run test -- tests/database/mysql-integration.test.ts
