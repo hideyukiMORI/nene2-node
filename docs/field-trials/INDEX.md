@@ -136,3 +136,6 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 127 | 2026-05-22 | [2026-05-field-trial-127-unique-violation-409-sandbox.md](2026-05-field-trial-127-unique-violation-409-sandbox.md) | unique 409 sandbox | — | — |
 | 128 | 2026-05-22 | [2026-05-field-trial-128-idempotency-key-middleware.md](2026-05-field-trial-128-idempotency-key-middleware.md) | idempotency middleware | — | — |
 | 129 | 2026-05-22 | [2026-05-field-trial-129-fk-violation-422-sandbox.md](2026-05-field-trial-129-fk-violation-422-sandbox.md) | fk 422 sandbox | — | — |
+| 130 | 2026-05-22 | [2026-05-field-trial-130-optimistic-version-sandbox.md](2026-05-field-trial-130-optimistic-version-sandbox.md) | optimistic version | — | — |
+| 131 | 2026-05-22 | [2026-05-field-trial-131-jwt-sub-throttle-key.md](2026-05-field-trial-131-jwt-sub-throttle-key.md) | jwt sub throttle | — | — |
+| 132 | 2026-05-22 | [2026-05-field-trial-132-bola-assert-resource-owner.md](2026-05-field-trial-132-bola-assert-resource-owner.md) | bola assert owner | 🔒 | — |

@@ -44,6 +44,12 @@ See individual reports `2026-05-field-trial-NN-*.md`. Highlights:
 | 127 | Unique sandbox   | 500 on dup              | resolved   |
 | 128 | Idempotency      | No middleware           | resolved   |
 | 129 | FK sandbox       | 500 on bad FK           | resolved   |
+| 85  | Optimistic lock  | No version helper       | resolved   |
+| 124 | Throttle per sub | IP only                 | resolved   |
+| 130 | Version sandbox  | Stale UPDATE → 500      | resolved   |
+| 131 | JWT sub key      | IP default              | resolved   |
+| 132 | BOLA guard       | No helper               | documented |
+| 95  | Redis throttle   | In-memory only          | open       |
 | 118 | Read replica     | Not supported           | open       |
 
 Full table: [backlog.md](backlog.md) FT77–126 rows.

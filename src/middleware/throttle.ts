@@ -4,6 +4,7 @@ import type { ProblemDetailsFactory } from '../http/problem-details.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
 import type { RateLimitStorage } from './rate-limit-storage.js';
 import { InMemoryRateLimitStorage } from './rate-limit-storage.js';
+import { ipThrottleKey } from './throttle-keys.js';
 
 export interface ThrottleOptions {
   readonly limit: number;
@@ -11,17 +12,6 @@ export interface ThrottleOptions {
   readonly storage?: RateLimitStorage;
   readonly excludePaths?: readonly string[];
   readonly keyExtractor?: (c: Context) => string;
-}
-
-function defaultKey(c: Context): string {
-  const forwarded = c.req.header('X-Forwarded-For');
-  if (forwarded !== undefined && forwarded !== '') {
-    const first = forwarded.split(',')[0]?.trim();
-    if (first !== undefined && first !== '') {
-      return `ip:${first}`;
-    }
-  }
-  return 'ip:unknown';
 }
 
 function applyRateHeaders(
@@ -41,7 +31,7 @@ export function throttleMiddleware(
 ): MiddlewareHandler {
   const storage = options.storage ?? new InMemoryRateLimitStorage();
   const excludePaths = new Set(options.excludePaths ?? []);
-  const keyExtractor = options.keyExtractor ?? defaultKey;
+  const keyExtractor = options.keyExtractor ?? ipThrottleKey;
 
   return async (c, next) => {
     if (excludePaths.has(c.req.path)) {

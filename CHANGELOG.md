@@ -8,6 +8,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.10] - 2026-05-22
+
+### Added
+
+- Optimistic concurrency: `VersionConflictError`, `parseIfMatchVersion`, `assertRowsAffected` (FT130)
+- BOLA helper: `assertResourceOwner`, `ResourceAccessDeniedError` → 403 (FT132)
+- `jwtSubThrottleKey` / `ipThrottleKey` for per-user throttling (FT131)
+- Docs: `optimistic-concurrency.md`, `resource-ownership.md`, `throttle-storage-adapters.md`
+
 ## [0.1.9] - 2026-05-22
 
 ### Added

@@ -31,6 +31,17 @@ export {
   resolveOpenApiPath,
 } from './openapi/resolve-openapi-path.js';
 export { DomainError } from './error/domain-error.js';
+export { VersionConflictError } from './error/version-conflict-error.js';
+export { ResourceAccessDeniedError } from './error/resource-access-denied-error.js';
+export { createVersionConflictHandler } from './error/version-conflict-handler.js';
+export { createResourceAccessDeniedHandler } from './error/resource-access-denied-handler.js';
+export {
+  assertRowsAffected,
+  assertVersionMatch,
+  parseIfMatchVersion,
+  type AssertRowsAffectedOptions,
+} from './domain/optimistic-concurrency.js';
+export { assertResourceOwner, authSubFromContext } from './domain/resource-ownership.js';
 export {
   createSimpleDomainHandler,
   type DomainExceptionHandler,
@@ -58,6 +69,7 @@ export {
   type RateLimitStorage,
 } from './middleware/rate-limit-storage.js';
 export { throttleMiddleware, type ThrottleOptions } from './middleware/throttle.js';
+export { ipThrottleKey, jwtSubThrottleKey } from './middleware/throttle-keys.js';
 export {
   idempotencyMiddleware,
   requestBodyHash,
