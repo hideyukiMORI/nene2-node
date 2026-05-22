@@ -1,16 +1,12 @@
-import { defineConfig, mergeConfig } from 'vitest/config';
+import { defineConfig } from 'vitest/config';
 
-import base from './vitest.config.js';
-
-export default mergeConfig(
-  base,
-  defineConfig({
-    test: {
-      include: ['tests/integration/**/*.test.ts'],
-      exclude: [],
-      coverage: {
-        enabled: false,
-      },
+/** Service-container DB tests — not part of default `npm test`. */
+export default defineConfig({
+  test: {
+    environment: 'node',
+    include: ['tests/integration/**/*.test.ts'],
+    typecheck: {
+      tsconfig: './tsconfig.test.json',
     },
-  }),
-);
+  },
+});
