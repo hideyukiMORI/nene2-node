@@ -1,80 +1,96 @@
 # Roadmap
 
-nene2-node is the Node.js framework port of [NENE2](https://github.com/hideyukiMORI/NENE2), parallel to [nene2-python](https://github.com/hideyukiMORI/nene2-python). Phases are Issue-driven; update this file when scope or priority changes.
+Node.js port of [NENE2](https://github.com/hideyukiMORI/NENE2) with **functional parity** on public OpenAPI, **strict TypeScript**, and **testable clean architecture**. Issue-driven execution: `docs/workflow.md`.
 
-## Phase 0 — Governance
+**Master plan:** [docs/milestones/2026-05-master-plan.md](milestones/2026-05-master-plan.md)  
+**Active board:** [docs/todo/current.md](todo/current.md)
 
-**Goal:** repository bootstrap with clear scope, English docs, and CI aligned with nene2-js workflow.
+## North star
 
-- [x] README, LICENSE, scope, workflow, commit conventions (English)
-- [x] AGENTS.md and AI tooling policy
-- [x] ADR 0001 — scope and sibling repositories
-- [x] ADR 0002 — HTTP runtime direction (Hono, accepted)
-- [x] GitHub repository and default branch protection (target)
-- [x] Engineering policy and FT culture documented
+Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatible API on Node without PHP — same JSON contracts, Node-idiomatic internals.
 
-## Phase 1 — Runtime skeleton (current)
+| Principle           | Practice                                         |
+| ------------------- | ------------------------------------------------ |
+| OpenAPI is contract | Pin and test against NENE2 `openapi.yaml`        |
+| Parity reference    | nene2-python module layout                       |
+| Loose coupling      | Composition root only; UseCases free of Hono/SQL |
+| Tests first         | Vitest HTTP + UseCase unit tests per PR          |
 
-**Goal:** smallest useful HTTP server matching NENE2 `/health` and `/examples/ping`.
+---
 
-- [x] HTTP adapter: Hono (ADR 0002)
-- [x] Problem Details factory (RFC 9457)
-- [x] `GET /`, `GET /health`, `GET /examples/ping`, `GET /machine/health` with Vitest tests
-- [x] Request id, security headers, request size limit, API key for machine health
-- [ ] Contract check against pinned OpenAPI revision (fixture or live optional)
-- [ ] Dev server entry (`npm run dev` or documented `createApp` serve)
+## Phase 0 — Governance ✅
 
-## Phase 2 — Middleware and auth baseline
+[Milestone](milestones/2026-05-initial-bootstrap.md)
 
-**Goal:** production-oriented pipeline comparable to NENE2 Phase 1–2 middleware.
+- [x] Scope, workflow, engineering policy, FT culture
+- [x] ADR 0001, ADR 0002 (Hono)
 
-- Error handler, security headers, request ID, request size limit
-- Throttle / rate limit (in-memory storage first)
-- Bearer token and API key middleware
-- Structured logging (Node-idiomatic; JSON in production)
+---
 
-## Phase 3 — Example domain (Note)
+## Phase 1 — Runtime skeleton ✅
 
-**Goal:** full Note CRUD as reference implementation (parity with NENE2 Example).
+[Milestone](milestones/2026-05-phase1-runtime-skeleton.md)
 
-- UseCase / Repository / Handler layering
-- SQLite adapter for tests
-- Domain exceptions → Problem Details
-- OpenAPI operation coverage for `/examples/notes`
+- [x] Hono `createApp()`, Problem Details, system routes
+- [x] 9 HTTP tests (NENE2 `HttpRuntimeTest` subset)
 
-## Phase 4 — Database and health checks
+---
 
-**Goal:** real DB adapter and degradable `/health`.
+## Phase 1b — OpenAPI contract and dev server ✅
 
-- Transaction manager and query executor interfaces
-- Optional MySQL verification (Docker Compose, CI job)
-- Database health check integration
+[Milestone](milestones/2026-05-phase1b-contract-and-dev.md)
 
-## Phase 5 — MCP and publish prep
+- [x] Contract fixtures + tests for system routes (14 tests total)
+- [x] `resolveOpenApiPath()` policy
+- [x] `npm run dev`
 
-**Goal:** safe MCP boundary and first npm publish candidate.
+---
 
-- Local MCP server or HTTP client aligned with NENE2 catalog format
-- README quick start, migration guide from PHP NENE2
-- `0.1.0` publish of `@hideyukimori/nene2-framework` when API stable
+## Phase 2 — Middleware and auth 🔄 next
 
-## Field trials (culture — after Phase 1)
+[Milestone](milestones/2026-05-phase2-middleware-auth.md)
 
-Inherited from NENE2 and nene2-python: small sandboxes, tests, English reports, friction → Issues. See `docs/development/field-trial-culture.md`.
+- [ ] Domain exception → Problem Details registry
+- [ ] Validation layer (`validation-failed`)
+- [ ] Bearer JWT + `/examples/protected`
+- [ ] Throttle (429), CORS, structured logging
 
-| When      | Focus                                                                           |
-| --------- | ------------------------------------------------------------------------------- |
-| Phase 2–3 | Framework FT (middleware, Note CRUD, auth)                                      |
-| Phase 4+  | DB adapter FT; optional Node API FT with security cadence (FT# % 3 = 0)         |
-| Ongoing   | Read sibling FT/howto when implementing parity — do not duplicate 165+ PHP apps |
+---
 
-Reports: `docs/field-trials/` · Templates: `field-trial-report.md`, `ft-dx-personas.md`, `ft-security-diagnosis.md` (FT# % 3 = 0), `ft-adversarial-review.md` (FT# % 4 = 0)
+## Phase 3 — Example Note CRUD
+
+[Milestone](milestones/2026-05-phase3-note-crud.md)
+
+- [ ] UseCase / Repository / Handler
+- [ ] SQLite + in-memory repositories
+- [ ] `/examples/notes` OpenAPI coverage
+
+---
+
+## Phase 4 — Database and health
+
+[Milestone](milestones/2026-05-phase4-database-health.md)
+
+- [ ] Query executor + transactions
+- [ ] Database health check → degraded `/health`
+
+---
+
+## Phase 5 — MCP and publish
+
+[Milestone](milestones/2026-05-phase5-mcp-publish.md)
+
+- [ ] MCP HTTP boundary
+- [ ] `0.1.0` publish candidate
+
+---
+
+## Field trials
+
+See `docs/development/field-trial-culture.md`. Framework FTs start after Phase 2; reports in `docs/field-trials/`.
+
+---
 
 ## Non-goals
 
-- Replacing nene2-js client packages
-- Replacing nene-mcp stdio servers
-- Full feature parity with every NENE2 field trial on day one
-- Running a high-volume FT loop before Phase 1 runtime lands
-
-See `docs/scope.md` for the authoritative boundary list.
+See `docs/scope.md` — no nene2-js client, no nene-mcp stdio duplicate, no 165+ PHP FT apps copied verbatim.

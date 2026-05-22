@@ -1,0 +1,3 @@
+source: ../NENE2/docs/openapi/openapi.yaml
+info.version: 1.5.90 (snapshot at Phase 1b)
+operations: getFrameworkSmoke, getHealth, getExamplePing, not-found (ProblemDetails)
