@@ -31,6 +31,8 @@
 
 See [docs/scope.md](docs/scope.md) for the full in/out matrix.
 
+Engineering rules (strict, inherited from NENE2 / nene2-python): [docs/development/engineering-policy.md](docs/development/engineering-policy.md).
+
 ## Local layout (sibling of NENE2)
 
 ```text
