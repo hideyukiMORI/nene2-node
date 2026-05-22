@@ -13,7 +13,7 @@
 
 **Observed:** Exercised or inferred during high-friction campaign FT124.  
 **Action:** throttle.md  
-**Status:** **open**
+**Status:** **resolved** — FT131 / v0.1.10
 
 ## Follow-up
 

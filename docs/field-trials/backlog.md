@@ -113,7 +113,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 82  | PostgreSQL CI service job                        | —   | 🔍  | done — [report](2026-05-field-trial-82-postgresql-ci-service-job.md) **D2**                                                               |
 | 83  | Composite auth API key + Bearer                  | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 84  | Idempotency-Key header                           | —   | —   | done — [report](2026-05-field-trial-128-idempotency-key-middleware.md) **D4** [#73](https://github.com/hideyukiMORI/nene2-node/issues/73) |
-| 85  | Optimistic concurrency / version                 | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 85  | Optimistic concurrency / version                 | —   | —   | done — FT130 / [#75](https://github.com/hideyukiMORI/nene2-node/issues/75) **D4**                                                         |
 | 86  | Graceful shutdown / pool drain                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 87  | Pool exhaustion under burst                      | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 88  | Invalid `DATABASE_URL` at boot                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
@@ -123,7 +123,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 92  | Domain handler registration order                | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 93  | Problem Details `instance` URI                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 94  | CORS preflight + Bearer                          | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
-| 95  | Throttle Redis storage                           | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 95  | Throttle Redis storage                           | 🔒  | —   | open — FT131 partial; see throttle-storage-adapters.md                                                                                    |
 | 96  | Bulk JSON / request size                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 97  | SQL injection parameterized reaffirm             | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 98  | JWT expiry / clock skew                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
@@ -145,6 +145,9 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 127 | Unique → 409 sandbox                             | —   | —   | done — [report](2026-05-field-trial-127-unique-violation-409-sandbox.md) **D4**                                                           |
 | 128 | Idempotency middleware                           | —   | —   | done — [report](2026-05-field-trial-128-idempotency-key-middleware.md) **D4**                                                             |
 | 129 | FK → 422 sandbox                                 | —   | —   | done — [report](2026-05-field-trial-129-fk-violation-422-sandbox.md) **D4**                                                               |
+| 130 | Optimistic version sandbox                       | —   | —   | done — [report](2026-05-field-trial-130-optimistic-version-sandbox.md) **D4**                                                             |
+| 131 | JWT `sub` throttle key                           | —   | —   | done — [report](2026-05-field-trial-131-jwt-sub-throttle-key.md) **D3**                                                                   |
+| 132 | BOLA `assertResourceOwner`                       | 🔒  | —   | done — [report](2026-05-field-trial-132-bola-assert-resource-owner.md) **D4**                                                             |
 | 114 | utf8mb4 emoji MySQL                              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 115 | TIMESTAMP timezone                               | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 116 | NULL vs undefined in repos                       | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
@@ -155,7 +158,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 121 | nene2-js Problem Details parity                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 122 | AGENTS.md accuracy                               | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 123 | Semver / breaking policy                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
-| 124 | Rate limit per JWT `sub`                         | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 124 | Rate limit per JWT `sub`                         | 🔒  | —   | done — FT131 / [#75](https://github.com/hideyukiMORI/nene2-node/issues/75) **D3**                                                         |
 | 125 | Webhook HMAC middleware                          | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 126 | Campaign wrap / FT127+ plan                      | —   | —   | done — [report](2026-05-field-trial-126-campaign-wrap-ft127-.md) **D0**                                                                   |
 

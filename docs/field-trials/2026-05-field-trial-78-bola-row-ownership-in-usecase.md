@@ -13,7 +13,7 @@
 
 **Observed:** Exercised or inferred during high-friction campaign FT78.  
 **Action:** ft078-bola-orders  
-**Status:** **documented**
+**Status:** **documented** + opt-in guard FT132 / v0.1.10
 
 ## Follow-up
 
