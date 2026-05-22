@@ -59,6 +59,16 @@ flowchart LR
 - The scope matches an open Issue exactly.
 - A follow-up is explicitly listed in the Issue or milestone.
 
+### Parent vs per-FT Issues
+
+- **[#29](https://github.com/hideyukiMORI/nene2-node/issues/29)** tracks the FT2–100 **program** (backlog, batches).
+- Each **completed FT or release** still gets its own Issue + branch `type/<issue>-summary` + PR (`Closes #N`).
+- Field trial reports cite the **dedicated Issue** and optionally parent #29.
+
+### Retroactive Issues (audit)
+
+If work merged without an Issue, open one **after merge**, comment `Completed in PR #…`, close it, and comment on the PR (`Retroactive tracking: closes #N`). Example mapping (2026-05-22): #47↔PR43, #48↔PR44, #49↔PR45, #50↔PR46, #51↔PR36.
+
 ### Issue content (minimum)
 
 - **Title:** clear, English, actionable (e.g. `feat: add GET /health with contract test`).
