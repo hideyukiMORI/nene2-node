@@ -17,6 +17,16 @@
 
 - [x] `npm publish --access public` → `@hideyukimori/nene2-framework@0.1.0`
 - [x] GitHub Release [v0.1.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.0)
+- [x] Trusted Publisher: `hideyukiMORI/nene2-node` · workflow `release.yml` (OIDC)
+- [x] Publishing access: 2FA + disallow tokens (recommended; compatible with OIDC)
+
+### Next releases (automated)
+
+1. Bump `version` in `package.json` + `CHANGELOG.md` on `main` (PR).
+2. Publish GitHub Release with tag `vX.Y.Z` matching `package.json`.
+3. `.github/workflows/release.yml` runs `npm publish --provenance` (no `NPM_TOKEN` secret).
+
+Prerelease GitHub releases are skipped (`prerelease: false` filter).
 
 ## Post-release
 
