@@ -2,7 +2,12 @@
  * @hideyukimori/nene2-framework — NENE2-compatible Node.js API framework.
  */
 
-export { createApp, type CreateAppOptions, type Nene2App } from './app/create-app.js';
+export {
+  createApp,
+  type CreateAppOptions,
+  type Nene2App,
+  type Nene2AppDatabase,
+} from './app/create-app.js';
 export { loadAppSettings, type AppSettings } from './config/app-settings.js';
 export {
   buildHealthResponse,

@@ -54,6 +54,15 @@ NENE2_NODE_PORT=3000
 
 `createApp()` is **async** — it connects to the database, runs example schema bootstrap, and registers the database health check when `NENE2_NODE_DATABASE_URL` is set.
 
+**App-owned tables:** reuse the same pool via `nene2.database.executor` (do not call `createDatabaseRuntime()` again with the same URL):
+
+```typescript
+const nene2 = await createApp({ settings });
+const executor = nene2.database?.executor;
+// run your DDL / repositories, then mount routes on nene2.app
+await nene2.shutdown?.();
+```
+
 **Production schema:** use your own migration tool for business tables — see [database-migrations.md](../development/database-migrations.md). Example bootstrap is not a migrator.
 
 ## Reference sandbox

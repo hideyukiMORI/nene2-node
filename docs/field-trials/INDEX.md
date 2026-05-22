@@ -76,5 +76,6 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 70  | 2026-05-22 | [2026-05-field-trial-70-ci-mysql-service.md](2026-05-field-trial-70-ci-mysql-service.md)               | CI MySQL service    | —   | 🔍  |
 | 71  | 2026-05-22 | [2026-05-field-trial-71-migration-story.md](2026-05-field-trial-71-migration-story.md)                 | Migration story     | —   | —   |
 | 72  | 2026-05-22 | [2026-05-field-trial-72-connection-pool.md](2026-05-field-trial-72-connection-pool.md)                 | Connection pool     | —   | —   |
+| 73  | 2026-05-22 | [2026-05-field-trial-73-orders-nested.md](2026-05-field-trial-73-orders-nested.md)                     | Orders nested       | —   | 🔍  |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.

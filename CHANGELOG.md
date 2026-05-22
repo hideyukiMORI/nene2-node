@@ -8,6 +8,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet — next patch ships with the next completed Phase 2 FT._
 
+## [0.1.4] - 2026-05-22
+
+### Added
+
+- `Nene2App.database` — `{ executor, backend }` when `NENE2_NODE_DATABASE_URL` is set (FT73 business-app pattern)
+
 ## [0.1.3] - 2026-05-22
 
 ### Added

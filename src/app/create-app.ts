@@ -34,6 +34,8 @@ import { registerTagRoutes } from '../example/tag/register-tag-routes.js';
 import { SqliteTagRepository } from '../example/tag/sqlite-tag-repository.js';
 import { createDatabaseHealthCheck } from '../database/database-health-check.js';
 import { createDatabaseRuntime } from '../database/create-database-runtime.js';
+import type { DatabaseQueryExecutor } from '../database/database-query-executor.js';
+import type { DatabaseBackend } from '../database/parse-database-url.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -45,10 +47,17 @@ export interface CreateAppOptions {
   readonly tagRepository?: TagRepository;
 }
 
+export interface Nene2AppDatabase {
+  readonly executor: DatabaseQueryExecutor;
+  readonly backend: DatabaseBackend;
+}
+
 export interface Nene2App {
   readonly app: Hono;
   readonly settings: AppSettings;
   readonly problems: ProblemDetailsFactory;
+  /** Present when `NENE2_NODE_DATABASE_URL` is set — share executor for app-owned repositories. */
+  readonly database?: Nene2AppDatabase;
   readonly shutdown?: () => Promise<void>;
 }
 
@@ -68,10 +77,12 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   let noteRepository = options.noteRepository;
   let tagRepository = options.tagRepository;
   let shutdown: (() => Promise<void>) | undefined;
+  let database: Nene2AppDatabase | undefined;
 
   if (settings.databaseUrl !== undefined) {
     const runtime = await createDatabaseRuntime(settings.databaseUrl);
     shutdown = runtime.shutdown;
+    database = { executor: runtime.executor, backend: runtime.backend };
     const executor = runtime.executor;
     if (noteRepository === undefined) {
       noteRepository = new SqliteNoteRepository(executor);
@@ -254,8 +265,13 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   registerNoteRoutes(app, { repository: noteRepository, problems });
   registerTagRoutes(app, { repository: tagRepository, problems });
 
-  if (shutdown === undefined) {
-    return { app, settings, problems };
+  const base = { app, settings, problems };
+  if (database === undefined && shutdown === undefined) {
+    return base;
   }
-  return { app, settings, problems, shutdown };
+  return {
+    ...base,
+    ...(database !== undefined ? { database } : {}),
+    ...(shutdown !== undefined ? { shutdown } : {}),
+  };
 }
