@@ -1,6 +1,7 @@
 # Milestone — Master plan (NENE2 functional parity)
 
 **Horizon:** 2026 Q2–Q3  
+**Current release:** [v0.1.21](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21) (2026-05-22).  
 **North star:** `@hideyukimori/nene2-framework` serves **OpenAPI-compatible JSON APIs** with the same public behavior as [NENE2](https://github.com/hideyukiMORI/NENE2), built with **strict TypeScript**, **testable clean architecture**, and **Node-native** patterns (not PHP transliteration).
 
 **Parity benchmark:** [nene2-python](https://github.com/hideyukiMORI/nene2-python) module boundaries.  

@@ -54,6 +54,8 @@ NENE2_NODE_PORT=3000
 
 `createApp()` is **async** — it connects to the database, runs example schema bootstrap, and registers the database health check when `NENE2_NODE_DATABASE_URL` is set.
 
+**Example routes:** `/examples/notes` and `/examples/tags` require Bearer JWT and scope rows to JWT `sub` when examples are enabled. In production, set `NENE2_NODE_INCLUDE_EXAMPLES=false` (default) or `createApp({ includeExamples: false })` — see [commercial-readiness.md](../development/commercial-readiness.md).
+
 **App-owned tables:** reuse the same pool via `nene2.database.executor` (do not call `createDatabaseRuntime()` again with the same URL):
 
 ```typescript

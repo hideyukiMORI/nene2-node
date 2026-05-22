@@ -7,7 +7,9 @@ Node.js port of [NENE2](https://github.com/hideyukiMORI/NENE2) with **functional
 
 ## North star
 
-Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatible API on Node without PHP — same JSON contracts, Node-idiomatic internals.
+Ship `@hideyukimori/nene2-framework` where a team can run a NENE2-compatible API on Node without PHP — same JSON contracts, Node-idiomatic internals.
+
+**Current release:** [v0.1.21](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21) (2026-05-22).
 
 | Principle           | Practice                                         |
 | ------------------- | ------------------------------------------------ |
@@ -81,13 +83,25 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 [Milestone](milestones/2026-05-phase5-mcp-publish.md)
 
 - [x] MCP HTTP boundary ([#17](https://github.com/hideyukiMORI/nene2-node/issues/17))
-- [x] `0.1.0` publish candidate (`npm run build`, checklist)
+- [x] `0.1.0` first npm publish ([#21](https://github.com/hideyukiMORI/nene2-node/issues/21))
+
+---
+
+## Phase 6 — Application integration (field trials) ✅
+
+Phase 2 FT campaign **FT67–148** complete (see [backlog](field-trials/backlog.md), [friction index](field-trials/2026-05-phase2-friction-index.md)).
+
+- [x] Greenfield npm install, MySQL/PostgreSQL Compose + CI service jobs (FT67–70, #82)
+- [x] Business-app sandboxes: orders, bearer on app routes, transactions, pagination (FT73–76)
+- [x] High-friction campaign: idempotency, optimistic concurrency, BOLA, webhooks, Redis, read replica (FT77–145, [#71](https://github.com/hideyukiMORI/nene2-node/issues/71))
+- [x] Example hardening: BOLA on note/tag, default domain handlers, UTC `created_at` (FT146–148, v0.1.19–0.1.21)
+- [x] Coverage gates 80% / UseCase 90%; commercial readiness (`includeExamples`, Jose JWT, shutdown)
 
 ---
 
 ## Field trials
 
-See `docs/development/field-trial-culture.md`. **FT1–66** done; **FT67–100 backlog:** `docs/field-trials/backlog.md`. Docs-first: `docs/development/README.md`, `release-process.md`, `cross-repo-parity.md`.
+See `docs/development/field-trial-culture.md`. **FT1–148** complete for Phase 2 scope; index: `docs/field-trials/INDEX.md`. Remaining work is **doc index hygiene** ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29)) and optional 0.2.0 breaking inventory — not greenfield FT backlog.
 
 ---
 

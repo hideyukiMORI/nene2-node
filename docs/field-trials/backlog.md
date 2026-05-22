@@ -1,4 +1,4 @@
-# Field trial backlog (FT2–FT100)
+# Field trial backlog (FT2–FT148)
 
 **Policy:** Docs-first — each FT updates `docs/development/*` (or ADR) when friction appears, then adds a report. Parent Issue: [#29](https://github.com/hideyukiMORI/nene2-node/issues/29).
 
@@ -165,28 +165,31 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 147 | Default domain handlers in createApp             | —   | —   | done — [report](2026-05-field-trial-147-default-domain-handlers.md) **D3** [#100](https://github.com/hideyukiMORI/nene2-node/issues/100)  |
 | 148 | UTC `created_at` on example note/tag             | —   | —   | done — [report](2026-05-field-trial-148-utc-created-at-example.md) **D3** [#102](https://github.com/hideyukiMORI/nene2-node/issues/102)   |
 
-## Category F — Ecosystem & publish (FT81–FT100)
+## Category F — Ecosystem & publish themes
+
+**Note:** These are **theme groups** from the original backlog sketch — not duplicate FT numbers. Category E already uses FT81+ for application-integration items (e.g. FT81 = PostgreSQL `transactionManager`).
 
 Themes: npm consumer DX, Trusted Publisher release, CHANGELOG discipline, nene2-js integration sample, ADR for new public APIs, coverage gates, contributor onboarding, AI agent (`AGENTS.md`) accuracy, cross-repo parity checklist, post-1.0 deprecation policy.
 
-| Range  | Focus                   | Status  |
-| ------ | ----------------------- | ------- |
-| 81–90  | Package & release       | planned |
-| 91–100 | Cross-repo & governance | planned |
+| Theme group             | Focus                                                | Status                                                                                                   |
+| ----------------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Package & release       | npm install, OIDC publish, provenance, CHANGELOG     | ✅ done — FT65–66, FT67, FT101–105, campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71) |
+| Cross-repo & governance | nene2-js parity, AGENTS.md, semver, parity checklist | ✅ done — FT121–126, FT122–123, coverage gates v0.1.14–0.1.18                                            |
+
+Future ecosystem FTs (post–Phase 2) should open new Issues — do not reuse Category F row numbers as FT IDs.
 
 ## Execution batches
 
-| Batch | FT range                   | PR target         |
-| ----- | -------------------------- | ----------------- |
-| 1     | FT2–FT12 + docs foundation | ✅ PR #30         |
-| 2     | FT13–FT18                  | ✅ PR #31         |
-| 3     | FT19–FT30                  | ✅ PR #32         |
-| 4     | FT31–FT42                  | ✅ PR #33         |
-| 5     | FT43–FT54                  | ✅ PR #34         |
-| 6     | FT55–FT66                  | ✅ PR #35         |
-| 7     | FT67–FT72 (install + DB)   | next — Phase 2    |
-| 8     | FT73–FT80 (business apps)  | TBD               |
-| 9     | FT81–FT100 (publish/gov)   | TBD               |
-| …     | …                          | ~10–12 FTs per PR |
+| Batch | FT range                   | PR target                          |
+| ----- | -------------------------- | ---------------------------------- |
+| 1     | FT2–FT12 + docs foundation | ✅ PR #30                          |
+| 2     | FT13–FT18                  | ✅ PR #31                          |
+| 3     | FT19–FT30                  | ✅ PR #32                          |
+| 4     | FT31–FT42                  | ✅ PR #33                          |
+| 5     | FT43–FT54                  | ✅ PR #34                          |
+| 6     | FT55–FT66                  | ✅ PR #35                          |
+| 7     | FT67–FT72 (install + DB)   | ✅ PRs #46, #55, #59–61, #66, etc. |
+| 8     | FT73–FT80 (business apps)  | ✅ PRs #62–#72                     |
+| 9     | FT81–FT126 + FT146–148     | ✅ PR #72 campaign, #76–#103       |
 
 Update [INDEX.md](INDEX.md) when each FT report lands.

@@ -18,7 +18,7 @@ Entry point for AI agents working on **nene2-node**.
 - Client sibling: `docs/integrations/relationship-to-nene2-js.md`
 - Roadmap: `docs/roadmap.md`
 - Current work: `docs/todo/current.md`
-- Field trials: `docs/field-trials/backlog.md`, `docs/field-trials/INDEX.md` (docs-first loop to ~FT100)
+- Field trials: `docs/field-trials/backlog.md`, `docs/field-trials/INDEX.md` (FT1–148 complete for Phase 2 scope)
 - Cross-repo parity: `docs/integrations/cross-repo-parity.md`
 - Contributor path: `docs/development/contributor-onboarding.md`
 - Release: `docs/development/release-process.md`
@@ -42,7 +42,7 @@ Node.js framework port of NENE2:
 - OpenAPI-aligned HTTP surface and Problem Details
 - Clean architecture (UseCase, Repository, Handler)
 - Strict TypeScript, Vitest, ESLint, Prettier
-- npm publish path for `@hideyukimori/nene2-framework` when stable
+- npm package `@hideyukimori/nene2-framework` published (latest: see [CHANGELOG.md](CHANGELOG.md))
 - **English** for user-facing docs in this repo (international audience)
 
 PHP runtime and OpenAPI **authoring** stay in [NENE2](https://github.com/hideyukiMORI/NENE2). Parity reference: [nene2-python](https://github.com/hideyukiMORI/nene2-python).

@@ -17,7 +17,7 @@ Naming candidates for the Node port: `nene2-node`, `nene2-ts`, `nene2-server`. I
 ## Decision
 
 1. Create sibling repository **`nene2-node`** next to `NENE2` and `nene2-js`.
-2. Primary npm package: **`@hideyukimori/nene2-framework`** (private until first publish).
+2. Primary npm package: **`@hideyukimori/nene2-framework`** — **published** on npm since v0.1.0 (2026-05-22); OIDC Trusted Publisher via `.github/workflows/release.yml`.
 3. **In scope:** HTTP runtime, middleware, auth, Problem Details, example domains, OpenAPI compatibility tests, English docs.
 4. **Out of scope:** PHP runtime, OpenAPI authoring, typed HTTP client (`nene2-js`), nene-mcp stdio duplicate, consumer business logic.
 5. OpenAPI contract **source of truth** remains NENE2 `docs/openapi/openapi.yaml`.

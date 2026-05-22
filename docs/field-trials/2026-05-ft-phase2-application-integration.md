@@ -1,6 +1,6 @@
 # FT Phase 2 — Application integration (FT67+)
 
-**Status:** Active from 2026-05-22  
+**Status:** ✅ Complete (FT67–148, npm **v0.1.21**, 2026-05-22)  
 **Issue:** [#51](https://github.com/hideyukiMORI/nene2-node/issues/51) (parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29))  
 **Prior phase:** FT1–66 validated framework modules + docs (see [INDEX.md](INDEX.md)).
 
@@ -82,7 +82,7 @@ Use as FT themes and report sections (English reports, Japanese ok in Issues).
 - [ ] No secret leakage in app-level logs
 - [ ] Rate limit at edge vs in-process
 
-## FT67–100 mapped themes (revised backlog)
+## FT67–148 mapped themes (revised backlog)
 
 See [backlog.md](backlog.md) Category E/F. Summary:
 

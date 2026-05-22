@@ -61,13 +61,16 @@ Align with nene2-python `mypy --strict` intent:
 
 Current `tsconfig.json` already enables `strict`, `noUncheckedIndexedAccess`, and `exactOptionalPropertyTypes`. Tightening ESLint for `src/` is tracked as tooling matures.
 
-## OpenAPI validation (planned)
+## OpenAPI contract testing (implemented)
 
-After Phase 1 contract harness:
+Fixture-based contract tests run in CI via `npm test` (no live NENE2 checkout required):
 
-- Parse pinned `openapi.yaml` (from `NENE2_NODE_OPENAPI_PATH`).
-- Validate shared schemas and documented examples.
-- HTTP contract tests assert status, `Content-Type`, and Problem Details shape — not full stack traces.
+- Pinned revision: `tests/fixtures/contract/openapi-pin.txt`
+- Fixtures: `tests/fixtures/contract/*.json` (system routes + example note/tag)
+- Tests: `tests/contract/system-endpoints.test.ts`, `note-endpoints.test.ts`, `tag-endpoints.test.ts`
+- Policy: `openapi-contract-testing.md`
+
+HTTP contract tests assert status, `Content-Type`, and Problem Details shape — not full stack traces. Full OpenAPI schema validation against live YAML is **not** automated in CI; refresh fixtures when NENE2 examples change.
 
 ## CI policy
 
@@ -88,9 +91,8 @@ Mirrors nene2-python dependency rules:
 ## Non-goals
 
 - Adding every possible linter plugin before there is code to check.
-- Mandatory 80% coverage gate in Phase 0 (target documented in `coding-standards.md` for Phase 3+).
-- **Implemented (v0.1.14+):** `npm run test:coverage` with CI gate at **80%** lines/statements/branches; **90%** UseCase floors (v0.1.17+).
 - Bundling frontend lint tooling (no `frontend/` in this repo).
+- Full OpenAPI schema validator in CI (fixture-based contract tests are the adopted baseline).
 
 ## References
 
