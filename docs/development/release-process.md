@@ -34,6 +34,14 @@ Do **not** skip versions; consumers can map FT reports to npm tags via CHANGELOG
 - Update `docs/todo/current.md` if sprint changes
 - Optional: nene2-js examples pointing at new version
 
+## Troubleshooting publish
+
+| Symptom                                                     | Action                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| GitHub Actions `npm publish` **404** on `@hideyukimori/...` | On [npm package settings](https://www.npmjs.com/package/@hideyukimori/nene2-framework/access), confirm **Trusted Publisher**: repo `hideyukiMORI/nene2-node`, workflow `release.yml`, environment blank. Re-run failed workflow or re-publish release. |
+| Local publish asks for **OTP**                              | `npm publish --access public --otp=<6-digit>` (account 2FA).                                                                                                                                                                                           |
+| Stale files in `dist/`                                      | `npm run rebuild` before publish (removed sources are not deleted by `tsc` alone).                                                                                                                                                                     |
+
 ## References
 
 - `docs/publish-checklist.md`
