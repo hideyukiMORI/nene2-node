@@ -9,10 +9,10 @@ Last updated: 2026-05-22
 
 ## Up next
 
-| ID  | Task | npm |
-| --- | ---- | --- |
-| — | Release **v0.1.12** (FT137–140) | `0.1.12` |
-| — | **FT141+** Redis throttle/idempotency, webhook replay window | `0.1.13` |
+| ID  | Task                                                         | npm      |
+| --- | ------------------------------------------------------------ | -------- |
+| —   | Release **v0.1.12** (FT137–140)                              | `0.1.12` |
+| —   | **FT141+** Redis throttle/idempotency, webhook replay window | `0.1.13` |
 
 ## Completed (in PR)
 
