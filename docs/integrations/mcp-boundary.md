@@ -20,6 +20,16 @@ nene2-node does **not** ship a stdio MCP server. Use [nene-mcp](https://github.c
 
 Tool catalog JSON and stdio protocol stay in NENE2 / nene-mcp; this repo only documents the HTTP hook.
 
+## Testing
+
+- `tests/mcp/fetch-mcp-http-client.test.ts` — mock `fetch`, auth headers, error mapping.
+- Do not point integration tests at production URLs; use local `createApp()` + `npm run dev` base URL.
+
+## Security notes
+
+- Treat MCP client credentials like API keys — env only, never fixtures.
+- `hasAuthentication()` should gate write tools in automations (parity with NENE2 MCP docs).
+
 ## Example
 
 ```typescript

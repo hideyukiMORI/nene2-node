@@ -37,6 +37,7 @@ At minimum:
 
 - Allowed origins from typed config — **no** `*` in production.
 - Development origins must still be explicit lists in config (parity with nene2-python).
+- `NENE2_NODE_CORS_ALLOW_CREDENTIALS=true` only with explicit origins (never `*`); browsers reject credential responses with wildcard origins.
 
 ## Request size
 
@@ -45,7 +46,7 @@ At minimum:
 
 ## Authentication extension points
 
-- **Bearer JWT** — `bearerTokenMiddleware` on `/examples/protected` (and paths you configure). Requires `NENE2_LOCAL_JWT_SECRET`. Verifier: `LocalBearerTokenVerifier` (HS256).
+- **Bearer JWT** — `bearerTokenMiddleware` with `includePaths: ['/examples/protected']` by default. Options also support `excludePaths` when `includePaths` is empty. Requires `NENE2_LOCAL_JWT_SECRET`. Verifier: `LocalBearerTokenVerifier` (HS256).
 - **API key** — `apiKeyAuthMiddleware` on `/machine/health`. Requires `NENE2_MACHINE_API_KEY` header `X-Api-Key`.
 - Composite auth: public vs Bearer vs API key routes — document per example app.
 

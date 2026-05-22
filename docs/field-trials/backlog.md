@@ -31,31 +31,31 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 
 ## Category B — Framework deep dive (FT19–FT50)
 
-| FT#   | Theme                                                   | 🔒    | Status  |
-| ----- | ------------------------------------------------------- | ----- | ------- |
-| 19    | `resolveHttpError` mapping                              | —     | planned |
-| 20    | OpenAPI contract fixtures                               | —     | planned |
-| 21    | `createApp` DI options                                  | —     | planned |
-| 22    | Pagination query parser                                 | —     | planned |
-| 23    | MCP `FetchMcpHttpClient`                                | —     | planned |
-| 24    | App settings matrix                                     | 🔒    | planned |
-| 25    | Health check composition                                | —     | planned |
-| 26    | Example schema migration story                          | —     | planned |
-| 27    | Throttle path excludes                                  | —     | planned |
-| 28    | CORS credentials edge cases                             | —     | planned |
-| 29    | Bearer excluded paths                                   | 🔒    | planned |
-| 30    | Request logging + request id                            | 🔒    | planned |
-| 31    | Note not-found handler                                  | —     | planned |
-| 32    | Tag not-found handler                                   | —     | planned |
-| 33    | Validation field errors shape                           | 🔒    | planned |
-| 34    | 404 / notFound hook                                     | —     | planned |
-| 35    | Composite auth patterns doc                             | —     | planned |
-| 36    | `npm run dev` DX                                        | 🔒    | planned |
-| 37    | `resolveOpenApiPath` policy                             | —     | planned |
-| 38    | Contract test maintenance                               | —     | planned |
-| 39    | Test fixtures hygiene                                   | 🔒    | planned |
-| 40    | Multi-domain SQLite                                     | —     | planned |
-| 41–50 | Reserve: middleware combos, export surface (`index.ts`) | mixed | planned |
+| FT#   | Theme                                                   | 🔒    | Status     |
+| ----- | ------------------------------------------------------- | ----- | ---------- |
+| 19    | `resolveHttpError` mapping                              | —     | ✅ batch 3 |
+| 20    | OpenAPI contract fixtures                               | 🔍    | ✅ batch 3 |
+| 21    | `createApp` DI options                                  | —     | ✅ batch 3 |
+| 22    | Pagination query parser                                 | —     | ✅ batch 3 |
+| 23    | MCP `FetchMcpHttpClient`                                | —     | ✅ batch 3 |
+| 24    | App settings matrix                                     | 🔒🔍  | ✅ batch 3 |
+| 25    | Health check composition                                | —     | ✅ batch 3 |
+| 26    | Example schema migration story                          | —     | ✅ batch 3 |
+| 27    | Throttle path excludes                                  | 🔒    | ✅ batch 3 |
+| 28    | CORS credentials edge cases                             | 🔍    | ✅ batch 3 |
+| 29    | Bearer include/exclude paths                            | —     | ✅ batch 3 |
+| 30    | Request logging + request id                            | 🔒    | ✅ batch 3 |
+| 31    | Note not-found handler                                  | —     | planned    |
+| 32    | Tag not-found handler                                   | —     | planned    |
+| 33    | Validation field errors shape                           | 🔒    | planned    |
+| 34    | 404 / notFound hook                                     | —     | planned    |
+| 35    | Composite auth patterns doc                             | —     | planned    |
+| 36    | `npm run dev` DX                                        | 🔒    | planned    |
+| 37    | `resolveOpenApiPath` policy                             | —     | planned    |
+| 38    | Contract test maintenance                               | —     | planned    |
+| 39    | Test fixtures hygiene                                   | 🔒    | planned    |
+| 40    | Multi-domain SQLite                                     | —     | planned    |
+| 41–50 | Reserve: middleware combos, export surface (`index.ts`) | mixed | planned    |
 
 ## Category C — Node / security / DX (FT51–FT80)
 
@@ -80,9 +80,10 @@ Themes: npm consumer DX, Trusted Publisher release, CHANGELOG discipline, nene2-
 
 | Batch | FT range                   | PR target                 |
 | ----- | -------------------------- | ------------------------- |
-| 1     | FT2–FT12 + docs foundation | `docs/29-ft-loop-batch-1` |
-| 2     | FT13–FT18                  | `docs/29-ft-loop-batch-2` |
-| 3     | FT19–FT30                  | TBD                       |
+| 1     | FT2–FT12 + docs foundation | ✅ PR #30                 |
+| 2     | FT13–FT18                  | ✅ PR #31                 |
+| 3     | FT19–FT30                  | `docs/29-ft-loop-batch-3` |
+| 4     | FT31–FT42                  | TBD                       |
 | …     | …                          | ~10–12 FTs per PR         |
 
 Update [INDEX.md](INDEX.md) when each FT report lands.

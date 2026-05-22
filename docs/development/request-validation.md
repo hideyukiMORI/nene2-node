@@ -41,10 +41,21 @@ Middleware must **not** encode route-specific business rules (e.g. “email must
 - English `message` and stable `code` per field.
 - Collect **all** field errors when practical (parity with NENE2 layered validation tests).
 
+## Pagination query
+
+List routes use `parsePaginationQuery()` (`src/http/pagination-query.ts`):
+
+| Query    | Default | Max |
+| -------- | ------- | --- |
+| `limit`  | 20      | 100 |
+| `offset` | 0       | —   |
+
+Invalid values → `ValidationException` (422). Example: `GET /examples/notes?limit=20&offset=0`.
+
 ## OpenAPI
 
 - Documented request bodies and error responses must match implementation.
-- Contract tests compare handler responses to pinned OpenAPI examples/fixtures.
+- Contract tests compare handler responses to pinned OpenAPI examples/fixtures — see `openapi-contract-testing.md`.
 
 ## References
 
