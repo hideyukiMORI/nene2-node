@@ -1,6 +1,6 @@
 # Milestone — Phase 2: Middleware and auth baseline
 
-**Status:** In progress  
+**Status:** Complete (2026-05-22) — [#15](https://github.com/hideyukiMORI/nene2-node/issues/15)  
 **Depends on:** Phase 1b
 
 ## Goal
@@ -13,10 +13,10 @@ Production-oriented HTTP pipeline matching NENE2 middleware order and auth patte
 - [x] `validation-failed` (422) with structured `errors[]`
 - [x] `BearerTokenMiddleware` + `LocalBearerTokenVerifier` (HS256, timing-safe signature)
 - [x] `GET /examples/protected` with JWT claims in response
-- [ ] `ThrottleMiddleware` — in-memory, 429 + Problem Details
-- [ ] CORS from `AppSettings` (explicit origins)
-- [ ] Structured logging (pino or node util) with request id
-- [ ] Middleware order documented and tested
+- [x] `ThrottleMiddleware` — in-memory, 429 + Problem Details
+- [x] CORS from `AppSettings` (explicit origins)
+- [x] Structured logging (JSON lines via `console.info`) with request id
+- [x] Middleware order documented and tested (`docs/development/middleware-pipeline.md`)
 - [ ] Framework FT#1 report (optional) — middleware stack
 
 ## Reference

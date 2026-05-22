@@ -15,9 +15,12 @@ import type { DomainExceptionHandler } from '../error/domain-exception-handler.j
 import { resolveHttpError } from '../error/resolve-http-error.js';
 import { apiKeyAuthMiddleware } from '../middleware/api-key-auth.js';
 import { bearerTokenMiddleware } from '../middleware/bearer-token.js';
+import { corsMiddleware } from '../middleware/cors.js';
 import { requestIdMiddleware } from '../middleware/request-id.js';
+import { requestLoggingMiddleware } from '../middleware/request-logging.js';
 import { requestSizeLimitMiddleware } from '../middleware/request-size-limit.js';
 import { securityHeadersMiddleware } from '../middleware/security-headers.js';
+import { throttleMiddleware } from '../middleware/throttle.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
 import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
 import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
@@ -72,7 +75,36 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
 
   app.use('*', requestIdMiddleware());
   app.use('*', securityHeadersMiddleware());
+  if (settings.requestLoggingEnabled) {
+    app.use(
+      '*',
+      requestLoggingMiddleware({
+        excludePaths:
+          settings.requestLoggingExcludePaths.length > 0
+            ? settings.requestLoggingExcludePaths
+            : ['/health'],
+      }),
+    );
+  }
+  app.use(
+    '*',
+    corsMiddleware({
+      allowedOrigins: settings.corsAllowedOrigins,
+      allowCredentials: settings.corsAllowCredentials,
+    }),
+  );
   app.use('*', requestSizeLimitMiddleware(problems, settings.requestMaxBodyBytes));
+  if (settings.throttleLimit !== undefined) {
+    app.use(
+      '*',
+      throttleMiddleware(problems, {
+        limit: settings.throttleLimit,
+        windowSeconds: settings.throttleWindowSeconds,
+        excludePaths:
+          settings.throttleExcludePaths.length > 0 ? settings.throttleExcludePaths : ['/health'],
+      }),
+    );
+  }
   app.use(
     '*',
     apiKeyAuthMiddleware(problems, {
