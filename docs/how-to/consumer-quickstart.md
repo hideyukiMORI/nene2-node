@@ -63,6 +63,15 @@ const executor = nene2.database?.executor;
 await nene2.shutdown?.();
 ```
 
+**Bearer on business routes:** pass extra path prefixes:
+
+```typescript
+const nene2 = await createApp({
+  settings,
+  bearerIncludePaths: ['/orders'],
+});
+```
+
 **Production schema:** use your own migration tool for business tables — see [database-migrations.md](../development/database-migrations.md). Example bootstrap is not a migrator.
 
 ## Reference sandbox

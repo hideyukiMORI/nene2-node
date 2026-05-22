@@ -77,5 +77,6 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 71  | 2026-05-22 | [2026-05-field-trial-71-migration-story.md](2026-05-field-trial-71-migration-story.md)                 | Migration story     | —   | —   |
 | 72  | 2026-05-22 | [2026-05-field-trial-72-connection-pool.md](2026-05-field-trial-72-connection-pool.md)                 | Connection pool     | —   | —   |
 | 73  | 2026-05-22 | [2026-05-field-trial-73-orders-nested.md](2026-05-field-trial-73-orders-nested.md)                     | Orders nested       | —   | 🔍  |
+| 74  | 2026-05-22 | [2026-05-field-trial-74-bearer-business-routes.md](2026-05-field-trial-74-bearer-business-routes.md)   | Bearer business     | —   | 🔍  |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
