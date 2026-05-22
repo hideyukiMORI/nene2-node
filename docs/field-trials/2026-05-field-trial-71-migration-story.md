@@ -15,7 +15,11 @@
 
 ## Friction
 
-- _None blocking._
+### F-0: No sandbox run (difficulty D0 — policy doc only)
+
+**Observed:** FT71 did not execute a Tier A business app or migration tool against a real database.  
+**Impact:** “No friction” here means **friction was not exercised**, not that production apps have no obstacles.  
+**Action:** Raise difficulty from **FT73** — nested REST + multi-table app in `../nene2-node-FT/` (see [field-trial-culture.md](../development/field-trial-culture.md) difficulty ramp).
 
 ## DX (one paragraph)
 

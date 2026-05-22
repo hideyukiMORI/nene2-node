@@ -176,6 +176,26 @@ When running FT2–FT100 (see `docs/field-trials/backlog.md`):
 3. Use `docs/templates/field-trial-report-compact.md` for framework validation FTs; full template + security/adversarial appendices when cadence requires.
 4. Batch ~10–12 FTs per PR under parent Issue [#29](https://github.com/hideyukiMORI/nene2-node/issues/29); keep `INDEX.md` and `backlog.md` status in sync.
 
+## Difficulty ramp (Phase 2 business apps)
+
+Increase realism each FT. **Doc-only FTs without a Tier A sandbox do not count as “no friction”** — they mean friction was not exercised.
+
+| Level  | What you run                                          | Examples                     | Expect friction?              |
+| ------ | ----------------------------------------------------- | ---------------------------- | ----------------------------- |
+| **D0** | Policy / dev docs only                                | FT71 migration story         | Rare — record “not exercised” |
+| **D1** | Infra sandbox (install, Compose, CI)                  | FT67–70                      | Yes — adapters, env, CI       |
+| **D2** | Single-domain CRUD on one DB                          | Examples notes/tags on MySQL | Moderate                      |
+| **D3** | **Business slice** — 2+ tables, nested REST, app repo | FT73 orders/items            | **Required**                  |
+| **D4** | Auth + DB + ownership + transactions                  | FT74–78                      | **Required**                  |
+| **D5** | Full compose deploy + prod checklist                  | FT77, FT79–80                | **Required**                  |
+
+Rules:
+
+- Do **not** stay at D0/D1 after FT70 except for tiny release/docs chores.
+- **FT72** (pool docs) is D0 — keep short; **FT73+** must be D3+ with `../nene2-node-FT/ftNNN-*` sandbox.
+- If an FT completes with “no friction” at D3+, **raise difficulty** next (extra domain, Bearer, BOLA, migration tool in app).
+- File Issues for every real blocker before the next FT number.
+
 ## Resolve Issues before the next FT (Phase 2+)
 
 When a sandbox FT opens GitHub Issues (e.g. #37, #38):
