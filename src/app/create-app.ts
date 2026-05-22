@@ -45,6 +45,8 @@ export interface CreateAppOptions {
   readonly domainHandlers?: readonly DomainExceptionHandler[];
   readonly noteRepository?: NoteRepository;
   readonly tagRepository?: TagRepository;
+  /** Extra path prefixes protected by bearer middleware (e.g. `/orders`). */
+  readonly bearerIncludePaths?: readonly string[];
 }
 
 export interface Nene2AppDatabase {
@@ -169,11 +171,12 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
       protectedPaths: ['/machine/health'],
     }),
   );
+  const bearerIncludePaths = ['/examples/protected', ...(options.bearerIncludePaths ?? [])];
   app.use(
     '*',
     bearerTokenMiddleware(problems, {
       verifier: tokenVerifier,
-      includePaths: ['/examples/protected'],
+      includePaths: bearerIncludePaths,
     }),
   );
 

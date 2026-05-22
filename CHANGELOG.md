@@ -8,6 +8,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet — next patch ships with the next completed Phase 2 FT._
 
+## [0.1.5] - 2026-05-22
+
+### Added
+
+- `CreateAppOptions.bearerIncludePaths` — protect app business routes with bearer middleware (FT74)
+
 ## [0.1.4] - 2026-05-22
 
 ### Added
