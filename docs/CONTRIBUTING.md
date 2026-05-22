@@ -6,19 +6,27 @@ nene2-node is built through small, Issue-driven changes. This document is the sh
 
 ## Required reading
 
-| Topic               | Document                                        |
-| ------------------- | ----------------------------------------------- |
-| Scope (do / do not) | `docs/scope.md`                                 |
-| Workflow            | `docs/workflow.md`                              |
-| Commit messages     | `docs/development/commit-conventions.md`        |
-| Coding standards    | `docs/development/coding-standards.md`          |
-| AI tools            | `docs/integrations/ai-tools.md`                 |
-| NENE2 relationship  | `docs/integrations/relationship-to-nene2.md`    |
-| nene2-js sibling    | `docs/integrations/relationship-to-nene2-js.md` |
-| Roadmap             | `docs/roadmap.md`                               |
-| Current work        | `docs/todo/current.md`                          |
+| Topic                    | Document                                         |
+| ------------------------ | ------------------------------------------------ |
+| Scope (do / do not)      | `docs/scope.md`                                  |
+| Engineering policy index | `docs/development/engineering-policy.md`         |
+| Issue-driven workflow    | `docs/workflow.md` (Issue → branch → PR → merge) |
+| Commit messages          | `docs/development/commit-conventions.md`         |
+| Coding standards         | `docs/development/coding-standards.md`           |
+| Quality gates            | `docs/development/quality-tools.md`              |
+| Domain layer             | `docs/development/domain-layer.md`               |
+| API errors               | `docs/development/api-error-responses.md`        |
+| Security                 | `docs/development/security-policy.md`            |
+| Self-review              | `docs/development/self-review.md`                |
+| AI tools                 | `docs/integrations/ai-tools.md`                  |
+| NENE2 relationship       | `docs/integrations/relationship-to-nene2.md`     |
+| nene2-js sibling         | `docs/integrations/relationship-to-nene2-js.md`  |
+| Roadmap                  | `docs/roadmap.md`                                |
+| Current work             | `docs/todo/current.md`                           |
 
 ## Collaboration policy
+
+Full lifecycle: **`docs/workflow.md`** (Issue → branch → implement → commit → push → PR → merge → sync `main`).
 
 - Start work from a GitHub Issue.
 - Use one branch and one PR per focused work unit.
@@ -32,8 +40,11 @@ Do not commit passwords, tokens, private URLs, production credentials, or local 
 
 ## Engineering theme
 
+Strictness is intentional: inherit NENE2 / nene2-python rules unless an ADR documents a Node-specific exception. See `docs/development/engineering-policy.md`.
+
 - strict TypeScript, explicit exports, small modules
 - OpenAPI-compatible HTTP behavior over ad-hoc response shapes
 - clean architecture — domain code free of framework imports
-- tests that lock HTTP contracts and Problem Details shapes
-- structure readable to humans and AI agents
+- security-first middleware, validation, and safe Problem Details
+- self-review checklists under `docs/review/` before PR
+- `npm run check` before push when code changes

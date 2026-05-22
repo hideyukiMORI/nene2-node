@@ -5,9 +5,13 @@ Entry point for AI agents working on **nene2-node**.
 ## Read first
 
 - Scope (mandatory): `docs/scope.md`
+- Engineering policy (mandatory): `docs/development/engineering-policy.md`
 - Collaboration: `docs/CONTRIBUTING.md`
-- Workflow: `docs/workflow.md`
+- Issue-driven workflow: `docs/workflow.md` (Issue → branch → commit → push → PR → merge)
 - Coding standards: `docs/development/coding-standards.md`
+- Quality / security: `docs/development/quality-tools.md`, `docs/development/security-policy.md`
+- Domain / errors: `docs/development/domain-layer.md`, `docs/development/api-error-responses.md`
+- Self-review: `docs/development/self-review.md`, `docs/review/`
 - Commits: `docs/development/commit-conventions.md`
 - NENE2 boundary: `docs/integrations/relationship-to-nene2.md`
 - Client sibling: `docs/integrations/relationship-to-nene2-js.md`
@@ -16,6 +20,8 @@ Entry point for AI agents working on **nene2-node**.
 
 ## Operating rules
 
+- Follow `docs/development/engineering-policy.md`; do not relax upstream rules without an ADR.
+- Run `npm run check` before finishing code changes; use `docs/review/` checklists in PR notes.
 - Work from GitHub Issues. Create an Issue before implementation or policy doc changes.
 - Do not commit directly to `main`. Branch: `type/issue-number-summary`.
 - Keep `docs/todo/current.md` aligned with Issues and PRs.

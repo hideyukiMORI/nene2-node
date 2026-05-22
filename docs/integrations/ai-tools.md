@@ -13,13 +13,15 @@ nene2-node should be easy for AI agents to inspect, change, and verify without g
 
 ## Agent workflow
 
+Full lifecycle (Issue, branch, commit, push, PR, merge): `docs/workflow.md`.
+
 1. Confirm or create a GitHub Issue.
 2. Check roadmap and `docs/todo/current.md`.
 3. Branch from `main`: `type/issue-number-summary`.
 4. Make focused changes only.
 5. Update docs when behavior or policy changes.
 6. Run `npm run check` or the narrowest subset.
-7. Commit, push, PR, merge unless the user narrowed scope.
+7. Commit, push, PR, merge unless the user narrowed scope (see workflow exceptions).
 
 ## Safety boundaries
 
