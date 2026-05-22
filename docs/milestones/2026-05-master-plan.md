@@ -20,15 +20,15 @@
 
 ## Phase map
 
-| Phase | Milestone doc                         | Target                                 |
-| ----- | ------------------------------------- | -------------------------------------- |
-| 0     | `2026-05-initial-bootstrap.md`        | Governance ✅                          |
-| 1     | `2026-05-phase1-runtime-skeleton.md`  | Hono + system routes ✅                |
-| 1b    | `2026-05-phase1b-contract-and-dev.md` | OpenAPI pin + `npm run dev`            |
-| 2     | `2026-05-phase2-middleware-auth.md`   | Pipeline + Bearer + throttle + logging |
-| 3     | `2026-05-phase3-note-crud.md`         | Note UseCase / SQLite / OpenAPI notes  |
-| 4     | `2026-05-phase4-database-health.md`   | Executor, transactions, DB health      |
-| 5     | `2026-05-phase5-mcp-publish.md`       | MCP boundary + npm `0.1.0`             |
+| Phase | Milestone doc                         | Target                                                                                              |
+| ----- | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 0     | `2026-05-initial-bootstrap.md`        | Governance ✅                                                                                       |
+| 1     | `2026-05-phase1-runtime-skeleton.md`  | Hono + system routes ✅                                                                             |
+| 1b    | `2026-05-phase1b-contract-and-dev.md` | OpenAPI pin + `npm run dev` ✅                                                                      |
+| 2     | `2026-05-phase2-middleware-auth.md`   | Pipeline + Bearer + throttle + logging ✅                                                           |
+| 3     | `2026-05-phase3-note-crud.md`         | Note UseCase / SQLite / OpenAPI notes ✅                                                            |
+| 4     | `2026-05-phase4-database-health.md`   | Executor, transactions, DB health ✅                                                                |
+| 5     | `2026-05-phase5-mcp-publish.md`       | MCP boundary + npm `0.1.0` ✅ (publish [#21](https://github.com/hideyukiMORI/nene2-node/issues/21)) |
 
 ## Execution rules
 

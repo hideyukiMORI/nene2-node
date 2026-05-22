@@ -4,7 +4,7 @@ All notable changes to `@hideyukimori/nene2-framework` are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning follows [SemVer](https://semver.org/).
 
-## [0.1.0] - Unreleased
+## [0.1.0] - 2026-05-22
 
 ### Added
 
