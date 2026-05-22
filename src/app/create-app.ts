@@ -52,6 +52,7 @@ export interface CreateAppOptions {
 
 export interface Nene2AppDatabase {
   readonly executor: DatabaseQueryExecutor;
+  readonly readExecutor?: DatabaseQueryExecutor;
   readonly backend: DatabaseBackend;
   readonly transactionManager?: DatabaseTransactionManager;
 }
@@ -84,11 +85,12 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   let database: Nene2AppDatabase | undefined;
 
   if (settings.databaseUrl !== undefined) {
-    const runtime = await createDatabaseRuntime(settings.databaseUrl);
+    const runtime = await createDatabaseRuntime(settings.databaseUrl, settings.databaseReadUrl);
     shutdown = runtime.shutdown;
     database = {
       executor: runtime.executor,
       backend: runtime.backend,
+      ...(runtime.readExecutor !== undefined ? { readExecutor: runtime.readExecutor } : {}),
       ...(runtime.transactionManager !== undefined
         ? { transactionManager: runtime.transactionManager }
         : {}),

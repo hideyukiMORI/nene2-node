@@ -66,8 +66,15 @@ export {
 } from './middleware/request-logging.js';
 export {
   InMemoryRateLimitStorage,
+  type RateLimitHit,
   type RateLimitStorage,
 } from './middleware/rate-limit-storage.js';
+export { FileRateLimitStorage } from './middleware/file-rate-limit-storage.js';
+export {
+  webhookSignatureMiddleware,
+  computeWebhookSignature,
+  type WebhookSignatureOptions,
+} from './middleware/webhook-signature.js';
 export { throttleMiddleware, type ThrottleOptions } from './middleware/throttle.js';
 export { ipThrottleKey, jwtSubThrottleKey } from './middleware/throttle-keys.js';
 export {

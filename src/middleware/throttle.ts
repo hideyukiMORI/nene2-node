@@ -40,7 +40,7 @@ export function throttleMiddleware(
     }
 
     const key = keyExtractor(c);
-    const { count, resetAt } = storage.hit(key, options.windowSeconds);
+    const { count, resetAt } = await Promise.resolve(storage.hit(key, options.windowSeconds));
     const remaining = Math.max(0, options.limit - count);
     const retryAfter = Math.max(0, resetAt - Math.floor(Date.now() / 1000));
 

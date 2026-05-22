@@ -13,7 +13,7 @@
 
 **Observed:** Exercised or inferred during high-friction campaign FT118.  
 **Action:** —  
-**Status:** **open**
+**Status:** **resolved** — FT134 / v0.1.11 (SQLite alias documented)
 
 ## Follow-up
 

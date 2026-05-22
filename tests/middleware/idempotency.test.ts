@@ -64,4 +64,33 @@ describe('idempotencyMiddleware', () => {
 
     expect(conflict.status).toBe(409);
   });
+
+  it('dedupes concurrent requests with the same key', async () => {
+    const settings = loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' });
+    const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
+    const { app } = await createApp({ settings });
+    let hits = 0;
+
+    app.use('/pay', idempotencyMiddleware(problems));
+    app.post('/pay', async (c) => {
+      hits += 1;
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      return c.json({ hits }, 201);
+    });
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Idempotency-Key': 'pay-concurrent',
+    };
+    const body = JSON.stringify({ amount: 1 });
+
+    const [a, b] = await Promise.all([
+      app.request('http://localhost/pay', { method: 'POST', headers, body }),
+      app.request('http://localhost/pay', { method: 'POST', headers, body }),
+    ]);
+
+    expect(a.status).toBe(201);
+    expect(b.status).toBe(201);
+    expect(hits).toBe(1);
+  });
 });
