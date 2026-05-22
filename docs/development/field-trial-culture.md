@@ -166,6 +166,15 @@ NENE2 turns many FTs into `docs/howto/*.md`. nene2-node will introduce `docs/how
 - Prefer updating `docs/development/*` and ADRs from FT friction.
 - Link to NENE2 howto for pattern background; implement Node-specific steps locally.
 
+## Docs-first during the FT loop
+
+When running FT2–FT100 (see `docs/field-trials/backlog.md`):
+
+1. **Update documentation before or with each report** — prefer `docs/development/*`, `environment-variables.md`, `production-deployment.md`, or ADRs over report-only prose.
+2. Record friction as **F-1** with a concrete doc path or Issue; do not leave “undocumented behavior” for consumers.
+3. Use `docs/templates/field-trial-report-compact.md` for framework validation FTs; full template + security/adversarial appendices when cadence requires.
+4. Batch ~10–12 FTs per PR under parent Issue [#29](https://github.com/hideyukiMORI/nene2-node/issues/29); keep `INDEX.md` and `backlog.md` status in sync.
+
 ## AI agent responsibilities
 
 When asked to run or document an FT:
@@ -173,9 +182,9 @@ When asked to run or document an FT:
 1. Open or reuse an Issue with acceptance criteria and FT number.
 2. Read upstream FT report/howto if parity-related.
 3. Implement smallest sandbox + tests.
-4. Write English report; list friction and Issues.
+4. **Update docs** from friction; write English report (compact or full).
 5. PR with `docs/review/field-trial.md` checklist.
-6. Update `docs/field-trials/INDEX.md` and `docs/todo/current.md`.
+6. Update `docs/field-trials/INDEX.md`, `backlog.md`, and `docs/todo/current.md`.
 
 ## References
 

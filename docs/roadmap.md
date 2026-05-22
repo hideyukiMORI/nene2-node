@@ -87,7 +87,7 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 
 ## Field trials
 
-See `docs/development/field-trial-culture.md`. Framework FTs start after Phase 2; reports in `docs/field-trials/`.
+See `docs/development/field-trial-culture.md`. **FT1–15** done; **FT2–100 backlog:** `docs/field-trials/backlog.md`. Docs-first: `docs/development/README.md`, `production-deployment.md`, `environment-variables.md`.
 
 ---
 

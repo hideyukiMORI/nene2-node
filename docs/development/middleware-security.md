@@ -45,9 +45,11 @@ At minimum:
 
 ## Authentication extension points
 
-- Bearer JWT verification (allowlist / excluded paths pattern from NENE2).
-- API key middleware with path/method filters.
+- **Bearer JWT** — `bearerTokenMiddleware` on `/examples/protected` (and paths you configure). Requires `NENE2_LOCAL_JWT_SECRET`. Verifier: `LocalBearerTokenVerifier` (HS256).
+- **API key** — `apiKeyAuthMiddleware` on `/machine/health`. Requires `NENE2_MACHINE_API_KEY` header `X-Api-Key`.
 - Composite auth: public vs Bearer vs API key routes — document per example app.
+
+Example routes (`/examples/notes`, `/examples/tags`) are **public** in v0.1.x; protect at the gateway or add Bearer in your fork following the protected route pattern.
 
 ## Rate limiting
 
