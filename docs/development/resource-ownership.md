@@ -11,7 +11,7 @@ const sub = authSubFromContext(c.get('authClaims'));
 assertResourceOwner(row.owner_id, sub, 'order', row.id);
 ```
 
-Throws `ResourceAccessDeniedError` → register `createResourceAccessDeniedHandler` for **403 Forbidden** Problem Details.
+Throws `ResourceAccessDeniedError` → **403 Forbidden** Problem Details via default `createApp()` handler.
 
 Example note/tag routes (`/examples/notes`, `/examples/tags`) apply this pattern when `includeExamples` is enabled: Bearer required, list scoped to `sub`, get/update/delete call `assertResourceOwner`.
 

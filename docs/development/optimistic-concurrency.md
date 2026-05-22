@@ -9,9 +9,9 @@ Business entities that use a `version` column (or ETag) should detect lost updat
 | `parseIfMatchVersion`  | Read numeric version from `If-Match` request header     |
 | `assertVersionMatch`   | Compare loaded row version to client expectation        |
 | `assertRowsAffected`   | After `UPDATE … WHERE version = ?`, zero rows → **409** |
-| `VersionConflictError` | Throw manually; map with `createVersionConflictHandler` |
+| `VersionConflictError` | Throw manually; mapped by default in `createApp()`      |
 
-Register the handler in `createApp({ domainHandlers: [createVersionConflictHandler(problems), …] })`.
+`createApp()` registers `createVersionConflictHandler` by default. Append custom handlers via `createApp({ domainHandlers: [...] })` when needed.
 
 ## SQL pattern
 

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { Hono } from 'hono';
 
 import { registerExampleModule, resolveExampleModule } from '../../src/app/wire-example-module.js';
-import { ResourceAccessDeniedError } from '../../src/error/resource-access-denied-error.js';
+import { createDefaultDomainHandlers } from '../../src/app/default-domain-handlers.js';
 import { loadAppSettings } from '../../src/config/app-settings.js';
 import { createProblemDetailsFactory } from '../../src/http/problem-details.js';
 import { InMemoryNoteRepository } from '../../src/example/note/in-memory-note-repository.js';
@@ -14,12 +14,7 @@ describe('wire-example-module', () => {
     const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);
     const wiring = resolveExampleModule({ problems });
 
-    expect(wiring.domainHandlers).toHaveLength(3);
-    expect(
-      wiring.domainHandlers.some((handler) =>
-        handler.supports(new ResourceAccessDeniedError('note', 1)),
-      ),
-    ).toBe(true);
+    expect(wiring.domainHandlers).toHaveLength(2);
     await expect(wiring.noteRepository.findAll(10, 0, 'user-test')).resolves.toEqual([]);
   });
 
@@ -34,7 +29,7 @@ describe('wire-example-module', () => {
     });
 
     expect(wiring.noteRepository).toBe(noteRepository);
-    expect(wiring.domainHandlers).toHaveLength(4);
+    expect(wiring.domainHandlers).toHaveLength(3);
   });
 
   it('registers note routes that require auth sub in handler layer', async () => {
@@ -48,7 +43,7 @@ describe('wire-example-module', () => {
         c,
         error,
         appDebug: true,
-        domainHandlers: wiring.domainHandlers,
+        domainHandlers: [...createDefaultDomainHandlers(problems), ...wiring.domainHandlers],
       }),
     );
     registerExampleModule(app, wiring, problems);
