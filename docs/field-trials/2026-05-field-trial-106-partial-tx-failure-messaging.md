@@ -13,7 +13,7 @@
 
 **Observed:** Exercised or inferred during high-friction campaign FT106.  
 **Action:** —  
-**Status:** **open**
+**Status:** **resolved** — FT137 / v0.1.12
 
 ## Follow-up
 

@@ -35,6 +35,10 @@ export { VersionConflictError } from './error/version-conflict-error.js';
 export { ResourceAccessDeniedError } from './error/resource-access-denied-error.js';
 export { createVersionConflictHandler } from './error/version-conflict-handler.js';
 export { createResourceAccessDeniedHandler } from './error/resource-access-denied-handler.js';
+export { TransactionAbortedError } from './error/transaction-aborted-error.js';
+export { createTransactionAbortedHandler } from './error/transaction-aborted-handler.js';
+export { runTransaction } from './database/run-transaction.js';
+export { formatUtcIsoTimestamp, parseUtcIsoTimestamp, utcNowIso } from './domain/timestamps.js';
 export {
   assertRowsAffected,
   assertVersionMatch,
@@ -70,6 +74,13 @@ export {
   type RateLimitStorage,
 } from './middleware/rate-limit-storage.js';
 export { FileRateLimitStorage } from './middleware/file-rate-limit-storage.js';
+export { FileIdempotencyStorage } from './middleware/file-idempotency-storage.js';
+export {
+  createThrottleStorage,
+  createThrottleStorageFromEnv,
+  type CreateThrottleStorageOptions,
+  type ThrottleStorageKind,
+} from './middleware/create-throttle-storage.js';
 export {
   webhookSignatureMiddleware,
   computeWebhookSignature,
