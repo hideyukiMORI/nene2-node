@@ -8,6 +8,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet — next patch ships with the next completed Phase 2 FT._
 
+## [0.1.3] - 2026-05-22
+
+### Added
+
+- `docs/development/database-migrations.md` — application-owned migrations vs framework example bootstrap (FT71)
+
 ## [0.1.2] - 2026-05-22
 
 ### Added

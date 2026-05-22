@@ -29,6 +29,7 @@ English reference for framework contributors. Updated from **field trials** (doc
 | [environment-variables.md](environment-variables.md)       | All `NENE2_NODE_*` vars       |
 | [production-deployment.md](production-deployment.md)       | Go-live checklist             |
 | [database-layer.md](database-layer.md)                     | SQLite executor, transactions |
+| [database-migrations.md](database-migrations.md)           | App-owned vs framework schema |
 | [ci-mysql-service.md](ci-mysql-service.md)                 | CI MySQL 8.4 service job      |
 | [field-trial-culture.md](field-trial-culture.md)           | FT loop rules                 |
 | [quality-tools.md](quality-tools.md)                       | lint / test / build           |

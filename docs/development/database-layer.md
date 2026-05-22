@@ -47,23 +47,15 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 2. Call DDL from `ensureExamplesSchema()` in `example-sqlite-schema.ts`.
 3. Run repository contract tests with `:memory:`.
 
-**v0.1.x:** no automatic migrations — delete the SQLite file or bump schema with a documented breaking change in CHANGELOG. Production apps should version migrations outside the framework (ADR if we ship a migrator later).
+**v0.1.x:** no framework migration runner — see [database-migrations.md](database-migrations.md) (app-owned vs example bootstrap).
 
-## MySQL / PostgreSQL (planned)
+## MySQL / PostgreSQL
 
-**MySQL / PostgreSQL (v0.1.1+):** `createDatabaseRuntime()` opens `mysql2` or `pg` pools, runs example DDL, and wires the same `SqliteNoteRepository` / `SqliteTagRepository` classes (SQL uses `?` placeholders; PostgreSQL translates to `$n` in `PostgresQueryExecutor`). `createApp()` is async and calls `shutdown()` on SIGTERM when a pool is used.
+`createDatabaseRuntime()` opens `mysql2` or `pg` pools, runs **example** DDL, and wires `SqliteNoteRepository` / `SqliteTagRepository` (SQL uses `?`; PostgreSQL translates to `$n` in `PostgresQueryExecutor`). `createApp()` is async; optional `shutdown()` closes pools.
 
-URLs: `mysql://user:pass@host:port/db`, `postgresql://…` or `postgres://…`. SQLite remains `:memory:` or `file:./path.sqlite`.
+URLs: `mysql://user:pass@host:port/db`, `postgresql://…` or `postgres://…`. SQLite: `:memory:` or `file:./path.sqlite`.
 
-**CI:** GitHub Actions runs MySQL 8.4 as a service container — see [ci-mysql-service.md](ci-mysql-service.md).
-
-Until adapters ship:
-
-- Use SQLite via `NENE2_NODE_DATABASE_URL=file:…` for local/dev parity.
-- **mysql://** and **postgresql://** URLs are rejected with an explicit error (issue #37) — not passed to SQLite.
-- Run application FTs against Docker MySQL/Postgres in `../nene2-node-FT/` and file friction Issues.
-
-See `../field-trials/2026-05-ft-phase2-application-integration.md`.
+**CI:** [ci-mysql-service.md](ci-mysql-service.md). **Sandboxes:** `../nene2-node-FT/ft068-mysql-compose/`, `ft069-postgres-compose/`.
 
 ## References
 

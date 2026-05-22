@@ -54,6 +54,8 @@ NENE2_NODE_PORT=3000
 
 `createApp()` is **async** — it connects to the database, runs example schema bootstrap, and registers the database health check when `NENE2_NODE_DATABASE_URL` is set.
 
+**Production schema:** use your own migration tool for business tables — see [database-migrations.md](../development/database-migrations.md). Example bootstrap is not a migrator.
+
 ## Reference sandbox
 
 Reproducible sibling repo path: `../nene2-node-FT/ft067-greenfield-install/` (not published on npm).

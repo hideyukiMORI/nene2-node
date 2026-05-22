@@ -99,7 +99,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 68  | MySQL: Docker Compose + connection friction      | 🔒  | —   | ✅ [report](2026-05-field-trial-68-mysql-compose.md)      |
 | 69  | PostgreSQL: Docker Compose + connection friction | —   | —   | ✅ [report](2026-05-field-trial-69-postgres-compose.md)   |
 | 70  | CI service container (MySQL) job design          | —   | 🔍  | ✅ [report](2026-05-field-trial-70-ci-mysql-service.md)   |
-| 71  | Migration story (app-owned vs framework)         | —   | —   | planned                                                   |
+| 71  | Migration story (app-owned vs framework)         | —   | —   | ✅ [report](2026-05-field-trial-71-migration-story.md)    |
 | 72  | Connection settings / pool documentation         | 🔒  | —   | planned                                                   |
 | 73  | Business app: nested REST slice (order/items)    | —   | —   | planned                                                   |
 | 74  | Bearer on business routes + SQLite/MySQL         | 🔒  | —   | planned                                                   |
