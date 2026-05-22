@@ -22,15 +22,20 @@ import { requestSizeLimitMiddleware } from '../middleware/request-size-limit.js'
 import { securityHeadersMiddleware } from '../middleware/security-headers.js';
 import { throttleMiddleware } from '../middleware/throttle.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
+import { ensureExamplesSchema } from '../example/example-sqlite-schema.js';
 import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
 import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
 import type { NoteRepository } from '../example/note/note-repository.js';
+import { registerNoteRoutes } from '../example/note/register-note-routes.js';
+import { SqliteNoteRepository } from '../example/note/sqlite-note-repository.js';
+import { createTagNotFoundHandler } from '../example/tag/tag-not-found-handler.js';
+import { InMemoryTagRepository } from '../example/tag/in-memory-tag-repository.js';
+import type { TagRepository } from '../example/tag/tag-repository.js';
+import { registerTagRoutes } from '../example/tag/register-tag-routes.js';
+import { SqliteTagRepository } from '../example/tag/sqlite-tag-repository.js';
 import { createDatabaseHealthCheck } from '../database/database-health-check.js';
 import { openSqliteDatabase } from '../database/open-sqlite-database.js';
 import { SqliteQueryExecutor } from '../database/sqlite-query-executor.js';
-import { ensureNotesSchema } from '../example/note/sqlite-note-schema.js';
-import { SqliteNoteRepository } from '../example/note/sqlite-note-repository.js';
-import { registerNoteRoutes } from '../example/note/register-note-routes.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -39,6 +44,7 @@ export interface CreateAppOptions {
   readonly tokenVerifier?: TokenVerifier | undefined;
   readonly domainHandlers?: readonly DomainExceptionHandler[];
   readonly noteRepository?: NoteRepository;
+  readonly tagRepository?: TagRepository;
 }
 
 export interface Nene2App {
@@ -54,12 +60,18 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
 
   let healthChecks = options.healthChecks ?? [];
   let noteRepository = options.noteRepository;
+  let tagRepository = options.tagRepository;
 
-  if (noteRepository === undefined && settings.databaseUrl !== undefined) {
+  if (settings.databaseUrl !== undefined) {
     const database = openSqliteDatabase(settings.databaseUrl);
-    ensureNotesSchema(database);
+    ensureExamplesSchema(database);
     const executor = new SqliteQueryExecutor(database);
-    noteRepository = new SqliteNoteRepository(executor);
+    if (noteRepository === undefined) {
+      noteRepository = new SqliteNoteRepository(executor);
+    }
+    if (tagRepository === undefined) {
+      tagRepository = new SqliteTagRepository(executor);
+    }
     if (!healthChecks.some((check) => check.name === 'database')) {
       healthChecks = [...healthChecks, createDatabaseHealthCheck(executor)];
     }
@@ -68,7 +80,14 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   if (noteRepository === undefined) {
     noteRepository = new InMemoryNoteRepository();
   }
-  const domainHandlers = [createNoteNotFoundHandler(problems), ...(options.domainHandlers ?? [])];
+  if (tagRepository === undefined) {
+    tagRepository = new InMemoryTagRepository();
+  }
+  const domainHandlers = [
+    createNoteNotFoundHandler(problems),
+    createTagNotFoundHandler(problems),
+    ...(options.domainHandlers ?? []),
+  ];
   const tokenVerifier =
     options.tokenVerifier ??
     (settings.localJwtSecret !== undefined
@@ -226,6 +245,7 @@ export function createApp(options: CreateAppOptions = {}): Nene2App {
   app.post('/examples/protected', (c) => methodNotAllowed(c, 'GET'));
 
   registerNoteRoutes(app, { repository: noteRepository, problems });
+  registerTagRoutes(app, { repository: tagRepository, problems });
 
   return { app, settings, problems };
 }

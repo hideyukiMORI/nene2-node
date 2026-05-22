@@ -15,19 +15,19 @@ npm install @hideyukimori/nene2-framework
 
 ## Up next (ordered)
 
-| ID  | Task                                    |
-| --- | --------------------------------------- |
-| —   | Framework FT#1 (middleware)             |
-| —   | Tag CRUD parity                         |
-| —   | nene2-js examples → Node URL (optional) |
+| ID  | Task                                                                                      |
+| --- | ----------------------------------------------------------------------------------------- |
+| —   | Framework FT#1 (middleware) — [#26](https://github.com/hideyukiMORI/nene2-node/issues/26) |
+| —   | nene2-js examples → Node URL (optional)                                                   |
 
 ## Completed (recent)
 
+- [x] Phase 6 Tag CRUD ([#25](https://github.com/hideyukiMORI/nene2-node/issues/25))
 - [x] npm publish + GitHub Release v0.1.0 ([#21](https://github.com/hideyukiMORI/nene2-node/issues/21))
 - [x] Phases 0–5 (Issues [#7](https://github.com/hideyukiMORI/nene2-node/issues/7)–[#17](https://github.com/hideyukiMORI/nene2-node/issues/17))
 
 ## Verification
 
 ```bash
-npm run check   # 55 tests + build
+npm run check   # 66 tests + build
 ```
