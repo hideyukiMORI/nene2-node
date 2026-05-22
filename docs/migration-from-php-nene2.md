@@ -27,6 +27,8 @@ See `docs/development/middleware-pipeline.md`. Environment variables use the `NE
 
 Set `NENE2_NODE_DATABASE_URL=:memory:` or `file:./var/dev.sqlite` for persistent local notes.
 
+**Migrations:** PHP NENE2 app schema evolution stays in the PHP runtime / your deployment process. On Node, version **application** schema with your migrator; the framework only bootstraps example `notes`/`tags` tables — see [development/database-migrations.md](development/database-migrations.md).
+
 ## Example domain
 
 | PHP `Nene2\Example\Note` | Node `src/example/note/`                          |
