@@ -93,68 +93,71 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 
 **Plan:** [2026-05-ft-phase2-application-integration.md](2026-05-ft-phase2-application-integration.md)
 
-| FT# | Theme                                            | 🔒  | 🔍  | Status                                                                                |
-| --- | ------------------------------------------------ | --- | --- | ------------------------------------------------------------------------------------- |
-| 67  | npm install greenfield consumer project          | —   | —   | ✅ [report](2026-05-field-trial-67-greenfield-install.md)                             |
-| 68  | MySQL: Docker Compose + connection friction      | 🔒  | —   | ✅ [report](2026-05-field-trial-68-mysql-compose.md)                                  |
-| 69  | PostgreSQL: Docker Compose + connection friction | —   | —   | ✅ [report](2026-05-field-trial-69-postgres-compose.md)                               |
-| 70  | CI service container (MySQL) job design          | —   | 🔍  | ✅ [report](2026-05-field-trial-70-ci-mysql-service.md)                               |
-| 71  | Migration story (app-owned vs framework)         | —   | —   | ✅ D0 [report](2026-05-field-trial-71-migration-story.md) — no sandbox friction       |
-| 72  | Connection settings / pool documentation         | 🔒  | —   | done — [report](2026-05-field-trial-72-connection-pool.md) **D0**                     |
-| 73  | Business app: nested REST slice (order/items)    | —   | 🔍  | done — [report](2026-05-field-trial-73-orders-nested.md) **D3** `ft073-orders-nested` |
-| 74  | Bearer on business routes + SQLite/MySQL         | 🔒  | 🔍  | done — [report](2026-05-field-trial-74-bearer-business-routes.md) **D4**              |
-| 75  | Multi-step transaction (business UseCase)        | —   | —   | done — [report](2026-05-field-trial-75-order-transaction.md) **D4**                   |
-| 76  | List + filter + pagination at app scale          | —   | 🔍  | done — [report](2026-05-field-trial-76-orders-list-filter.md) **D4**                  |
-| 77  | Compose: app + DB + env template                 | —   | —   | done — [report](2026-05-field-trial-77-compose-app-db-env-template.md) **D5**         |
-| 78  | BOLA / ownership in UseCase                      | 🔒  | —   | done — [report](2026-05-field-trial-78-bola-row-ownership-in-usecase.md) **D4**       |
-| 79  | Deploy checklist with real DB                    | —   | —   | done — [report](2026-05-field-trial-79-deploy-checklist-with-real-db.md) **D5**       |
-| 80  | Phase 2 wrap + friction index                    | —   | —   | done — [phase2-friction-index.md](2026-05-phase2-friction-index.md) **D0**            |
-| 81  | PostgreSQL `transactionManager`                  | —   | —   | done — [report](2026-05-field-trial-81-postgresql-transactionmanager.md) **D4**       |
-| 82  | PostgreSQL CI service job                        | —   | 🔍  | done — [report](2026-05-field-trial-82-postgresql-ci-service-job.md) **D2**           |
-| 83  | Composite auth API key + Bearer                  | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 84  | Idempotency-Key header                           | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 85  | Optimistic concurrency / version                 | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 86  | Graceful shutdown / pool drain                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 87  | Pool exhaustion under burst                      | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 88  | Invalid `DATABASE_URL` at boot                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 89  | SQLite file lock (WAL)                           | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 90  | Example schema on business DB URL                | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 91  | Export `ValidationException` surface             | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 92  | Domain handler registration order                | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 93  | Problem Details `instance` URI                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 94  | CORS preflight + Bearer                          | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 95  | Throttle Redis storage                           | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 96  | Bulk JSON / request size                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 97  | SQL injection parameterized reaffirm             | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 98  | JWT expiry / clock skew                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 99  | JWT alg=none rejection                           | 🔒  | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 100 | API key rotation story                           | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 101 | OpenAPI path monorepo cwd                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 102 | peer dep `hono` drift                            | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 103 | ESM `.js` imports in consumer TS                 | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 104 | npm provenance verify                            | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 105 | Double `createDatabaseRuntime` pool              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 106 | Partial TX failure messaging                     | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 107 | Nested route invalid id 404/422                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 108 | N+1 / unpaginated list                           | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 109 | Health check slow DB                             | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 110 | Partial degraded health                          | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 111 | Missing Content-Type JSON                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 112 | Unique violation → 409                           | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 113 | FK violation → 422                               | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 114 | utf8mb4 emoji MySQL                              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 115 | TIMESTAMP timezone                               | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 116 | NULL vs undefined in repos                       | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 117 | Serverless pool lifecycle                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 118 | Read replica URL                                 | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 119 | SSL mysql/postgres URLs                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 120 | Compose profiles dev/prod                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 121 | nene2-js Problem Details parity                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 122 | AGENTS.md accuracy                               | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 123 | Semver / breaking policy                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 124 | Rate limit per JWT `sub`                         | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 125 | Webhook HMAC middleware                          | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)           |
-| 126 | Campaign wrap / FT127+ plan                      | —   | —   | done — [report](2026-05-field-trial-126-campaign-wrap-ft127-.md) **D0**               |
+| FT# | Theme                                            | 🔒  | 🔍  | Status                                                                                                                                    |
+| --- | ------------------------------------------------ | --- | --- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| 67  | npm install greenfield consumer project          | —   | —   | ✅ [report](2026-05-field-trial-67-greenfield-install.md)                                                                                 |
+| 68  | MySQL: Docker Compose + connection friction      | 🔒  | —   | ✅ [report](2026-05-field-trial-68-mysql-compose.md)                                                                                      |
+| 69  | PostgreSQL: Docker Compose + connection friction | —   | —   | ✅ [report](2026-05-field-trial-69-postgres-compose.md)                                                                                   |
+| 70  | CI service container (MySQL) job design          | —   | 🔍  | ✅ [report](2026-05-field-trial-70-ci-mysql-service.md)                                                                                   |
+| 71  | Migration story (app-owned vs framework)         | —   | —   | ✅ D0 [report](2026-05-field-trial-71-migration-story.md) — no sandbox friction                                                           |
+| 72  | Connection settings / pool documentation         | 🔒  | —   | done — [report](2026-05-field-trial-72-connection-pool.md) **D0**                                                                         |
+| 73  | Business app: nested REST slice (order/items)    | —   | 🔍  | done — [report](2026-05-field-trial-73-orders-nested.md) **D3** `ft073-orders-nested`                                                     |
+| 74  | Bearer on business routes + SQLite/MySQL         | 🔒  | 🔍  | done — [report](2026-05-field-trial-74-bearer-business-routes.md) **D4**                                                                  |
+| 75  | Multi-step transaction (business UseCase)        | —   | —   | done — [report](2026-05-field-trial-75-order-transaction.md) **D4**                                                                       |
+| 76  | List + filter + pagination at app scale          | —   | 🔍  | done — [report](2026-05-field-trial-76-orders-list-filter.md) **D4**                                                                      |
+| 77  | Compose: app + DB + env template                 | —   | —   | done — [report](2026-05-field-trial-77-compose-app-db-env-template.md) **D5**                                                             |
+| 78  | BOLA / ownership in UseCase                      | 🔒  | —   | done — [report](2026-05-field-trial-78-bola-row-ownership-in-usecase.md) **D4**                                                           |
+| 79  | Deploy checklist with real DB                    | —   | —   | done — [report](2026-05-field-trial-79-deploy-checklist-with-real-db.md) **D5**                                                           |
+| 80  | Phase 2 wrap + friction index                    | —   | —   | done — [phase2-friction-index.md](2026-05-phase2-friction-index.md) **D0**                                                                |
+| 81  | PostgreSQL `transactionManager`                  | —   | —   | done — [report](2026-05-field-trial-81-postgresql-transactionmanager.md) **D4**                                                           |
+| 82  | PostgreSQL CI service job                        | —   | 🔍  | done — [report](2026-05-field-trial-82-postgresql-ci-service-job.md) **D2**                                                               |
+| 83  | Composite auth API key + Bearer                  | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 84  | Idempotency-Key header                           | —   | —   | done — [report](2026-05-field-trial-128-idempotency-key-middleware.md) **D4** [#73](https://github.com/hideyukiMORI/nene2-node/issues/73) |
+| 85  | Optimistic concurrency / version                 | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 86  | Graceful shutdown / pool drain                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 87  | Pool exhaustion under burst                      | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 88  | Invalid `DATABASE_URL` at boot                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 89  | SQLite file lock (WAL)                           | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 90  | Example schema on business DB URL                | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 91  | Export `ValidationException` surface             | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 92  | Domain handler registration order                | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 93  | Problem Details `instance` URI                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 94  | CORS preflight + Bearer                          | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 95  | Throttle Redis storage                           | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 96  | Bulk JSON / request size                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 97  | SQL injection parameterized reaffirm             | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 98  | JWT expiry / clock skew                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 99  | JWT alg=none rejection                           | 🔒  | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 100 | API key rotation story                           | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 101 | OpenAPI path monorepo cwd                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 102 | peer dep `hono` drift                            | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 103 | ESM `.js` imports in consumer TS                 | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 104 | npm provenance verify                            | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 105 | Double `createDatabaseRuntime` pool              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 106 | Partial TX failure messaging                     | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 107 | Nested route invalid id 404/422                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 108 | N+1 / unpaginated list                           | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 109 | Health check slow DB                             | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 110 | Partial degraded health                          | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 111 | Missing Content-Type JSON                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 112 | Unique violation → 409                           | —   | —   | done — FT127 / [#73](https://github.com/hideyukiMORI/nene2-node/issues/73) **D4**                                                         |
+| 113 | FK violation → 422                               | —   | —   | done — FT129 / [#73](https://github.com/hideyukiMORI/nene2-node/issues/73) **D4**                                                         |
+| 127 | Unique → 409 sandbox                             | —   | —   | done — [report](2026-05-field-trial-127-unique-violation-409-sandbox.md) **D4**                                                           |
+| 128 | Idempotency middleware                           | —   | —   | done — [report](2026-05-field-trial-128-idempotency-key-middleware.md) **D4**                                                             |
+| 129 | FK → 422 sandbox                                 | —   | —   | done — [report](2026-05-field-trial-129-fk-violation-422-sandbox.md) **D4**                                                               |
+| 114 | utf8mb4 emoji MySQL                              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 115 | TIMESTAMP timezone                               | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 116 | NULL vs undefined in repos                       | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 117 | Serverless pool lifecycle                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 118 | Read replica URL                                 | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 119 | SSL mysql/postgres URLs                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 120 | Compose profiles dev/prod                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 121 | nene2-js Problem Details parity                  | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 122 | AGENTS.md accuracy                               | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 123 | Semver / breaking policy                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 124 | Rate limit per JWT `sub`                         | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 125 | Webhook HMAC middleware                          | 🔒  | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 126 | Campaign wrap / FT127+ plan                      | —   | —   | done — [report](2026-05-field-trial-126-campaign-wrap-ft127-.md) **D0**                                                                   |
 
 ## Category F — Ecosystem & publish (FT81–FT100)
 

@@ -133,3 +133,6 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 124 | 2026-05-22 | [2026-05-field-trial-124-rate-limit-per-jwt-sub.md](2026-05-field-trial-124-rate-limit-per-jwt-sub.md) | rate limit per jwt sub | — | — |
 | 125 | 2026-05-22 | [2026-05-field-trial-125-webhook-hmac-middleware.md](2026-05-field-trial-125-webhook-hmac-middleware.md) | webhook hmac middleware | — | — |
 | 126 | 2026-05-22 | [2026-05-field-trial-126-campaign-wrap-ft127-.md](2026-05-field-trial-126-campaign-wrap-ft127-.md) | campaign wrap ft127 | — | — |
+| 127 | 2026-05-22 | [2026-05-field-trial-127-unique-violation-409-sandbox.md](2026-05-field-trial-127-unique-violation-409-sandbox.md) | unique 409 sandbox | — | — |
+| 128 | 2026-05-22 | [2026-05-field-trial-128-idempotency-key-middleware.md](2026-05-field-trial-128-idempotency-key-middleware.md) | idempotency middleware | — | — |
+| 129 | 2026-05-22 | [2026-05-field-trial-129-fk-violation-422-sandbox.md](2026-05-field-trial-129-fk-violation-422-sandbox.md) | fk 422 sandbox | — | — |

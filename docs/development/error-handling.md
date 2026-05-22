@@ -8,8 +8,10 @@ Central mapping from thrown errors to RFC 9457 responses in `createApp()` via Ho
 | ----- | ------------------------------ | ----------- | ---------------------------------- |
 | 1     | `JsonBodyParseException`       | 400         | `invalid-json`                     |
 | 2     | `ValidationException`          | 422         | `validation-failed` (+ `errors[]`) |
-| 3     | `DomainExceptionHandler` chain | per handler | e.g. `not-found`                   |
-| 4     | Fallback                       | 500         | `internal-server-error`            |
+| 3     | DB unique constraint           | 409         | `conflict`                         |
+| 4     | DB foreign-key constraint      | 422         | `validation-failed`                |
+| 5     | `DomainExceptionHandler` chain | per handler | e.g. `not-found`                   |
+| 6     | Fallback                       | 500         | `internal-server-error`            |
 
 ## Domain handlers
 
@@ -35,3 +37,4 @@ Contract test: `tests/fixtures/contract/not-found-problem.json` pins generic 404
 - `src/error/resolve-http-error.ts`
 - `api-error-responses.md`
 - `domain-layer.md`
+- `database-constraint-errors.md`
