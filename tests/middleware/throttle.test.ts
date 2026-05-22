@@ -29,4 +29,30 @@ describe('throttleMiddleware', () => {
     expect(blocked.headers.get('Retry-After')).not.toBeNull();
     expect(blocked.headers.get('X-RateLimit-Remaining')).toBe('0');
   });
+
+  it('skips throttling for excluded paths', async () => {
+    const problems = createProblemDetailsFactory('https://nene2.dev/problems/');
+    const storage = new InMemoryRateLimitStorage();
+    const app = new Hono();
+    app.use(
+      '*',
+      throttleMiddleware(problems, {
+        limit: 1,
+        windowSeconds: 60,
+        storage,
+        excludePaths: ['/health'],
+        keyExtractor: () => 'same-key',
+      }),
+    );
+    app.get('/health', (c) => c.text('ok'));
+    app.get('/api', (c) => c.text('ok'));
+
+    const healthUrl = 'http://localhost/health';
+    expect((await app.request(healthUrl)).status).toBe(200);
+    expect((await app.request(healthUrl)).status).toBe(200);
+
+    const apiUrl = 'http://localhost/api';
+    expect((await app.request(apiUrl)).status).toBe(200);
+    expect((await app.request(apiUrl)).status).toBe(429);
+  });
 });

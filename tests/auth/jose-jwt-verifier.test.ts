@@ -57,6 +57,31 @@ describe('createJoseJwtVerifier', () => {
     await expect(createJoseJwtVerifier({})).rejects.toThrow('jwksUri or jwks');
   });
 
+  it('accepts jwksUri for remote JWKS configuration', async () => {
+    const verifier = await createJoseJwtVerifier({
+      jwksUri: 'https://issuer.test/jwks.json',
+    });
+    expect(typeof verifier.verify).toBe('function');
+  });
+
+  it('verifies tokens when audience is an array', async () => {
+    const { publicKey, privateKey } = await generateKeyPair('RS256');
+    const jwk = await exportJWK(publicKey);
+    const verifier = await createJoseJwtVerifier({
+      jwks: { keys: [{ ...jwk, kid: 'aud-key', alg: 'RS256' }] },
+      audience: ['api.test', 'other'],
+    });
+
+    const token = await new SignJWT({ sub: 'aud-user' })
+      .setProtectedHeader({ alg: 'RS256', kid: 'aud-key' })
+      .setAudience('other')
+      .setExpirationTime('2h')
+      .sign(privateKey);
+
+    const claims = await verifier.verify(token);
+    expect(claims.sub).toBe('aud-user');
+  });
+
   it('throws TokenVerificationException for invalid tokens', async () => {
     const { publicKey } = await generateKeyPair('RS256');
     const jwk = await exportJWK(publicKey);

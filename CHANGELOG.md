@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.18] - 2026-05-22
+
+### Added
+
+- Branch-focused unit tests for middleware, HTTP helpers, validation, OpenAPI path resolution, database health check, and shutdown handlers
+- Coverage gate raised to **80%** branches in CI
+
 ## [0.1.17] - 2026-05-22
 
 ### Added
