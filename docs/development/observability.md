@@ -21,6 +21,16 @@ Use the same request id in application logs by reading it from context after mid
 - Ship stdout to your log aggregator.
 - Exclude high-cardinality health paths to reduce noise.
 - Never log `Authorization`, API keys, or full JWTs.
+- Redact or omit request bodies in custom loggers — framework default does not log bodies.
+
+## Redaction checklist
+
+| Data                           | Log?                                                 |
+| ------------------------------ | ---------------------------------------------------- |
+| `X-Request-Id`                 | yes                                                  |
+| Method, path, status, duration | yes                                                  |
+| `Authorization` / API keys     | **no**                                               |
+| Full JSON body                 | **no** (unless dedicated audit pipeline with policy) |
 
 ## References
 

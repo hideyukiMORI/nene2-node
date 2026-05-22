@@ -31,43 +31,52 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 
 ## Category B — Framework deep dive (FT19–FT50)
 
-| FT#   | Theme                                                    | 🔒    | Status     |
-| ----- | -------------------------------------------------------- | ----- | ---------- |
-| 19    | `resolveHttpError` mapping                               | —     | ✅ batch 3 |
-| 20    | OpenAPI contract fixtures                                | 🔍    | ✅ batch 3 |
-| 21    | `createApp` DI options                                   | —     | ✅ batch 3 |
-| 22    | Pagination query parser                                  | —     | ✅ batch 3 |
-| 23    | MCP `FetchMcpHttpClient`                                 | —     | ✅ batch 3 |
-| 24    | App settings matrix                                      | 🔒🔍  | ✅ batch 3 |
-| 25    | Health check composition                                 | —     | ✅ batch 3 |
-| 26    | Example schema migration story                           | —     | ✅ batch 3 |
-| 27    | Throttle path excludes                                   | 🔒    | ✅ batch 3 |
-| 28    | CORS credentials edge cases                              | 🔍    | ✅ batch 3 |
-| 29    | Bearer include/exclude paths                             | —     | ✅ batch 3 |
-| 30    | Request logging + request id                             | 🔒    | ✅ batch 3 |
-| 31    | Note not-found handler                                   | —     | ✅ batch 4 |
-| 32    | Tag not-found handler                                    | 🔍    | ✅ batch 4 |
-| 33    | Validation field errors shape                            | 🔒    | ✅ batch 4 |
-| 34    | 404 / notFound hook                                      | —     | ✅ batch 4 |
-| 35    | Composite auth patterns doc                              | —     | ✅ batch 4 |
-| 36    | `npm run dev` DX                                         | 🔒🔍  | ✅ batch 4 |
-| 37    | `resolveOpenApiPath` policy                              | —     | ✅ batch 4 |
-| 38    | Contract test maintenance                                | —     | ✅ batch 4 |
-| 39    | Test fixtures hygiene                                    | 🔒    | ✅ batch 4 |
-| 40    | Multi-domain SQLite                                      | 🔍    | ✅ batch 4 |
-| 41    | Middleware combinations                                  | —     | ✅ batch 4 |
-| 42    | Package export surface (`index.ts`)                      | 🔒    | ✅ batch 4 |
-| 43–50 | Category B reserve (handler patterns, exports follow-up) | mixed | planned    |
+| FT# | Theme                                         | 🔒   | Status     |
+| --- | --------------------------------------------- | ---- | ---------- |
+| 19  | `resolveHttpError` mapping                    | —    | ✅ batch 3 |
+| 20  | OpenAPI contract fixtures                     | 🔍   | ✅ batch 3 |
+| 21  | `createApp` DI options                        | —    | ✅ batch 3 |
+| 22  | Pagination query parser                       | —    | ✅ batch 3 |
+| 23  | MCP `FetchMcpHttpClient`                      | —    | ✅ batch 3 |
+| 24  | App settings matrix                           | 🔒🔍 | ✅ batch 3 |
+| 25  | Health check composition                      | —    | ✅ batch 3 |
+| 26  | Example schema migration story                | —    | ✅ batch 3 |
+| 27  | Throttle path excludes                        | 🔒   | ✅ batch 3 |
+| 28  | CORS credentials edge cases                   | 🔍   | ✅ batch 3 |
+| 29  | Bearer include/exclude paths                  | —    | ✅ batch 3 |
+| 30  | Request logging + request id                  | 🔒   | ✅ batch 3 |
+| 31  | Note not-found handler                        | —    | ✅ batch 4 |
+| 32  | Tag not-found handler                         | 🔍   | ✅ batch 4 |
+| 33  | Validation field errors shape                 | 🔒   | ✅ batch 4 |
+| 34  | 404 / notFound hook                           | —    | ✅ batch 4 |
+| 35  | Composite auth patterns doc                   | —    | ✅ batch 4 |
+| 36  | `npm run dev` DX                              | 🔒🔍 | ✅ batch 4 |
+| 37  | `resolveOpenApiPath` policy                   | —    | ✅ batch 4 |
+| 38  | Contract test maintenance                     | —    | ✅ batch 4 |
+| 39  | Test fixtures hygiene                         | 🔒   | ✅ batch 4 |
+| 40  | Multi-domain SQLite                           | 🔍   | ✅ batch 4 |
+| 41  | Middleware combinations                       | —    | ✅ batch 4 |
+| 42  | Package export surface (`index.ts`)           | 🔒   | ✅ batch 4 |
+| 43  | HTTP 405 method-not-allowed                   | —    | ✅ batch 5 |
+| 44  | `invalid-json` / body parse                   | 🔍   | ✅ batch 5 |
+| 45  | `LocalBearerTokenVerifier` / JWT              | 🔒   | ✅ batch 5 |
+| 46  | Hono context (`authClaims`, `credentialType`) | —    | ✅ batch 5 |
+| 47  | Pagination edge cases                         | —    | ✅ batch 5 |
+| 48  | MCP `FetchMcpHttpClient` security             | 🔒🔍 | ✅ batch 5 |
+| 49  | `RateLimitStorage` extension point            | —    | ✅ batch 5 |
+| 50  | Category B wrap-up / policy index             | —    | ✅ batch 5 |
 
 ## Category C — Node / security / DX (FT51–FT80)
 
-Themes: timing-safe compare, `fetch` SSRF notes, structured logging redaction, prototype pollution guards, env leak tests, Problem Details redaction in production, rate-limit bypass attempts, MCP HTTP boundary abuse, dependency audit cadence.
-
-| Range | Focus                        | Status  |
-| ----- | ---------------------------- | ------- |
-| 51–60 | Auth/crypto hardening docs   | planned |
-| 61–70 | Input validation & injection | planned |
-| 71–80 | Observability & disclosure   | planned |
+| FT#   | Theme                                                                    | 🔒      | 🔍      | Status     |
+| ----- | ------------------------------------------------------------------------ | ------- | ------- | ---------- |
+| 51    | Timing-safe secret compare                                               | 🔒      | —       | ✅ batch 5 |
+| 52    | `crypto` secrets vs `Math.random`                                        | —       | 🔍      | ✅ batch 5 |
+| 53    | `npm audit` / dependency cadence                                         | —       | —       | ✅ batch 5 |
+| 54    | Logging redaction                                                        | 🔒      | —       | ✅ batch 5 |
+| 55–60 | Reserve: env leak tests, Problem Details prod redaction, throttle bypass | mixed   | planned |
+| 61–70 | Input validation & injection                                             | planned |
+| 71–80 | Observability & disclosure                                               | planned |
 
 ## Category D — Ecosystem & publish (FT81–FT100)
 
@@ -85,8 +94,9 @@ Themes: npm consumer DX, Trusted Publisher release, CHANGELOG discipline, nene2-
 | 1     | FT2–FT12 + docs foundation | ✅ PR #30                 |
 | 2     | FT13–FT18                  | ✅ PR #31                 |
 | 3     | FT19–FT30                  | ✅ PR #32                 |
-| 4     | FT31–FT42                  | `docs/29-ft-loop-batch-4` |
-| 5     | FT43–FT54                  | TBD                       |
+| 4     | FT31–FT42                  | ✅ PR #33                 |
+| 5     | FT43–FT54                  | `docs/29-ft-loop-batch-5` |
+| 6     | FT55–FT66                  | TBD                       |
 | …     | …                          | ~10–12 FTs per PR         |
 
 Update [INDEX.md](INDEX.md) when each FT report lands.

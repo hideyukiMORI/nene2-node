@@ -29,6 +29,8 @@ Tool catalog JSON and stdio protocol stay in NENE2 / nene-mcp; this repo only do
 
 - Treat MCP client credentials like API keys — env only, never fixtures.
 - `hasAuthentication()` should gate write tools in automations (parity with NENE2 MCP docs).
+- **SSRF:** validate `baseUrl` before `FetchMcpHttpClient` calls — see `node-security-practices.md`.
+- Do not pass end-user-supplied URLs into the client without an allowlist.
 
 ## Example
 

@@ -46,5 +46,17 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 40  | 2026-05-22 | [2026-05-field-trial-40-multi-domain-sqlite.md](2026-05-field-trial-40-multi-domain-sqlite.md)         | Multi-domain DB   | —   | 🔍  |
 | 41  | 2026-05-22 | [2026-05-field-trial-41-middleware-combos.md](2026-05-field-trial-41-middleware-combos.md)             | Middleware combos | —   | —   |
 | 42  | 2026-05-22 | [2026-05-field-trial-42-package-exports.md](2026-05-field-trial-42-package-exports.md)                 | Package exports   | 🔒  | —   |
+| 43  | 2026-05-22 | [2026-05-field-trial-43-method-not-allowed.md](2026-05-field-trial-43-method-not-allowed.md)           | HTTP 405          | —   | —   |
+| 44  | 2026-05-22 | [2026-05-field-trial-44-invalid-json.md](2026-05-field-trial-44-invalid-json.md)                       | invalid-json      | —   | 🔍  |
+| 45  | 2026-05-22 | [2026-05-field-trial-45-jwt-verifier.md](2026-05-field-trial-45-jwt-verifier.md)                       | JWT verifier      | 🔒  | —   |
+| 46  | 2026-05-22 | [2026-05-field-trial-46-hono-context.md](2026-05-field-trial-46-hono-context.md)                       | Hono context      | —   | —   |
+| 47  | 2026-05-22 | [2026-05-field-trial-47-pagination-edge.md](2026-05-field-trial-47-pagination-edge.md)                 | Pagination edge   | —   | —   |
+| 48  | 2026-05-22 | [2026-05-field-trial-48-mcp-client-security.md](2026-05-field-trial-48-mcp-client-security.md)         | MCP client        | 🔒  | 🔍  |
+| 49  | 2026-05-22 | [2026-05-field-trial-49-rate-limit-storage.md](2026-05-field-trial-49-rate-limit-storage.md)           | RateLimitStorage  | —   | —   |
+| 50  | 2026-05-22 | [2026-05-field-trial-50-category-b-wrap.md](2026-05-field-trial-50-category-b-wrap.md)                 | Category B wrap   | —   | —   |
+| 51  | 2026-05-22 | [2026-05-field-trial-51-timing-safe-compare.md](2026-05-field-trial-51-timing-safe-compare.md)         | Timing-safe       | 🔒  | —   |
+| 52  | 2026-05-22 | [2026-05-field-trial-52-crypto-secrets.md](2026-05-field-trial-52-crypto-secrets.md)                   | Crypto secrets    | —   | 🔍  |
+| 53  | 2026-05-22 | [2026-05-field-trial-53-npm-audit.md](2026-05-field-trial-53-npm-audit.md)                             | npm audit         | —   | —   |
+| 54  | 2026-05-22 | [2026-05-field-trial-54-logging-redaction.md](2026-05-field-trial-54-logging-redaction.md)             | Log redaction     | 🔒  | —   |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.

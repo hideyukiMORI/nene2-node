@@ -45,6 +45,10 @@ Never merge code that:
 
 Use `docs/review/middleware-security.md` and `docs/review/backend-api.md` before API-facing PRs.
 
+## Node-specific guide
+
+See `node-security-practices.md` (timing-safe compare, `fetch` SSRF, logging redaction).
+
 ## References
 
 - nene2-python: `../nene2-python/CLAUDE.md` §3

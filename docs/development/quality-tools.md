@@ -4,6 +4,10 @@ Quality checks are explicit, fast, and required before merge. This policy mirror
 
 **Note:** Vitest uses `node:sqlite` on Node 22+. You may see `ExperimentalWarning: SQLite is an experimental feature` in test output (FT#16).
 
+## Dependency audit
+
+Before release PRs, run `npm audit` and address or document critical/high findings (`node-security-practices.md`, FT#53).
+
 ## Position
 
 Tools are part of framework design. They must make changes safer without hiding behavior from tests or static analysis.
