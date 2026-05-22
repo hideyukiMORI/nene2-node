@@ -55,5 +55,11 @@ export { openSqliteDatabase } from './database/open-sqlite-database.js';
 export { SqliteQueryExecutor } from './database/sqlite-query-executor.js';
 export { SqliteTransactionManager } from './database/sqlite-transaction-manager.js';
 export type { SqlParameter, SqlRow } from './database/sql-types.js';
+export {
+  FetchMcpHttpClient,
+  type FetchMcpHttpClientOptions,
+  type McpHttpClient,
+} from './mcp/mcp-http-client.js';
+export type { McpHttpResponse } from './mcp/mcp-http-response.js';
 
 export const FRAMEWORK_PACKAGE_NAME = '@hideyukimori/nene2-framework' as const;
