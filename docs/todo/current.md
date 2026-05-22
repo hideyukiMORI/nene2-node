@@ -6,7 +6,7 @@ Last updated: 2026-05-22
 
 ## Released
 
-- **npm:** `@hideyukimori/nene2-framework@0.1.1` (after GitHub Release `v0.1.1`) — MySQL/PostgreSQL, async `createApp`
+- **npm:** `@hideyukimori/nene2-framework@0.1.0` on registry — **v0.1.1** tagged on GitHub; run `npm publish --otp=…` or fix OIDC workflow (see [release-process.md](development/release-process.md#troubleshooting-publish))
 - **npm:** `@hideyukimori/nene2-framework@0.1.0` — initial framework
 - **GitHub:** [v0.1.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.0)
 
