@@ -61,7 +61,7 @@ cp .env.example .env
 
 ## Status
 
-**Phase 0 — bootstrap.** Governance, scope, and CI are in place. Runtime code lands in Phase 1+ (see [docs/roadmap.md](docs/roadmap.md)).
+**Phase 1 — runtime skeleton (in progress).** Hono-based app with `GET /`, `/health`, `/examples/ping`, `/machine/health`, RFC 9457 Problem Details, and HTTP tests. See [docs/roadmap.md](docs/roadmap.md) for Phase 2+ (middleware, Note CRUD, OpenAPI contract tests).
 
 ## Contributing
 
