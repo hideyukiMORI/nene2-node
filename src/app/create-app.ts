@@ -22,21 +22,14 @@ import { requestSizeLimitMiddleware } from '../middleware/request-size-limit.js'
 import { securityHeadersMiddleware } from '../middleware/security-headers.js';
 import { throttleMiddleware } from '../middleware/throttle.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
-import { createNoteNotFoundHandler } from '../example/note/note-not-found-handler.js';
-import { InMemoryNoteRepository } from '../example/note/in-memory-note-repository.js';
-import type { NoteRepository } from '../example/note/note-repository.js';
-import { registerNoteRoutes } from '../example/note/register-note-routes.js';
-import { SqliteNoteRepository } from '../example/note/sqlite-note-repository.js';
-import { createTagNotFoundHandler } from '../example/tag/tag-not-found-handler.js';
-import { InMemoryTagRepository } from '../example/tag/in-memory-tag-repository.js';
-import type { TagRepository } from '../example/tag/tag-repository.js';
-import { registerTagRoutes } from '../example/tag/register-tag-routes.js';
-import { SqliteTagRepository } from '../example/tag/sqlite-tag-repository.js';
 import { createDatabaseHealthCheck } from '../database/database-health-check.js';
 import { createDatabaseRuntime } from '../database/create-database-runtime.js';
 import type { DatabaseQueryExecutor } from '../database/database-query-executor.js';
 import type { DatabaseTransactionManager } from '../database/database-transaction-manager.js';
 import type { DatabaseBackend } from '../database/parse-database-url.js';
+import type { NoteRepository } from '../example/note/note-repository.js';
+import type { TagRepository } from '../example/tag/tag-repository.js';
+import { registerExampleModule, resolveExampleModule } from './wire-example-module.js';
 
 export interface CreateAppOptions {
   readonly settings?: AppSettings;
@@ -79,14 +72,14 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   const machineApiKey = options.machineApiKey ?? settings.machineApiKey;
 
   let healthChecks: readonly AsyncHealthCheck[] = wrapSyncHealthChecks(options.healthChecks ?? []);
-  let noteRepository = options.noteRepository;
-  let tagRepository = options.tagRepository;
   let shutdown: (() => Promise<void>) | undefined;
   let database: Nene2AppDatabase | undefined;
+  let executor: DatabaseQueryExecutor | undefined;
 
   if (settings.databaseUrl !== undefined) {
     const runtime = await createDatabaseRuntime(settings.databaseUrl, settings.databaseReadUrl);
     shutdown = runtime.shutdown;
+    executor = runtime.executor;
     database = {
       executor: runtime.executor,
       backend: runtime.backend,
@@ -95,29 +88,21 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
         ? { transactionManager: runtime.transactionManager }
         : {}),
     };
-    const executor = runtime.executor;
-    if (noteRepository === undefined) {
-      noteRepository = new SqliteNoteRepository(executor);
-    }
-    if (tagRepository === undefined) {
-      tagRepository = new SqliteTagRepository(executor);
-    }
     if (!healthChecks.some((check) => check.name === 'database')) {
-      healthChecks = [...healthChecks, createDatabaseHealthCheck(executor)];
+      healthChecks = [...healthChecks, createDatabaseHealthCheck(runtime.executor)];
     }
   }
 
-  if (noteRepository === undefined) {
-    noteRepository = new InMemoryNoteRepository();
-  }
-  if (tagRepository === undefined) {
-    tagRepository = new InMemoryTagRepository();
-  }
-  const domainHandlers = [
-    createNoteNotFoundHandler(problems),
-    createTagNotFoundHandler(problems),
-    ...(options.domainHandlers ?? []),
-  ];
+  const exampleModule = resolveExampleModule({
+    problems,
+    ...(executor !== undefined ? { executor } : {}),
+    ...(options.noteRepository !== undefined ? { noteRepository: options.noteRepository } : {}),
+    ...(options.tagRepository !== undefined ? { tagRepository: options.tagRepository } : {}),
+    ...(options.domainHandlers !== undefined
+      ? { extraDomainHandlers: options.domainHandlers }
+      : {}),
+  });
+  const domainHandlers = exampleModule.domainHandlers;
   const tokenVerifier =
     options.tokenVerifier ??
     (settings.localJwtSecret !== undefined
@@ -143,7 +128,7 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   };
 
   app.use('*', requestIdMiddleware());
-  app.use('*', securityHeadersMiddleware());
+  app.use('*', securityHeadersMiddleware({ enableHsts: settings.appEnv === 'production' }));
   if (settings.requestLoggingEnabled) {
     app.use(
       '*',
@@ -275,8 +260,7 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
 
   app.post('/examples/protected', (c) => methodNotAllowed(c, 'GET'));
 
-  registerNoteRoutes(app, { repository: noteRepository, problems });
-  registerTagRoutes(app, { repository: tagRepository, problems });
+  registerExampleModule(app, exampleModule, problems);
 
   const base = { app, settings, problems };
   if (database === undefined && shutdown === undefined) {

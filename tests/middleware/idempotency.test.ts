@@ -3,9 +3,14 @@ import { describe, expect, it } from 'vitest';
 import { createApp } from '../../src/app/create-app.js';
 import { loadAppSettings } from '../../src/config/app-settings.js';
 import { createProblemDetailsFactory } from '../../src/http/problem-details.js';
-import { idempotencyMiddleware } from '../../src/middleware/idempotency.js';
+import { idempotencyMiddleware, requestBodyHash } from '../../src/middleware/idempotency.js';
 
 describe('idempotencyMiddleware', () => {
+  it('requestBodyHash returns SHA-256 hex and distinguishes bodies', () => {
+    expect(requestBodyHash('a')).not.toBe(requestBodyHash('b'));
+    expect(requestBodyHash('hello')).toMatch(/^[a-f0-9]{64}$/);
+  });
+
   it('replays the first response for the same Idempotency-Key', async () => {
     const settings = loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' });
     const problems = createProblemDetailsFactory(settings.problemDetailsBaseUrl);

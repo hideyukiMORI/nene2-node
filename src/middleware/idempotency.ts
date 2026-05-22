@@ -1,4 +1,5 @@
 import type { MiddlewareHandler } from 'hono';
+import { createHash } from 'node:crypto';
 
 import type { ProblemDetailsFactory } from '../http/problem-details.js';
 import { problemDetailsFromContext } from '../http/problem-details.js';
@@ -13,12 +14,9 @@ export interface IdempotencyOptions {
   readonly requireBodyMatch?: boolean;
 }
 
+/** SHA-256 hex digest of the raw body — stable fingerprint for idempotency conflict detection. */
 export function requestBodyHash(body: string): string {
-  let hash = 0;
-  for (let i = 0; i < body.length; i += 1) {
-    hash = (hash * 31 + body.charCodeAt(i)) | 0;
-  }
-  return String(hash);
+  return createHash('sha256').update(body, 'utf8').digest('hex');
 }
 
 export function idempotencyMiddleware(
