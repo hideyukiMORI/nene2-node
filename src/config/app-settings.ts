@@ -11,6 +11,13 @@ export interface AppSettings {
   readonly machineApiKey: string | undefined;
   readonly localJwtSecret: string | undefined;
   readonly requestMaxBodyBytes: number;
+  readonly corsAllowedOrigins: readonly string[];
+  readonly corsAllowCredentials: boolean;
+  readonly throttleLimit: number | undefined;
+  readonly throttleWindowSeconds: number;
+  readonly throttleExcludePaths: readonly string[];
+  readonly requestLoggingEnabled: boolean;
+  readonly requestLoggingExcludePaths: readonly string[];
 }
 
 const DEFAULT_SERVICE_NAME = 'NENE2';
@@ -43,6 +50,17 @@ function readBoolean(env: NodeJS.ProcessEnv, name: string, fallback: boolean): b
   return raw === '1' || raw.toLowerCase() === 'true';
 }
 
+function readStringList(env: NodeJS.ProcessEnv, name: string): readonly string[] {
+  const raw = env[name];
+  if (raw === undefined || raw === '') {
+    return [];
+  }
+  return raw
+    .split(',')
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+}
+
 function readPositiveInt(env: NodeJS.ProcessEnv, name: string, fallback: number): number {
   const raw = env[name];
   if (raw === undefined || raw === '') {
@@ -63,5 +81,23 @@ export function loadAppSettings(env: NodeJS.ProcessEnv = process.env): AppSettin
     machineApiKey: readOptionalString(env, 'NENE2_MACHINE_API_KEY'),
     localJwtSecret: readOptionalString(env, 'NENE2_LOCAL_JWT_SECRET'),
     requestMaxBodyBytes: readPositiveInt(env, 'NENE2_NODE_REQUEST_MAX_BODY_BYTES', 1_048_576),
+    corsAllowedOrigins: readStringList(env, 'NENE2_NODE_CORS_ORIGINS'),
+    corsAllowCredentials: readBoolean(env, 'NENE2_NODE_CORS_ALLOW_CREDENTIALS', false),
+    throttleLimit: (() => {
+      const raw = env['NENE2_NODE_THROTTLE_LIMIT'];
+      if (raw === undefined || raw === '' || raw === '0') {
+        return undefined;
+      }
+      const parsed = Number.parseInt(raw, 10);
+      return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
+    })(),
+    throttleWindowSeconds: readPositiveInt(env, 'NENE2_NODE_THROTTLE_WINDOW_SECONDS', 60),
+    throttleExcludePaths: readStringList(env, 'NENE2_NODE_THROTTLE_EXCLUDE_PATHS'),
+    requestLoggingEnabled: readBoolean(
+      env,
+      'NENE2_NODE_REQUEST_LOGGING',
+      readAppEnv(env) !== 'test',
+    ),
+    requestLoggingExcludePaths: readStringList(env, 'NENE2_NODE_REQUEST_LOGGING_EXCLUDE_PATHS'),
   };
 }

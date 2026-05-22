@@ -37,5 +37,16 @@ export { LocalBearerTokenVerifier } from './auth/local-bearer-token-verifier.js'
 export { TokenVerificationException } from './auth/token-verification-exception.js';
 export type { TokenVerifier } from './auth/token-verifier.js';
 export { bearerTokenMiddleware, type BearerTokenOptions } from './middleware/bearer-token.js';
+export { corsMiddleware, type CorsOptions } from './middleware/cors.js';
+export {
+  requestLoggingMiddleware,
+  type RequestLogEntry,
+  type RequestLoggingOptions,
+} from './middleware/request-logging.js';
+export {
+  InMemoryRateLimitStorage,
+  type RateLimitStorage,
+} from './middleware/rate-limit-storage.js';
+export { throttleMiddleware, type ThrottleOptions } from './middleware/throttle.js';
 
 export const FRAMEWORK_PACKAGE_NAME = '@hideyukimori/nene2-framework' as const;

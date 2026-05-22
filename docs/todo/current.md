@@ -1,38 +1,29 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** Phase 2b — throttle, CORS, logging (next)  
+**Sprint:** Phase 4 — database and health (in progress)  
 **Master plan:** [milestones/2026-05-master-plan.md](milestones/2026-05-master-plan.md)
 
 ## In progress
 
-| ID   | Task                                 | Milestone                                              | Issue |
-| ---- | ------------------------------------ | ------------------------------------------------------ | ----- |
-| P2-4 | Throttle + CORS + structured logging | [phase2](milestones/2026-05-phase2-middleware-auth.md) | TBD   |
+| ID   | Task                       | Milestone                                              | Issue                                                       |
+| ---- | -------------------------- | ------------------------------------------------------ | ----------------------------------------------------------- |
+| P4-1 | DB executor + transactions | [phase4](milestones/2026-05-phase4-database-health.md) | [#16](https://github.com/hideyukiMORI/nene2-node/issues/16) |
 
 ## Up next (ordered)
 
-| ID   | Task                          | Phase |
-| ---- | ----------------------------- | ----- |
-| P4-1 | DB executor + transactions    | 4     |
-| P4-2 | Database health → `/health`   | 4     |
-| P5-1 | MCP boundary + npm 0.1.0 prep | 5     |
+| ID   | Task                       | Phase |
+| ---- | -------------------------- | ----- |
+| P5-1 | Build + MCP + publish prep | 5     |
 
 ## Completed (recent)
 
+- [x] Phase 2b throttle, CORS, logging ([#15](https://github.com/hideyukiMORI/nene2-node/issues/15))
 - [x] Phase 3 Note CRUD ([#13](https://github.com/hideyukiMORI/nene2-node/issues/13))
-- [x] Phase 2a domain errors + validation + Bearer ([#11](https://github.com/hideyukiMORI/nene2-node/issues/11))
-- [x] Phase 1b contract + dev ([#9](https://github.com/hideyukiMORI/nene2-node/issues/9) / [#10](https://github.com/hideyukiMORI/nene2-node/pull/10))
+- [x] Phase 2a domain errors + Bearer ([#11](https://github.com/hideyukiMORI/nene2-node/issues/11))
 
 ## Verification
 
 ```bash
-npm run check   # 44 tests
-npm run dev     # http://localhost:3000 — try POST /examples/notes
+npm run check   # 49 tests
 ```
-
-## Handoff
-
-- Notes: `src/example/note/`, wired in `createApp()`
-- OpenAPI: `resolveOpenApiPath()` → `../NENE2/docs/openapi/openapi.yaml`
-- Fixtures: `tests/fixtures/contract/note-*.json`
