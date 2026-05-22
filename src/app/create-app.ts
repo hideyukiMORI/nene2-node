@@ -35,6 +35,7 @@ import { SqliteTagRepository } from '../example/tag/sqlite-tag-repository.js';
 import { createDatabaseHealthCheck } from '../database/database-health-check.js';
 import { createDatabaseRuntime } from '../database/create-database-runtime.js';
 import type { DatabaseQueryExecutor } from '../database/database-query-executor.js';
+import type { DatabaseTransactionManager } from '../database/database-transaction-manager.js';
 import type { DatabaseBackend } from '../database/parse-database-url.js';
 
 export interface CreateAppOptions {
@@ -52,6 +53,7 @@ export interface CreateAppOptions {
 export interface Nene2AppDatabase {
   readonly executor: DatabaseQueryExecutor;
   readonly backend: DatabaseBackend;
+  readonly transactionManager?: DatabaseTransactionManager;
 }
 
 export interface Nene2App {
@@ -84,7 +86,13 @@ export async function createApp(options: CreateAppOptions = {}): Promise<Nene2Ap
   if (settings.databaseUrl !== undefined) {
     const runtime = await createDatabaseRuntime(settings.databaseUrl);
     shutdown = runtime.shutdown;
-    database = { executor: runtime.executor, backend: runtime.backend };
+    database = {
+      executor: runtime.executor,
+      backend: runtime.backend,
+      ...(runtime.transactionManager !== undefined
+        ? { transactionManager: runtime.transactionManager }
+        : {}),
+    };
     const executor = runtime.executor;
     if (noteRepository === undefined) {
       noteRepository = new SqliteNoteRepository(executor);

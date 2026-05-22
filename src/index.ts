@@ -58,6 +58,7 @@ export type { DatabaseTransactionManager } from './database/database-transaction
 export { createDatabaseHealthCheck } from './database/database-health-check.js';
 export { createDatabaseRuntime, type DatabaseRuntime } from './database/create-database-runtime.js';
 export { MysqlQueryExecutor, createMysqlPool } from './database/mysql-query-executor.js';
+export { MysqlTransactionManager } from './database/mysql-transaction-manager.js';
 export { parseDatabaseUrl, type DatabaseBackend } from './database/parse-database-url.js';
 export { PostgresQueryExecutor } from './database/postgres-query-executor.js';
 export { openSqliteDatabase } from './database/open-sqlite-database.js';

@@ -8,6 +8,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet — next patch ships with the next completed Phase 2 FT._
 
+## [0.1.6] - 2026-05-22
+
+### Added
+
+- `MysqlTransactionManager` and `Nene2App.database.transactionManager` (MySQL/SQLite) for atomic business writes (FT75)
+
 ## [0.1.5] - 2026-05-22
 
 ### Added
