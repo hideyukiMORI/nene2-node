@@ -68,15 +68,26 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 
 ## Category C — Node / security / DX (FT51–FT80)
 
-| FT#   | Theme                                                                    | 🔒      | 🔍      | Status     |
-| ----- | ------------------------------------------------------------------------ | ------- | ------- | ---------- |
-| 51    | Timing-safe secret compare                                               | 🔒      | —       | ✅ batch 5 |
-| 52    | `crypto` secrets vs `Math.random`                                        | —       | 🔍      | ✅ batch 5 |
-| 53    | `npm audit` / dependency cadence                                         | —       | —       | ✅ batch 5 |
-| 54    | Logging redaction                                                        | 🔒      | —       | ✅ batch 5 |
-| 55–60 | Reserve: env leak tests, Problem Details prod redaction, throttle bypass | mixed   | planned |
-| 61–70 | Input validation & injection                                             | planned |
-| 71–80 | Observability & disclosure                                               | planned |
+| FT#   | Theme                                       | 🔒    | 🔍    | Status     |
+| ----- | ------------------------------------------- | ----- | ----- | ---------- |
+| 51    | Timing-safe secret compare                  | 🔒    | —     | ✅ batch 5 |
+| 52    | `crypto` secrets vs `Math.random`           | —     | 🔍    | ✅ batch 5 |
+| 53    | `npm audit` / dependency cadence            | —     | —     | ✅ batch 5 |
+| 54    | Logging redaction                           | 🔒    | —     | ✅ batch 5 |
+| 55    | Production Problem Details redaction        | —     | —     | ✅ batch 6 |
+| 56    | Env leak prevention                         | —     | 🔍    | ✅ batch 6 |
+| 57    | Throttle exclude bypass risk                | 🔒    | —     | ✅ batch 6 |
+| 58    | Prototype pollution guards                  | —     | —     | ✅ batch 6 |
+| 59    | Parameterized SQL reaffirmation             | —     | —     | ✅ batch 6 |
+| 60    | Production deployment security pass         | 🔒    | 🔍    | ✅ batch 6 |
+| 61    | Health 503 disclosure                       | —     | —     | ✅ batch 6 |
+| 62    | Request size DoS edge                       | —     | 🔍    | ✅ batch 6 |
+| 63    | Single env reader (`loadAppSettings`)       | 🔒    | —     | ✅ batch 6 |
+| 64    | Cross-repo parity checklist                 | —     | 🔍    | ✅ batch 6 |
+| 65    | OIDC release / Trusted Publisher            | —     | —     | ✅ batch 6 |
+| 66    | CHANGELOG + version discipline              | 🔒    | —     | ✅ batch 6 |
+| 67–70 | Reserve: coverage gates, deprecation policy | mixed | mixed | planned    |
+| 71–80 | Observability & disclosure                  | mixed | mixed | planned    |
 
 ## Category D — Ecosystem & publish (FT81–FT100)
 
@@ -95,8 +106,9 @@ Themes: npm consumer DX, Trusted Publisher release, CHANGELOG discipline, nene2-
 | 2     | FT13–FT18                  | ✅ PR #31                 |
 | 3     | FT19–FT30                  | ✅ PR #32                 |
 | 4     | FT31–FT42                  | ✅ PR #33                 |
-| 5     | FT43–FT54                  | `docs/29-ft-loop-batch-5` |
-| 6     | FT55–FT66                  | TBD                       |
+| 5     | FT43–FT54                  | ✅ PR #34                 |
+| 6     | FT55–FT66                  | `docs/29-ft-loop-batch-6` |
+| 7     | FT67–FT78                  | TBD                       |
 | …     | …                          | ~10–12 FTs per PR         |
 
 Update [INDEX.md](INDEX.md) when each FT report lands.

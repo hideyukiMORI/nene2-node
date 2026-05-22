@@ -23,7 +23,12 @@
 
 Keep cross-links in both README files; do not merge repositories.
 
+## Node server URL for client dev
+
+Point nene2-js examples at `http://localhost:3000` (or deployed base URL) after `npm run dev` — optional follow-up Issue; no client code in this repo.
+
 ## References
 
+- Cross-repo checklist: `cross-repo-parity.md`
 - nene2-js: https://github.com/hideyukiMORI/nene2-js
 - nene2-js scope: https://github.com/hideyukiMORI/nene2-js/blob/main/docs/scope.md

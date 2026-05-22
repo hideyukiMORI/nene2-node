@@ -20,6 +20,9 @@ English reference for framework contributors. Updated from **field trials** (doc
 | [middleware-combinations.md](middleware-combinations.md)   | Middleware interactions       |
 | [http-status-patterns.md](http-status-patterns.md)         | 404 / 405 / 503 matrix        |
 | [node-security-practices.md](node-security-practices.md)   | Node crypto, fetch, logs      |
+| [production-errors.md](production-errors.md)               | Prod error disclosure         |
+| [release-process.md](release-process.md)                   | npm OIDC release              |
+| [contributor-onboarding.md](contributor-onboarding.md)     | Contributor fast path         |
 | [request-validation.md](request-validation.md)             | Handler validation            |
 | [middleware-pipeline.md](middleware-pipeline.md)           | `createApp()` order           |
 | [middleware-security.md](middleware-security.md)           | Security baseline             |

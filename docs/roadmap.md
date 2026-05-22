@@ -87,7 +87,7 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 
 ## Field trials
 
-See `docs/development/field-trial-culture.md`. **FT1–54** done; **FT55–100 backlog:** `docs/field-trials/backlog.md`. Docs-first: `docs/development/README.md`, `node-security-practices.md`.
+See `docs/development/field-trial-culture.md`. **FT1–66** done; **FT67–100 backlog:** `docs/field-trials/backlog.md`. Docs-first: `docs/development/README.md`, `release-process.md`, `cross-repo-parity.md`.
 
 ---
 

@@ -17,12 +17,13 @@ npm install @hideyukimori/nene2-framework
 
 | ID  | Task                                    |
 | --- | --------------------------------------- |
-| —   | FT batch 6: FT55–FT66 (Category C/D)    |
-| —   | FT batches 7–9: FT67–FT100              |
+| —   | FT batch 7: FT67–FT78                   |
+| —   | FT batches 8–9: FT79–FT100              |
 | —   | nene2-js examples → Node URL (optional) |
 
 ## Completed (recent)
 
+- [x] FT batch 6: FT55–FT66 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 5: FT43–FT54 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 4: FT31–FT42 ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 - [x] FT batch 3: FT19–FT30 framework deep dive ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
