@@ -22,5 +22,17 @@ Culture: `docs/development/field-trial-culture.md`. Backlog FT2–100: [backlog.
 | 16  | 2026-05-22 | [2026-05-field-trial-16-sqlite-executor.md](2026-05-field-trial-16-sqlite-executor.md)       | SQLite executor   | —   | 🔍  |
 | 17  | 2026-05-22 | [2026-05-field-trial-17-database-health.md](2026-05-field-trial-17-database-health.md)       | DB health 503     | —   | —   |
 | 18  | 2026-05-22 | [2026-05-field-trial-18-transactions.md](2026-05-field-trial-18-transactions.md)             | Transactions      | 🔒  | —   |
+| 19  | 2026-05-22 | [2026-05-field-trial-19-resolve-http-error.md](2026-05-field-trial-19-resolve-http-error.md) | resolveHttpError  | —   | —   |
+| 20  | 2026-05-22 | [2026-05-field-trial-20-openapi-contract.md](2026-05-field-trial-20-openapi-contract.md)     | OpenAPI contract  | —   | 🔍  |
+| 21  | 2026-05-22 | [2026-05-field-trial-21-create-app-di.md](2026-05-field-trial-21-create-app-di.md)           | createApp DI      | —   | —   |
+| 22  | 2026-05-22 | [2026-05-field-trial-22-pagination.md](2026-05-field-trial-22-pagination.md)                 | Pagination        | —   | —   |
+| 23  | 2026-05-22 | [2026-05-field-trial-23-mcp-http-client.md](2026-05-field-trial-23-mcp-http-client.md)       | MCP HTTP client   | —   | —   |
+| 24  | 2026-05-22 | [2026-05-field-trial-24-app-settings.md](2026-05-field-trial-24-app-settings.md)             | App settings      | 🔒  | 🔍  |
+| 25  | 2026-05-22 | [2026-05-field-trial-25-health-composition.md](2026-05-field-trial-25-health-composition.md) | Health checks     | —   | —   |
+| 26  | 2026-05-22 | [2026-05-field-trial-26-schema-migration.md](2026-05-field-trial-26-schema-migration.md)     | Schema migration  | —   | —   |
+| 27  | 2026-05-22 | [2026-05-field-trial-27-throttle-excludes.md](2026-05-field-trial-27-throttle-excludes.md)   | Throttle excludes | 🔒  | —   |
+| 28  | 2026-05-22 | [2026-05-field-trial-28-cors-credentials.md](2026-05-field-trial-28-cors-credentials.md)     | CORS credentials  | —   | 🔍  |
+| 29  | 2026-05-22 | [2026-05-field-trial-29-bearer-paths.md](2026-05-field-trial-29-bearer-paths.md)             | Bearer paths      | —   | —   |
+| 30  | 2026-05-22 | [2026-05-field-trial-30-observability.md](2026-05-field-trial-30-observability.md)           | Observability     | 🔒  | —   |
 
 Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.

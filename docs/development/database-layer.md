@@ -39,7 +39,15 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 - `tests/database/sqlite-executor.test.ts` — executor + transaction manager
 - Repository contract tests with `:memory:` and `ensureExamplesSchema()`
 
+## Schema changes (example tables)
+
+1. Edit `sqlite-note-schema.ts` / `sqlite-tag-schema.ts` (or add new `sqlite-*-schema.ts`).
+2. Call DDL from `ensureExamplesSchema()` in `example-sqlite-schema.ts`.
+3. Run repository contract tests with `:memory:`.
+
+**v0.1.x:** no automatic migrations — delete the SQLite file or bump schema with a documented breaking change in CHANGELOG. Production apps should version migrations outside the framework (ADR if we ship a migrator later).
+
 ## References
 
 - Phase 4 milestone: `../milestones/2026-05-phase4-database-health.md`
-- FT backlog: `../field-trials/backlog.md` (FT16–FT18)
+- FT backlog: `../field-trials/backlog.md` (FT16–FT18, FT26)

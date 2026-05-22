@@ -32,6 +32,12 @@
 | `NENE2_NODE_REQUEST_LOGGING`               | on except `test`  | Structured request logs               |
 | `NENE2_NODE_REQUEST_LOGGING_EXCLUDE_PATHS` | empty             | Paths to skip logging                 |
 
+## OpenAPI (tooling)
+
+| Variable                  | Default                              | Purpose             |
+| ------------------------- | ------------------------------------ | ------------------- |
+| `NENE2_NODE_OPENAPI_PATH` | `../NENE2/docs/openapi/openapi.yaml` | Authoring spec path |
+
 ## Database
 
 | Variable                  | Default | Purpose                                                                      |
