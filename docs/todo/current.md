@@ -15,13 +15,13 @@ npm install @hideyukimori/nene2-framework
 
 ## Up next (ordered)
 
-| ID  | Task                                                                 |
-| --- | -------------------------------------------------------------------- |
+| ID  | Task                                                                |
+| --- | ------------------------------------------------------------------- |
 | —   | PR: MySQL/Postgres adapters + async DB layer (closes #37, #38, #39) |
-| —   | **FT69** PostgreSQL Compose sandbox (after Issues closed)            |
-| —   | FT70–72 migrations, CI DB, pool docs                                   |
-| —   | FT73–80 business-app obstacle FTs                                    |
-| —   | FT81–100 publish / governance                                        |
+| —   | **FT69** PostgreSQL Compose sandbox (after Issues closed)           |
+| —   | FT70–72 migrations, CI DB, pool docs                                |
+| —   | FT73–80 business-app obstacle FTs                                   |
+| —   | FT81–100 publish / governance                                       |
 
 ## Completed (recent)
 

@@ -2,7 +2,7 @@
 
 **Policy:** Docs-first — each FT updates `docs/development/*` (or ADR) when friction appears, then adds a report. Parent Issue: [#29](https://github.com/hideyukiMORI/nene2-node/issues/29).
 
-**Issue gate (Phase 2+):** Do not start FT *N+1* while any Issue opened from FT *N* is still open. See [field-trial-culture.md](../development/field-trial-culture.md).
+**Issue gate (Phase 2+):** Do not start FT _N+1_ while any Issue opened from FT _N_ is still open. See [field-trial-culture.md](../development/field-trial-culture.md).
 
 **Cadence:** FT# % 3 = 0 → security diagnosis; FT# % 4 = 0 → adversarial review; both when FT# % 12 = 0.
 
