@@ -18,6 +18,8 @@ English reference for framework contributors. Updated from **field trials** (doc
 | [local-development.md](local-development.md)               | `npm run dev`                 |
 | [package-exports.md](package-exports.md)                   | Published API surface         |
 | [middleware-combinations.md](middleware-combinations.md)   | Middleware interactions       |
+| [http-status-patterns.md](http-status-patterns.md)         | 404 / 405 / 503 matrix        |
+| [node-security-practices.md](node-security-practices.md)   | Node crypto, fetch, logs      |
 | [request-validation.md](request-validation.md)             | Handler validation            |
 | [middleware-pipeline.md](middleware-pipeline.md)           | `createApp()` order           |
 | [middleware-security.md](middleware-security.md)           | Security baseline             |
