@@ -8,6 +8,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.11] - 2026-05-22
+
+### Added
+
+- `webhookSignatureMiddleware` + `computeWebhookSignature` (FT133 / FT125)
+- `NENE2_NODE_DATABASE_READ_URL` → `database.readExecutor` (FT134 / FT118)
+- `FileRateLimitStorage` for file-backed throttling (FT135 / FT95 partial)
+- Idempotency in-flight dedupe for concurrent duplicate keys (FT136)
+
 ## [0.1.10] - 2026-05-22
 
 ### Added

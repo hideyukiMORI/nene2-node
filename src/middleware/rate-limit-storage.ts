@@ -3,8 +3,10 @@ export interface RateLimitHitResult {
   readonly resetAt: number;
 }
 
+export type RateLimitHit = RateLimitHitResult | Promise<RateLimitHitResult>;
+
 export interface RateLimitStorage {
-  hit(key: string, windowSeconds: number): RateLimitHitResult;
+  hit(key: string, windowSeconds: number): RateLimitHit;
 }
 
 export class InMemoryRateLimitStorage implements RateLimitStorage {

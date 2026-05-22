@@ -1,24 +1,25 @@
 # Current work
 
 Last updated: 2026-05-22  
-**Sprint:** FT130–132 — [#75](https://github.com/hideyukiMORI/nene2-node/issues/75) (parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
+**Sprint:** FT133–136 — [#77](https://github.com/hideyukiMORI/nene2-node/issues/77) (parent [#29](https://github.com/hideyukiMORI/nene2-node/issues/29))
 
 ## Released
 
-- **npm:** [v0.1.9](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.9) — DB 409/422 + idempotency
+- **npm:** [v0.1.10](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.10) — optimistic lock, JWT throttle key, BOLA guard
 
 ## Up next
 
-| ID  | Task                                                          | npm      |
-| --- | ------------------------------------------------------------- | -------- |
-| —   | Release **v0.1.10** (FT130–132)                               | `0.1.10` |
-| —   | **FT133+** Redis throttle adapter, read replica, webhook HMAC | `0.1.11` |
+| ID  | Task                                                         | npm      |
+| --- | ------------------------------------------------------------ | -------- |
+| —   | Release **v0.1.11** (FT133–136)                              | `0.1.11` |
+| —   | **FT137+** Redis throttle/idempotency, webhook replay window | `0.1.12` |
 
-## Completed this session
+## Completed (in PR)
 
-- **FT130** — optimistic concurrency helpers + 409 handler
-- **FT131** — `jwtSubThrottleKey`
-- **FT132** — `assertResourceOwner` → 403
+- **FT133** — webhook HMAC
+- **FT134** — read replica URL
+- **FT135** — `FileRateLimitStorage`
+- **FT136** — idempotency in-flight dedupe
 
 ## Verification
 

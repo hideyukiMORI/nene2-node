@@ -28,6 +28,7 @@ export function idempotencyMiddleware(
   const storage = options.storage ?? new InMemoryIdempotencyStorage();
   const methods = new Set((options.methods ?? DEFAULT_METHODS).map((m) => m.toUpperCase()));
   const requireBodyMatch = options.requireBodyMatch ?? true;
+  const inflight = new Map<string, Promise<void>>();
 
   return async (c, next) => {
     if (!methods.has(c.req.method)) {
@@ -52,40 +53,79 @@ export function idempotencyMiddleware(
       );
     }
 
-    const bodyText = await c.req.raw.clone().text();
-    const bodyHash = requestBodyHash(bodyText);
     const cacheKey = `${c.req.method}:${c.req.path}:${key}`;
 
-    const cached = await storage.get(cacheKey);
-    if (cached !== undefined) {
-      if (requireBodyMatch && cached.bodyHash !== bodyHash) {
-        return problemDetailsFromContext(
-          problems,
-          c,
-          'conflict',
-          'Conflict',
-          409,
-          'Idempotency-Key was already used with a different request body.',
-        );
+    const replayFromStorage = async (): Promise<Response | undefined> => {
+      const hit = await storage.get(cacheKey);
+      if (hit === undefined) {
+        return undefined;
       }
-      return new Response(cached.body, {
-        status: cached.status,
-        headers: { 'Content-Type': cached.contentType, 'X-Idempotent-Replay': 'true' },
+      return new Response(hit.body, {
+        status: hit.status,
+        headers: { 'Content-Type': hit.contentType, 'X-Idempotent-Replay': 'true' },
       });
+    };
+
+    for (;;) {
+      const waiting = inflight.get(cacheKey);
+      if (waiting !== undefined) {
+        await waiting;
+        const replay = await replayFromStorage();
+        if (replay !== undefined) {
+          return replay;
+        }
+        continue;
+      }
+
+      const cached = await storage.get(cacheKey);
+      if (cached !== undefined) {
+        const bodyText = await c.req.raw.clone().text();
+        const bodyHash = requestBodyHash(bodyText);
+        if (requireBodyMatch && cached.bodyHash !== bodyHash) {
+          return problemDetailsFromContext(
+            problems,
+            c,
+            'conflict',
+            'Conflict',
+            409,
+            'Idempotency-Key was already used with a different request body.',
+          );
+        }
+        return new Response(cached.body, {
+          status: cached.status,
+          headers: { 'Content-Type': cached.contentType, 'X-Idempotent-Replay': 'true' },
+        });
+      }
+
+      let resolveGate!: () => void;
+      const gate = new Promise<void>((resolve) => {
+        resolveGate = resolve;
+      });
+      if (inflight.has(cacheKey)) {
+        continue;
+      }
+      inflight.set(cacheKey, gate);
+
+      try {
+        const bodyText = await c.req.raw.clone().text();
+        const bodyHash = requestBodyHash(bodyText);
+        await next();
+        const response = c.res;
+        const cloned = response.clone();
+        const replayBody = await cloned.text();
+        const contentType = cloned.headers.get('Content-Type') ?? 'application/json';
+        await storage.set(cacheKey, {
+          status: cloned.status,
+          body: replayBody,
+          contentType,
+          bodyHash,
+        });
+        response.headers.set('X-Idempotent-Replay', 'false');
+        return;
+      } finally {
+        inflight.delete(cacheKey);
+        resolveGate();
+      }
     }
-
-    await next();
-
-    const response = c.res;
-    const cloned = response.clone();
-    const replayBody = await cloned.text();
-    const contentType = cloned.headers.get('Content-Type') ?? 'application/json';
-    await storage.set(cacheKey, {
-      status: cloned.status,
-      body: replayBody,
-      contentType,
-      bodyHash,
-    });
-    response.headers.set('X-Idempotent-Replay', 'false');
   };
 }

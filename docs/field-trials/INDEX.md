@@ -139,3 +139,7 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 130 | 2026-05-22 | [2026-05-field-trial-130-optimistic-version-sandbox.md](2026-05-field-trial-130-optimistic-version-sandbox.md) | optimistic version | — | — |
 | 131 | 2026-05-22 | [2026-05-field-trial-131-jwt-sub-throttle-key.md](2026-05-field-trial-131-jwt-sub-throttle-key.md) | jwt sub throttle | — | — |
 | 132 | 2026-05-22 | [2026-05-field-trial-132-bola-assert-resource-owner.md](2026-05-field-trial-132-bola-assert-resource-owner.md) | bola assert owner | 🔒 | — |
+| 133 | 2026-05-22 | [2026-05-field-trial-133-webhook-hmac-middleware.md](2026-05-field-trial-133-webhook-hmac-middleware.md) | webhook hmac | 🔒 | — |
+| 134 | 2026-05-22 | [2026-05-field-trial-134-read-replica-url.md](2026-05-field-trial-134-read-replica-url.md) | read replica url | — | — |
+| 135 | 2026-05-22 | [2026-05-field-trial-135-file-throttle-storage.md](2026-05-field-trial-135-file-throttle-storage.md) | file throttle | — | — |
+| 136 | 2026-05-22 | [2026-05-field-trial-136-idempotency-inflight-dedupe.md](2026-05-field-trial-136-idempotency-inflight-dedupe.md) | idempotency inflight | — | — |
