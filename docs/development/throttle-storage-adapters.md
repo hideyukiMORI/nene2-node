@@ -36,6 +36,10 @@ app.use('*', throttleMiddleware(problems, { limit: 100, windowSeconds: 60, stora
 
 The framework does not bundle `ioredis`. Implement `RateLimitStorage.hit()` (sync or async) with your Redis client. Use key prefix `rl:` + `jwtSubThrottleKey(c)`.
 
+## Redis Compose E2E
+
+See [redis-compose-e2e.md](redis-compose-e2e.md) for a Docker Compose recipe and `ft144-redis-compose` probe (host port **26379**).
+
 ## Redis (`RedisRateLimitStorage`)
 
 Requires optional peer **`redis`** and a shared Redis URL:

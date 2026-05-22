@@ -150,3 +150,4 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 141 | 2026-05-22 | [2026-05-field-trial-141-redis-rate-limit-storage.md](2026-05-field-trial-141-redis-rate-limit-storage.md) | redis rate limit | — | — |
 | 142 | 2026-05-22 | [2026-05-field-trial-142-redis-idempotency-storage.md](2026-05-field-trial-142-redis-idempotency-storage.md) | redis idempotency | — | — |
 | 143 | 2026-05-22 | [2026-05-field-trial-143-webhook-timestamp-replay.md](2026-05-field-trial-143-webhook-timestamp-replay.md) | webhook timestamp replay | 🔒 | — |
+| 144 | 2026-05-22 | [2026-05-field-trial-144-redis-compose-e2e.md](2026-05-field-trial-144-redis-compose-e2e.md) | redis compose e2e | — | — |

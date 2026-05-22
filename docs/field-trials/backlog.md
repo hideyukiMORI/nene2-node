@@ -123,7 +123,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 92  | Domain handler registration order                | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 93  | Problem Details `instance` URI                   | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 94  | CORS preflight + Bearer                          | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
-| 95  | Throttle Redis storage                           | 🔒  | —   | open — FT131 partial; see throttle-storage-adapters.md                                                                                    |
+| 95  | Throttle Redis storage                           | 🔒  | —   | done — FT141 / FT144 [report](2026-05-field-trial-144-redis-compose-e2e.md)                                                               |
 | 96  | Bulk JSON / request size                         | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 97  | SQL injection parameterized reaffirm             | —   | 🔍  | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 98  | JWT expiry / clock skew                          | 🔒  | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
