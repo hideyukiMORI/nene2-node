@@ -17,7 +17,7 @@ Production-oriented HTTP pipeline matching NENE2 middleware order and auth patte
 - [x] CORS from `AppSettings` (explicit origins)
 - [x] Structured logging (JSON lines via `console.info`) with request id
 - [x] Middleware order documented and tested (`docs/development/middleware-pipeline.md`)
-- [ ] Framework FT#1 report (optional) — middleware stack
+- [x] Framework FT#1 report — [middleware stack](../field-trials/2026-05-field-trial-1-middleware.md) ([#26](https://github.com/hideyukiMORI/nene2-node/issues/26))
 
 ## Reference
 
