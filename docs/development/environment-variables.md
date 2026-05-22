@@ -2,6 +2,12 @@
 
 **Single reader:** `loadAppSettings()` in `src/config/app-settings.ts`. Do not read `process.env` elsewhere in `src/`.
 
+## Dev server
+
+| Variable          | Default | Purpose                                                   |
+| ----------------- | ------- | --------------------------------------------------------- |
+| `NENE2_NODE_PORT` | `3000`  | `npm run dev` listen port (not read by `loadAppSettings`) |
+
 ## Core
 
 | Variable                           | Default                       | Purpose                           |

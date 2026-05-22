@@ -14,6 +14,10 @@ English reference for framework contributors. Updated from **field trials** (doc
 | [openapi-contract-testing.md](openapi-contract-testing.md) | Contract fixtures             |
 | [composition-root.md](composition-root.md)                 | `createApp()` options         |
 | [observability.md](observability.md)                       | Request id + logging          |
+| [composite-auth.md](composite-auth.md)                     | Auth path patterns            |
+| [local-development.md](local-development.md)               | `npm run dev`                 |
+| [package-exports.md](package-exports.md)                   | Published API surface         |
+| [middleware-combinations.md](middleware-combinations.md)   | Middleware interactions       |
 | [request-validation.md](request-validation.md)             | Handler validation            |
 | [middleware-pipeline.md](middleware-pipeline.md)           | `createApp()` order           |
 | [middleware-security.md](middleware-security.md)           | Security baseline             |

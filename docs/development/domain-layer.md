@@ -21,6 +21,15 @@ Framework infrastructure lives under `src/http/`, `src/middleware/`, `src/config
 
 Handlers call UseCases; catch is not required when the handler is registered.
 
+### Per-entity not-found (Note / Tag)
+
+| Entity | Error               | Handler factory             | Detail message |
+| ------ | ------------------- | --------------------------- | -------------- |
+| Note   | `NoteNotFoundError` | `createNoteNotFoundHandler` | note-specific  |
+| Tag    | `TagNotFoundError`  | `createTagNotFoundHandler`  | tag-specific   |
+
+UseCases throw the error; routes do not catch — `onError` → `resolveHttpError` → handler → 404 `not-found` type.
+
 ## UseCase rules
 
 - One public method per use case: `execute(input): output`.

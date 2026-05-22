@@ -17,6 +17,8 @@ SQLite via `node:sqlite` for example domains and health checks. Parity reference
 
 `createApp()` opens the database when `NENE2_NODE_DATABASE_URL` is set, runs `ensureExamplesSchema()`, injects `SqliteNoteRepository` / `SqliteTagRepository`, and registers the database health check.
 
+**Multi-domain:** one `SqliteQueryExecutor` per database connection — notes and tags share the same file and schema bootstrap. Add new example domains by extending `ensureExamplesSchema()` and wiring repos in `createApp()`.
+
 ## Usage in new repositories
 
 1. Define a port interface in `src/example/<domain>/` (no Hono imports).

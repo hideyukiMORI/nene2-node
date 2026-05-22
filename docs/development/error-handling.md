@@ -19,9 +19,16 @@ Register with `createApp({ domainHandlers: [...] })`. Built-in handlers cover no
 
 When `NENE2_NODE_APP_DEBUG=true`, unexpected errors log to stderr and `detail` may include `Error.message`. Production must keep debug **false** to avoid leaking internals.
 
-## 404
+## 404 routing
 
-`app.notFound` is separate from `onError` — always `not-found` type (see FT#34).
+`app.notFound` runs for unknown paths — **not** the same as domain not-found:
+
+| Source         | Trigger                                  | `type`      | Typical detail           |
+| -------------- | ---------------------------------------- | ----------- | ------------------------ |
+| `app.notFound` | No route matched                         | `not-found` | generic resource message |
+| Domain handler | `NoteNotFoundError` / `TagNotFoundError` | `not-found` | entity-specific detail   |
+
+Contract test: `tests/fixtures/contract/not-found-problem.json` pins generic 404 shape.
 
 ## References
 

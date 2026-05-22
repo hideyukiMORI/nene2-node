@@ -39,6 +39,18 @@ API errors are **contracts**. They must be stable, documented in OpenAPI, and sa
 | `instance` | Request path or correlation id       |
 | `errors`   | Validation failures only (see below) |
 
+### `errors[]` item shape (validation)
+
+Each entry matches `ValidationError.toJSON()`:
+
+```json
+{ "field": "title", "message": "Title is required.", "code": "required" }
+```
+
+- `field` — dot-path or simple name
+- `message` — English, safe for clients
+- `code` — stable snake_case machine code (`required`, `out_of_range`, …)
+
 ## Problem `type` URIs
 
 Canonical pattern (from NENE2):
