@@ -48,5 +48,12 @@ export {
   type RateLimitStorage,
 } from './middleware/rate-limit-storage.js';
 export { throttleMiddleware, type ThrottleOptions } from './middleware/throttle.js';
+export type { DatabaseQueryExecutor } from './database/database-query-executor.js';
+export type { DatabaseTransactionManager } from './database/database-transaction-manager.js';
+export { createDatabaseHealthCheck } from './database/database-health-check.js';
+export { openSqliteDatabase } from './database/open-sqlite-database.js';
+export { SqliteQueryExecutor } from './database/sqlite-query-executor.js';
+export { SqliteTransactionManager } from './database/sqlite-transaction-manager.js';
+export type { SqlParameter, SqlRow } from './database/sql-types.js';
 
 export const FRAMEWORK_PACKAGE_NAME = '@hideyukimori/nene2-framework' as const;

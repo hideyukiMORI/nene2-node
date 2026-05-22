@@ -67,12 +67,12 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 
 ---
 
-## Phase 4 — Database and health
+## Phase 4 — Database and health ✅
 
 [Milestone](milestones/2026-05-phase4-database-health.md)
 
-- [ ] Query executor + transactions
-- [ ] Database health check → degraded `/health`
+- [x] Query executor + transactions ([#16](https://github.com/hideyukiMORI/nene2-node/issues/16))
+- [x] Database health check → degraded `/health`
 
 ---
 

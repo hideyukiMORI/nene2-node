@@ -18,6 +18,7 @@ export interface AppSettings {
   readonly throttleExcludePaths: readonly string[];
   readonly requestLoggingEnabled: boolean;
   readonly requestLoggingExcludePaths: readonly string[];
+  readonly databaseUrl: string | undefined;
 }
 
 const DEFAULT_SERVICE_NAME = 'NENE2';
@@ -99,5 +100,6 @@ export function loadAppSettings(env: NodeJS.ProcessEnv = process.env): AppSettin
       readAppEnv(env) !== 'test',
     ),
     requestLoggingExcludePaths: readStringList(env, 'NENE2_NODE_REQUEST_LOGGING_EXCLUDE_PATHS'),
+    databaseUrl: readOptionalString(env, 'NENE2_NODE_DATABASE_URL'),
   };
 }
