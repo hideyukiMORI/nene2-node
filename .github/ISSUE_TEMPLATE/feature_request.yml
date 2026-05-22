@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose framework runtime, middleware, or example domain aligned with NENE2
+labels: ['enhancement']
+body:
+  - type: checkboxes
+    id: scope_check
+    attributes:
+      label: Scope check (see docs/scope.md)
+      options:
+        - label: This is Node framework runtime / middleware / examples (in scope)
+          required: true
+        - label: This is NOT a thin HTTP client (use nene2-js instead)
+          required: true
+        - label: This is NOT a duplicate of nene-mcp stdio server
+          required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: input
+    id: openapi_operation
+    attributes:
+      label: OpenAPI operationId or path (if applicable)
+  - type: input
+    id: nene2_python_module
+    attributes:
+      label: nene2-python module to mirror (if applicable)

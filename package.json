@@ -1,0 +1,42 @@
+{
+  "name": "@hideyukimori/nene2-framework",
+  "version": "0.0.0",
+  "private": true,
+  "description": "NENE2-compatible API framework for Node.js — clean architecture, OpenAPI-aligned, AI-readable",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hideyukiMORI/nene2-node.git"
+  },
+  "engines": {
+    "node": ">=22 <25",
+    "npm": ">=10 <12"
+  },
+  "packageManager": "npm@11",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "vitest run",
+    "check": "npm run type-check && npm run lint && npm run format && npm run test"
+  },
+  "keywords": [
+    "nene2",
+    "nodejs",
+    "typescript",
+    "api-framework",
+    "openapi",
+    "problem-details",
+    "clean-architecture"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.39.3",
+    "eslint": "^9.39.3",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.3",
+    "vitest": "^4.0.18"
+  }
+}

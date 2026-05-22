@@ -1,0 +1,15 @@
+---
+description: nene2-node core rules
+alwaysApply: true
+---
+
+# nene2-node Rules
+
+- Canonical docs: `README.md`, `AGENTS.md`, `docs/scope.md`, `docs/CONTRIBUTING.md`, `docs/workflow.md`.
+- This repo is the **Node.js framework port** — not the TypeScript client (`nene2-js`), not nene-mcp.
+- OpenAPI source of truth: NENE2 `docs/openapi/openapi.yaml`.
+- Parity reference: `nene2-python`.
+- User-facing docs: **English**.
+- Work from GitHub Issues; branch `type/issue-number-summary`; no direct commits to `main`.
+- Conventional Commits: English type, scope, and description; Issue number in subject when practical.
+- Do not commit secrets, `.env`, or `node_modules/`.
