@@ -4,22 +4,32 @@ Use this checklist before the first public npm release.
 
 ## Pre-release
 
-- [ ] `npm run check` green on `main`
-- [ ] `npm run build` produces `dist/` with `.d.ts` maps
-- [ ] `package.json` `exports` resolves `.` → `dist/index.js`
-- [ ] Version bumped to `0.1.0` in `package.json`
-- [ ] `CHANGELOG.md` updated for `0.1.0`
-- [ ] `private: false` only when ready to publish
-- [ ] No secrets in repo; `.env` gitignored
-- [ ] OpenAPI parity spot-check against sibling `NENE2` tag
+- [x] `npm run check` green on `main`
+- [x] `npm run build` produces `dist/` with `.d.ts` maps
+- [x] `package.json` `exports` resolves `.` → `dist/index.js`
+- [x] Version bumped to `0.1.0` in `package.json`
+- [x] `CHANGELOG.md` updated for `0.1.0`
+- [x] `private: false` (release PR)
+- [x] No secrets in repo; `.env` gitignored
+- [ ] OpenAPI parity spot-check against sibling `NENE2` tag (maintainer)
 
 ## npm
 
+```bash
+npm login   # @hideyukimori scope
+npm publish --access public
+```
+
 - [ ] `npm whoami` / registry access for `@hideyukimori` scope
-- [ ] `npm publish --access public` (dry-run: `npm pack` first)
+- [x] Dry-run: `npm pack --dry-run` (tarball includes `dist/`, README, LICENSE, CHANGELOG)
+- [ ] `npm publish --access public`
 - [ ] GitHub Release with tag `v0.1.0`
+
+```bash
+gh release create v0.1.0 --title "v0.1.0" --notes-file CHANGELOG.md
+```
 
 ## Post-release
 
 - [ ] nene2-js Issue to target Node server URL in examples (optional)
-- [ ] Update `docs/todo/current.md` and close publish Issue
+- [ ] Update `docs/todo/current.md` and close [#21](https://github.com/hideyukiMORI/nene2-node/issues/21)
