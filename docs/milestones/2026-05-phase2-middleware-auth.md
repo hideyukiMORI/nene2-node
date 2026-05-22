@@ -1,6 +1,6 @@
 # Milestone — Phase 2: Middleware and auth baseline
 
-**Status:** Planned  
+**Status:** In progress  
 **Depends on:** Phase 1b
 
 ## Goal
@@ -9,10 +9,10 @@ Production-oriented HTTP pipeline matching NENE2 middleware order and auth patte
 
 ## Acceptance criteria
 
-- [ ] Central `onError` + domain exception registry (map `DomainError` → Problem Details)
-- [ ] `validation-failed` (422) with structured `errors[]`
-- [ ] `BearerTokenMiddleware` + `LocalTokenVerifier` (timing-safe)
-- [ ] `GET /examples/protected` with JWT claims in response
+- [x] Central `onError` + domain exception registry (map `DomainError` → Problem Details)
+- [x] `validation-failed` (422) with structured `errors[]`
+- [x] `BearerTokenMiddleware` + `LocalBearerTokenVerifier` (HS256, timing-safe signature)
+- [x] `GET /examples/protected` with JWT claims in response
 - [ ] `ThrottleMiddleware` — in-memory, 429 + Problem Details
 - [ ] CORS from `AppSettings` (explicit origins)
 - [ ] Structured logging (pino or node util) with request id

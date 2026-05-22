@@ -9,6 +9,7 @@ export interface AppSettings {
   readonly frameworkDescription: string;
   readonly problemDetailsBaseUrl: string;
   readonly machineApiKey: string | undefined;
+  readonly localJwtSecret: string | undefined;
   readonly requestMaxBodyBytes: number;
 }
 
@@ -60,6 +61,7 @@ export function loadAppSettings(env: NodeJS.ProcessEnv = process.env): AppSettin
     frameworkDescription: readString(env, 'NENE2_NODE_FRAMEWORK_DESCRIPTION', DEFAULT_DESCRIPTION),
     problemDetailsBaseUrl: readString(env, 'PROBLEM_DETAILS_BASE_URL', DEFAULT_PROBLEM_BASE),
     machineApiKey: readOptionalString(env, 'NENE2_MACHINE_API_KEY'),
+    localJwtSecret: readOptionalString(env, 'NENE2_LOCAL_JWT_SECRET'),
     requestMaxBodyBytes: readPositiveInt(env, 'NENE2_NODE_REQUEST_MAX_BODY_BYTES', 1_048_576),
   };
 }

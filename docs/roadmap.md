@@ -46,13 +46,13 @@ Ship `@hideyukimori/nene2-framework@0.1.0` where a team can run a NENE2-compatib
 
 ---
 
-## Phase 2 — Middleware and auth 🔄 next
+## Phase 2 — Middleware and auth 🔄 in progress
 
 [Milestone](milestones/2026-05-phase2-middleware-auth.md)
 
-- [ ] Domain exception → Problem Details registry
-- [ ] Validation layer (`validation-failed`)
-- [ ] Bearer JWT + `/examples/protected`
+- [x] Domain exception → Problem Details registry ([#11](https://github.com/hideyukiMORI/nene2-node/issues/11))
+- [x] Validation layer (`validation-failed`)
+- [x] Bearer JWT + `/examples/protected`
 - [ ] Throttle (429), CORS, structured logging
 
 ---
