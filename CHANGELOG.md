@@ -8,6 +8,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.14] - 2026-05-22
+
+### Changed
+
+- `requestBodyHash` uses SHA-256 hex (idempotency body fingerprint)
+- `securityHeadersMiddleware` accepts `enableHsts` — set in production via `createApp()`
+- Example note/tag wiring extracted to `wire-example-module.ts`
+
+### Added
+
+- Vitest coverage (`npm run test:coverage`) with CI reporting and thresholds
+- `npm run test:integration` for MySQL/PostgreSQL service-container tests (excluded from default `npm test`)
+
 ## [0.1.13] - 2026-05-22
 
 ### Added

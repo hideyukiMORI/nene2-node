@@ -17,6 +17,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: npm run test:coverage
 
   mysql-integration:
     runs-on: ubuntu-latest
@@ -46,8 +47,7 @@ jobs:
       - name: MySQL integration tests
         env:
           NENE2_NODE_TEST_MYSQL_URL: mysql://nene2_ci:nene2_ci@127.0.0.1:3306/nene2_ci
-        run: npm run test -- tests/database/mysql-integration.test.ts
-
+        run: npm run test:integration -- tests/integration/mysql-integration.test.ts
   postgres-integration:
     runs-on: ubuntu-latest
     services:
@@ -75,4 +75,4 @@ jobs:
       - name: PostgreSQL integration tests
         env:
           NENE2_NODE_TEST_POSTGRES_URL: postgresql://nene2_ci:nene2_ci@127.0.0.1:5432/nene2_ci
-        run: npm run test -- tests/database/postgres-integration.test.ts
+        run: npm run test:integration -- tests/integration/postgres-integration.test.ts
