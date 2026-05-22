@@ -1,5 +1,7 @@
 import type { Hono } from 'hono';
 
+import { authSubFromContext } from '../../domain/resource-ownership.js';
+import { ResourceAccessDeniedError } from '../../error/resource-access-denied-error.js';
 import { parseJsonObjectBody } from '../../http/parse-json-body.js';
 import { parsePaginationQuery } from '../../http/pagination-query.js';
 import type { ProblemDetailsFactory } from '../../http/problem-details.js';
@@ -29,6 +31,16 @@ function parseNoteId(raw: string): number {
   return id;
 }
 
+function requireAuthSub(c: {
+  get: (key: 'authClaims') => Readonly<Record<string, unknown>> | undefined;
+}): string {
+  const sub = authSubFromContext(c.get('authClaims'));
+  if (sub === undefined || sub === '') {
+    throw new ResourceAccessDeniedError('note', 0);
+  }
+  return sub;
+}
+
 export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
   const listNotes = new ListNotesUseCase(deps.repository);
   const getNote = new GetNoteByIdUseCase(deps.repository);
@@ -38,7 +50,7 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
 
   app.get('/examples/notes', async (c) => {
     const pagination = parsePaginationQuery(new URL(c.req.url).searchParams);
-    const output = await listNotes.execute(pagination);
+    const output = await listNotes.execute({ ...pagination, authSub: requireAuthSub(c) });
     return c.json(
       {
         items: output.items.map(noteToJSON),
@@ -52,7 +64,7 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
 
   app.post('/examples/notes', async (c) => {
     const body = validateCreateNoteBody(await parseJsonObjectBody(c.req.raw));
-    const note = await createNote.execute(body);
+    const note = await createNote.execute({ ...body, authSub: requireAuthSub(c) });
     const location = `/examples/notes/${String(note.id)}`;
     return c.json(noteToJSON(note), 201, {
       'Content-Type': 'application/json; charset=utf-8',
@@ -61,7 +73,10 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
   });
 
   app.get('/examples/notes/:id', async (c) => {
-    const note = await getNote.execute({ noteId: parseNoteId(c.req.param('id')) });
+    const note = await getNote.execute({
+      noteId: parseNoteId(c.req.param('id')),
+      authSub: requireAuthSub(c),
+    });
     return c.json(noteToJSON(note), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
@@ -70,14 +85,22 @@ export function registerNoteRoutes(app: Hono, deps: NoteRoutesDeps): void {
   app.put('/examples/notes/:id', async (c) => {
     const noteId = parseNoteId(c.req.param('id'));
     const body = validateCreateNoteBody(await parseJsonObjectBody(c.req.raw));
-    const note = await updateNote.execute({ noteId, title: body.title, body: body.body });
+    const note = await updateNote.execute({
+      noteId,
+      title: body.title,
+      body: body.body,
+      authSub: requireAuthSub(c),
+    });
     return c.json(noteToJSON(note), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
   });
 
   app.delete('/examples/notes/:id', async (c) => {
-    await deleteNote.execute({ noteId: parseNoteId(c.req.param('id')) });
+    await deleteNote.execute({
+      noteId: parseNoteId(c.req.param('id')),
+      authSub: requireAuthSub(c),
+    });
     return c.body(null, 204);
   });
 

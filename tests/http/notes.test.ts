@@ -1,8 +1,12 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { createApp } from '../../src/app/create-app.js';
 import type { Nene2App } from '../../src/app/create-app.js';
-import { loadAppSettings } from '../../src/config/app-settings.js';
+import {
+  bearerAuth,
+  createExampleTestApp,
+  jsonAuthHeaders,
+  type ExampleTestApp,
+} from '../helpers/example-test-app.js';
 
 async function jsonBody<T>(response: Response): Promise<T> {
   return (await response.json()) as T;
@@ -10,15 +14,21 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('HTTP /examples/notes', () => {
   let app: Nene2App['app'];
+  let verifier: ExampleTestApp['verifier'];
 
   beforeEach(async () => {
-    ({ app } = await createApp({
-      settings: loadAppSettings({ NODE_ENV: 'test', NENE2_NODE_APP_ENV: 'test' }),
-    }));
+    ({ app, verifier } = await createExampleTestApp());
+  });
+
+  it('returns 401 without bearer token', async () => {
+    const response = await app.request('http://localhost/examples/notes');
+    expect(response.status).toBe(401);
   });
 
   it('lists empty notes', async () => {
-    const response = await app.request('http://localhost/examples/notes');
+    const response = await app.request('http://localhost/examples/notes', {
+      headers: bearerAuth(verifier),
+    });
     const body = await jsonBody<{ items: unknown[]; limit: number; offset: number }>(response);
 
     expect(response.status).toBe(200);
@@ -30,7 +40,7 @@ describe('HTTP /examples/notes', () => {
   it('creates, reads, updates, and deletes a note', async () => {
     const createResponse = await app.request('http://localhost/examples/notes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ title: 'Hello', body: 'World' }),
     });
     expect(createResponse.status).toBe(201);
@@ -38,7 +48,9 @@ describe('HTTP /examples/notes', () => {
 
     const created = await jsonBody<{ id: number; title: string; body: string }>(createResponse);
 
-    const getResponse = await app.request(`http://localhost/examples/notes/${String(created.id)}`);
+    const getResponse = await app.request(`http://localhost/examples/notes/${String(created.id)}`, {
+      headers: bearerAuth(verifier),
+    });
     expect(getResponse.status).toBe(200);
     expect((await jsonBody(getResponse)).title).toBe('Hello');
 
@@ -46,7 +58,7 @@ describe('HTTP /examples/notes', () => {
       `http://localhost/examples/notes/${String(created.id)}`,
       {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: jsonAuthHeaders(verifier),
         body: JSON.stringify({ title: 'Updated', body: 'Updated body' }),
       },
     );
@@ -55,12 +67,13 @@ describe('HTTP /examples/notes', () => {
 
     const deleteResponse = await app.request(
       `http://localhost/examples/notes/${String(created.id)}`,
-      { method: 'DELETE' },
+      { method: 'DELETE', headers: bearerAuth(verifier) },
     );
     expect(deleteResponse.status).toBe(204);
 
     const missingResponse = await app.request(
       `http://localhost/examples/notes/${String(created.id)}`,
+      { headers: bearerAuth(verifier) },
     );
     expect(missingResponse.status).toBe(404);
   });
@@ -68,7 +81,7 @@ describe('HTTP /examples/notes', () => {
   it('returns 422 for empty title', async () => {
     const response = await app.request('http://localhost/examples/notes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ title: '', body: 'x' }),
     });
     const body = await jsonBody<{ errors: { field: string }[] }>(response);
@@ -80,7 +93,7 @@ describe('HTTP /examples/notes', () => {
   it('returns 400 for invalid JSON', async () => {
     const response = await app.request('http://localhost/examples/notes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: '{not-json',
     });
     const body = await jsonBody<{ type: string; status: number }>(response);
@@ -91,7 +104,9 @@ describe('HTTP /examples/notes', () => {
   });
 
   it('returns 422 for out-of-range limit', async () => {
-    const response = await app.request('http://localhost/examples/notes?limit=0');
+    const response = await app.request('http://localhost/examples/notes?limit=0', {
+      headers: bearerAuth(verifier),
+    });
     expect(response.status).toBe(422);
   });
 });

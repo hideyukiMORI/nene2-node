@@ -5,7 +5,12 @@ import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { Hono } from 'hono';
 
-import { createApp } from '../../src/app/create-app.js';
+import {
+  bearerAuth,
+  createExampleTestApp,
+  jsonAuthHeaders,
+  type ExampleTestApp,
+} from '../helpers/example-test-app.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -20,16 +25,19 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('OpenAPI contract — note endpoints', () => {
   let app: Hono;
+  let verifier: ExampleTestApp['verifier'];
 
   beforeAll(async () => {
-    app = (await createApp()).app;
+    ({ app, verifier } = await createExampleTestApp());
   });
 
   it('GET /examples/notes matches empty list fixture', async () => {
     const expected = loadFixture<{ items: unknown[]; limit: number; offset: number }>(
       'note-list-empty-200.json',
     );
-    const response = await app.request('http://localhost/examples/notes');
+    const response = await app.request('http://localhost/examples/notes', {
+      headers: bearerAuth(verifier),
+    });
     const body = await jsonBody<typeof expected>(response);
 
     expect(response.status).toBe(200);
@@ -41,7 +49,7 @@ describe('OpenAPI contract — note endpoints', () => {
 
     const createResponse = await app.request('http://localhost/examples/notes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ title: example.title, body: example.body }),
     });
 
@@ -51,7 +59,9 @@ describe('OpenAPI contract — note endpoints', () => {
     expect(created.body).toBe(example.body);
     expect(typeof created.id).toBe('number');
 
-    const getResponse = await app.request(`http://localhost/examples/notes/${String(created.id)}`);
+    const getResponse = await app.request(`http://localhost/examples/notes/${String(created.id)}`, {
+      headers: bearerAuth(verifier),
+    });
     const fetched = await jsonBody<typeof created>(getResponse);
 
     expect(getResponse.status).toBe(200);

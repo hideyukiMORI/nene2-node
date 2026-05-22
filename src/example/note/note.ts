@@ -2,6 +2,7 @@ export interface Note {
   readonly id: number;
   readonly title: string;
   readonly body: string;
+  readonly ownerId: string;
 }
 
 export function noteToJSON(note: Note): { id: number; title: string; body: string } {

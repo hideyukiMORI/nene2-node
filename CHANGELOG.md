@@ -8,6 +8,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.19] - 2026-05-22
+
+### Changed
+
+- Example note/tag UseCases enforce row ownership via `assertResourceOwner` (BOLA mitigation, FT146)
+- `/examples/notes` and `/examples/tags` require Bearer auth when examples are enabled
+- Repositories persist `owner_id`; list queries are scoped to JWT `sub`
+
+### Added
+
+- `createResourceAccessDeniedHandler` wired into example module domain handlers
+- HTTP and UseCase tests for cross-user **403** responses
+
 ## [0.1.18] - 2026-05-22
 
 ### Added

@@ -13,6 +13,7 @@ import { InMemoryTagRepository } from '../example/tag/in-memory-tag-repository.j
 import type { TagRepository } from '../example/tag/tag-repository.js';
 import { registerTagRoutes } from '../example/tag/register-tag-routes.js';
 import { SqliteTagRepository } from '../example/tag/sqlite-tag-repository.js';
+import { createResourceAccessDeniedHandler } from '../error/resource-access-denied-handler.js';
 import type { DatabaseQueryExecutor } from '../database/database-query-executor.js';
 
 export interface ExampleModuleWiring {
@@ -52,6 +53,7 @@ export function resolveExampleModule(options: ResolveExampleModuleOptions): Exam
     domainHandlers: [
       createNoteNotFoundHandler(options.problems),
       createTagNotFoundHandler(options.problems),
+      createResourceAccessDeniedHandler(options.problems),
       ...(options.extraDomainHandlers ?? []),
     ],
   };

@@ -5,7 +5,12 @@ import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { Hono } from 'hono';
 
-import { createApp } from '../../src/app/create-app.js';
+import {
+  bearerAuth,
+  createExampleTestApp,
+  jsonAuthHeaders,
+  type ExampleTestApp,
+} from '../helpers/example-test-app.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -19,16 +24,19 @@ async function jsonBody<T>(response: Response): Promise<T> {
 
 describe('OpenAPI contract — tag endpoints', () => {
   let app: Hono;
+  let verifier: ExampleTestApp['verifier'];
 
   beforeAll(async () => {
-    app = (await createApp()).app;
+    ({ app, verifier } = await createExampleTestApp());
   });
 
   it('GET /examples/tags matches empty list fixture', async () => {
     const expected = loadFixture<{ items: unknown[]; limit: number; offset: number }>(
       'tag-list-empty-200.json',
     );
-    const response = await app.request('http://localhost/examples/tags');
+    const response = await app.request('http://localhost/examples/tags', {
+      headers: bearerAuth(verifier),
+    });
     expect(response.status).toBe(200);
     expect(await jsonBody(response)).toEqual(expected);
   });
@@ -37,7 +45,7 @@ describe('OpenAPI contract — tag endpoints', () => {
     const example = loadFixture<{ name: string }>('tag-response-200.json');
     const createResponse = await app.request('http://localhost/examples/tags', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonAuthHeaders(verifier),
       body: JSON.stringify({ name: example.name }),
     });
     expect(createResponse.status).toBe(201);

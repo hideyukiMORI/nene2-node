@@ -4,7 +4,8 @@ export const NOTES_TABLE_SQL = `
 CREATE TABLE IF NOT EXISTS notes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
-  body TEXT NOT NULL
+  body TEXT NOT NULL,
+  owner_id TEXT NOT NULL
 );
 `;
 

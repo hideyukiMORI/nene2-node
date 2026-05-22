@@ -1,5 +1,7 @@
 import type { Hono } from 'hono';
 
+import { authSubFromContext } from '../../domain/resource-ownership.js';
+import { ResourceAccessDeniedError } from '../../error/resource-access-denied-error.js';
 import { parseJsonObjectBody } from '../../http/parse-json-body.js';
 import { parsePaginationQuery } from '../../http/pagination-query.js';
 import type { ProblemDetailsFactory } from '../../http/problem-details.js';
@@ -29,6 +31,16 @@ function parseTagId(raw: string): number {
   return id;
 }
 
+function requireAuthSub(c: {
+  get: (key: 'authClaims') => Readonly<Record<string, unknown>> | undefined;
+}): string {
+  const sub = authSubFromContext(c.get('authClaims'));
+  if (sub === undefined || sub === '') {
+    throw new ResourceAccessDeniedError('tag', 0);
+  }
+  return sub;
+}
+
 export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
   const listTags = new ListTagsUseCase(deps.repository);
   const getTag = new GetTagByIdUseCase(deps.repository);
@@ -38,7 +50,7 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
 
   app.get('/examples/tags', async (c) => {
     const pagination = parsePaginationQuery(new URL(c.req.url).searchParams);
-    const output = await listTags.execute(pagination);
+    const output = await listTags.execute({ ...pagination, authSub: requireAuthSub(c) });
     return c.json(
       {
         items: output.items.map(tagToJSON),
@@ -52,7 +64,7 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
 
   app.post('/examples/tags', async (c) => {
     const body = validateTagBody(await parseJsonObjectBody(c.req.raw));
-    const tag = await createTag.execute(body);
+    const tag = await createTag.execute({ ...body, authSub: requireAuthSub(c) });
     return c.json(tagToJSON(tag), 201, {
       'Content-Type': 'application/json; charset=utf-8',
       Location: `/examples/tags/${String(tag.id)}`,
@@ -60,7 +72,10 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
   });
 
   app.get('/examples/tags/:id', async (c) => {
-    const tag = await getTag.execute({ tagId: parseTagId(c.req.param('id')) });
+    const tag = await getTag.execute({
+      tagId: parseTagId(c.req.param('id')),
+      authSub: requireAuthSub(c),
+    });
     return c.json(tagToJSON(tag), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
@@ -69,14 +84,14 @@ export function registerTagRoutes(app: Hono, deps: TagRoutesDeps): void {
   app.put('/examples/tags/:id', async (c) => {
     const tagId = parseTagId(c.req.param('id'));
     const body = validateTagBody(await parseJsonObjectBody(c.req.raw));
-    const tag = await updateTag.execute({ tagId, name: body.name });
+    const tag = await updateTag.execute({ tagId, name: body.name, authSub: requireAuthSub(c) });
     return c.json(tagToJSON(tag), 200, {
       'Content-Type': 'application/json; charset=utf-8',
     });
   });
 
   app.delete('/examples/tags/:id', async (c) => {
-    await deleteTag.execute({ tagId: parseTagId(c.req.param('id')) });
+    await deleteTag.execute({ tagId: parseTagId(c.req.param('id')), authSub: requireAuthSub(c) });
     return c.body(null, 204);
   });
 
