@@ -6,21 +6,21 @@ Last updated: 2026-05-22
 
 ## In progress
 
-| ID | Task | Milestone | Status |
-| -- | ---- | --------- | ------ |
-| P1b | OpenAPI contract + dev server | [phase1b](milestones/2026-05-phase1b-contract-and-dev.md) | PR pending |
-| P2-1 | Domain exception + error middleware | [phase2](milestones/2026-05-phase2-middleware-auth.md) | Next Issue |
+| ID   | Task                                | Milestone                                                 | Status     |
+| ---- | ----------------------------------- | --------------------------------------------------------- | ---------- |
+| P1b  | OpenAPI contract + dev server       | [phase1b](milestones/2026-05-phase1b-contract-and-dev.md) | PR pending |
+| P2-1 | Domain exception + error middleware | [phase2](milestones/2026-05-phase2-middleware-auth.md)    | Next Issue |
 
 ## Up next (ordered)
 
-| ID | Task | Phase |
-| -- | ---- | ----- |
-| P2-2 | Validation + `validation-failed` | 2 |
-| P2-3 | Bearer token + `/examples/protected` | 2 |
-| P2-4 | Throttle + CORS + structured logging | 2 |
-| P3-1 | Note domain (interfaces + in-memory) | 3 |
-| P3-2 | Note HTTP + SQLite | 3 |
-| P3-3 | OpenAPI contract tests for notes | 3 |
+| ID   | Task                                 | Phase |
+| ---- | ------------------------------------ | ----- |
+| P2-2 | Validation + `validation-failed`     | 2     |
+| P2-3 | Bearer token + `/examples/protected` | 2     |
+| P2-4 | Throttle + CORS + structured logging | 2     |
+| P3-1 | Note domain (interfaces + in-memory) | 3     |
+| P3-2 | Note HTTP + SQLite                   | 3     |
+| P3-3 | OpenAPI contract tests for notes     | 3     |
 
 ## Completed (recent)
 
