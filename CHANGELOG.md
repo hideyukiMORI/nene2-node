@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.21] - 2026-05-22
+
+### Added
+
+- Example note/tag `created_at` column persisted as UTC ISO-8601 via `utcNowIso()`
+- JSON responses include `created_at` (FT148 / FT115 follow-up)
+
 ## [0.1.20] - 2026-05-22
 
 ### Changed

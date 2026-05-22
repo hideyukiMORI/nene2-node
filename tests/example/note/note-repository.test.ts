@@ -32,10 +32,19 @@ function runRepositoryContract(name: string, createRepository: () => NoteReposit
       expect(page.map((n) => n.title)).toEqual(['B']);
     });
 
-    it('updates and deletes', async () => {
+    it('saves notes with UTC ISO created_at', async () => {
+      const repo = createRepository();
+      const note = await repo.save('Hello', 'World', OWNER);
+      expect(note.createdAt.endsWith('Z')).toBe(true);
+      expect(note.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/);
+      expect((await repo.findById(note.id))?.createdAt).toBe(note.createdAt);
+    });
+
+    it('preserves created_at on update', async () => {
       const repo = createRepository();
       const note = await repo.save('T', 'B', OWNER);
       const updated = await repo.update(note.id, 'T2', 'B2');
+      expect(updated?.createdAt).toBe(note.createdAt);
       expect(updated?.title).toBe('T2');
       expect(await repo.delete(note.id)).toBe(true);
       expect(await repo.findById(note.id)).toBeUndefined();

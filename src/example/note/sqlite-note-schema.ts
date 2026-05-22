@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS notes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
   body TEXT NOT NULL,
-  owner_id TEXT NOT NULL
+  owner_id TEXT NOT NULL,
+  created_at TEXT NOT NULL
 );
 `;
 

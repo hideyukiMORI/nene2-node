@@ -1,3 +1,4 @@
+import { utcNowIso } from '../../domain/timestamps.js';
 import type { Tag } from './tag.js';
 import type { TagRepository } from './tag-repository.js';
 
@@ -17,7 +18,7 @@ export class InMemoryTagRepository implements TagRepository {
   }
 
   save(name: string, ownerId: string): Promise<Tag> {
-    const tag: Tag = { id: this.nextId, name, ownerId };
+    const tag: Tag = { id: this.nextId, name, ownerId, createdAt: utcNowIso() };
     this.store.set(this.nextId, tag);
     this.nextId += 1;
     return Promise.resolve(tag);
@@ -28,7 +29,12 @@ export class InMemoryTagRepository implements TagRepository {
     if (existing === undefined) {
       return Promise.resolve(undefined);
     }
-    const updated: Tag = { id: tagId, name, ownerId: existing.ownerId };
+    const updated: Tag = {
+      id: tagId,
+      name,
+      ownerId: existing.ownerId,
+      createdAt: existing.createdAt,
+    };
     this.store.set(tagId, updated);
     return Promise.resolve(updated);
   }

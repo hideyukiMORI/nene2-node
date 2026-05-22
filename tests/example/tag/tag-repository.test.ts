@@ -18,6 +18,12 @@ function runRepositoryContract(name: string, createRepository: () => TagReposito
       expect(await repo.findById(tag.id)).toEqual(tag);
     });
 
+    it('saves tags with UTC ISO created_at', async () => {
+      const repo = createRepository();
+      const tag = await repo.save('php', OWNER);
+      expect(tag.createdAt.endsWith('Z')).toBe(true);
+    });
+
     it('updates and deletes', async () => {
       const repo = createRepository();
       const tag = await repo.save('php', OWNER);

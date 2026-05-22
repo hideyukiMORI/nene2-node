@@ -149,7 +149,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 131 | JWT `sub` throttle key                           | —   | —   | done — [report](2026-05-field-trial-131-jwt-sub-throttle-key.md) **D3**                                                                   |
 | 132 | BOLA `assertResourceOwner`                       | 🔒  | —   | done — [report](2026-05-field-trial-132-bola-assert-resource-owner.md) **D4**                                                             |
 | 114 | utf8mb4 emoji MySQL                              | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
-| 115 | TIMESTAMP timezone                               | —   | —   | open — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
+| 115 | TIMESTAMP timezone                               | —   | —   | done — FT148 / [#102](https://github.com/hideyukiMORI/nene2-node/issues/102) **D3**                                                       |
 | 116 | NULL vs undefined in repos                       | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 117 | Serverless pool lifecycle                        | —   | —   | done — campaign [#71](https://github.com/hideyukiMORI/nene2-node/issues/71)                                                               |
 | 118 | Read replica URL                                 | —   | —   | done — FT134 / FT145 [report](2026-05-field-trial-145-mysql-read-replica-e2e.md)                                                          |
@@ -163,6 +163,7 @@ Mirrors nene2-python FT1–18 scope, adapted to shipped nene2-node modules.
 | 126 | Campaign wrap / FT127+ plan                      | —   | —   | done — [report](2026-05-field-trial-126-campaign-wrap-ft127-.md) **D0**                                                                   |
 | 146 | BOLA in example note/tag UseCases                | 🔒  | —   | done — [report](2026-05-field-trial-146-bola-example-usecases.md) **D4** [#98](https://github.com/hideyukiMORI/nene2-node/issues/98)      |
 | 147 | Default domain handlers in createApp             | —   | —   | done — [report](2026-05-field-trial-147-default-domain-handlers.md) **D3** [#100](https://github.com/hideyukiMORI/nene2-node/issues/100)  |
+| 148 | UTC `created_at` on example note/tag             | —   | —   | done — [report](2026-05-field-trial-148-utc-created-at-example.md) **D3** [#102](https://github.com/hideyukiMORI/nene2-node/issues/102)   |
 
 ## Category F — Ecosystem & publish (FT81–FT100)
 

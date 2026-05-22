@@ -3,8 +3,14 @@ export interface Note {
   readonly title: string;
   readonly body: string;
   readonly ownerId: string;
+  readonly createdAt: string;
 }
 
-export function noteToJSON(note: Note): { id: number; title: string; body: string } {
-  return { id: note.id, title: note.title, body: note.body };
+export function noteToJSON(note: Note): {
+  id: number;
+  title: string;
+  body: string;
+  created_at: string;
+} {
+  return { id: note.id, title: note.title, body: note.body, created_at: note.createdAt };
 }

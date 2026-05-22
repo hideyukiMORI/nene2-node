@@ -1,3 +1,4 @@
+import { utcNowIso } from '../../domain/timestamps.js';
 import type { Note } from './note.js';
 import type { NoteRepository } from './note-repository.js';
 
@@ -17,7 +18,7 @@ export class InMemoryNoteRepository implements NoteRepository {
   }
 
   save(title: string, body: string, ownerId: string): Promise<Note> {
-    const note: Note = { id: this.nextId, title, body, ownerId };
+    const note: Note = { id: this.nextId, title, body, ownerId, createdAt: utcNowIso() };
     this.store.set(this.nextId, note);
     this.nextId += 1;
     return Promise.resolve(note);
@@ -28,7 +29,13 @@ export class InMemoryNoteRepository implements NoteRepository {
     if (existing === undefined) {
       return Promise.resolve(undefined);
     }
-    const updated: Note = { id: noteId, title, body, ownerId: existing.ownerId };
+    const updated: Note = {
+      id: noteId,
+      title,
+      body,
+      ownerId: existing.ownerId,
+      createdAt: existing.createdAt,
+    };
     this.store.set(noteId, updated);
     return Promise.resolve(updated);
   }
