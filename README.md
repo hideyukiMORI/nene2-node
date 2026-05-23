@@ -6,87 +6,130 @@
 
 **NENE2-compatible API framework for Node.js** — a TypeScript port of the [NENE2](https://github.com/hideyukiMORI/NENE2) design philosophy, optimized for the Node ecosystem (not a wrapper around the PHP runtime).
 
-| Sibling repo                                                 | Role                                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------------ |
-| [NENE2](https://github.com/hideyukiMORI/NENE2)               | Canonical PHP framework and **OpenAPI contract** author            |
-| [nene2-js](https://github.com/hideyukiMORI/nene2-js)         | Typed **HTTP client** for consumers (`@hideyukimori/nene2-client`) |
-| [nene2-python](https://github.com/hideyukiMORI/nene2-python) | Python reference port (feature parity target)                      |
-| **nene2-node** (this repo)                                   | Node.js framework (`@hideyukimori/nene2-framework`)                |
+Published as [`@hideyukimori/nene2-framework`](https://www.npmjs.com/package/@hideyukimori/nene2-framework).
 
-## What this repo is for
+## Install (consumers)
+
+```bash
+npm install @hideyukimori/nene2-framework @hono/node-server
+```
+
+`@hono/node-server` is required to call `serve()` — it is not re-exported from the framework package.
+
+New project walkthrough: [docs/how-to/consumer-quickstart.md](docs/how-to/consumer-quickstart.md).
+
+## What this repository is
 
 - HTTP runtime, routing, and middleware aligned with NENE2 behavior
 - RFC 9457 Problem Details, validation errors, and auth patterns (Bearer, API key)
 - UseCase → Repository → Handler layering (clean architecture)
-- Example domains (health, ping, Note/Tag-style CRUD) as reference implementations
-- OpenAPI contract **compatibility** with NENE2 `docs/openapi/openapi.yaml`
-- Documentation and tooling friendly to international contributors and AI agents
+- SQLite, MySQL, and PostgreSQL database adapters
+- Example Note/Tag domains as **reference implementations** (not a stable public API)
+- OpenAPI **compatibility** with NENE2 `docs/openapi/openapi.yaml` (contract tests use pinned fixtures)
+- English docs and tooling friendly to contributors and AI agents
 
-## What this repo is not for
+## What this repository is not
 
 - Replacing or embedding the PHP NENE2 runtime
-- Duplicating [nene-mcp](https://github.com/hideyukiMORI/nene-mcp) stdio MCP servers (integrate via HTTP/MCP boundaries instead)
-- Thin API clients — use [nene2-js](https://github.com/hideyukiMORI/nene2-js)
+- A typed HTTP client — use [nene2-js](https://github.com/hideyukiMORI/nene2-js) (`@hideyukimori/nene2-client`)
+- A duplicate of [nene-mcp](https://github.com/hideyukiMORI/nene-mcp) stdio MCP servers (HTTP MCP client only; see [docs/integrations/mcp-boundary.md](docs/integrations/mcp-boundary.md))
 - Application-specific business logic (belongs in your product repo)
 
-See [docs/scope.md](docs/scope.md) for the full in/out matrix.
+Full boundary: [docs/scope.md](docs/scope.md). Engineering rules: [docs/development/engineering-policy.md](docs/development/engineering-policy.md).
 
-Engineering rules (strict, inherited from NENE2 / nene2-python): [docs/development/engineering-policy.md](docs/development/engineering-policy.md).
+## Develop this repository
 
-## Local layout (sibling of NENE2)
+**You only need to clone `nene2-node`.** Sibling repositories are not dependencies of `npm install`, `npm run check`, or CI.
 
-```text
-../docker/
-├── NENE2/          # PHP framework (contract source: docs/openapi/openapi.yaml)
-├── nene2-js/       # TypeScript client only
-├── nene2-node/     # this repository
-├── nene2-python/   # Python port (parity reference)
-└── nene-mcp/       # PHP MCP stdio library
-```
+### Prerequisites
+
+- Node.js **22+** (LTS)
+- npm **10+**
+
+### Clone and verify
 
 ```bash
-cd /path/to/parent-of-NENE2
 git clone git@github.com:hideyukiMORI/nene2-node.git
 cd nene2-node
 npm install
-npm run check
-npm run build
-npm run dev
+npm run check    # type-check, lint, format, test, build
+npm run dev      # local Hono server on :3000
 ```
 
-Optional contract path (default assumes sibling clone):
+Coverage gate (also run in CI): `npm run test:coverage`. MySQL/PostgreSQL integration tests: `npm run test:integration` (requires DB URLs — see [docs/development/ci-mysql-service.md](docs/development/ci-mysql-service.md)).
+
+### Optional: live OpenAPI file on disk
+
+Contract tests in CI use **pinned JSON fixtures** under `tests/fixtures/contract/` — they do **not** require a NENE2 checkout.
+
+Clone [NENE2](https://github.com/hideyukiMORI/NENE2) only when you want to point at the live contract file locally (e.g. diff against upstream yaml):
 
 ```bash
 cp .env.example .env
 # NENE2_NODE_OPENAPI_PATH=../NENE2/docs/openapi/openapi.yaml
 ```
 
-## Status
+Policy: [docs/development/openapi-contract-testing.md](docs/development/openapi-contract-testing.md).
 
-**Latest: v0.1.21** — [GitHub Release](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21) · npm [`@hideyukimori/nene2-framework`](https://www.npmjs.com/package/@hideyukimori/nene2-framework)
+## Sibling repositories (NENE2 ecosystem)
 
-```bash
-npm install @hideyukimori/nene2-framework @hono/node-server
+These projects share the NENE2 **contract story**. They are **not** all required to hack on nene2-node.
+
+| Repository                                                       | Role                                                                   | Clone for nene2-node dev?                                       |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **[NENE2](https://github.com/hideyukiMORI/NENE2)**               | PHP framework; **authors** `docs/openapi/openapi.yaml`                 | **Optional** — live OpenAPI path only (see above)               |
+| **nene2-node** (this repo)                                       | Node.js framework server (`@hideyukimori/nene2-framework`)             | **Yes**                                                         |
+| **[nene2-python](https://github.com/hideyukiMORI/nene2-python)** | Python port — **parity benchmark** for behavior and module layout      | **No** — consult when aligning design; not a build dependency   |
+| **[nene2-js](https://github.com/hideyukiMORI/nene2-js)**         | Typed **HTTP client** for API consumers (`@hideyukimori/nene2-client`) | **No** — separate product; sync after public JSON shape changes |
+| **[nene-mcp](https://github.com/hideyukiMORI/nene-mcp)**         | PHP **stdio** MCP server                                               | **No** — out of scope; do not duplicate here                    |
+
+Cross-repo checklist (when changing public API behavior): [docs/integrations/cross-repo-parity.md](docs/integrations/cross-repo-parity.md).
+
+### Optional side-by-side layout
+
+Some maintainers keep siblings in one parent directory for convenience. **This layout is not required** — only `nene2-node` is needed for day-to-day framework work.
+
+```text
+parent/                    # e.g. ../docker/ — your choice
+├── NENE2/                 # optional: OpenAPI yaml author
+├── nene2-node/            # this repository (required)
+├── nene2-python/          # optional: parity reference (read-only)
+├── nene2-js/              # optional: client repo (separate workflow)
+└── nene-mcp/              # optional: PHP stdio MCP (not used by nene2-node)
 ```
 
-New project guide: [docs/how-to/consumer-quickstart.md](docs/how-to/consumer-quickstart.md).
+Relationship details: [docs/integrations/relationship-to-nene2.md](docs/integrations/relationship-to-nene2.md), [relationship-to-nene2-js.md](docs/integrations/relationship-to-nene2-js.md).
 
-Hono runtime, middleware stack, MySQL/PostgreSQL adapters, example Note/Tag CRUD (Bearer + BOLA when `includeExamples` is enabled). Roadmap: [docs/roadmap.md](docs/roadmap.md).
+## Current release
+
+**Latest: [v0.1.21](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21)** (2026-05-22)
+
+Highlights at `0.1.x`:
+
+- Hono `createApp()`, middleware stack, Problem Details, Bearer + API key auth
+- MySQL / PostgreSQL executors, transactions, read-replica URL, CI integration jobs
+- Example note/tag CRUD with Bearer + row ownership (BOLA) when `includeExamples` is enabled
+- Production defaults: `includeExamples=false`, optional `jose` JWKS verifier, graceful shutdown
+- Vitest coverage gates (80% global, 90% example UseCases)
+
+Roadmap: [docs/roadmap.md](docs/roadmap.md). Changelog: [CHANGELOG.md](CHANGELOG.md).
+
+## Documentation
+
+| Audience                | Start here                                                                         |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| Contributors            | [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md), [docs/workflow.md](docs/workflow.md) |
+| AI agents               | [AGENTS.md](AGENTS.md)                                                             |
+| Framework internals     | [docs/development/README.md](docs/development/README.md)                           |
+| Local dev routes & auth | [docs/development/local-development.md](docs/development/local-development.md)     |
 
 ## Contributing
 
-Work is **GitHub Issue driven**. Read [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) and [docs/workflow.md](docs/workflow.md) before opening a PR.
+Work is **GitHub Issue driven**. Branch: `type/issue-number-summary`. Do not commit directly to `main`.
 
-AI agents: start at [AGENTS.md](AGENTS.md).
-
-## Related projects
-
-| Project                                                      | Role                                   |
-| ------------------------------------------------------------ | -------------------------------------- |
-| [NENE2](https://github.com/hideyukiMORI/NENE2)               | PHP API framework, OpenAPI authoring   |
-| [nene2-js](https://github.com/hideyukiMORI/nene2-js)         | TypeScript client for NENE2 HTTP APIs  |
-| [nene2-python](https://github.com/hideyukiMORI/nene2-python) | Python port — primary parity benchmark |
-| [nene-mcp](https://github.com/hideyukiMORI/nene-mcp)         | Standalone PHP stdio MCP server        |
+```bash
+npm run check   # required before opening a PR
+```
 
 ## License
 
