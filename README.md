@@ -18,7 +18,7 @@ npm install @hideyukimori/nene2-framework @hono/node-server
 
 `@hono/node-server` is required to call `serve()` — it is not re-exported from the framework package.
 
-New project walkthrough: [docs/how-to/consumer-quickstart.md](docs/how-to/consumer-quickstart.md).
+New project walkthrough: [docs/how-to/consumer-quickstart.md](docs/how-to/consumer-quickstart.md) (install as a dependency in your Node API project).
 
 ## What this repository is
 

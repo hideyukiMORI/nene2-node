@@ -19,22 +19,28 @@
 
 ## Local development paths
 
-Default sibling layout:
+**Only `nene2-node` is required** to develop this framework. Sibling clones are optional — see [README.md](../../README.md) § Sibling repositories.
+
+Optional side-by-side layout (not required):
 
 ```text
-../NENE2/           # git clone — contract author
-../nene2-node/      # this repo
-../nene2-js/        # client
-../nene2-python/    # parity reference
+../NENE2/           # optional — live OpenAPI yaml author
+../nene2-node/      # this repo (required)
+../nene2-python/    # optional — parity reference (read-only)
+../nene2-js/        # optional — HTTP client repo (separate workflow)
+../nene-mcp/        # optional — PHP stdio MCP (not used by nene2-node)
 ```
 
 Environment variables (this repo):
 
-| Variable                  | Purpose                                                                |
-| ------------------------- | ---------------------------------------------------------------------- |
-| `NENE2_NODE_OPENAPI_PATH` | Path to `openapi.yaml` (default: `../NENE2/docs/openapi/openapi.yaml`) |
-| `NENE2_NODE_PORT`         | Dev server port (default: `3000` when implemented)                     |
-| `NENE2_NODE_DATABASE_URL` | DB connection for adapters (when implemented)                          |
+| Variable                      | Purpose                                                                                      |
+| ----------------------------- | -------------------------------------------------------------------------------------------- |
+| `NENE2_NODE_OPENAPI_PATH`     | Path to `openapi.yaml` (default: `../NENE2/docs/openapi/openapi.yaml`; optional NENE2 clone) |
+| `NENE2_NODE_PORT`             | Dev server port for `npm run dev` (default: `3000`)                                          |
+| `NENE2_NODE_DATABASE_URL`     | SQLite, MySQL, or PostgreSQL URL — enables adapters, example schema, DB health               |
+| `NENE2_NODE_INCLUDE_EXAMPLES` | Register `/examples/*` when `true` (default `false` in production)                           |
+
+Full list: [environment-variables.md](../development/environment-variables.md).
 
 NENE2 machine client variables (`NENE2_MACHINE_API_KEY`, `NENE2_LOCAL_JWT_SECRET`) follow NENE2 documentation; framework wiring must not log secret values.
 
@@ -42,7 +48,7 @@ NENE2 machine client variables (`NENE2_MACHINE_API_KEY`, `NENE2_LOCAL_JWT_SECRET
 
 - PHP `src/` framework code verbatim (port patterns, do not transliterate mechanically)
 - `tools/local-mcp-server.php` — use nene-mcp or NENE2 MCP docs
-- Phinx migrations and PHP Docker Compose as the Node default (Node-specific compose may come later)
+- Phinx migrations and PHP Docker Compose as the Node default (Node-specific compose: see FT77 sandboxes and `deploy-checklist-real-db.md`)
 
 ## What to reuse conceptually
 

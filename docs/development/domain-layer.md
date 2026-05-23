@@ -105,15 +105,15 @@ Inherited from nene2-python:
 ## Testing
 
 - **UseCase tests:** no network, no DB — use in-memory repositories.
-- **Repository adapter tests:** real SQL against SQLite (test DB); optional MySQL in CI later.
-- **HTTP tests:** invoke app in-process (Vitest + fetch to test server or handler test harness); assert status, Problem Details `type`, and body shape.
+- **Repository adapter tests:** real SQL against SQLite (test DB); MySQL and PostgreSQL covered in CI integration jobs (`tests/integration/`).
+- **HTTP tests:** invoke app in-process (Vitest + `app.request()`); assert status, Problem Details `type`, and body shape.
 
 Test names: `describe('CreateNoteUseCase')` + `it('throws when title is duplicate')` — behavior-oriented English.
 
 ## Error handling
 
 - Domain errors: `NoteNotFoundError`, `NoteAlreadyExistsError` — extend a small `DomainError` base if useful.
-- Register mappings in a single error middleware module (Phase 2).
+- Register mappings via `DomainExceptionHandler` + `resolveHttpError()` (default handlers wired in `createApp()` since v0.1.20).
 - Never expose SQL, stack traces, or secrets in public JSON.
 
 ## Non-goals

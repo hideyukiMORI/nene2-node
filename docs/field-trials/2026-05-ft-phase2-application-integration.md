@@ -104,4 +104,4 @@ See [backlog.md](backlog.md) Category E/F. Summary:
 
 - nene2-python FT10 (MySQL adapter), FT8 (nested REST) — parity background
 - `docs/development/database-layer.md`
-- `docs/scope.md` — adapters in scope, not yet implemented
+- `docs/scope.md` — MySQL/PostgreSQL adapters implemented (v0.1.6+)

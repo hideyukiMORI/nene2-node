@@ -1,4 +1,4 @@
-# Node security practices (framework consumers)
+# Node security practices (framework application developers)
 
 Extends `security-policy.md` with Node-specific guidance validated in FT43–FT54.
 

@@ -2,7 +2,7 @@
 
 Automated publish via OIDC Trusted Publisher — see `.github/workflows/release.yml`.
 
-## Version cadence (Phase 2 field trials)
+## Version cadence (0.1.x patch releases)
 
 During **FT67–148** (application integration campaign), bump the **patch** version when a field trial ships on `main`:
 
