@@ -59,7 +59,7 @@ src/
   database/       # executor, transactions, health
   auth/           # verifiers and middleware wiring
   example/        # Note/Tag reference (unstable public API)
-  mcp/            # MCP integration (Phase 5)
+  mcp/            # MCP HTTP client boundary (FetchMcpHttpClient)
 tests/
   http/           # request-level tests
   fixtures/       # JSON from OpenAPI examples
@@ -72,8 +72,8 @@ Group features by domain under `src/example/{domain}/`, not by layer at `src/` r
 - **Vitest** for unit and HTTP-level tests.
 - UseCase tests: in-memory repositories, no network.
 - HTTP tests: in-process server or handler harness; avoid flaky fixed ports in CI.
-- Contract tests against pinned OpenAPI fixtures (Phase 1+).
-- Coverage target (Phase 3+): **≥80%** overall, **≥90%** for UseCase/domain modules.
+- Contract tests against pinned OpenAPI fixtures in `tests/fixtures/contract/` (see `openapi-contract-testing.md`).
+- Coverage gate (v0.1.14+): **≥80%** overall, **≥90%** for example UseCase modules (`vitest.config.ts`).
 - Test descriptions in English; behavior-focused names.
 
 ## Dependencies

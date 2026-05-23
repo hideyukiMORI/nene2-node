@@ -36,10 +36,10 @@ Never merge code that:
 - Follow NENE2 env var names for machine clients where applicable (`NENE2_MACHINE_API_KEY`, JWT secrets).
 - Never log verification failures with the presented secret.
 
-## MCP (Phase 5)
+## MCP HTTP client
 
+- `FetchMcpHttpClient` for HTTP-aligned MCP calls — no stdio duplicate of nene-mcp (`mcp-boundary.md`).
 - Write tools require explicit auth guard (parity with NENE2 MCP policy).
-- Do not expose stdio MCP duplicate of nene-mcp; HTTP/catalog boundaries only.
 
 ## Review
 

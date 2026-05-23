@@ -26,7 +26,7 @@ Middleware must **not** encode route-specific business rules (e.g. “email must
 - Parse JSON via `parseJsonBody()`; malformed JSON → `JsonBodyParseException` → **400** Problem Details (`invalid-json` type).
 - Field-level rules → `ValidationException` → **422** with `errors[]`.
 - Map to readonly input types before `useCase.execute()`.
-- Use a schema library at the HTTP boundary when adopted (Zod/Valibot/etc.) — choice via ADR in Phase 1/3.
+- Manual validators in example domains (`validate-note-body.ts`, etc.); optional schema library (Zod/Valibot) may be adopted via ADR for app code.
 - Do not pass `c.req` / raw `Request` into UseCases.
 
 ## UseCase boundary

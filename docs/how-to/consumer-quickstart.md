@@ -1,6 +1,8 @@
-# Consumer quickstart — new Node API project
+# Quickstart — new Node API project
 
-Install the published framework and run a minimal server (FT67 sandbox validated).
+Install `@hideyukimori/nene2-framework` when you **build and run** a NENE2-compatible API server on Node.js. If you only **call** an existing API, use [nene2-js](https://github.com/hideyukiMORI/nene2-js) instead.
+
+Validated by FT67 greenfield install sandbox.
 
 ## Prerequisites
 
@@ -63,7 +65,7 @@ const nene2 = await createApp({ settings });
 const executor = nene2.database?.executor;
 // run your DDL / repositories, then mount routes on nene2.app
 await nene2.database?.transactionManager?.transactional(async (tx) => {
-  // multi-statement business write (MySQL / SQLite)
+  // multi-statement business write (MySQL / SQLite / PostgreSQL)
 });
 await nene2.shutdown?.();
 ```
@@ -85,5 +87,6 @@ Reproducible sibling repo path: `../nene2-node-FT/ft067-greenfield-install/` (no
 
 ## References
 
+- [README.md](../../README.md) — sibling repos and clone requirements
 - [local-development.md](../development/local-development.md)
 - [package-exports.md](../development/package-exports.md)

@@ -1,6 +1,6 @@
 # Database layer
 
-SQLite via `node:sqlite` for example domains and health checks. Parity reference: nene2-python database adapters.
+SQLite (`node:sqlite`), MySQL (`mysql2`), and PostgreSQL (`pg`) via `createDatabaseRuntime()`. Parity reference: nene2-python database adapters.
 
 ## Components
 
@@ -55,9 +55,9 @@ Use for multi-step writes; example Note/Tag handlers currently use single statem
 
 URLs: `mysql://user:pass@host:port/db`, `postgresql://…` or `postgres://…`. SQLite: `:memory:` or `file:./path.sqlite`.
 
-**CI:** [ci-mysql-service.md](ci-mysql-service.md). **Sandboxes:** `../nene2-node-FT/ft068-mysql-compose/`, `ft069-postgres-compose/`.
+**CI:** [ci-mysql-service.md](ci-mysql-service.md), [ci-postgres-service.md](ci-postgres-service.md). **Sandboxes:** `../nene2-node-FT/ft068-mysql-compose/`, `ft069-postgres-compose/`.
 
 ## References
 
 - Phase 4 milestone: `../milestones/2026-05-phase4-database-health.md`
-- FT backlog: `../field-trials/backlog.md` (FT16–FT18, FT26, FT67+)
+- FT index: `../field-trials/backlog.md` (FT16–18, FT26, FT67–148 done)

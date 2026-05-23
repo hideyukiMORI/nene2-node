@@ -4,7 +4,7 @@ HTTP cross-cutting behavior is explicit middleware with documented order. Adapte
 
 ## Default pipeline order
 
-Document and preserve this order in the composition root (Phase 2):
+Document and preserve this order in `createApp()` (`middleware-pipeline.md`):
 
 ```text
 1. Error handling (outermost — converts failures to Problem Details)
@@ -22,7 +22,7 @@ Route-specific body validation stays in **handlers**, not global middleware (see
 
 - Header: `X-Request-Id`
 - Accept safe incoming value when configured; generate UUID v4 when missing.
-- Attach to response and structured logs (Phase 2).
+- Attach to response and structured logs via `requestLoggingMiddleware`.
 
 ## Security headers (baseline)
 

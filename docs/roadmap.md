@@ -101,7 +101,7 @@ Phase 2 FT campaign **FT67–148** complete (see [backlog](field-trials/backlog.
 
 ## Field trials
 
-See `docs/development/field-trial-culture.md`. **FT1–148** complete for Phase 2 scope; index: `docs/field-trials/INDEX.md`. Remaining work is **doc index hygiene** ([#29](https://github.com/hideyukiMORI/nene2-node/issues/29)) and optional 0.2.0 breaking inventory — not greenfield FT backlog.
+See `docs/development/field-trial-culture.md`. **FT1–148** complete for Phase 2 scope; index: `docs/field-trials/INDEX.md`. Ongoing maintenance: keep docs aligned with releases (README, indexes, integration guides). Optional: **0.2.0** breaking inventory, CI `npm audit`, Redis service job.
 
 ---
 

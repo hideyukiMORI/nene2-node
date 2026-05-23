@@ -9,7 +9,7 @@ API errors are **contracts**. They must be stable, documented in OpenAPI, and sa
 ## Response format
 
 - `Content-Type: application/problem+json`
-- Single factory module in `src/http/` (name TBD in Phase 1) — do not build Problem Details ad hoc in handlers.
+- Single factory: `createProblemDetailsFactory()` in `src/http/problem-details.ts` — do not build Problem Details ad hoc in handlers.
 
 ### Base shape
 
@@ -110,7 +110,7 @@ Each item requires `field`, `message`, and `code` (stable machine-readable Engli
 
 ## Logging
 
-- Log unexpected errors with request id (Phase 2).
+- Log unexpected errors with request id (`requestLoggingMiddleware`).
 - Never log secrets, passwords, or full auth headers.
 
 ## Factory usage (handlers and middleware)

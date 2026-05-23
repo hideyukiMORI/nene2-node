@@ -20,10 +20,10 @@
 
 ## Auth
 
-| Variable                 | Default | Purpose                                      |
-| ------------------------ | ------- | -------------------------------------------- |
-| `NENE2_MACHINE_API_KEY`  | unset   | API key for `/machine/health`                |
-| `NENE2_LOCAL_JWT_SECRET` | unset   | HS256 verification for `/examples/protected` |
+| Variable                 | Default | Purpose                                                                                                            |
+| ------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| `NENE2_MACHINE_API_KEY`  | unset   | API key for `/machine/health`                                                                                      |
+| `NENE2_LOCAL_JWT_SECRET` | unset   | HS256 for example Bearer routes when examples enabled (`/examples/protected`, `/examples/notes`, `/examples/tags`) |
 
 ## HTTP / middleware
 

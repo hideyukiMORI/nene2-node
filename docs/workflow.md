@@ -61,7 +61,7 @@ flowchart LR
 
 ### Parent vs per-FT Issues
 
-- **[#29](https://github.com/hideyukiMORI/nene2-node/issues/29)** tracks the FT2–100 **program** (backlog, batches).
+- **[#29](https://github.com/hideyukiMORI/nene2-node/issues/29)** tracked the FT2–148 **program** (backlog, batches). Phase 2 code and primary doc sync are complete; close #29 when optional follow-ups (0.2.0 inventory, CI audit) are triaged.
 - Each **completed FT or release** still gets its own Issue + branch `type/<issue>-summary` + PR (`Closes #N`).
 - Field trial reports cite the **dedicated Issue** and optionally parent #29.
 

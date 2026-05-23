@@ -18,7 +18,7 @@ Tools are part of framework design. They must make changes safer without hiding 
 - **Lint:** ESLint with `typescript-eslint` strict type-checked rules on `src/`.
 - **Format:** Prettier (check in CI, fix locally).
 - **Tests:** Vitest for unit and HTTP-level tests.
-- **Contract:** OpenAPI validation and response contract tests (Phase 1+).
+- **Contract:** Pinned OpenAPI fixture tests in CI (`openapi-contract-testing.md`).
 - **Dependencies:** `npm audit` at high/critical severity before merge (when runtime deps exist).
 
 Do not add a script to `npm run check` until its configuration is committed and verified locally.
