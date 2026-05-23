@@ -8,7 +8,9 @@
 
 Published as [`@hideyukimori/nene2-framework`](https://www.npmjs.com/package/@hideyukimori/nene2-framework).
 
-## Install (consumers)
+## Install (in your Node API project)
+
+Use this when you **build and run** a NENE2-compatible API server on Node.js. If you only **call** an existing API, use [nene2-js](https://github.com/hideyukiMORI/nene2-js) (`@hideyukimori/nene2-client`) instead — you do not need this package.
 
 ```bash
 npm install @hideyukimori/nene2-framework @hono/node-server
