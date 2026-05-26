@@ -25,6 +25,7 @@ export {
   type ValidationErrorItem,
 } from './http/problem-details.js';
 export { parsePaginationQuery, type PaginationQuery } from './http/pagination-query.js';
+export { parseCursorQuery, type CursorQuery } from './http/cursor-query.js';
 export {
   DEFAULT_OPENAPI_RELATIVE,
   openApiFileExists,

@@ -8,6 +8,17 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.24] - 2026-05-27
+
+### Added
+
+- `parseCursorQuery(searchParams, defaults?)` helper for cursor-based pagination (`src/http/cursor-query.ts`)
+- `CursorQuery` interface exported from the public API
+- Cursor silently falls back to `undefined` (first page) on invalid input — matches NENE2 PHP `ctype_digit` convention
+- 22 unit tests in `tests/http/cursor-query.test.ts`
+- How-to docs: `docs/how-to/cursor-pagination.md`, `docs/how-to/activity-feed.md`
+- FT153 field trial report: `docs/field-trials/2026-05-field-trial-153-activity-feed.md`
+
 ## [0.1.23] - 2026-05-27
 
 ### Added
