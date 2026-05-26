@@ -11,6 +11,19 @@ const DEFAULT_LIMIT = 10;
 const MAX_LIMIT = 100;
 
 /**
+ * O(n) digit-only check — no regex, immune to ReDoS.
+ * Rejects floats, signed, padded, hex, scientific notation, and empty strings.
+ */
+function isDigitString(value: string): boolean {
+  if (value.length === 0) return false;
+  for (let i = 0; i < value.length; i++) {
+    const code = value.charCodeAt(i);
+    if (code < 48 || code > 57) return false; // '0'..'9'
+  }
+  return true;
+}
+
+/**
  * Parse cursor-based pagination query parameters from a URLSearchParams instance.
  *
  * - `cursor` (`?cursor=N`): must be a positive integer when present.
@@ -18,8 +31,9 @@ const MAX_LIMIT = 100;
  *   as `undefined` (first page). This follows the same "ctype_digit" convention
  *   used in NENE2 PHP — invalid cursors degrade gracefully to page one.
  *
- * - `limit` (`?limit=N`): must be in the range [1, maxLimit].
- *   Throws `ValidationException` if the supplied value is out of range.
+ * - `limit` (`?limit=N`): must be a pure digit string in the range [1, maxLimit].
+ *   Non-digit inputs (floats, signed, padded, hex, overflow) throw `ValidationException`
+ *   with code `invalid_type`. Out-of-range values throw with code `out_of_range`.
  *   Defaults to 10 when absent.
  *
  * @example
@@ -41,23 +55,28 @@ export function parseCursorQuery(
   const cursorRaw = searchParams.get('cursor');
   let cursor: number | undefined;
   if (cursorRaw !== null && cursorRaw !== '') {
-    const parsed = Number.parseInt(cursorRaw, 10);
-    // Only accept a finite positive integer whose string form matches the input
-    // (rejects "12abc" → parseInt gives 12, but "12abc" !== "12" so we reject)
-    if (Number.isFinite(parsed) && parsed > 0 && String(parsed) === cursorRaw.trim()) {
-      cursor = parsed;
+    // Overflow guard + digit-only check (same as isDigitString but also checks length)
+    if (cursorRaw.length <= 18 && isDigitString(cursorRaw)) {
+      const parsed = Number.parseInt(cursorRaw, 10);
+      if (Number.isFinite(parsed) && parsed > 0) {
+        cursor = parsed;
+      }
     }
     // else: fall through — cursor stays undefined (first page)
   }
 
-  // --- limit: throws on invalid ---
+  // --- limit: strict digit-only parsing; throws on invalid or out-of-range ---
   const limitRaw = searchParams.get('limit');
   let limit: number;
   if (limitRaw === null || limitRaw === '') {
     limit = defaultLimit;
+  } else if (limitRaw.length > 18 || !isDigitString(limitRaw)) {
+    // Non-digit strings (floats, signed, hex, padded, overflow) → 422
+    throw new ValidationException([
+      new ValidationError('limit', 'limit must be a non-negative integer.', 'invalid_type'),
+    ]);
   } else {
-    const parsed = Number.parseInt(limitRaw, 10);
-    limit = Number.isFinite(parsed) ? parsed : 0;
+    limit = Number.parseInt(limitRaw, 10);
   }
 
   if (limit < 1 || limit > maxLimit) {

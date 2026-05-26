@@ -24,31 +24,31 @@
 | 150 | Coupon/Promo Code (admin RBAC・state checks・user limit)    | couponlog      | 📄 🔒    | ✅ D0  |
 | 151 | Wishlist Management (priority fallback・冪等追加)           | wishlistlog    | 📄       | ✅ D0  |
 | 152 | Points/Loyalty System (reference_id 冪等・残高多層防御)     | pointlog       | 📄 🔒    | ✅ D1  |
-| 153 | Activity Feed + **Cursor Pagination**                       | feedlog        | 🔧 📄 🔒 | ⬜     |
-| 154 | Product Review & Rating (1 user × 1 product UNIQUE)         | reviewlog      | 📄       | ⬜     |
-| 155 | Shopping Cart (数量加算冪等・quantity=0 削除)               | cartlog        | 📄       | ⬜     |
-| 156 | File Metadata & Sharing (3段階アクセス制御)                 | filelog        | 📄 🔒    | ⬜     |
-| 157 | **Full-text Search / Autocomplete** (SQLite FTS5)           | searchlog      | 🔧 📄    | ⬜     |
-| 158 | CSV Bulk Import (部分成功・バッチ重複検知)                  | importlog      | 📄       | ⬜     |
-| 159 | TOTP 2FA (RFC 6238・HMAC-SHA1・リプレイ防止)                | totplog        | 📄 🔒    | ⬜     |
-| 160 | OAuth2 Social Login (Authorization Code Flow・jose)         | oauthlog       | 📄 🔒    | ⬜     |
-| 161 | Application Caching (Cache-Aside・TTL・書き込み無効化)      | cachelog       | 📄       | ⬜     |
-| 162 | Content Versioning (append-only 履歴・ロールバック)         | contentvlog    | 📄       | ⬜     |
-| 163 | Payment Webhook (HMAC検証・冪等・ステータス遷移)            | paymentlog     | 📄       | ⬜     |
-| 164 | Geolocation (Haversine・バウンディングボックス)             | geoloclog      | 📄 🔒    | ⬜     |
-| 165 | A/B Testing (crc32 決定論的割当・draft→active→stopped)      | ablog          | 📄       | ⬜     |
-| 166 | Multi-step Workflow (順序付きステップ・履歴)                | stepflowlog    | 📄       | ⬜     |
-| 167 | Inbound Webhook Receiver (per-source HMAC・冪等保存)        | inboundlog     | 📄       | ⬜     |
-| 168 | Admin Report Aggregation (日付バリデーション・COALESCE)     | agglog         | 📄 🔒    | ⬜     |
-| 169 | Data Masking (default mask・admin unmask・監査ログ)         | masklog        | 📄 🔒    | ⬜     |
-| 170 | Request Deduplication (idempotencyMiddleware 活用)          | deduplog       | 📄       | ⬜     |
-| 171 | Hierarchical Data (自己参照FK・マテリアライズドパス)        | hierarchylog   | 📄       | ⬜     |
-| 172 | Content Scheduling (publish_at・状態機械)                   | pubschedulelog | 📄       | ⬜     |
-| 173 | Content Relations (型付きM:N自己参照)                       | relatedlog     | 📄       | ⬜     |
-| 174 | Slug Management (SlugHelper・衝突解決・301履歴)             | sluglog        | 📄       | ⬜     |
-| 175 | API Usage Metering (per-user クォータ・usage_events)        | meterlog       | 📄       | ⬜     |
-| 176 | Delegated Access Grants (multi-party・state machine)        | grantlog       | 📄 🔒    | ⬜     |
-| 177 | **Pagination Boundary Attack** (overflow guard・ReDoS)      | limitlog       | 🔧 🔒    | ⬜     |
+| 153 | Activity Feed + **Cursor Pagination**                       | feedlog        | 🔧 📄 🔒 | ✅ D1  |
+| 154 | Product Review & Rating (1 user × 1 product UNIQUE)         | reviewlog      | 📄       | ✅ D0  |
+| 155 | Shopping Cart (数量加算冪等・quantity=0 削除)               | cartlog        | 📄       | ✅ D0  |
+| 156 | File Metadata & Sharing (3段階アクセス制御)                 | filelog        | 📄 🔒    | ✅ D0  |
+| 157 | **Full-text Search / Autocomplete** (SQLite FTS5)           | searchlog      | 🔧 📄    | ✅ D0  |
+| 158 | CSV Bulk Import (部分成功・バッチ重複検知)                  | importlog      | 📄       | ✅ D0  |
+| 159 | TOTP 2FA (RFC 6238・HMAC-SHA1・リプレイ防止)                | totplog        | 📄 🔒    | ✅ D0  |
+| 160 | OAuth2 Social Login (Authorization Code Flow・jose)         | oauthlog       | 📄 🔒    | ✅ D0  |
+| 161 | Application Caching (Cache-Aside・TTL・書き込み無効化)      | cachelog       | 📄       | ✅ D0  |
+| 162 | Content Versioning (append-only 履歴・ロールバック)         | contentvlog    | 📄       | ✅ D0  |
+| 163 | Payment Webhook (HMAC検証・冪等・ステータス遷移)            | paymentlog     | 📄       | ✅ D0  |
+| 164 | Geolocation (Haversine・バウンディングボックス)             | geoloclog      | 📄 🔒    | ✅ D0  |
+| 165 | A/B Testing (crc32 決定論的割当・draft→active→stopped)      | ablog          | 📄       | ✅ D0  |
+| 166 | Multi-step Workflow (順序付きステップ・履歴)                | stepflowlog    | 📄       | ✅ D0  |
+| 167 | Inbound Webhook Receiver (per-source HMAC・冪等保存)        | inboundlog     | 📄       | ✅ D0  |
+| 168 | Admin Report Aggregation (日付バリデーション・COALESCE)     | agglog         | 📄 🔒    | ✅ D0  |
+| 169 | Data Masking (default mask・admin unmask・監査ログ)         | masklog        | 📄 🔒    | ✅ D0  |
+| 170 | Request Deduplication (idempotencyMiddleware 活用)          | deduplog       | 📄       | ✅ D0  |
+| 171 | Hierarchical Data (自己参照FK・マテリアライズドパス)        | hierarchylog   | 📄       | ✅ D0  |
+| 172 | Content Scheduling (publish_at・状態機械)                   | pubschedulelog | 📄       | ✅ D0  |
+| 173 | Content Relations (型付きM:N自己参照)                       | relatedlog     | 📄       | ✅ D0  |
+| 174 | Slug Management (SlugHelper・衝突解決・301履歴)             | sluglog        | 📄       | ✅ D0  |
+| 175 | API Usage Metering (per-user クォータ・usage_events)        | meterlog       | 📄       | ✅ D0  |
+| 176 | Delegated Access Grants (multi-party・state machine)        | grantlog       | 📄 🔒    | ✅ D0  |
+| 177 | **Pagination Boundary Attack** (overflow guard・ReDoS)      | limitlog       | 🔧 🔒    | ✅ D1  |
 
 ---
 
