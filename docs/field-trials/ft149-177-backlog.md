@@ -28,13 +28,13 @@
 | 154 | Product Review & Rating (1 user × 1 product UNIQUE)         | reviewlog      | 📄       | ✅ D0  |
 | 155 | Shopping Cart (数量加算冪等・quantity=0 削除)               | cartlog        | 📄       | ✅ D0  |
 | 156 | File Metadata & Sharing (3段階アクセス制御)                 | filelog        | 📄 🔒    | ✅ D0  |
-| 157 | **Full-text Search / Autocomplete** (SQLite FTS5)           | searchlog      | 🔧 📄    | ⬜     |
-| 158 | CSV Bulk Import (部分成功・バッチ重複検知)                  | importlog      | 📄       | ⬜     |
-| 159 | TOTP 2FA (RFC 6238・HMAC-SHA1・リプレイ防止)                | totplog        | 📄 🔒    | ⬜     |
-| 160 | OAuth2 Social Login (Authorization Code Flow・jose)         | oauthlog       | 📄 🔒    | ⬜     |
-| 161 | Application Caching (Cache-Aside・TTL・書き込み無効化)      | cachelog       | 📄       | ⬜     |
-| 162 | Content Versioning (append-only 履歴・ロールバック)         | contentvlog    | 📄       | ⬜     |
-| 163 | Payment Webhook (HMAC検証・冪等・ステータス遷移)            | paymentlog     | 📄       | ⬜     |
+| 157 | **Full-text Search / Autocomplete** (SQLite FTS5)           | searchlog      | 🔧 📄    | ✅ D0  |
+| 158 | CSV Bulk Import (部分成功・バッチ重複検知)                  | importlog      | 📄       | ✅ D0  |
+| 159 | TOTP 2FA (RFC 6238・HMAC-SHA1・リプレイ防止)                | totplog        | 📄 🔒    | ✅ D0  |
+| 160 | OAuth2 Social Login (Authorization Code Flow・jose)         | oauthlog       | 📄 🔒    | ✅ D0  |
+| 161 | Application Caching (Cache-Aside・TTL・書き込み無効化)      | cachelog       | 📄       | ✅ D0  |
+| 162 | Content Versioning (append-only 履歴・ロールバック)         | contentvlog    | 📄       | ✅ D0  |
+| 163 | Payment Webhook (HMAC検証・冪等・ステータス遷移)            | paymentlog     | 📄       | ✅ D0  |
 | 164 | Geolocation (Haversine・バウンディングボックス)             | geoloclog      | 📄 🔒    | ⬜     |
 | 165 | A/B Testing (crc32 決定論的割当・draft→active→stopped)      | ablog          | 📄       | ⬜     |
 | 166 | Multi-step Workflow (順序付きステップ・履歴)                | stepflowlog    | 📄       | ⬜     |
