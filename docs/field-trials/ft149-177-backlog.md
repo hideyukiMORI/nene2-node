@@ -24,7 +24,7 @@
 | 150 | Coupon/Promo Code (admin RBAC・state checks・user limit)    | couponlog      | 📄 🔒    | ✅ D0  |
 | 151 | Wishlist Management (priority fallback・冪等追加)           | wishlistlog    | 📄       | ✅ D0  |
 | 152 | Points/Loyalty System (reference_id 冪等・残高多層防御)     | pointlog       | 📄 🔒    | ✅ D1  |
-| 153 | Activity Feed + **Cursor Pagination**                       | feedlog        | 🔧 📄 🔒 | ⬜     |
+| 153 | Activity Feed + **Cursor Pagination**                       | feedlog        | 🔧 📄 🔒 | ✅ D1  |
 | 154 | Product Review & Rating (1 user × 1 product UNIQUE)         | reviewlog      | 📄       | ⬜     |
 | 155 | Shopping Cart (数量加算冪等・quantity=0 削除)               | cartlog        | 📄       | ⬜     |
 | 156 | File Metadata & Sharing (3段階アクセス制御)                 | filelog        | 📄 🔒    | ⬜     |
