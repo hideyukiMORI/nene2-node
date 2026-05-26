@@ -70,7 +70,34 @@ Run in FT number order. Each FT:
 2. Branch `ft/NNN-theme`
 3. Deliverable: `docs/field-trials/2026-05-field-trial-NNN-theme.md` + `docs/how-to/<pattern>.md` (if new pattern)
 4. Framework code + tests (if 🔧)
-5. `npm run check` green
-6. PR → merge → version bump
+5. **`npx prettier --write` on all new/modified files before `npm run check`** (format first, always)
+6. `npm run check` green
+7. PR → merge → version bump
+
+## Campaign rules (AI session)
+
+These rules apply whenever running a multi-FT campaign in a Claude Code session:
+
+### Prettier — always format before check
+
+After creating or editing any file, run:
+
+```sh
+npx prettier --write <files>
+```
+
+**before** running `npm run check`. Never skip this step — Prettier will fail the check
+and waste a round-trip.
+
+### State snapshot — every 3 FTs
+
+After every 3 merged FTs, write the current campaign state to a memory file:
+
+```sh
+# In Claude Code — update /root/.claude/projects/.../memory/ft-campaign-state.md
+```
+
+Record: last completed FT number, next FT to start, any open friction/blockers.
+This ensures context compaction doesn't lose progress.
 
 _Last updated: 2026-05-27_
