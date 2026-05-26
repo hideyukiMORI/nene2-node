@@ -25,9 +25,9 @@
 | 151 | Wishlist Management (priority fallback・冪等追加)           | wishlistlog    | 📄       | ✅ D0  |
 | 152 | Points/Loyalty System (reference_id 冪等・残高多層防御)     | pointlog       | 📄 🔒    | ✅ D1  |
 | 153 | Activity Feed + **Cursor Pagination**                       | feedlog        | 🔧 📄 🔒 | ✅ D1  |
-| 154 | Product Review & Rating (1 user × 1 product UNIQUE)         | reviewlog      | 📄       | ⬜     |
-| 155 | Shopping Cart (数量加算冪等・quantity=0 削除)               | cartlog        | 📄       | ⬜     |
-| 156 | File Metadata & Sharing (3段階アクセス制御)                 | filelog        | 📄 🔒    | ⬜     |
+| 154 | Product Review & Rating (1 user × 1 product UNIQUE)         | reviewlog      | 📄       | ✅ D0  |
+| 155 | Shopping Cart (数量加算冪等・quantity=0 削除)               | cartlog        | 📄       | ✅ D0  |
+| 156 | File Metadata & Sharing (3段階アクセス制御)                 | filelog        | 📄 🔒    | ✅ D0  |
 | 157 | **Full-text Search / Autocomplete** (SQLite FTS5)           | searchlog      | 🔧 📄    | ⬜     |
 | 158 | CSV Bulk Import (部分成功・バッチ重複検知)                  | importlog      | 📄       | ⬜     |
 | 159 | TOTP 2FA (RFC 6238・HMAC-SHA1・リプレイ防止)                | totplog        | 📄 🔒    | ⬜     |
