@@ -8,6 +8,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.22] - 2026-05-27
+
+### Added
+
+- Unit tests for `createDatabaseRuntime` MySQL and PostgreSQL branches (mocked pools, read replica, shutdown, backend-mismatch errors)
+- `npm audit --audit-level=high` step in CI `check` job
+- `docs/milestones/semver-0.2.0-breaking-inventory.md` — candidate breaking-change list for a future 0.2.0 release
+
 ## [0.1.21] - 2026-05-22
 
 ### Added
