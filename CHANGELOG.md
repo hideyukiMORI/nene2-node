@@ -8,6 +8,24 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.25] - 2026-05-27
+
+### Changed
+
+- `parsePaginationQuery`: replaced `Number.parseInt` with a strict O(n) digit-only check
+  (`isDigitString`) — floats (`10.5`, `1e2`), signed/padded (`+10`, ` 10`), hex (`0x10`),
+  and strings longer than 18 characters now throw `ValidationException` with
+  `code: 'invalid_type'` instead of being silently coerced (VULN-C/D/E/F/L)
+- `parseCursorQuery`: applied the same `isDigitString` + 18-char overflow guard to `limit`
+  parsing for consistency
+
+### Added
+
+- 37 unit tests in `tests/http/pagination-query.test.ts` covering attack vectors from
+  FT177: float injection, signed/padded, overflow, SQL injection strings, ReDoS timing
+- How-to doc: `docs/how-to/pagination-boundary-attack.md`
+- FT177 field trial report: `docs/field-trials/2026-05-field-trial-177-pagination-boundary.md`
+
 ## [0.1.24] - 2026-05-27
 
 ### Added

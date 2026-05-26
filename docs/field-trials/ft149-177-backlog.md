@@ -35,20 +35,20 @@
 | 161 | Application Caching (Cache-Aside・TTL・書き込み無効化)      | cachelog       | 📄       | ✅ D0  |
 | 162 | Content Versioning (append-only 履歴・ロールバック)         | contentvlog    | 📄       | ✅ D0  |
 | 163 | Payment Webhook (HMAC検証・冪等・ステータス遷移)            | paymentlog     | 📄       | ✅ D0  |
-| 164 | Geolocation (Haversine・バウンディングボックス)             | geoloclog      | 📄 🔒    | ⬜     |
-| 165 | A/B Testing (crc32 決定論的割当・draft→active→stopped)      | ablog          | 📄       | ⬜     |
-| 166 | Multi-step Workflow (順序付きステップ・履歴)                | stepflowlog    | 📄       | ⬜     |
-| 167 | Inbound Webhook Receiver (per-source HMAC・冪等保存)        | inboundlog     | 📄       | ⬜     |
-| 168 | Admin Report Aggregation (日付バリデーション・COALESCE)     | agglog         | 📄 🔒    | ⬜     |
-| 169 | Data Masking (default mask・admin unmask・監査ログ)         | masklog        | 📄 🔒    | ⬜     |
-| 170 | Request Deduplication (idempotencyMiddleware 活用)          | deduplog       | 📄       | ⬜     |
-| 171 | Hierarchical Data (自己参照FK・マテリアライズドパス)        | hierarchylog   | 📄       | ⬜     |
-| 172 | Content Scheduling (publish_at・状態機械)                   | pubschedulelog | 📄       | ⬜     |
-| 173 | Content Relations (型付きM:N自己参照)                       | relatedlog     | 📄       | ⬜     |
-| 174 | Slug Management (SlugHelper・衝突解決・301履歴)             | sluglog        | 📄       | ⬜     |
-| 175 | API Usage Metering (per-user クォータ・usage_events)        | meterlog       | 📄       | ⬜     |
-| 176 | Delegated Access Grants (multi-party・state machine)        | grantlog       | 📄 🔒    | ⬜     |
-| 177 | **Pagination Boundary Attack** (overflow guard・ReDoS)      | limitlog       | 🔧 🔒    | ⬜     |
+| 164 | Geolocation (Haversine・バウンディングボックス)             | geoloclog      | 📄 🔒    | ✅ D0  |
+| 165 | A/B Testing (crc32 決定論的割当・draft→active→stopped)      | ablog          | 📄       | ✅ D0  |
+| 166 | Multi-step Workflow (順序付きステップ・履歴)                | stepflowlog    | 📄       | ✅ D0  |
+| 167 | Inbound Webhook Receiver (per-source HMAC・冪等保存)        | inboundlog     | 📄       | ✅ D0  |
+| 168 | Admin Report Aggregation (日付バリデーション・COALESCE)     | agglog         | 📄 🔒    | ✅ D0  |
+| 169 | Data Masking (default mask・admin unmask・監査ログ)         | masklog        | 📄 🔒    | ✅ D0  |
+| 170 | Request Deduplication (idempotencyMiddleware 活用)          | deduplog       | 📄       | ✅ D0  |
+| 171 | Hierarchical Data (自己参照FK・マテリアライズドパス)        | hierarchylog   | 📄       | ✅ D0  |
+| 172 | Content Scheduling (publish_at・状態機械)                   | pubschedulelog | 📄       | ✅ D0  |
+| 173 | Content Relations (型付きM:N自己参照)                       | relatedlog     | 📄       | ✅ D0  |
+| 174 | Slug Management (SlugHelper・衝突解決・301履歴)             | sluglog        | 📄       | ✅ D0  |
+| 175 | API Usage Metering (per-user クォータ・usage_events)        | meterlog       | 📄       | ✅ D0  |
+| 176 | Delegated Access Grants (multi-party・state machine)        | grantlog       | 📄 🔒    | ✅ D0  |
+| 177 | **Pagination Boundary Attack** (overflow guard・ReDoS)      | limitlog       | 🔧 🔒    | ✅ D1  |
 
 ---
 
