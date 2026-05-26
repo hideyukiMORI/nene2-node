@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.23] - 2026-05-27
+
+### Added
+
+- Redis integration test (`tests/integration/redis-integration.test.ts`) — covers `createRedisKeyValueClientFromUrl`, `RedisRateLimitStorage`, and `RedisIdempotencyStorage` against a real Redis instance; skips when `NENE2_NODE_TEST_REDIS_URL` is unset
+- `redis-integration` CI job with Redis 7 service container (#110)
+
 ## [0.1.22] - 2026-05-27
 
 ### Added

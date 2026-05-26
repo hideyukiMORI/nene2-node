@@ -9,7 +9,7 @@ Node.js port of [NENE2](https://github.com/hideyukiMORI/NENE2) with **functional
 
 Ship `@hideyukimori/nene2-framework` where a team can run a NENE2-compatible API on Node without PHP — same JSON contracts, Node-idiomatic internals.
 
-**Current release:** [v0.1.22](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.22) (2026-05-27).
+**Current release:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) (2026-05-27).
 
 | Principle           | Practice                                         |
 | ------------------- | ------------------------------------------------ |

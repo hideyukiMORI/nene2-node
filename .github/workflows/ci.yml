@@ -77,3 +77,28 @@ jobs:
         env:
           NENE2_NODE_TEST_POSTGRES_URL: postgresql://nene2_ci:nene2_ci@127.0.0.1:5432/nene2_ci
         run: npm run test:integration -- tests/integration/postgres-integration.test.ts
+
+  redis-integration:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run type-check
+      - name: Redis integration tests
+        env:
+          NENE2_NODE_TEST_REDIS_URL: redis://127.0.0.1:6379
+        run: npm run test:integration -- tests/integration/redis-integration.test.ts
