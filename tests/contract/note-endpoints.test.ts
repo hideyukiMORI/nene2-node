@@ -70,4 +70,32 @@ describe('OpenAPI contract — note endpoints', () => {
     expect(getResponse.status).toBe(200);
     expect(fetched.created_at).toBe(created.created_at);
   });
+
+  it('PUT /examples/notes/{id} updates and returns 200; DELETE returns 204 then 404', async () => {
+    const create = await app.request('http://localhost/examples/notes', {
+      method: 'POST',
+      headers: jsonAuthHeaders(verifier),
+      body: JSON.stringify({ title: 'Original', body: 'first' }),
+    });
+    const { id } = await jsonBody<{ id: number }>(create);
+    const url = `http://localhost/examples/notes/${String(id)}`;
+
+    const put = await app.request(url, {
+      method: 'PUT',
+      headers: jsonAuthHeaders(verifier),
+      body: JSON.stringify({ title: 'Updated', body: 'second' }),
+    });
+    expect(put.status).toBe(200);
+    const updated = await jsonBody<{ id: number; title: string; body: string }>(put);
+    expect(updated.id).toBe(id);
+    expect(updated.title).toBe('Updated');
+    expect(updated.body).toBe('second');
+
+    const del = await app.request(url, { method: 'DELETE', headers: bearerAuth(verifier) });
+    expect(del.status).toBe(204);
+    expect(await del.text()).toBe('');
+
+    const afterDelete = await app.request(url, { headers: bearerAuth(verifier) });
+    expect(afterDelete.status).toBe(404);
+  });
 });

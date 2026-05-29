@@ -75,7 +75,7 @@ routed through an inventory + ADR (same discipline as 0.2.0).
 
 - [x] 0.2.0 — shipped (ADR 0005 batch). ✅ **gate 1**
 - [x] Node 24 LTS minimum (part of 0.2.0; `engines` bumped, experimental-SQLite caveats dropped).
-- [~] OpenAPI contract tests for every public route — system + protected + GET `/{id}` covered; only PUT/DELETE `/{id}` mutations remain.
+- [x] OpenAPI contract tests for every public route — all 9 `openapi.yaml` paths covered (system, protected, notes/tags GET/POST + `/{id}` GET/PUT/DELETE). ✅ **gate 2**
 - [~] Experimental tier — 0.2.0 helpers promoted; distributed-lock cluster promoted after `RedisLockStorage` validated the interface. Only the new `RedisLockStorage` is Experimental (one cycle); tier empties when it promotes.
 - [ ] Tag `1.0.0` via the normal release flow (`release:prepare`/`release:publish`).
 
