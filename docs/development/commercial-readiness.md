@@ -51,7 +51,7 @@ Or:
 await createApp({ includeExamples: false, tokenVerifier, ... });
 ```
 
-Register your own routes on `app` with app-owned repositories using `database.executor`.
+Register your own routes on `app` with app-owned repositories using `database.queryExecutor`.
 
 ## Recommended production conditions
 

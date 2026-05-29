@@ -21,6 +21,9 @@ _Targeting `0.2.0` (breaking) — see ADR 0005._
 
 ### Changed
 
+- **BREAKING:** `Nene2AppDatabase.executor` renamed to `queryExecutor`
+  (aligns with `DatabaseQueryExecutor`, disambiguates from `readExecutor`).
+  Migration: `nene2.database.executor` → `nene2.database.queryExecutor`. (ADR 0005 item 2)
 - **BREAKING:** `TokenVerifier.verify` now always returns
   `Promise<Readonly<Record<string, unknown>>>` — the synchronous return was
   dropped. `LocalBearerTokenVerifier.verify` is now `async` (await it, or catch a

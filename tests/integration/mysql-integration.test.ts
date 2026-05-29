@@ -59,7 +59,7 @@ describe.skipIf(mysqlUrl === undefined)('MySQL integration (CI service container
     const { database, shutdown } = await createApp({ settings });
     const tx = database?.transactionManager;
     expect(tx).toBeDefined();
-    const executor = database?.executor;
+    const executor = database?.queryExecutor;
     expect(executor).toBeDefined();
 
     await executor.execute(`
@@ -101,7 +101,7 @@ describe.skipIf(mysqlUrl === undefined)('MySQL integration (CI service container
       NENE2_NODE_DATABASE_URL: mysqlUrl,
     });
     const { app, database, shutdown } = await createApp({ settings });
-    const executor = database?.executor;
+    const executor = database?.queryExecutor;
     expect(executor).toBeDefined();
 
     await executor!.execute(`
