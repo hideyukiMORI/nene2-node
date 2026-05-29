@@ -40,6 +40,17 @@ export {
 } from './http/sort-query.js';
 export { applyMergePatch, type MergePatchOptions } from './http/merge-patch.js';
 export {
+  checkUrlSafety,
+  checkUrlSafetyAsync,
+  assertSafeUrl,
+  isPrivateIp,
+  normaliseIpv4,
+  type UrlSafetyResult,
+  type UrlSafetyReason,
+  type SafeUrlOptions,
+  type SafeUrlAsyncOptions,
+} from './security/safe-url.js';
+export {
   createCircuitBreaker,
   CircuitOpenError,
   type CircuitBreaker,
