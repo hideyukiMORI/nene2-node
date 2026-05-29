@@ -2,7 +2,7 @@
 
 **Status:** Draft (pre-planning)  
 **Created:** 2026-05-27  
-**Current release:** v0.1.22  
+**Current release:** v0.1.25  
 **Next breaking release target:** v0.2.0 (no date committed)
 
 This document lists **candidate** breaking changes for a future `0.2.0` release.

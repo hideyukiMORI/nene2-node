@@ -1,6 +1,6 @@
 # Field trials index — nene2-node
 
-Culture: `docs/development/field-trial-culture.md`. Backlog FT2–148: [backlog.md](backlog.md).
+Culture: `docs/development/field-trial-culture.md`. Backlog FT2–148: [backlog.md](backlog.md); FT149–177: [ft149-177-backlog.md](ft149-177-backlog.md).
 
 | FT# | Date       | Report                                                                                                 | Theme               | 🔒  | 🔍  |
 | --- | ---------- | ------------------------------------------------------------------------------------------------------ | ------------------- | --- | --- |
@@ -155,3 +155,32 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 146 | 2026-05-22 | [2026-05-field-trial-146-bola-example-usecases.md](2026-05-field-trial-146-bola-example-usecases.md) | BOLA example note/tag | 🔒 | — |
 | 147 | 2026-05-22 | [2026-05-field-trial-147-default-domain-handlers.md](2026-05-field-trial-147-default-domain-handlers.md) | default domain handlers | — | — |
 | 148 | 2026-05-22 | [2026-05-field-trial-148-utc-created-at-example.md](2026-05-field-trial-148-utc-created-at-example.md) | UTC created_at example | — | — |
+| 149 | 2026-05-27 | [2026-05-field-trial-149-content-collection.md](2026-05-field-trial-149-content-collection.md) | Content Collection | — | — |
+| 150 | 2026-05-27 | [2026-05-field-trial-150-coupon-promo-code.md](2026-05-field-trial-150-coupon-promo-code.md) | Coupon / Promo Code | 🔒 | — |
+| 151 | 2026-05-27 | [2026-05-field-trial-151-wishlist-management.md](2026-05-field-trial-151-wishlist-management.md) | Wishlist Management | — | — |
+| 152 | 2026-05-27 | [2026-05-field-trial-152-point-loyalty-system.md](2026-05-field-trial-152-point-loyalty-system.md) | Points / Loyalty | 🔒 | — |
+| 153 | 2026-05-27 | [2026-05-field-trial-153-activity-feed.md](2026-05-field-trial-153-activity-feed.md) | Activity Feed + Cursor Pagination | 🔒 | 🔍 |
+| 154 | 2026-05-27 | [2026-05-field-trial-154-product-review.md](2026-05-field-trial-154-product-review.md) | Product Review & Rating | — | — |
+| 155 | 2026-05-27 | [2026-05-field-trial-155-shopping-cart.md](2026-05-field-trial-155-shopping-cart.md) | Shopping Cart | — | — |
+| 156 | 2026-05-27 | [2026-05-field-trial-156-file-metadata-sharing.md](2026-05-field-trial-156-file-metadata-sharing.md) | File Metadata & Sharing | 🔒 | — |
+| 157 | 2026-05-27 | [2026-05-field-trial-157-search-autocomplete.md](2026-05-field-trial-157-search-autocomplete.md) | Full-Text Search & Autocomplete | — | 🔍 |
+| 158 | 2026-05-27 | [2026-05-field-trial-158-csv-bulk-import.md](2026-05-field-trial-158-csv-bulk-import.md) | CSV Bulk Import | — | — |
+| 159 | 2026-05-27 | [2026-05-field-trial-159-totp-2fa.md](2026-05-field-trial-159-totp-2fa.md) | TOTP 2FA | 🔒 | — |
+| 160 | 2026-05-27 | [2026-05-field-trial-160-oauth2-social-login.md](2026-05-field-trial-160-oauth2-social-login.md) | OAuth2 Social Login | 🔒 | — |
+| 161 | 2026-05-27 | [2026-05-field-trial-161-application-caching.md](2026-05-field-trial-161-application-caching.md) | Application Caching | — | — |
+| 162 | 2026-05-27 | [2026-05-field-trial-162-content-versioning.md](2026-05-field-trial-162-content-versioning.md) | Content Versioning | — | — |
+| 163 | 2026-05-27 | [2026-05-field-trial-163-payment-webhook.md](2026-05-field-trial-163-payment-webhook.md) | Payment Webhook | — | — |
+| 164 | 2026-05-27 | [2026-05-field-trial-164-geolocation.md](2026-05-field-trial-164-geolocation.md) | Geolocation | 🔒 | — |
+| 165 | 2026-05-27 | [2026-05-field-trial-165-ab-testing.md](2026-05-field-trial-165-ab-testing.md) | A/B Testing | — | — |
+| 166 | 2026-05-27 | [2026-05-field-trial-166-multi-step-workflow.md](2026-05-field-trial-166-multi-step-workflow.md) | Multi-Step Workflow | — | — |
+| 167 | 2026-05-27 | [2026-05-field-trial-167-inbound-webhook.md](2026-05-field-trial-167-inbound-webhook.md) | Inbound Webhook Receiver | — | — |
+| 168 | 2026-05-27 | [2026-05-field-trial-168-admin-report-aggregation.md](2026-05-field-trial-168-admin-report-aggregation.md) | Admin Report Aggregation | 🔒 | — |
+| 169 | 2026-05-27 | [2026-05-field-trial-169-data-masking.md](2026-05-field-trial-169-data-masking.md) | Data Masking | 🔒 | — |
+| 170 | 2026-05-27 | [2026-05-field-trial-170-request-deduplication.md](2026-05-field-trial-170-request-deduplication.md) | Request Deduplication | — | — |
+| 171 | 2026-05-27 | [2026-05-field-trial-171-hierarchical-data.md](2026-05-field-trial-171-hierarchical-data.md) | Hierarchical Data | — | — |
+| 172 | 2026-05-27 | [2026-05-field-trial-172-content-scheduling.md](2026-05-field-trial-172-content-scheduling.md) | Content Scheduling | — | — |
+| 173 | 2026-05-27 | [2026-05-field-trial-173-content-relations.md](2026-05-field-trial-173-content-relations.md) | Content Relations | — | — |
+| 174 | 2026-05-27 | [2026-05-field-trial-174-slug-management.md](2026-05-field-trial-174-slug-management.md) | Slug Management | — | — |
+| 175 | 2026-05-27 | [2026-05-field-trial-175-api-usage-metering.md](2026-05-field-trial-175-api-usage-metering.md) | API Usage Metering | — | — |
+| 176 | 2026-05-27 | [2026-05-field-trial-176-delegated-access-grants.md](2026-05-field-trial-176-delegated-access-grants.md) | Delegated Access Grants | 🔒 | — |
+| 177 | 2026-05-27 | [2026-05-field-trial-177-pagination-boundary.md](2026-05-field-trial-177-pagination-boundary.md) | Pagination Boundary Attack | 🔒 | 🔍 |

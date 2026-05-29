@@ -9,7 +9,7 @@ Node.js port of [NENE2](https://github.com/hideyukiMORI/NENE2) with **functional
 
 Ship `@hideyukimori/nene2-framework` where a team can run a NENE2-compatible API on Node without PHP — same JSON contracts, Node-idiomatic internals.
 
-**Current release:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) (2026-05-27).
+**Current release:** [v0.1.25](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.25) (2026-05-27).
 
 | Principle           | Practice                                         |
 | ------------------- | ------------------------------------------------ |
@@ -99,9 +99,20 @@ Phase 2 FT campaign **FT67–148** complete (see [backlog](field-trials/backlog.
 
 ---
 
+## Phase 7 — Application domain parity (FT149–177) ✅
+
+FT campaign **FT149–177** complete (see [backlog](field-trials/ft149-177-backlog.md)) — **NENE2 PHP v1.5.111 / FT177 parity achieved** (v0.1.22–0.1.25, 2026-05-27).
+
+- [x] 29 application-domain how-to docs: collections, coupons, wishlist, loyalty, cart, reviews, file sharing, FTS, CSV import, TOTP/OAuth2, caching, versioning, webhooks, geolocation, A/B testing, workflows, reporting, masking, dedup, hierarchy, scheduling, relations, slugs, metering, delegated grants
+- [x] `parseCursorQuery` cursor-based pagination helper (FT153, v0.1.24)
+- [x] `parsePaginationQuery` boundary-attack hardening — overflow guard, ReDoS-immune digit check (FT177 🔒, v0.1.25)
+- [x] CI `npm audit` job + 0.2.0 breaking inventory draft (v0.1.22); Redis 7 integration test + CI service job (v0.1.23)
+
+---
+
 ## Field trials
 
-See `docs/development/field-trial-culture.md`. **FT1–148** complete for Phase 2 scope; index: `docs/field-trials/INDEX.md`. Ongoing maintenance: keep docs aligned with releases (README, indexes, integration guides). Optional: **0.2.0** breaking inventory, CI `npm audit`, Redis service job.
+See `docs/development/field-trial-culture.md`. **FT1–177** complete; index: `docs/field-trials/INDEX.md`. Ongoing maintenance: keep docs aligned with releases (README, indexes, integration guides). Next: **0.2.0** breaking-change inventory ([decisions pending](milestones/semver-0.2.0-breaking-inventory.md)); FT178+ scope TBD.
 
 ---
 
