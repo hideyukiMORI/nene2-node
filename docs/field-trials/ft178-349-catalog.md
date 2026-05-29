@@ -35,6 +35,26 @@
 **Actionable node FT178+ scope = the 24 `do` rows** (and realistically the 18 🔒/🔧new
 are the priority; the 6 📄 are doc-only catch-ups).
 
+## Progress (updated 2026-05-29)
+
+The actionable framework deep-FT work is **complete**:
+
+- **🔧new (5/5) done** — FT178 ETag, FT180 circuit-breaker, FT181 distributed-lock,
+  FT182 validation-collector, FT183 merge-patch.
+- **🔒 framework-relevant done** — FT179 ORDER BY (341), FT184 unicode (345),
+  FT185 SSRF (337), FT186 tenant isolation (318+342), FT187 SQL-injection +
+  `escapeLikePattern` (264). FT256 mass-assignment is covered by FT183.
+- **🔒 reclassified ⏭ app-domain** (267, 279, 280, 285, 290, 331) — auth **flows**
+  (field encryption, RBAC, lockout, password reset, OTP, KDF). node ships the
+  primitives (`node:crypto`, JWT claims, bearer middleware, throttle storage) but
+  not the flows; per `docs/scope.md` these belong to consumer repos.
+- **📄 (6)** — doc/FT catch-ups for primitives node already has; low priority.
+
+Net new node helpers this phase: `computeETag`/`checkNotModified`/`checkPreconditions`,
+`parseSortQuery`, `createCircuitBreaker`, `createLockManager`, `createValidationCollector`,
+`applyMergePatch`, `validateTextField`/`countCodePoints`, `checkUrlSafety`,
+`assertTenantScope`/`ResourceNotFoundError`, `escapeLikePattern`.
+
 ---
 
 ## 🎯 do 🔧new — genuine framework gaps (5)
@@ -49,21 +69,21 @@ are the priority; the 6 📄 are doc-only catch-ups).
 
 ## 🎯 do 🔒 — security / contract parity (13)
 
-| FT    | PHP howto                       | type | note                                                                     |
-| ----- | ------------------------------- | ---- | ------------------------------------------------------------------------ |
-| FT256 | `mass-assignment-defence.md`    | ATK  | ✅ **covered by FT183** (`applyMergePatch` `allowed`/`immutable` guards) |
-| FT264 | `sql-injection-defence.md`      | ATK  | ✅ **done → node FT187** (`escapeLikePattern` + ft187 SQLite sandbox)    |
-| FT267 | `encrypted-field-storage.md`    | VULN | フィールド暗号化（鍵分離・nonce・タグ検証）                              |
-| FT279 | `rbac-jwt-auth.md`              | VULN | RBAC + JWT 認可境界                                                      |
-| FT280 | `account-lockout.md`            | ATK  | アカウントロックアウト（ブルートフォース耐性）                           |
-| FT285 | `password-reset-flow.md`        | VULN | パスワードリセットフロー（トークン安全性）                               |
-| FT290 | `otp-authentication.md`         | ATK  | OTP 認証（タイミング・リプレイ）                                         |
-| FT318 | `tenant-isolation-idor`         | 通常 | ✅ **done → node FT186** (`assertTenantScope` + `ResourceNotFoundError`) |
-| FT331 | `password-auth-argon2id`        | 通常 | argon2id パスワード認証（ハッシュ方針）                                  |
-| FT337 | `url-shortener-ssrf-prevention` | 通常 | ✅ **done → node FT185** (`checkUrlSafety` / `src/security/safe-url.ts`) |
-| FT341 | `dynamic-sort-order-injection`  | 通常 | ✅ **done → node FT179** (`parseSortQuery` + ft179 sandbox)              |
-| FT342 | `jwt-tenant-isolation`          | 通常 | ✅ **done → node FT186** (`tenantFromContext` tenant_id クレーム)        |
-| FT345 | `unicode-aware-text-api`        | VULN | ✅ **done → node FT184** (`validateTextField`, code-point + null-byte)   |
+| FT    | PHP howto                       | type | note                                                                      |
+| ----- | ------------------------------- | ---- | ------------------------------------------------------------------------- |
+| FT256 | `mass-assignment-defence.md`    | ATK  | ✅ **covered by FT183** (`applyMergePatch` `allowed`/`immutable` guards)  |
+| FT264 | `sql-injection-defence.md`      | ATK  | ✅ **done → node FT187** (`escapeLikePattern` + ft187 SQLite sandbox)     |
+| FT267 | `encrypted-field-storage.md`    | VULN | ⏭ app-domain — consumer (uses `node:crypto` AES-GCM; key mgmt is app's)  |
+| FT279 | `rbac-jwt-auth.md`              | VULN | ⏭ app-domain — consumer (roles via JWT claims + bearer middleware)       |
+| FT280 | `account-lockout.md`            | ATK  | ⏭ app-domain — consumer (policy atop throttle / rate-limit storage)      |
+| FT285 | `password-reset-flow.md`        | VULN | ⏭ app-domain — consumer (token flow; uses `node:crypto` + timing-safe)   |
+| FT290 | `otp-authentication.md`         | ATK  | ⏭ app-domain — consumer (TOTP is an app flow; not bundled)               |
+| FT318 | `tenant-isolation-idor`         | 通常 | ✅ **done → node FT186** (`assertTenantScope` + `ResourceNotFoundError`)  |
+| FT331 | `password-auth-argon2id`        | 通常 | ⏭ app-domain — consumer (KDF choice; `node:crypto` scrypt or argon2 dep) |
+| FT337 | `url-shortener-ssrf-prevention` | 通常 | ✅ **done → node FT185** (`checkUrlSafety` / `src/security/safe-url.ts`)  |
+| FT341 | `dynamic-sort-order-injection`  | 通常 | ✅ **done → node FT179** (`parseSortQuery` + ft179 sandbox)               |
+| FT342 | `jwt-tenant-isolation`          | 通常 | ✅ **done → node FT186** (`tenantFromContext` tenant_id クレーム)         |
+| FT345 | `unicode-aware-text-api`        | VULN | ✅ **done → node FT184** (`validateTextField`, code-point + null-byte)    |
 
 ## 🎯 do 📄 — framework exists, FT/how-to only (6)
 
