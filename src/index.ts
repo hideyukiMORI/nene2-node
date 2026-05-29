@@ -38,6 +38,7 @@ export {
   type SortQueryOptions,
   type SortOrder,
 } from './http/sort-query.js';
+export { applyMergePatch, type MergePatchOptions } from './http/merge-patch.js';
 export {
   createCircuitBreaker,
   CircuitOpenError,

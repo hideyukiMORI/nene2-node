@@ -189,3 +189,4 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 180 | 2026-05-29 | [2026-05-field-trial-180-circuit-breaker.md](2026-05-field-trial-180-circuit-breaker.md) | Circuit Breaker (resilience) | — | — |
 | 181 | 2026-05-29 | [2026-05-field-trial-181-distributed-lock.md](2026-05-field-trial-181-distributed-lock.md) | Distributed Lock (owner-verified, TTL) | 🔒 | — |
 | 182 | 2026-05-29 | [2026-05-field-trial-182-nested-json-validation.md](2026-05-field-trial-182-nested-json-validation.md) | Nested JSON Validation (`createValidationCollector`) | — | 🔍 |
+| 183 | 2026-05-29 | [2026-05-field-trial-183-merge-patch.md](2026-05-field-trial-183-merge-patch.md) | PATCH Partial Update / JSON Merge Patch (`applyMergePatch`) | 🔒 | 🔍 |
