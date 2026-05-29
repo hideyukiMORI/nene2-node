@@ -23,7 +23,7 @@ Fast path for humans and AI agents contributing to **this repository** (`nene2-n
 
 ## Field trials
 
-Phase 2 campaign (FT67–148) is complete. New FTs require a dedicated Issue. Index: `docs/field-trials/INDEX.md`, template: `docs/templates/field-trial-report-compact.md`.
+FT campaigns through FT177 are complete (Phase 2 FT67–148; application-domain parity FT149–177, NENE2 PHP v1.5.111). New FTs require a dedicated Issue. Index: `docs/field-trials/INDEX.md`, template: `docs/templates/field-trial-report-compact.md`.
 
 ## References
 

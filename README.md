@@ -104,7 +104,7 @@ Relationship details: [docs/integrations/relationship-to-nene2.md](docs/integrat
 
 ## Current release
 
-**Latest: [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23)** (2026-05-27)
+**Latest: [v0.1.25](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.25)** (2026-05-27)
 
 Highlights at `0.1.x`:
 
@@ -112,6 +112,8 @@ Highlights at `0.1.x`:
 - MySQL / PostgreSQL executors, transactions, read-replica URL, CI integration jobs
 - Example note/tag CRUD with Bearer + row ownership (BOLA) when `includeExamples` is enabled
 - Production defaults: `includeExamples=false`, optional `jose` JWKS verifier, graceful shutdown
+- Pagination helpers: `parsePaginationQuery` (boundary-attack hardened) and `parseCursorQuery`
+- Field-trial parity with NENE2 PHP v1.5.111 (FT1–177 complete)
 - Vitest coverage gates (80% global, 90% example UseCases)
 
 Roadmap: [docs/roadmap.md](docs/roadmap.md). Changelog: [CHANGELOG.md](CHANGELOG.md).
