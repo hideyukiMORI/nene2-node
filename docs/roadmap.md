@@ -133,7 +133,7 @@ Prioritised by leverage:
 - [x] **A1** Public API surface snapshot test (`tests/api/public-surface.test.ts`) — catches unintended export/type changes; update with `vitest -u`
 - [x] **A2** Doc-integrity check (`scripts/check-docs.mjs`, in `npm run check` + CI) — INDEX == reports, no broken intra-repo links, current-release == `package.json`
 - [ ] **A3** Release safety check (tag-without-release detection)
-- [ ] **B4** Stability markers (`@stable` / `@experimental`) on public exports
+- [x] **B4** API stability tiers (`docs/STABILITY.md` + `tests/api/stability.test.ts`) — Stable vs Experimental, enforced against the live export surface
 - [ ] **B5** Path-to-1.0 ADR (API-freeze criteria)
 - [ ] **C6** Bring `nene2-node-FT` proof sandboxes into CI (committed workspace or in-tree)
 - [ ] **D7** Generate `INDEX.md` from frontmatter; consolidate thin FT reports
