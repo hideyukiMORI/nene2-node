@@ -122,9 +122,30 @@ Depth over breadth (see [catalog](field-trials/ft178-349-catalog.md)) — 11 new
 
 ---
 
+## Phase 9 — AI-velocity hardening 🚧
+
+North star: **robust, fast, hesitation-free AI development.** Principle: every
+recurring agent decision becomes a rule (doc), guardrail (CI/test), or automation
+(script). Full plan: [ADR 0003](adr/0003-ai-velocity-hardening.md).
+
+Prioritised by leverage:
+
+- [ ] **A1** Public API surface snapshot test (catch unintended export/type changes)
+- [ ] **A2** Doc-integrity CI (INDEX == reports, no broken links, current-release == `package.json`)
+- [ ] **A3** Release safety check (tag-without-release detection)
+- [ ] **B4** Stability markers (`@stable` / `@experimental`) on public exports
+- [ ] **B5** Path-to-1.0 ADR (API-freeze criteria)
+- [ ] **C6** Bring `nene2-node-FT` proof sandboxes into CI (committed workspace or in-tree)
+- [ ] **D7** Generate `INDEX.md` from frontmatter; consolidate thin FT reports
+- [ ] **E8/E9** `CLAUDE.md` decision trees; release automation script / `workflow_dispatch`
+
+Start order: **A1 → A2 → B4**.
+
+---
+
 ## Field trials
 
-See `docs/development/field-trial-culture.md`. **FT1–177** complete; index: `docs/field-trials/INDEX.md`. Ongoing maintenance: keep docs aligned with releases (README, indexes, integration guides). Next: **0.2.0** breaking-change inventory ([decisions pending](milestones/semver-0.2.0-breaking-inventory.md)); FT178+ scope TBD.
+See `docs/development/field-trial-culture.md`. **FT1–187** complete; index: `docs/field-trials/INDEX.md`. The FT178–349 catalog's actionable bucket is closed (see [catalog Progress](field-trials/ft178-349-catalog.md)). Next: **Phase 9** AI-velocity hardening (above); optionally a new FT range (PHP FT350+) or **0.2.0** breaking-change inventory ([decisions pending](milestones/semver-0.2.0-breaking-inventory.md)).
 
 ---
 
