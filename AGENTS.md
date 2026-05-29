@@ -18,7 +18,7 @@ Entry point for AI agents working on **nene2-node**.
 - Client sibling: `docs/integrations/relationship-to-nene2-js.md`
 - Roadmap: `docs/roadmap.md`
 - Current work: `docs/todo/current.md`
-- Field trials: `docs/field-trials/backlog.md`, `docs/field-trials/INDEX.md` (FT1–148 complete for Phase 2 scope)
+- Field trials: `docs/field-trials/INDEX.md` (FT1–187 complete). Deep-FT triage: `docs/field-trials/ft178-349-catalog.md`. Road to 1.0: `docs/adr/0004-path-to-1.0.md`
 - Cross-repo parity: `docs/integrations/cross-repo-parity.md`
 - Contributor path: `docs/development/contributor-onboarding.md`
 - Release: `docs/development/release-process.md`

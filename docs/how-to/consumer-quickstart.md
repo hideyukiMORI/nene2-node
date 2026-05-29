@@ -6,8 +6,8 @@ Validated by FT67 greenfield install sandbox.
 
 ## Prerequisites
 
-- Node.js **22+**
-- npm **10+**
+- Node.js **24+** (LTS)
+- npm **11+**
 
 ## Steps
 
