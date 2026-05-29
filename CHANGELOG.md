@@ -11,7 +11,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
-_Targeting `0.2.0` (breaking) — see ADR 0005._
+_No changes yet._
+
+## [0.2.0] - 2026-05-29
 
 ### Removed
 

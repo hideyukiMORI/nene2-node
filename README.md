@@ -104,7 +104,7 @@ Relationship details: [docs/integrations/relationship-to-nene2.md](docs/integrat
 
 ## Current release
 
-**Latest (npm): [v0.1.26](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.26)** (2026-05-29)
+**Latest (npm): [v0.2.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.2.0)** (2026-05-29) — first breaking release; **requires Node 24+**. See [CHANGELOG](CHANGELOG.md) for migration.
 
 Highlights at `0.1.x`:
 
