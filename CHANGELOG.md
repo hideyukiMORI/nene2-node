@@ -58,6 +58,10 @@ _Targeting `0.1.26`._
   `createApp`) — multi-tenant isolation that returns **404 (not 403)** on cross-tenant access
   to prevent existence enumeration. Sibling of `assertResourceOwner`. 10 tests; how-to +
   FT186 report (FT186)
+- `escapeLikePattern` in `src/database/escape-like-pattern.ts` — escape `LIKE` wildcards
+  (`%`, `_`, escape char) so a parameterized `LIKE` value matches literally, closing the
+  wildcard-injection gap (use with a SQL `ESCAPE` clause). O(n), no regex. 7 tests; how-to +
+  FT187 SQL-injection-defence report and proof sandbox (FT187)
 
 ## [0.1.25] - 2026-05-27
 

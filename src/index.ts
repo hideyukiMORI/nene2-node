@@ -173,6 +173,7 @@ export { parseDatabaseUrl, type DatabaseBackend } from './database/parse-databas
 export { PostgresQueryExecutor } from './database/postgres-query-executor.js';
 export { PostgresTransactionManager } from './database/postgres-transaction-manager.js';
 export { openSqliteDatabase } from './database/open-sqlite-database.js';
+export { escapeLikePattern } from './database/escape-like-pattern.js';
 export { SqliteQueryExecutor } from './database/sqlite-query-executor.js';
 export { SqliteTransactionManager } from './database/sqlite-transaction-manager.js';
 export { translateQuestionPlaceholders } from './database/translate-sql-placeholders.js';
