@@ -1,28 +1,35 @@
 # Current work
 
 Last updated: 2026-05-29  
-**Sprint:** idle — FT149–177 campaign complete (NENE2 PHP v1.5.111 parity)
+**Sprint:** FT178+ phase (framework parity from the FT178–349 catalog)
 
-## Released
+## Published to npm
 
-- **npm:** [v0.1.25](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.25) — `parsePaginationQuery` boundary hardening (FT177); FT campaign complete (#116)
-- **npm:** [v0.1.24](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.24) — `parseCursorQuery` helper + activity feed (FT153) (#115)
-- **npm:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) — Redis integration test + CI service job (#110)
+- **npm latest:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) — Redis integration test + CI service job (#110)
 - **npm:** [v0.1.22](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.22) — MySQL/PG unit mocks, CI `npm audit`, 0.2.0 inventory (#108)
 - **npm:** [v0.1.21](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21) — `created_at` UTC ISO-8601 on example note/tag (FT148)
 
+## Prepared / pending release (on `main`, NOT yet on npm)
+
+Will ship in the next GitHub Release as **`0.1.26`** (see [release process](../development/release-process.md)):
+
+- `v0.1.24` tag (FT153 `parseCursorQuery`) — tagged, never published
+- `v0.1.25` tag (FT177 `parsePaginationQuery` hardening) — tagged, never published
+- `0.1.26` (FT178 ETag conditional requests) — in development, untagged
+
 ## Recently merged
 
+- PR #122 — ETag conditional requests helper (FT178)
+- PR #120 — FT178–349 upstream parity triage catalog
+- PR #118 — freshness pass to v0.1.25 and FT149–177 index
 - PR #116 — `parsePaginationQuery` boundary-attack hardening (FT177)
 - PR #115 — `parseCursorQuery` helper + activity feed (FT153)
-- PR #112/#113/#114 — FT149–176 how-to docs and field-trial reports
-- PR #110 — Redis integration test + CI service job
-- PR #108 — MySQL/PG mocks, npm audit CI, 0.2.0 breaking inventory
 
-## Next (no work in flight)
+## Next
 
-- **0.2.0 planning:** review `docs/milestones/semver-0.2.0-breaking-inventory.md` (5 draft candidates) and open Issues for decided items
-- **FT178+:** scope next field-trial phase (none defined yet)
+- **Release:** cut `0.1.26` GitHub Release at the next checkpoint to make npm current.
+- **FT178+:** continue the 🔧new bucket from the [FT178–349 catalog](../field-trials/ft178-349-catalog.md) — FT298 circuit-breaker, FT288 distributed-lock, FT322 nested-json-validation, FT326 patch-partial-update.
+- **0.2.0 planning:** review `docs/milestones/semver-0.2.0-breaking-inventory.md` (5 draft candidates).
 
 ## Verification
 
