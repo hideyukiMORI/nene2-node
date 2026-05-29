@@ -1,7 +1,7 @@
 # nene2-node
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Node](https://img.shields.io/badge/Node-%3E%3D22%20LTS-339933)](https://nodejs.org/)
+[![Node](https://img.shields.io/badge/Node-%3E%3D24%20LTS-339933)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6)](https://www.typescriptlang.org/)
 
 **NENE2-compatible API framework for Node.js** — a TypeScript port of the [NENE2](https://github.com/hideyukiMORI/NENE2) design philosophy, optimized for the Node ecosystem (not a wrapper around the PHP runtime).
@@ -45,7 +45,7 @@ Full boundary: [docs/scope.md](docs/scope.md). Engineering rules: [docs/developm
 
 ### Prerequisites
 
-- Node.js **22+** (LTS)
+- Node.js **24+** (LTS) — `node:sqlite` is stable; no `--experimental-sqlite` flag
 - npm **10+**
 
 ### Clone and verify

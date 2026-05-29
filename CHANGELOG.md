@@ -21,6 +21,9 @@ _Targeting `0.2.0` (breaking) — see ADR 0005._
 
 ### Changed
 
+- **BREAKING:** minimum runtime raised to **Node 24 LTS / npm 11** (`engines`).
+  `node:sqlite` is stable on 24 (no `--experimental-sqlite`). CI and the release
+  workflow run on Node 24. (ADR 0005 item 3)
 - **BREAKING:** `Nene2AppDatabase.executor` renamed to `queryExecutor`
   (aligns with `DatabaseQueryExecutor`, disambiguates from `readExecutor`).
   Migration: `nene2.database.executor` → `nene2.database.queryExecutor`. (ADR 0005 item 2)
