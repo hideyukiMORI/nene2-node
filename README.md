@@ -46,7 +46,7 @@ Full boundary: [docs/scope.md](docs/scope.md). Engineering rules: [docs/developm
 ### Prerequisites
 
 - Node.js **24+** (LTS) — `node:sqlite` is stable; no `--experimental-sqlite` flag
-- npm **10+**
+- npm **11+**
 
 ### Clone and verify
 
@@ -106,7 +106,7 @@ Relationship details: [docs/integrations/relationship-to-nene2.md](docs/integrat
 
 **Latest (npm): [v0.3.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.3.0)** (2026-05-29) — adds distributed lock (`RedisLockStorage`, atomic acquire). Requires Node 24+.
 
-Highlights at `0.1.x`:
+Highlights:
 
 - Hono `createApp()`, middleware stack, Problem Details, Bearer + API key auth
 - MySQL / PostgreSQL executors, transactions, read-replica URL, CI integration jobs
@@ -114,9 +114,9 @@ Highlights at `0.1.x`:
 - HTTP helpers: `parsePaginationQuery` (hardened), `parseCursorQuery`, `parseSortQuery` (ORDER BY allowlist), ETag conditional requests, `applyMergePatch` (RFC 7396)
 - Validation: `createValidationCollector` (nested paths), `validateTextField` (Unicode-safe)
 - Security: `checkUrlSafety` (SSRF guard), `assertTenantScope` (multi-tenant 404), `escapeLikePattern`
-- Resilience / concurrency: `createCircuitBreaker`, `createLockManager`
+- Resilience / concurrency: `createCircuitBreaker`, `createLockManager` (+ `RedisLockStorage`)
 - Production defaults: `includeExamples=false`, optional `jose` JWKS verifier, graceful shutdown
-- Field-trial parity with NENE2 PHP v1.5.111 (FT1–177 complete; FT178+ in progress)
+- Field-trial parity with NENE2 PHP v1.5.111 (FT1–187 complete; FT178+ deep-FT phase done)
 - Vitest coverage gates (80% global, 90% example UseCases)
 
 Roadmap: [docs/roadmap.md](docs/roadmap.md). Changelog: [CHANGELOG.md](CHANGELOG.md).

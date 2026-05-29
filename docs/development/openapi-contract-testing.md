@@ -21,8 +21,17 @@ tests/fixtures/contract/README.md
 For tooling that reads the live spec:
 
 ```typescript
-import { resolveOpenApiPath, openApiFileExists } from '@hideyukimori/nene2-framework';
+import { existsSync } from 'node:fs';
+import { resolveOpenApiPath } from '@hideyukimori/nene2-framework';
+
+const path = resolveOpenApiPath();
+if (existsSync(path)) {
+  /* read the spec */
+}
 ```
+
+> `openApiFileExists` / `DEFAULT_OPENAPI_RELATIVE` were removed from the public API
+> in 0.2.0 (ADR 0005) — use `resolveOpenApiPath` + `node:fs`.
 
 | Env                       | Default                                                  |
 | ------------------------- | -------------------------------------------------------- |

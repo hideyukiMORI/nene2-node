@@ -1,17 +1,18 @@
 # Semver 0.2.0 — Breaking-change inventory
 
-**Status:** Decided — batch accepted in [ADR 0005](../adr/0005-0.2.0-breaking-batch.md)  
+**Status:** ✅ Shipped in **v0.2.0** (batch decided in [ADR 0005](../adr/0005-0.2.0-breaking-batch.md))  
 **Created:** 2026-05-27  
-**Current release:** v0.1.26  
-**Next breaking release target:** v0.2.0 (no date committed)
+**Current release:** v0.3.0  
+**Next breaking release target:** — (0.2.0 done; remaining candidate → a future minor)
 
-> **Decision (ADR 0005):** items 1, 3, 4, 5 are **in** 0.2.0; item 2
-> (`createApp()` sync) is **deferred** to its own design ADR. Implementation
-> accumulates under CHANGELOG `[Unreleased]`; ships as `0.2.0` (1.0 gate 1 per
-> [ADR 0004](../adr/0004-path-to-1.0.md)).
+> **Status (ADR 0005):** items 1, 3, 4, 5 **shipped in 0.2.0** (export removal,
+> `executor`→`queryExecutor`, Node 24 LTS minimum, `TokenVerifier.verify`→Promise).
+> Item 2 (`createApp()` sync) is **deferred** to its own design ADR (not yet
+> scheduled). 0.2.0 was 1.0 gate 1 ([ADR 0004](../adr/0004-path-to-1.0.md)).
 
-This document lists **candidate** breaking changes for a future `0.2.0` release.
-Nothing here is decided — items move to "decided" only via ADR + GitHub Issue + PR.
+This document catalogued breaking-change candidates for `0.2.0`. The batch
+shipped in v0.2.0; the per-item sections below are kept as the migration record.
+Future breaking candidates move to "decided" only via ADR + GitHub Issue + PR.
 
 Shipping 0.2.0 is the first gate on the road to 1.0 — see
 [ADR 0004](../adr/0004-path-to-1.0.md). Policy reference:
