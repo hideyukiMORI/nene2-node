@@ -130,7 +130,7 @@ recurring agent decision becomes a rule (doc), guardrail (CI/test), or automatio
 
 Prioritised by leverage:
 
-- [ ] **A1** Public API surface snapshot test (catch unintended export/type changes)
+- [x] **A1** Public API surface snapshot test (`tests/api/public-surface.test.ts`) — catches unintended export/type changes; update with `vitest -u`
 - [ ] **A2** Doc-integrity CI (INDEX == reports, no broken links, current-release == `package.json`)
 - [ ] **A3** Release safety check (tag-without-release detection)
 - [ ] **B4** Stability markers (`@stable` / `@experimental`) on public exports
