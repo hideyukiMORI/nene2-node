@@ -15,7 +15,7 @@ Invalid or empty env values fall back to **10**. Values must be integers ≥ 1.
 
 `createApp()` opens **one** pool for example note/tag repositories and the database health check. Business apps should:
 
-1. Prefer **`await createApp()`** and use `nene2.database.executor` for custom repositories (see FT73), **or**
+1. Prefer **`await createApp()`** and use `nene2.database.queryExecutor` for custom repositories (see FT73), **or**
 2. Call `createDatabaseRuntime(url)` once and pass repositories into `createApp()` **without** setting `NENE2_NODE_DATABASE_URL` (advanced).
 
 Opening two pools against the same URL (e.g. `createDatabaseRuntime` + `createApp` with the same env) wastes connections and can confuse shutdown — avoid it.

@@ -15,7 +15,7 @@ describe.skipIf(pgUrl === undefined)('PostgreSQL integration (CI service contain
     const { database, shutdown } = await createApp({ settings });
     const tx = database?.transactionManager;
     expect(tx).toBeDefined();
-    const executor = database?.executor;
+    const executor = database?.queryExecutor;
     expect(executor).toBeDefined();
 
     await executor!.execute(`

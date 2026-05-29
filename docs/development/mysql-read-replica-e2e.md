@@ -47,7 +47,7 @@ docker compose down
 ```ts
 const { database } = await createApp({ settings });
 // writes + transactions
-await database.executor.insert(/* … */);
+await database.queryExecutor.insert(/* … */);
 // read-only lists
 await database.readExecutor?.fetchAll(/* … */);
 ```

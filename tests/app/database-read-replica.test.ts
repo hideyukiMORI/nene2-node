@@ -13,6 +13,6 @@ describe('database read replica URL', () => {
     });
     const { database } = await createApp({ settings });
     expect(database?.readExecutor).toBeDefined();
-    expect(database?.readExecutor).toBe(database?.executor);
+    expect(database?.readExecutor).toBe(database?.queryExecutor);
   });
 });

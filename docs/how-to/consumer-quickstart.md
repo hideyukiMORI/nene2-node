@@ -58,11 +58,11 @@ NENE2_NODE_PORT=3000
 
 **Example routes:** `/examples/notes` and `/examples/tags` require Bearer JWT and scope rows to JWT `sub` when examples are enabled. In production, set `NENE2_NODE_INCLUDE_EXAMPLES=false` (default) or `createApp({ includeExamples: false })` — see [commercial-readiness.md](../development/commercial-readiness.md).
 
-**App-owned tables:** reuse the same pool via `nene2.database.executor` (do not call `createDatabaseRuntime()` again with the same URL):
+**App-owned tables:** reuse the same pool via `nene2.database.queryExecutor` (do not call `createDatabaseRuntime()` again with the same URL):
 
 ```typescript
 const nene2 = await createApp({ settings });
-const executor = nene2.database?.executor;
+const executor = nene2.database?.queryExecutor;
 // run your DDL / repositories, then mount routes on nene2.app
 await nene2.database?.transactionManager?.transactional(async (tx) => {
   // multi-statement business write (MySQL / SQLite / PostgreSQL)

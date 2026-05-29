@@ -10,7 +10,7 @@ Set **`NENE2_NODE_DATABASE_READ_URL`** alongside **`NENE2_NODE_DATABASE_URL`** t
 | PostgreSQL | Separate pool (`NENE2_POSTGRES_READ_POOL_MAX` optional) |
 | SQLite     | Same handle as `executor` (no real replica — FT118 F-2) |
 
-Use `database.executor` for writes and transactions; route read-only queries to `database.readExecutor` in app repositories.
+Use `database.queryExecutor` for writes and transactions; route read-only queries to `database.readExecutor` in app repositories.
 
 ## Compose E2E
 
