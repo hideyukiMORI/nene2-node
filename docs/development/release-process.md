@@ -64,17 +64,17 @@ Two scripts (Phase 9 E9) encode the mechanical steps; both accept `--dry-run`.
 
 _Last reconciled: 2026-05-29._
 
-| Version  | State                                                             |
-| -------- | ----------------------------------------------------------------- |
-| `0.1.23` | ✅ Published (npm + GitHub Release) — the real latest             |
-| `0.1.24` | ⚠️ Tag only (lightweight, hand-cut). Never published. FT153 work. |
-| `0.1.25` | ⚠️ Tag only (lightweight, hand-cut). Never published. FT177 work. |
-| `0.1.26` | 🛠️ In development on `main` (FT178+). Not tagged, not released.   |
+| Version  | State                                                    |
+| -------- | -------------------------------------------------------- |
+| `0.1.26` | ✅ Published (npm + GitHub Release) — the current latest |
+| `0.1.25` | ⚠️ Tag only (hand-cut, never published). FT177 work.     |
+| `0.1.24` | ⚠️ Tag only (hand-cut, never published). FT153 work.     |
+| `0.1.23` | ✅ Published — previous release                          |
 
-**Next release** will publish as `0.1.26` and fold in everything since `0.1.23`
-(FT153 + FT177 + FT178+). npm will jump `0.1.23 → 0.1.26`; the orphan
-`v0.1.24`/`v0.1.25` tags remain only as historical bump markers — **do not** try
-to publish them. Do not delete pushed tags.
+`0.1.26` folded in everything since `0.1.23` (FT153 + FT177 + FT178–187); npm
+jumped `0.1.23 → 0.1.26`. The orphan `v0.1.24`/`v0.1.25` tags remain only as
+historical markers — **do not** try to publish them, do not delete them. They are
+allowlisted in `scripts/check-release-safety.mjs` so the audit ignores them.
 
 ## Preconditions
 
@@ -87,7 +87,7 @@ to publish them. Do not delete pushed tags.
 | Symptom                                                     | Action                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | GitHub Actions `npm publish` **404** on `@hideyukimori/...` | On [npm package settings](https://www.npmjs.com/package/@hideyukimori/nene2-framework/access), confirm **Trusted Publisher**: repo `hideyukiMORI/nene2-node`, workflow `release.yml`, environment blank. Re-run failed workflow or re-publish release. |
-| A tag exists but nothing was published                      | No GitHub Release was created for it. Create the Release (step 3) — the tag push alone never publishes.                                                                                                                                                |
+| A tag exists but nothing was published                      | No GitHub Release was created for it. Create the Release (step 3) — the tag push alone never publishes. `npm run release:audit` (CI job `release-safety`) detects this drift; allowlist a deliberate orphan in `scripts/check-release-safety.mjs`.     |
 | Local publish asks for **OTP**                              | `npm publish --access public --otp=<6-digit>` (account 2FA).                                                                                                                                                                                           |
 | Stale files in `dist/`                                      | `npm run rebuild` before publish (removed sources are not deleted by `tsc` alone).                                                                                                                                                                     |
 
