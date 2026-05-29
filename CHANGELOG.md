@@ -53,6 +53,11 @@ _Targeting `0.1.26`._
   `localhost`/`*.localhost`, private/loopback/link-local IP literals (incl. decimal/hex
   obfuscation and IPv6/IPv4-mapped), and an optional DNS-rebinding resolver hook. 38 unit
   tests; how-to + FT185 report (FT185)
+- `assertTenantScope` / `tenantFromContext` (`src/domain/tenant-scope.ts`) and a generic
+  `ResourceNotFoundError` + `createResourceNotFoundHandler` (registered by default in
+  `createApp`) — multi-tenant isolation that returns **404 (not 403)** on cross-tenant access
+  to prevent existence enumeration. Sibling of `assertResourceOwner`. 10 tests; how-to +
+  FT186 report (FT186)
 
 ## [0.1.25] - 2026-05-27
 

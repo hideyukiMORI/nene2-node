@@ -58,11 +58,11 @@ are the priority; the 6 📄 are doc-only catch-ups).
 | FT280 | `account-lockout.md`            | ATK  | アカウントロックアウト（ブルートフォース耐性）                           |
 | FT285 | `password-reset-flow.md`        | VULN | パスワードリセットフロー（トークン安全性）                               |
 | FT290 | `otp-authentication.md`         | ATK  | OTP 認証（タイミング・リプレイ）                                         |
-| FT318 | `tenant-isolation-idor`         | 通常 | テナント隔離 IDOR（クロステナント 404）                                  |
+| FT318 | `tenant-isolation-idor`         | 通常 | ✅ **done → node FT186** (`assertTenantScope` + `ResourceNotFoundError`) |
 | FT331 | `password-auth-argon2id`        | 通常 | argon2id パスワード認証（ハッシュ方針）                                  |
 | FT337 | `url-shortener-ssrf-prevention` | 通常 | ✅ **done → node FT185** (`checkUrlSafety` / `src/security/safe-url.ts`) |
 | FT341 | `dynamic-sort-order-injection`  | 通常 | ✅ **done → node FT179** (`parseSortQuery` + ft179 sandbox)              |
-| FT342 | `jwt-tenant-isolation`          | 通常 | JWT マルチテナント隔離（tenant_id クレーム）                             |
+| FT342 | `jwt-tenant-isolation`          | 通常 | ✅ **done → node FT186** (`tenantFromContext` tenant_id クレーム)        |
 | FT345 | `unicode-aware-text-api`        | VULN | ✅ **done → node FT184** (`validateTextField`, code-point + null-byte)   |
 
 ## 🎯 do 📄 — framework exists, FT/how-to only (6)

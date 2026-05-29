@@ -192,3 +192,4 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 183 | 2026-05-29 | [2026-05-field-trial-183-merge-patch.md](2026-05-field-trial-183-merge-patch.md) | PATCH Partial Update / JSON Merge Patch (`applyMergePatch`) | 🔒 | 🔍 |
 | 184 | 2026-05-29 | [2026-05-field-trial-184-unicode-text-validation.md](2026-05-field-trial-184-unicode-text-validation.md) | Unicode-safe Text Validation (`validateTextField`) | 🔒 | 🔍 |
 | 185 | 2026-05-29 | [2026-05-field-trial-185-ssrf-safe-url.md](2026-05-field-trial-185-ssrf-safe-url.md) | SSRF-safe URL Guard (`checkUrlSafety`) | 🔒 | — |
+| 186 | 2026-05-29 | [2026-05-field-trial-186-tenant-isolation.md](2026-05-field-trial-186-tenant-isolation.md) | Multi-tenant Isolation (`assertTenantScope`, 404) | 🔒 | — |
