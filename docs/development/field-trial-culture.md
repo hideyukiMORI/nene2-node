@@ -63,9 +63,45 @@ See `docs/scope.md` non-goals: full NENE2 FT parity on day one.
 | ---------------------- | ----------------------------------------------------------------------------------------------------- |
 | **Phase 0–5**          | Runtime, middleware, examples, DB, MCP, first npm publish — ✅ complete (milestones + FT1–66)         |
 | **Phase 6 (FT67–148)** | Application integration campaign — ✅ complete (see `backlog.md`, `2026-05-phase2-friction-index.md`) |
-| **Post–Phase 6**       | New FTs require dedicated Issues — maintenance, 0.2.0 inventory, optional CI hardening                |
+| **FT149–177**          | Application-domain how-to / catalog batch — ⚠️ **doc-only (D0)**; recorded as prose, not exercised    |
+| **Phase 7 (FT178+)**   | **Deep field trials** — depth over breadth, executable proof over prose (see below)                   |
 
 Phase 0–1 had no FT loop (governance + skeleton routes only).
+
+## Deep field trials (FT178+)
+
+Breadth is done. The [FT178–349 catalog](../field-trials/ft178-349-catalog.md)
+classifies 62/108 upstream themes as **skip** (pure app-domain, out of node's
+scope), 22 as already covered, leaving a small **`do`** bucket (5 🔧new + 13 🔒).
+Upstream PHP made the same breadth→depth turn. So from FT178 the mode changes:
+
+> **Deep FT = executable proof over prose.** A claim ("`If-Match` stale → 412",
+> "SQL injection BLOCKED") only counts when a test runs it.
+
+This also pays down a real debt: **FT149–177 were doc-only (D0)** — by the tier
+rule below, doc-only FTs "do not count as no-friction"; they mean friction was
+not exercised. Sandboxes (`../nene2-node-FT/`) stalled at FT145 while prose ran
+to FT178.
+
+### Where the proof lives
+
+| FT shape                                     | Proof                                                                                                                       |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Pure framework helper (ETag, pagination)     | **In-tree Vitest unit tests** — sufficient; no sandbox needed (FT178).                                                      |
+| App-surface security / behaviour (🔒 bucket) | **`../nene2-node-FT/ftNNN-*` D3+ sandbox + executable ATK/VULN tests** — turn "BLOCKED" claims into runnable attack probes. |
+
+### Guardrails (do not copy PHP wholesale)
+
+- **No app-breadth.** Do not build a gallery of CRUD example apps to mirror
+  PHP's `NENE2-examples`. node's sandboxes are framework-behaviour/security
+  validation slices, not a sample catalogue. App-domain logic stays out of scope
+  (`docs/scope.md`).
+- **`nene2-node-FT` stays local validation scratch** — it is not a published
+  repo. node's consumer-facing examples already ship **in-package** via
+  `src/example/` + `includeExamples`, which is why node needs no separate
+  examples repo (unlike PHP).
+- **Scope source:** deep FTs are drawn from the `do` bucket of the FT178–349
+  catalog, priority 5 🔧new → 13 🔒 → 6 📄.
 
 ## FT categories
 

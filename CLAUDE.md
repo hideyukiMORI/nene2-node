@@ -46,6 +46,22 @@ checkpoint (end of an FT run/session), not per FT. "Current release" in docs =
 the published npm/GitHub-Release version, never main's in-dev `package.json`.
 Full rule: `docs/development/release-process.md`.
 
+## Deep field trials (FT178+)
+
+Breadth is done. From FT178 the mode is **depth: executable proof over prose** —
+a claim counts only when a test runs it. Scope = the `do` bucket of
+`docs/field-trials/ft178-349-catalog.md` (priority 5 🔧new → 13 🔒 → 6 📄).
+
+- Pure framework helper → **in-tree Vitest unit tests** (sufficient).
+- App-surface security/behaviour (🔒) → a `../nene2-node-FT/ftNNN-*` D3+ sandbox
+  **plus executable ATK/VULN attack tests** (not prose).
+- **No app-breadth**: do not mirror PHP's `NENE2-examples` gallery. node's
+  consumer examples ship in-package (`src/example/` + `includeExamples`);
+  `nene2-node-FT` is local validation scratch, not a published repo.
+
+Full doctrine: `docs/development/field-trial-culture.md` § Deep field trials.
+
 ## FT backlog
 
-Active campaign backlog: `docs/field-trials/ft149-177-backlog.md`
+Active backlog: `docs/field-trials/ft178-349-catalog.md` (`do` bucket).  
+Prior campaign: `docs/field-trials/ft149-177-backlog.md`.
