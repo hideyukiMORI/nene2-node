@@ -67,11 +67,10 @@ export {
   type ReleaseResult,
   type RenewResult,
 } from './concurrency/distributed-lock.js';
-export {
-  DEFAULT_OPENAPI_RELATIVE,
-  openApiFileExists,
-  resolveOpenApiPath,
-} from './openapi/resolve-openapi-path.js';
+// `openApiFileExists` / `DEFAULT_OPENAPI_RELATIVE` are internal path helpers
+// (removed from the public API in 0.2.0, ADR 0005). Consumers use
+// `resolveOpenApiPath` or an absolute path.
+export { resolveOpenApiPath } from './openapi/resolve-openapi-path.js';
 export { DomainError } from './error/domain-error.js';
 export { VersionConflictError } from './error/version-conflict-error.js';
 export { ResourceAccessDeniedError } from './error/resource-access-denied-error.js';

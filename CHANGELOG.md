@@ -11,7 +11,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
-_No changes yet._
+_Targeting `0.2.0` (breaking) — see ADR 0005._
+
+### Removed
+
+- **BREAKING:** `openApiFileExists` and `DEFAULT_OPENAPI_RELATIVE` are no longer
+  public exports (internal path helpers). Use `resolveOpenApiPath` or pass an
+  absolute path. (ADR 0005 item 1)
 
 ## [0.1.26] - 2026-05-29
 
