@@ -39,6 +39,13 @@ export {
   type SortOrder,
 } from './http/sort-query.js';
 export {
+  createCircuitBreaker,
+  CircuitOpenError,
+  type CircuitBreaker,
+  type CircuitBreakerOptions,
+  type CircuitState,
+} from './resilience/circuit-breaker.js';
+export {
   DEFAULT_OPENAPI_RELATIVE,
   openApiFileExists,
   resolveOpenApiPath,
