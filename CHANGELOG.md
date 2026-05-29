@@ -19,6 +19,14 @@ _Targeting `0.2.0` (breaking) — see ADR 0005._
   public exports (internal path helpers). Use `resolveOpenApiPath` or pass an
   absolute path. (ADR 0005 item 1)
 
+### Changed
+
+- **BREAKING:** `TokenVerifier.verify` now always returns
+  `Promise<Readonly<Record<string, unknown>>>` — the synchronous return was
+  dropped. `LocalBearerTokenVerifier.verify` is now `async` (await it, or catch a
+  rejection instead of a synchronous throw). `bearerTokenMiddleware` already
+  awaited it, so no change there. (ADR 0005 item 4)
+
 ## [0.1.26] - 2026-05-29
 
 ### Added

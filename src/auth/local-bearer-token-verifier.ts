@@ -37,7 +37,13 @@ function decodeJsonSegment(segment: string): Record<string, unknown> {
 export class LocalBearerTokenVerifier implements TokenVerifier {
   constructor(private readonly secret: string) {}
 
-  verify(token: string): Readonly<Record<string, unknown>> {
+  verify(token: string): Promise<Readonly<Record<string, unknown>>> {
+    // Synchronous work, but the TokenVerifier contract is Promise-based (0.2.0,
+    // ADR 0005); wrap so verification errors surface as rejections.
+    return Promise.resolve().then(() => this.verifyClaims(token));
+  }
+
+  private verifyClaims(token: string): Readonly<Record<string, unknown>> {
     const parts = token.split('.');
     if (parts.length !== 3) {
       throw new TokenVerificationException(
