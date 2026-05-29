@@ -64,17 +64,19 @@ Two scripts (Phase 9 E9) encode the mechanical steps; both accept `--dry-run`.
 
 _Last reconciled: 2026-05-29._
 
-| Version  | State                                                                          |
-| -------- | ------------------------------------------------------------------------------ |
-| `0.2.0`  | ✅ Published (npm + GitHub Release) — the current latest. Breaking (ADR 0005). |
-| `0.1.26` | ✅ Published — previous (FT178–187 deep-FT helpers)                            |
-| `0.1.25` | ⚠️ Tag only (hand-cut, never published). FT177 work.                           |
-| `0.1.24` | ⚠️ Tag only (hand-cut, never published). FT153 work.                           |
+| Version  | State                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------------- |
+| `0.3.0`  | ✅ Published — the current latest. Distributed lock (atomic `LockStorage`, `RedisLockStorage`). |
+| `0.2.0`  | ✅ Published — first breaking release (ADR 0005)                                                |
+| `0.1.26` | ✅ Published — FT178–187 deep-FT helpers                                                        |
+| `0.1.25` | ⚠️ Tag only (hand-cut, never published). FT177 work.                                            |
+| `0.1.24` | ⚠️ Tag only (hand-cut, never published). FT153 work.                                            |
 
-`0.2.0` is the first breaking release (road-to-1.0 gate 1, [ADR 0004](../adr/0004-path-to-1.0.md)),
-cut with `release:prepare`/`release:publish`. The orphan `v0.1.24`/`v0.1.25` tags
-remain only as historical markers — **do not** publish or delete them; they are
-allowlisted in `scripts/check-release-safety.mjs`.
+Road-to-1.0 ([ADR 0004](../adr/0004-path-to-1.0.md)): gates 1 (0.2.0) & 2
+(contract coverage) done; gate 3 nearly done — `RedisLockStorage` ships
+Experimental in 0.3.0 for one cycle, then promotes (emptying the tier) → 1.0. The
+orphan `v0.1.24`/`v0.1.25` tags remain historical markers — do not publish or
+delete; they are allowlisted in `scripts/check-release-safety.mjs`.
 
 ## Preconditions
 
