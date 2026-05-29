@@ -45,7 +45,7 @@ are the priority; the 6 📄 are doc-only catch-ups).
 | FT298 | `circuit-breaker.md`           | 通常 | ✅ **done → node FT180** (`src/resilience/circuit-breaker.ts`)        |
 | FT307 | `etag-conditional-requests.md` | 通常 | ✅ **done → node FT178** (`src/http/conditional-request.ts`, v0.1.26) |
 | FT322 | `nested-json-validation`       | 通常 | ✅ **done → node FT182** (`createValidationCollector`)                |
-| FT326 | `patch-partial-update`         | 通常 | PATCH 部分更新：マージセマンティクス未実装                            |
+| FT326 | `patch-partial-update`         | 通常 | ✅ **done → node FT183** (`applyMergePatch`, RFC 7396)                |
 
 ## 🎯 do 🔒 — security / contract parity (13)
 

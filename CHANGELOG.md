@@ -40,6 +40,10 @@ _Targeting `0.1.26`._
   `ValidationError`s with `scope(prefix)` for nested indexed paths (`items.0.product_id`) and
   `throwIfAny()` to raise a single `ValidationException` (→ 422) with every error. 7 unit tests;
   how-to + FT182 report (FT182)
+- `applyMergePatch` in `src/http/merge-patch.ts` — RFC 7396 JSON Merge Patch with
+  `null`-deletes / `defaults` reset, recursive object merge, and `immutable`/`allowed` key
+  guards that raise a single `ValidationException` (→ 422). Never mutates the target. 15 unit
+  tests; how-to + FT183 report (FT183)
 
 ## [0.1.25] - 2026-05-27
 
