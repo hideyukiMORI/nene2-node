@@ -93,6 +93,12 @@ export {
   createValidationCollector,
   type ValidationCollector,
 } from './validation/validation-collector.js';
+export {
+  countCodePoints,
+  hasNullByte,
+  validateTextField,
+  type TextFieldRule,
+} from './validation/validate-text.js';
 export { LocalBearerTokenVerifier } from './auth/local-bearer-token-verifier.js';
 export { createJoseJwtVerifier, type JoseJwtVerifierOptions } from './auth/jose-jwt-verifier.js';
 export { TokenVerificationException } from './auth/token-verification-exception.js';

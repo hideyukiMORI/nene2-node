@@ -44,6 +44,10 @@ _Targeting `0.1.26`._
   `null`-deletes / `defaults` reset, recursive object merge, and `immutable`/`allowed` key
   guards that raise a single `ValidationException` (→ 422). Never mutates the target. 15 unit
   tests; how-to + FT183 report (FT183)
+- `countCodePoints`, `hasNullByte`, `validateTextField` in `src/validation/validate-text.ts` —
+  Unicode-safe text validation that counts code points (not UTF-16 units, avoiding the
+  `'🎉'.length === 2` trap), rejects null bytes, and records failures into a
+  `ValidationCollector`. 17 unit tests; how-to + FT184 report (FT184)
 
 ## [0.1.25] - 2026-05-27
 
