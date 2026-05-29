@@ -48,6 +48,11 @@ _Targeting `0.1.26`._
   Unicode-safe text validation that counts code points (not UTF-16 units, avoiding the
   `'🎉'.length === 2` trap), rejects null bytes, and records failures into a
   `ValidationCollector`. 17 unit tests; how-to + FT184 report (FT184)
+- `checkUrlSafety` / `checkUrlSafetyAsync` / `assertSafeUrl` / `isPrivateIp` in
+  `src/security/safe-url.ts` — SSRF guard for user-supplied URLs: scheme allowlist,
+  `localhost`/`*.localhost`, private/loopback/link-local IP literals (incl. decimal/hex
+  obfuscation and IPv6/IPv4-mapped), and an optional DNS-rebinding resolver hook. 38 unit
+  tests; how-to + FT185 report (FT185)
 
 ## [0.1.25] - 2026-05-27
 
