@@ -102,3 +102,12 @@ jobs:
         env:
           NENE2_NODE_TEST_REDIS_URL: redis://127.0.0.1:6379
         run: npm run test:integration -- tests/integration/redis-integration.test.ts
+
+  release-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit tags without a GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/check-release-safety.mjs
