@@ -55,4 +55,33 @@ describe('OpenAPI contract — tag endpoints', () => {
     expect(created.name).toBe(example.name);
     expect(created.created_at.endsWith('Z')).toBe(true);
   });
+
+  it('GET/PUT/DELETE /examples/tags/{id} cover the id lifecycle', async () => {
+    const create = await app.request('http://localhost/examples/tags', {
+      method: 'POST',
+      headers: jsonAuthHeaders(verifier),
+      body: JSON.stringify({ name: 'lifecycle-original' }),
+    });
+    const { id } = await jsonBody<{ id: number }>(create);
+    const url = `http://localhost/examples/tags/${String(id)}`;
+
+    const get = await app.request(url, { headers: bearerAuth(verifier) });
+    expect(get.status).toBe(200);
+    expect((await jsonBody<{ id: number }>(get)).id).toBe(id);
+
+    const put = await app.request(url, {
+      method: 'PUT',
+      headers: jsonAuthHeaders(verifier),
+      body: JSON.stringify({ name: 'lifecycle-updated' }),
+    });
+    expect(put.status).toBe(200);
+    expect((await jsonBody<{ name: string }>(put)).name).toBe('lifecycle-updated');
+
+    const del = await app.request(url, { method: 'DELETE', headers: bearerAuth(verifier) });
+    expect(del.status).toBe(204);
+    expect(await del.text()).toBe('');
+
+    const afterDelete = await app.request(url, { headers: bearerAuth(verifier) });
+    expect(afterDelete.status).toBe(404);
+  });
 });
