@@ -138,7 +138,7 @@ Prioritised by leverage:
 - [ ] **C6** Bring `nene2-node-FT` proof sandboxes into CI (committed workspace or in-tree)
 - [ ] **D7** Generate `INDEX.md` from frontmatter; consolidate thin FT reports
 - [x] **E9** Release automation — `release:prepare` / `release:publish` scripts (CHANGELOG roll, version/tag checks, `gh release create`)
-- [ ] **E8** `CLAUDE.md` decision trees (FT vs skip; in-tree vs sandbox; release-now vs accumulate)
+- [x] **E8** `CLAUDE.md` decision trees (FT vs skip; in-tree vs sandbox; release-now vs accumulate; public-export change)
 
 Start order: **A1 → A2 → B4**.
 
