@@ -1,35 +1,24 @@
 # Current work
 
 Last updated: 2026-05-29  
-**Sprint:** FT178+ phase (framework parity from the FT178–349 catalog)
+**Sprint:** FT178+ deep-FT phase — **complete & released as v0.1.26**
 
 ## Published to npm
 
-- **npm latest:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) — Redis integration test + CI service job (#110)
+- **npm latest:** [v0.1.26](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.26) — FT178–187 deep-FT phase: 11 new framework helpers (npm jumped 0.1.23 → 0.1.26; `v0.1.24`/`v0.1.25` tags were never published)
+- **npm:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) — Redis integration test + CI service job (#110)
 - **npm:** [v0.1.22](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.22) — MySQL/PG unit mocks, CI `npm audit`, 0.2.0 inventory (#108)
-- **npm:** [v0.1.21](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.21) — `created_at` UTC ISO-8601 on example note/tag (FT148)
-
-## Prepared / pending release (on `main`, NOT yet on npm)
-
-Will ship in the next GitHub Release as **`0.1.26`** (see [release process](../development/release-process.md)):
-
-- `v0.1.24` tag (FT153 `parseCursorQuery`) — tagged, never published
-- `v0.1.25` tag (FT177 `parsePaginationQuery` hardening) — tagged, never published
-- `0.1.26` (FT178 ETag conditional requests) — in development, untagged
 
 ## Recently merged
 
-- PR #122 — ETag conditional requests helper (FT178)
-- PR #120 — FT178–349 upstream parity triage catalog
-- PR #118 — freshness pass to v0.1.25 and FT149–177 index
-- PR #116 — `parsePaginationQuery` boundary-attack hardening (FT177)
-- PR #115 — `parseCursorQuery` helper + activity feed (FT153)
+- PR #147 — release 0.1.26 (CHANGELOG finalize) → GitHub Release v0.1.26 published to npm
+- PR #146 — close security bucket; reclassify auth-flow FTs as app-domain
+- PRs #122–#144 — FT178–187 (11 framework helpers): ETag, sort-query, circuit-breaker, distributed-lock, validation-collector, merge-patch, unicode validation, SSRF guard, tenant isolation, SQL-injection/escapeLikePattern
 
 ## Next
 
-- **Release:** cut `0.1.26` GitHub Release at the next checkpoint to make npm current.
-- **FT178+:** continue the 🔧new bucket from the [FT178–349 catalog](../field-trials/ft178-349-catalog.md) — FT298 circuit-breaker, FT288 distributed-lock, FT322 nested-json-validation, FT326 patch-partial-update.
-- **0.2.0 planning:** review `docs/milestones/semver-0.2.0-breaking-inventory.md` (5 draft candidates).
+- **FT178–349 catalog actionable bucket is complete** — 🔧new (5) + 🔒 framework (6) done; auth-flow 🔒 reclassified app-domain; 📄 already documented. See [catalog Progress](../field-trials/ft178-349-catalog.md).
+- **Optional next phases:** scope a new FT range (PHP FT350+), or 0.2.0 planning (`docs/milestones/semver-0.2.0-breaking-inventory.md`, 5 draft candidates).
 
 ## Verification
 
