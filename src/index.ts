@@ -33,6 +33,12 @@ export {
   type PreconditionOptions,
 } from './http/conditional-request.js';
 export {
+  parseSortQuery,
+  type SortQuery,
+  type SortQueryOptions,
+  type SortOrder,
+} from './http/sort-query.js';
+export {
   DEFAULT_OPENAPI_RELATIVE,
   openApiFileExists,
   resolveOpenApiPath,

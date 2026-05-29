@@ -24,6 +24,10 @@ _Targeting `0.1.26`._
 - How-to doc: `docs/how-to/etag-conditional-requests.md`
 - FT178 field trial report and the FT178–349 upstream parity triage catalog
   (`docs/field-trials/ft178-349-catalog.md`)
+- `parseSortQuery` helper in `src/http/sort-query.ts` — allowlist-based `sort`/`order`
+  validation for `ORDER BY` (exact, case-sensitive, O(n), ReDoS-immune); invalid values
+  throw `ValidationException` (→ 422). 27 unit tests; how-to + FT179 report; proven by the
+  `ft179-sort-injection` sandbox attack matrix (FT179)
 
 ## [0.1.25] - 2026-05-27
 
