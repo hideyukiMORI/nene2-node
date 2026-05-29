@@ -28,6 +28,10 @@ _Targeting `0.1.26`._
   validation for `ORDER BY` (exact, case-sensitive, O(n), ReDoS-immune); invalid values
   throw `ValidationException` (→ 422). 27 unit tests; how-to + FT179 report; proven by the
   `ft179-sort-injection` sandbox attack matrix (FT179)
+- `createCircuitBreaker` + `CircuitOpenError` in `src/resilience/circuit-breaker.ts` — a
+  three-state (closed/open/half-open) in-memory circuit breaker with configurable
+  `failureThreshold`/`resetTimeoutMs`, lazy half-open transition, single-probe concurrency,
+  and injectable clock. 13 unit tests; how-to + FT180 report (FT180)
 
 ## [0.1.25] - 2026-05-27
 
