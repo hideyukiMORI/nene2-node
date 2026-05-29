@@ -2,13 +2,15 @@
 
 **Status:** Draft (pre-planning)  
 **Created:** 2026-05-27  
-**Current release:** v0.1.25  
+**Current release:** v0.1.26  
 **Next breaking release target:** v0.2.0 (no date committed)
 
 This document lists **candidate** breaking changes for a future `0.2.0` release.
 Nothing here is decided — items move to "decided" only via ADR + GitHub Issue + PR.
 
-Policy reference: `docs/field-trials/2026-05-field-trial-123-semver-breaking-policy.md`.
+Shipping 0.2.0 is the first gate on the road to 1.0 — see
+[ADR 0004](../adr/0004-path-to-1.0.md). Policy reference:
+`docs/field-trials/2026-05-field-trial-123-semver-breaking-policy.md`.
 
 ---
 
