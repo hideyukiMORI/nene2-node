@@ -4,11 +4,15 @@ All notable changes to `@hideyukimori/nene2-framework` are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning follows [SemVer](https://semver.org/).
 
+> **Release status (2026-05-29):** the latest version published to npm / GitHub
+> Release is **`0.1.23`**. The `0.1.24` and `0.1.25` sections below were tagged
+> but **never published** (no GitHub Release was created). Their changes plus
+> everything under `[Unreleased]` will ship in the next release, **`0.1.26`**
+> (npm will jump `0.1.23 → 0.1.26`). See `docs/development/release-process.md`.
+
 ## [Unreleased]
 
-_No changes yet._
-
-## [0.1.26] - 2026-05-29
+_Targeting `0.1.26`._
 
 ### Added
 

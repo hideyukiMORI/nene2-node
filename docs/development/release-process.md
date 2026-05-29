@@ -2,43 +2,82 @@
 
 Automated publish via OIDC Trusted Publisher — see `.github/workflows/release.yml`.
 
-## Version cadence (0.1.x patch releases)
+## The one rule that prevents drift
 
-During **FT67–148** (application integration campaign), bump the **patch** version when a field trial ships on `main`:
+> **A release happens only by creating a GitHub Release. The GitHub Release
+> creates the tag _and_ triggers the npm publish. Never `git tag` by hand.**
 
-| Event                         | Version example                                                     |
-| ----------------------------- | ------------------------------------------------------------------- |
-| FT work merged, ready for npm | `0.1.1` → `0.1.2` → `0.1.3` …                                       |
-| Pre-1.0 API                   | Stay on `0.1.x` until a breaking public API change warrants `0.2.0` |
+`release.yml` triggers on `release: published` — **not** on a tag push. A
+hand-cut tag therefore publishes nothing; it just creates an orphan tag that
+looks released but is not. (This is exactly how `v0.1.24`/`v0.1.25` drifted —
+see "Current release status" below.)
 
-Each release: update `package.json`, `CHANGELOG.md` (`[Unreleased]` → `[X.Y.Z]`), merge to `main`, then create GitHub Release tag `vX.Y.Z` (workflow publishes npm).
+### Single source of truth
 
-Do **not** skip versions; consumers can map FT reports to npm tags via CHANGELOG dates.
+| Question                         | Answer                                                        |
+| -------------------------------- | ------------------------------------------------------------- |
+| What is "the current release"?   | The latest **GitHub Release** = latest **npm** version.       |
+| What is `package.json` `version` | The **next** release target while work accumulates on `main`. |
+| Where do unreleased changes live | `CHANGELOG.md` **`[Unreleased]`**.                            |
+
+Docs that cite a "current release" (`README.md`, `docs/todo/current.md`,
+`docs/roadmap.md`) MUST cite the published version, never main's in-development
+`package.json`. Distinguish **published** from **prepared / pending release**.
+
+## Version cadence (0.1.x)
+
+- Pre-1.0: stay on `0.1.x`; a breaking public-API change warrants `0.2.0`
+  (see `docs/milestones/semver-0.2.0-breaking-inventory.md`).
+- **Release at a deliberate checkpoint — end of an FT run or session — not once
+  per FT.** Multiple merged FTs ship together in one release. npm tolerates
+  version gaps; consumers map changes via CHANGELOG, not per-FT tags.
 
 ## Steps
 
-1. **PR on `main`:** bump `version` in `package.json` and `CHANGELOG.md` (Keep a Changelog format).
-2. **Merge** after `npm run check` green.
-3. **GitHub Release:** tag `vX.Y.Z` must match `package.json` version exactly.
-4. Workflow runs `npm ci`, `npm run check`, `npm publish --provenance --access public`.
-5. Verify npm page and GitHub release notes.
+1. **Accumulate:** merge FT/feature PRs to `main`. Each PR adds its notes under
+   `CHANGELOG.md` `[Unreleased]`. Leave `package.json` at the next target
+   version (bump it once, when the cycle opens — not per PR).
+2. **Open the release PR:** rename `[Unreleased]` → `[X.Y.Z]` with today's date;
+   confirm `package.json` `version` == `X.Y.Z`. Merge after `npm run check` green.
+3. **Create the GitHub Release** (this is the publish trigger):
+   ```sh
+   gh release create vX.Y.Z --title "vX.Y.Z" --notes-from-tag=false --notes "…CHANGELOG excerpt…"
+   ```
+   The tag `vX.Y.Z` is created by this command and must match `package.json`.
+4. The workflow runs `npm ci`, `npm run check`, `npm publish --provenance --access public`.
+5. **Verify:** `npm view @hideyukimori/nene2-framework version` == `X.Y.Z`, and the
+   GitHub Release is not a prerelease (prereleases are skipped by the workflow).
+6. **Post-release:** bump `package.json` to the next target; reset `[Unreleased]`;
+   update the "current release" line in `README.md` / `docs/todo/current.md`.
+
+## Current release status
+
+_Last reconciled: 2026-05-29._
+
+| Version  | State                                                             |
+| -------- | ----------------------------------------------------------------- |
+| `0.1.23` | ✅ Published (npm + GitHub Release) — the real latest             |
+| `0.1.24` | ⚠️ Tag only (lightweight, hand-cut). Never published. FT153 work. |
+| `0.1.25` | ⚠️ Tag only (lightweight, hand-cut). Never published. FT177 work. |
+| `0.1.26` | 🛠️ In development on `main` (FT178+). Not tagged, not released.   |
+
+**Next release** will publish as `0.1.26` and fold in everything since `0.1.23`
+(FT153 + FT177 + FT178+). npm will jump `0.1.23 → 0.1.26`; the orphan
+`v0.1.24`/`v0.1.25` tags remain only as historical bump markers — **do not** try
+to publish them. Do not delete pushed tags.
 
 ## Preconditions
 
 - npm package Trusted Publisher: repo `hideyukiMORI/nene2-node`, workflow `release.yml`
 - No `NPM_TOKEN` secret required
-- Prerelease GitHub releases are skipped by workflow
-
-## Post-release
-
-- Update `docs/todo/current.md` if sprint changes
-- Optional: nene2-js examples pointing at new version
+- Prerelease GitHub releases are skipped by the workflow
 
 ## Troubleshooting publish
 
 | Symptom                                                     | Action                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | GitHub Actions `npm publish` **404** on `@hideyukimori/...` | On [npm package settings](https://www.npmjs.com/package/@hideyukimori/nene2-framework/access), confirm **Trusted Publisher**: repo `hideyukiMORI/nene2-node`, workflow `release.yml`, environment blank. Re-run failed workflow or re-publish release. |
+| A tag exists but nothing was published                      | No GitHub Release was created for it. Create the Release (step 3) — the tag push alone never publishes.                                                                                                                                                |
 | Local publish asks for **OTP**                              | `npm publish --access public --otp=<6-digit>` (account 2FA).                                                                                                                                                                                           |
 | Stale files in `dist/`                                      | `npm run rebuild` before publish (removed sources are not deleted by `tsc` alone).                                                                                                                                                                     |
 

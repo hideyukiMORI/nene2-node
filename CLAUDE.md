@@ -33,8 +33,18 @@ npm run check   # type-check → lint → format → test → build (must be gre
 
 ## Branching
 
-One branch per FT or logical group: `ft/NNN-theme`.  
-Merge to `main` via PR. Tag version bumps: `git tag vX.Y.Z && git push origin vX.Y.Z`.
+One branch per FT or logical group: `ft/NNN-theme` (docs-only: `docs/NNN-theme`).  
+Merge to `main` via PR.
+
+## Releasing — never hand-cut tags
+
+Do **not** run `git tag` to "release". `release.yml` publishes on a **GitHub
+Release** (`gh release create vX.Y.Z`), which creates the tag _and_ runs
+`npm publish`; a bare tag push publishes nothing and leaves an orphan tag.
+Accumulate merged work under `CHANGELOG.md` `[Unreleased]` and release at a
+checkpoint (end of an FT run/session), not per FT. "Current release" in docs =
+the published npm/GitHub-Release version, never main's in-dev `package.json`.
+Full rule: `docs/development/release-process.md`.
 
 ## FT backlog
 
