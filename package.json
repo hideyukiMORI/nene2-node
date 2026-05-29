@@ -47,6 +47,8 @@
     "prepublishOnly": "npm run check",
     "dev": "tsx src/server/dev-server.ts",
     "docs:check": "node scripts/check-docs.mjs",
+    "release:prepare": "node scripts/prepare-release.mjs",
+    "release:publish": "node scripts/publish-release.mjs",
     "check": "npm run type-check && npm run lint && npm run format && npm run docs:check && npm run test && npm run build"
   },
   "keywords": [

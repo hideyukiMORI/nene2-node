@@ -34,21 +34,31 @@ Docs that cite a "current release" (`README.md`, `docs/todo/current.md`,
 
 ## Steps
 
+Two scripts (Phase 9 E9) encode the mechanical steps; both accept `--dry-run`.
+
 1. **Accumulate:** merge FT/feature PRs to `main`. Each PR adds its notes under
-   `CHANGELOG.md` `[Unreleased]`. Leave `package.json` at the next target
-   version (bump it once, when the cycle opens — not per PR).
-2. **Open the release PR:** rename `[Unreleased]` → `[X.Y.Z]` with today's date;
-   confirm `package.json` `version` == `X.Y.Z`. Merge after `npm run check` green.
-3. **Create the GitHub Release** (this is the publish trigger):
+   `CHANGELOG.md` `[Unreleased]`.
+2. **Prepare (release PR):**
    ```sh
-   gh release create vX.Y.Z --title "vX.Y.Z" --notes-from-tag=false --notes "…CHANGELOG excerpt…"
+   npm run release:prepare -- X.Y.Z   # rolls [Unreleased] → [X.Y.Z]; bumps package.json
+   npm run check                      # must be green
    ```
-   The tag `vX.Y.Z` is created by this command and must match `package.json`.
+   Review the diff, open the PR, merge.
+3. **Publish (from `main`, after merge):**
+   ```sh
+   git checkout main && git pull
+   npm run release:publish            # preconditions → gh release create vX.Y.Z
+   ```
+   `release:publish` verifies you are on a clean, in-sync `main`, the tag does not
+   already exist, and a `## [X.Y.Z]` CHANGELOG section exists; then it creates the
+   GitHub Release (notes from that section), which is the publish trigger. Never
+   hand-tag.
 4. The workflow runs `npm ci`, `npm run check`, `npm publish --provenance --access public`.
 5. **Verify:** `npm view @hideyukimori/nene2-framework version` == `X.Y.Z`, and the
    GitHub Release is not a prerelease (prereleases are skipped by the workflow).
-6. **Post-release:** bump `package.json` to the next target; reset `[Unreleased]`;
-   update the "current release" line in `README.md` / `docs/todo/current.md`.
+6. **Post-release:** update the "current release" line in `README.md` /
+   `docs/roadmap.md` / `docs/todo/current.md` (the doc-integrity check enforces
+   this matches `package.json`).
 
 ## Current release status
 

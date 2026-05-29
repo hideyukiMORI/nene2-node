@@ -137,7 +137,8 @@ Prioritised by leverage:
 - [ ] **B5** Path-to-1.0 ADR (API-freeze criteria)
 - [ ] **C6** Bring `nene2-node-FT` proof sandboxes into CI (committed workspace or in-tree)
 - [ ] **D7** Generate `INDEX.md` from frontmatter; consolidate thin FT reports
-- [ ] **E8/E9** `CLAUDE.md` decision trees; release automation script / `workflow_dispatch`
+- [x] **E9** Release automation — `release:prepare` / `release:publish` scripts (CHANGELOG roll, version/tag checks, `gh release create`)
+- [ ] **E8** `CLAUDE.md` decision trees (FT vs skip; in-tree vs sandbox; release-now vs accumulate)
 
 Start order: **A1 → A2 → B4**.
 
