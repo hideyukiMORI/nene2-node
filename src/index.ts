@@ -27,6 +27,12 @@ export {
 export { parsePaginationQuery, type PaginationQuery } from './http/pagination-query.js';
 export { parseCursorQuery, type CursorQuery } from './http/cursor-query.js';
 export {
+  computeETag,
+  checkNotModified,
+  checkPreconditions,
+  type PreconditionOptions,
+} from './http/conditional-request.js';
+export {
   DEFAULT_OPENAPI_RELATIVE,
   openApiFileExists,
   resolveOpenApiPath,
