@@ -79,9 +79,10 @@ authoritative doc.
 **2 — In-tree test or sandbox?** (deep-FT doctrine)
 
 - Pure framework helper, deterministic, no app slice? → **in-tree Vitest** only.
-- App-surface security/behaviour needing a real endpoint/DB to prove? →
-  **`../nene2-node-FT/ftNNN-*` sandbox + `probe.mjs` attack matrix**, plus
-  in-tree unit tests for the core logic.
+- App-surface security/behaviour needing a real endpoint/DB to prove? → an
+  **in-tree integration test** (`tests/security/…`, `createApp` / in-memory
+  SQLite) so the attack matrix runs in CI. A `../nene2-node-FT/ftNNN-*` sandbox
+  is an optional exploratory companion, never the system of record.
 - Doc-only, no exercised code? → **doesn't count** as an FT (D0); don't fake it.
 
 **3 — Release now, or accumulate?** (`docs/development/release-process.md`)

@@ -24,10 +24,12 @@ still matched every row. Fixed by adding a framework helper.
 (O(n), no regex). Pair with a SQL `ESCAPE` clause so user `%`/`_` match
 literally. 7 in-tree tests.
 
-### 🔒 Executable proof — `../nene2-node-FT/ft187-sql-injection/`
+### 🔒 Executable proof — `tests/security/sql-injection.test.ts` (CI)
 
-A products API on `SqliteQueryExecutor` (in-memory DB). `probe.mjs` runs the
-FT264 attack matrix and asserts **data integrity**:
+A products API on `SqliteQueryExecutor` (in-memory DB) built with `createApp`,
+asserting the FT264 attack matrix and **data integrity** — run in `npm run check`
+/ CI (ported in C6 from the local `../nene2-node-FT/ft187-sql-injection/` sandbox,
+which remains as an optional `npm run probe` companion):
 
 | Surface            | Attack                                             | Result                          |
 | ------------------ | -------------------------------------------------- | ------------------------------- |

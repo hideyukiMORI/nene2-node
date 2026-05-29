@@ -29,11 +29,13 @@ node had no helper to enforce a column/direction allowlist. Close that gap and
 Exported from `src/index.ts`. 27 in-tree Vitest tests
 (`tests/http/sort-query.test.ts`).
 
-### 🔒 Sandbox — `../nene2-node-FT/ft179-sort-injection/`
+### 🔒 Executable proof — `tests/security/sort-injection-http.test.ts` (CI)
 
-A realistic `GET /articles` endpoint (sort + order + status + pagination) over
-an in-memory dataset, with `probe.mjs` running the full FT341 attack matrix via
-`app.request`. Run: `npm install && npm run probe`.
+HTTP-level proof: `parseSortQuery` rejections surface as `422` Problem Details
+through `createApp`, run in `npm run check` / CI (added in C6). The exhaustive
+payload matrix is in `tests/http/sort-query.test.ts`. A local
+`../nene2-node-FT/ft179-sort-injection/` sandbox (`npm run probe`) remains as an
+optional exploratory companion.
 
 ## Attack matrix result (executable proof)
 

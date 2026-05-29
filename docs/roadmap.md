@@ -135,7 +135,7 @@ Prioritised by leverage:
 - [x] **A3** Release-safety audit (`scripts/check-release-safety.mjs` + `release-safety` CI job) — fails on a `vX.Y.Z` tag with no GitHub Release
 - [x] **B4** API stability tiers (`docs/STABILITY.md` + `tests/api/stability.test.ts`) — Stable vs Experimental, enforced against the live export surface
 - [ ] **B5** Path-to-1.0 ADR (API-freeze criteria)
-- [ ] **C6** Bring `nene2-node-FT` proof sandboxes into CI (committed workspace or in-tree)
+- [x] **C6** Security proofs in CI — `tests/security/{sql-injection,sort-injection-http}.test.ts` (FT187/FT179 attack matrices run in `npm run check`); `nene2-node-FT` sandboxes demoted to optional companions
 - [ ] **D7** Generate `INDEX.md` from frontmatter; consolidate thin FT reports
 - [x] **E9** Release automation — `release:prepare` / `release:publish` scripts (CHANGELOG roll, version/tag checks, `gh release create`)
 - [x] **E8** `CLAUDE.md` decision trees (FT vs skip; in-tree vs sandbox; release-now vs accumulate; public-export change)
