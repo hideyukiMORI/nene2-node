@@ -49,21 +49,21 @@ are the priority; the 6 📄 are doc-only catch-ups).
 
 ## 🎯 do 🔒 — security / contract parity (13)
 
-| FT    | PHP howto                       | type | note                                                   |
-| ----- | ------------------------------- | ---- | ------------------------------------------------------ |
-| FT256 | `mass-assignment-defence.md`    | ATK  | mass assignment 防御（入力バインド境界）               |
-| FT264 | `sql-injection-defence.md`      | ATK  | SQL インジェクション防御（パラメタライズド徹底の検証） |
-| FT267 | `encrypted-field-storage.md`    | VULN | フィールド暗号化（鍵分離・nonce・タグ検証）            |
-| FT279 | `rbac-jwt-auth.md`              | VULN | RBAC + JWT 認可境界                                    |
-| FT280 | `account-lockout.md`            | ATK  | アカウントロックアウト（ブルートフォース耐性）         |
-| FT285 | `password-reset-flow.md`        | VULN | パスワードリセットフロー（トークン安全性）             |
-| FT290 | `otp-authentication.md`         | ATK  | OTP 認証（タイミング・リプレイ）                       |
-| FT318 | `tenant-isolation-idor`         | 通常 | テナント隔離 IDOR（クロステナント 404）                |
-| FT331 | `password-auth-argon2id`        | 通常 | argon2id パスワード認証（ハッシュ方針）                |
-| FT337 | `url-shortener-ssrf-prevention` | 通常 | URL 短縮 SSRF 防止（プライベートIP/スキーム制限）      |
-| FT341 | `dynamic-sort-order-injection`  | 通常 | ORDER BY インジェクション防止（allowlist・ReDoS 耐性） |
-| FT342 | `jwt-tenant-isolation`          | 通常 | JWT マルチテナント隔離（tenant_id クレーム）           |
-| FT345 | `unicode-aware-text-api`        | VULN | Unicode テキスト検証（mb 計数・Null バイト拒否）       |
+| FT    | PHP howto                       | type | note                                                        |
+| ----- | ------------------------------- | ---- | ----------------------------------------------------------- |
+| FT256 | `mass-assignment-defence.md`    | ATK  | mass assignment 防御（入力バインド境界）                    |
+| FT264 | `sql-injection-defence.md`      | ATK  | SQL インジェクション防御（パラメタライズド徹底の検証）      |
+| FT267 | `encrypted-field-storage.md`    | VULN | フィールド暗号化（鍵分離・nonce・タグ検証）                 |
+| FT279 | `rbac-jwt-auth.md`              | VULN | RBAC + JWT 認可境界                                         |
+| FT280 | `account-lockout.md`            | ATK  | アカウントロックアウト（ブルートフォース耐性）              |
+| FT285 | `password-reset-flow.md`        | VULN | パスワードリセットフロー（トークン安全性）                  |
+| FT290 | `otp-authentication.md`         | ATK  | OTP 認証（タイミング・リプレイ）                            |
+| FT318 | `tenant-isolation-idor`         | 通常 | テナント隔離 IDOR（クロステナント 404）                     |
+| FT331 | `password-auth-argon2id`        | 通常 | argon2id パスワード認証（ハッシュ方針）                     |
+| FT337 | `url-shortener-ssrf-prevention` | 通常 | URL 短縮 SSRF 防止（プライベートIP/スキーム制限）           |
+| FT341 | `dynamic-sort-order-injection`  | 通常 | ✅ **done → node FT179** (`parseSortQuery` + ft179 sandbox) |
+| FT342 | `jwt-tenant-isolation`          | 通常 | JWT マルチテナント隔離（tenant_id クレーム）                |
+| FT345 | `unicode-aware-text-api`        | VULN | Unicode テキスト検証（mb 計数・Null バイト拒否）            |
 
 ## 🎯 do 📄 — framework exists, FT/how-to only (6)
 

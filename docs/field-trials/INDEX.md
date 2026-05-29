@@ -185,3 +185,4 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 176 | 2026-05-27 | [2026-05-field-trial-176-delegated-access-grants.md](2026-05-field-trial-176-delegated-access-grants.md) | Delegated Access Grants | 🔒 | — |
 | 177 | 2026-05-27 | [2026-05-field-trial-177-pagination-boundary.md](2026-05-field-trial-177-pagination-boundary.md) | Pagination Boundary Attack | 🔒 | 🔍 |
 | 178 | 2026-05-29 | [2026-05-field-trial-178-etag-conditional-requests.md](2026-05-field-trial-178-etag-conditional-requests.md) | ETag & Conditional Requests | — | 🔍 |
+| 179 | 2026-05-29 | [2026-05-field-trial-179-sort-injection.md](2026-05-field-trial-179-sort-injection.md) | ORDER BY Injection Prevention (`parseSortQuery`) | 🔒 | 🔍 |
