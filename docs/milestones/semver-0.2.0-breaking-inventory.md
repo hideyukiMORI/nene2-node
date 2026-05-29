@@ -1,9 +1,14 @@
 # Semver 0.2.0 — Breaking-change inventory
 
-**Status:** Draft (pre-planning)  
+**Status:** Decided — batch accepted in [ADR 0005](../adr/0005-0.2.0-breaking-batch.md)  
 **Created:** 2026-05-27  
 **Current release:** v0.1.26  
 **Next breaking release target:** v0.2.0 (no date committed)
+
+> **Decision (ADR 0005):** items 1, 3, 4, 5 are **in** 0.2.0; item 2
+> (`createApp()` sync) is **deferred** to its own design ADR. Implementation
+> accumulates under CHANGELOG `[Unreleased]`; ships as `0.2.0` (1.0 gate 1 per
+> [ADR 0004](../adr/0004-path-to-1.0.md)).
 
 This document lists **candidate** breaking changes for a future `0.2.0` release.
 Nothing here is decided — items move to "decided" only via ADR + GitHub Issue + PR.
