@@ -67,6 +67,7 @@ export {
   type ReleaseResult,
   type RenewResult,
 } from './concurrency/distributed-lock.js';
+export { RedisLockStorage } from './concurrency/redis-lock-storage.js';
 // `openApiFileExists` / `DEFAULT_OPENAPI_RELATIVE` are internal path helpers
 // (removed from the public API in 0.2.0, ADR 0005). Consumers use
 // `resolveOpenApiPath` or an absolute path.

@@ -65,18 +65,24 @@ holder's lock is reclaimed. Tighten the window with a shorter TTL plus periodic
 
 ## Storage & multi-instance
 
-The default `InMemoryLockStorage` is **process-local** — sufficient for
-serialising access to a process-local resource on a single node. For true
-cross-instance mutual exclusion, supply a shared `LockStorage` whose acquire path
-is **atomic** (e.g. Redis `SET resource owner NX PX ttl`). The interface
-(`get` / `set` / `delete`) mirrors the idempotency / rate-limit adapters.
+The default `InMemoryLockStorage` is **process-local**. For true cross-instance
+mutual exclusion, use the shipped **`RedisLockStorage`**, whose acquire is atomic
+(`SET … NX EX`):
 
 ```ts
-const locks = createLockManager({ storage: new RedisLockStorage(redis), defaultTtlMs: 10_000 });
+import { createLockManager, RedisLockStorage } from '@hideyukimori/nene2-framework';
+import { wrapNodeRedisClient } from '@hideyukimori/nene2-framework';
+
+const locks = createLockManager({
+  storage: new RedisLockStorage(wrapNodeRedisClient(redisClient)),
+  defaultTtlMs: 10_000,
+});
 ```
 
-> With the in-memory store there is no inter-process race; with a shared store,
-> atomicity is the adapter's responsibility (a plain get-then-set is not safe).
+`LockStorage` is `get` / `putIfAbsent` (atomic) / `put` / `delete`; the atomic
+`putIfAbsent` is what guarantees only one acquirer wins. Implement it on any
+store whose set-if-absent is atomic (Redis `SET NX`, a DB `UNIQUE` insert, …).
+The in-memory store is single-threaded so its `putIfAbsent` is trivially atomic.
 
 ## What NOT to do
 

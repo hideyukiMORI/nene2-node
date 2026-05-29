@@ -71,6 +71,7 @@ exports[`public API surface > matches the committed snapshot 1`] = `
   "PostgresTransactionManager",
   "problemDetailsFromContext",
   "RedisIdempotencyStorage",
+  "RedisLockStorage",
   "RedisRateLimitStorage",
   "registerProcessShutdown",
   "requestBodyHash",
