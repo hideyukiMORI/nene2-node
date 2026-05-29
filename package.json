@@ -1,6 +1,6 @@
 {
   "name": "@hideyukimori/nene2-framework",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "private": false,
   "description": "NENE2-compatible API framework for Node.js — clean architecture, OpenAPI-aligned, AI-readable",
   "type": "module",

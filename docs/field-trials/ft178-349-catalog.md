@@ -39,13 +39,13 @@ are the priority; the 6 📄 are doc-only catch-ups).
 
 ## 🎯 do 🔧new — genuine framework gaps (5)
 
-| FT    | PHP howto                      | type | note                                                        |
-| ----- | ------------------------------ | ---- | ----------------------------------------------------------- |
-| FT288 | `distributed-lock.md`          | ATK  | 分散ロック：node に該当プリミティブ無し                     |
-| FT298 | `circuit-breaker.md`           | 通常 | サーキットブレーカ：node に該当プリミティブ無し             |
-| FT307 | `etag-conditional-requests.md` | 通常 | ETag 条件付きリクエスト：node に未実装（HTTP 挙動パリティ） |
-| FT322 | `nested-json-validation`       | 通常 | ネスト JSON バリデーション：V ヘルパー相当が未実装          |
-| FT326 | `patch-partial-update`         | 通常 | PATCH 部分更新：マージセマンティクス未実装                  |
+| FT    | PHP howto                      | type | note                                                                  |
+| ----- | ------------------------------ | ---- | --------------------------------------------------------------------- |
+| FT288 | `distributed-lock.md`          | ATK  | 分散ロック：node に該当プリミティブ無し                               |
+| FT298 | `circuit-breaker.md`           | 通常 | サーキットブレーカ：node に該当プリミティブ無し                       |
+| FT307 | `etag-conditional-requests.md` | 通常 | ✅ **done → node FT178** (`src/http/conditional-request.ts`, v0.1.26) |
+| FT322 | `nested-json-validation`       | 通常 | ネスト JSON バリデーション：V ヘルパー相当が未実装                    |
+| FT326 | `patch-partial-update`         | 通常 | PATCH 部分更新：マージセマンティクス未実装                            |
 
 ## 🎯 do 🔒 — security / contract parity (13)
 

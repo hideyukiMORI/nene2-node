@@ -8,6 +8,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 _No changes yet._
 
+## [0.1.26] - 2026-05-29
+
+### Added
+
+- `computeETag`, `checkNotModified`, `checkPreconditions` helpers in
+  `src/http/conditional-request.ts` for content-hash ETags and conditional
+  requests: `If-None-Match`/`If-Modified-Since` → `304`, `If-Match` →
+  `412`/`428`, `If-Match: *` wildcard, weak (`W/`) comparison (FT178)
+- 19 unit tests in `tests/http/conditional-request.test.ts`
+- How-to doc: `docs/how-to/etag-conditional-requests.md`
+- FT178 field trial report and the FT178–349 upstream parity triage catalog
+  (`docs/field-trials/ft178-349-catalog.md`)
+
 ## [0.1.25] - 2026-05-27
 
 ### Changed
