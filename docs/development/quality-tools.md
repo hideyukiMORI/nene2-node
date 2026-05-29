@@ -18,6 +18,16 @@ diff in the PR:
 npx vitest run -u tests/api/public-surface.test.ts
 ```
 
+New exports must be assigned a stability tier in [`docs/STABILITY.md`](../STABILITY.md)
+(Stable vs Experimental); `tests/api/stability.test.ts` enforces that the
+Experimental list stays in sync with the live export surface.
+
+## Doc integrity
+
+`npm run docs:check` (`scripts/check-docs.mjs`, part of `npm run check`) fails on
+an unindexed field-trial report, a "current release" string that drifts from
+`package.json`, or a broken intra-repo Markdown link.
+
 ## Dependency audit
 
 Before release PRs, run `npm audit` and address or document critical/high findings (`node-security-practices.md`, FT#53).
