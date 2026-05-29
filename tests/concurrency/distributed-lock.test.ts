@@ -108,6 +108,20 @@ describe('createLockManager — renew', () => {
   });
 });
 
+describe('createLockManager — atomic acquire', () => {
+  it('grants the resource to exactly one of many concurrent acquirers', async () => {
+    const locks = createLockManager({ now: () => 0, defaultTtlMs: 5000 });
+    const results = await Promise.all(
+      Array.from({ length: 20 }, (_unused, i) => locks.acquire('hot', `owner-${String(i)}`)),
+    );
+    const winners = results.filter((r) => r !== null);
+    expect(winners).toHaveLength(1);
+    // The held lock is the winner's.
+    const held = await locks.status('hot');
+    expect(held?.owner).toBe(winners[0]?.owner);
+  });
+});
+
 describe('createLockManager — status', () => {
   it('reflects expiry', async () => {
     const clock = fakeClock(0);

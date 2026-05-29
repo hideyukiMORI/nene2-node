@@ -11,7 +11,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
-_No changes yet._
+### Added
+
+- `RedisLockStorage` (`src/concurrency/redis-lock-storage.ts`) — a cross-instance
+  distributed-lock backend using atomic `SET … NX EX`. `RedisKeyValueClient` gains
+  `del` and `setIfAbsent`.
+
+### Changed
+
+- `LockStorage` now exposes an **atomic** `putIfAbsent(record, ttlMs)` (plus
+  `get`/`put`/`delete`); `createLockManager` acquires via it, giving real
+  mutual exclusion across instances (Experimental surface — see ADR 0004 gate 3).
+  Storage owns expiry. The distributed-lock cluster is promoted to **Stable**;
+  `RedisLockStorage` stays Experimental for one cycle.
 
 ## [0.2.0] - 2026-05-29
 

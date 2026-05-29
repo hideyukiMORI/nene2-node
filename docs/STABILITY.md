@@ -36,27 +36,27 @@ the v0.1.26 deep-FT helpers (FT178–187) were **promoted to Stable in 0.2.0** �
 they shipped unchanged across the 0.1.26 → 0.2.0 cycle and are fully tested. What
 remains Experimental:
 
-### Concurrency — distributed lock
+### Concurrency — Redis lock adapter
 
-The lock primitive ships only with `InMemoryLockStorage`; the `LockStorage`
-adapter extension point stays Experimental until a second backend (e.g. Redis)
-validates the interface. Held as a cluster so the type surface stays coherent.
+- `RedisLockStorage`
 
-- `createLockManager`
-- `InMemoryLockStorage`
-- `type LockManager`
-- `type LockManagerOptions`
-- `type LockStorage`
-- `type LockRecord`
-- `type ReleaseResult`
-- `type RenewResult`
+The distributed-lock **cluster** (`createLockManager`, `InMemoryLockStorage`,
+`LockManager`/`LockManagerOptions`/`LockStorage`/`LockRecord`/`ReleaseResult`/`RenewResult`)
+was promoted to **Stable**: implementing `RedisLockStorage` validated the
+`LockStorage` contract on a second backend and drove it to an **atomic
+`putIfAbsent`** acquire (safe cross-instance mutual exclusion). `RedisLockStorage`
+itself is the newly-added adapter and stays Experimental for one release cycle.
 
-### Promoted to Stable in 0.2.0
+### Promoted to Stable
 
-ETag/conditional-request helpers, `parseSortQuery`, `applyMergePatch`, the circuit
-breaker, `createValidationCollector`, the Unicode text validators, the SSRF
-guard, tenant-isolation (`assertTenantScope` + `ResourceNotFoundError`), and
-`escapeLikePattern` — now **Stable** (see the surface snapshot for the full list).
+- **0.2.0:** ETag/conditional-request helpers, `parseSortQuery`, `applyMergePatch`,
+  the circuit breaker, `createValidationCollector`, the Unicode text validators,
+  the SSRF guard, tenant-isolation (`assertTenantScope` + `ResourceNotFoundError`),
+  `escapeLikePattern`.
+- **post-0.2.0:** the distributed-lock cluster (interface hardened to atomic
+  acquire; validated by `RedisLockStorage`).
+
+See the surface snapshot for the full Stable list.
 
 ## Promotion
 
