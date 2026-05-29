@@ -64,17 +64,17 @@ Two scripts (Phase 9 E9) encode the mechanical steps; both accept `--dry-run`.
 
 _Last reconciled: 2026-05-29._
 
-| Version  | State                                                    |
-| -------- | -------------------------------------------------------- |
-| `0.1.26` | ✅ Published (npm + GitHub Release) — the current latest |
-| `0.1.25` | ⚠️ Tag only (hand-cut, never published). FT177 work.     |
-| `0.1.24` | ⚠️ Tag only (hand-cut, never published). FT153 work.     |
-| `0.1.23` | ✅ Published — previous release                          |
+| Version  | State                                                                          |
+| -------- | ------------------------------------------------------------------------------ |
+| `0.2.0`  | ✅ Published (npm + GitHub Release) — the current latest. Breaking (ADR 0005). |
+| `0.1.26` | ✅ Published — previous (FT178–187 deep-FT helpers)                            |
+| `0.1.25` | ⚠️ Tag only (hand-cut, never published). FT177 work.                           |
+| `0.1.24` | ⚠️ Tag only (hand-cut, never published). FT153 work.                           |
 
-`0.1.26` folded in everything since `0.1.23` (FT153 + FT177 + FT178–187); npm
-jumped `0.1.23 → 0.1.26`. The orphan `v0.1.24`/`v0.1.25` tags remain only as
-historical markers — **do not** try to publish them, do not delete them. They are
-allowlisted in `scripts/check-release-safety.mjs` so the audit ignores them.
+`0.2.0` is the first breaking release (road-to-1.0 gate 1, [ADR 0004](../adr/0004-path-to-1.0.md)),
+cut with `release:prepare`/`release:publish`. The orphan `v0.1.24`/`v0.1.25` tags
+remain only as historical markers — **do not** publish or delete them; they are
+allowlisted in `scripts/check-release-safety.mjs`.
 
 ## Preconditions
 
