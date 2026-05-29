@@ -4,6 +4,20 @@ Quality checks are explicit, fast, and required before merge. This policy mirror
 
 **Note:** Vitest uses `node:sqlite` on Node 22+. You may see `ExperimentalWarning: SQLite is an experimental feature` in test output (FT#16).
 
+## Public API surface guard
+
+`tests/api/public-surface.test.ts` snapshots every name exported from
+`src/index.ts` (values + `type`-only) and cross-checks runtime reachability. Any
+added, removed, or renamed public export **fails the test** — so surface changes
+are deliberate and reviewable (ADR 0003 / roadmap Phase 9 A1).
+
+When a public-API change is intentional, regenerate the snapshot and review the
+diff in the PR:
+
+```sh
+npx vitest run -u tests/api/public-surface.test.ts
+```
+
 ## Dependency audit
 
 Before release PRs, run `npm audit` and address or document critical/high findings (`node-security-practices.md`, FT#53).
