@@ -31,29 +31,17 @@ route intended breaking changes through the 0.2.0 inventory + an ADR.
 
 ## Experimental
 
-The deep-FT helpers introduced in **v0.1.26** (FT178–187). Iterate freely (API
-shape may still adjust) until promoted to Stable at the next minor.
+Surface whose API shape may still adjust; iterate freely until promoted. Most of
+the v0.1.26 deep-FT helpers (FT178–187) were **promoted to Stable in 0.2.0** —
+they shipped unchanged across the 0.1.26 → 0.2.0 cycle and are fully tested. What
+remains Experimental:
 
-### HTTP
+### Concurrency — distributed lock
 
-- `computeETag`
-- `checkNotModified`
-- `checkPreconditions`
-- `type PreconditionOptions`
-- `parseSortQuery`
-- `type SortQuery`
-- `type SortQueryOptions`
-- `type SortOrder`
-- `applyMergePatch`
-- `type MergePatchOptions`
+The lock primitive ships only with `InMemoryLockStorage`; the `LockStorage`
+adapter extension point stays Experimental until a second backend (e.g. Redis)
+validates the interface. Held as a cluster so the type surface stays coherent.
 
-### Resilience & concurrency
-
-- `createCircuitBreaker`
-- `CircuitOpenError`
-- `type CircuitBreaker`
-- `type CircuitBreakerOptions`
-- `type CircuitState`
 - `createLockManager`
 - `InMemoryLockStorage`
 - `type LockManager`
@@ -63,31 +51,12 @@ shape may still adjust) until promoted to Stable at the next minor.
 - `type ReleaseResult`
 - `type RenewResult`
 
-### Validation
+### Promoted to Stable in 0.2.0
 
-- `createValidationCollector`
-- `type ValidationCollector`
-- `countCodePoints`
-- `hasNullByte`
-- `validateTextField`
-- `type TextFieldRule`
-
-### Security
-
-- `checkUrlSafety`
-- `checkUrlSafetyAsync`
-- `assertSafeUrl`
-- `isPrivateIp`
-- `normaliseIpv4`
-- `type UrlSafetyResult`
-- `type UrlSafetyReason`
-- `type SafeUrlOptions`
-- `type SafeUrlAsyncOptions`
-- `assertTenantScope`
-- `tenantFromContext`
-- `ResourceNotFoundError`
-- `createResourceNotFoundHandler`
-- `escapeLikePattern`
+ETag/conditional-request helpers, `parseSortQuery`, `applyMergePatch`, the circuit
+breaker, `createValidationCollector`, the Unicode text validators, the SSRF
+guard, tenant-isolation (`assertTenantScope` + `ResourceNotFoundError`), and
+`escapeLikePattern` — now **Stable** (see the surface snapshot for the full list).
 
 ## Promotion
 
