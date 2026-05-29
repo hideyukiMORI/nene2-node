@@ -29,4 +29,11 @@ export default tseslint.config(
       },
     },
   },
+  {
+    // Node tooling scripts (no TS project; need Node globals).
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      globals: { process: 'readonly', console: 'readonly' },
+    },
+  },
 );

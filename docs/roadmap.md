@@ -131,7 +131,7 @@ recurring agent decision becomes a rule (doc), guardrail (CI/test), or automatio
 Prioritised by leverage:
 
 - [x] **A1** Public API surface snapshot test (`tests/api/public-surface.test.ts`) — catches unintended export/type changes; update with `vitest -u`
-- [ ] **A2** Doc-integrity CI (INDEX == reports, no broken links, current-release == `package.json`)
+- [x] **A2** Doc-integrity check (`scripts/check-docs.mjs`, in `npm run check` + CI) — INDEX == reports, no broken intra-repo links, current-release == `package.json`
 - [ ] **A3** Release safety check (tag-without-release detection)
 - [ ] **B4** Stability markers (`@stable` / `@experimental`) on public exports
 - [ ] **B5** Path-to-1.0 ADR (API-freeze criteria)
