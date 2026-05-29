@@ -5,7 +5,8 @@ Last updated: 2026-05-29
 
 ## Published to npm
 
-- **npm latest:** [v0.1.26](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.26) — FT178–187 deep-FT phase: 11 new framework helpers (npm jumped 0.1.23 → 0.1.26; `v0.1.24`/`v0.1.25` tags were never published)
+- **npm latest:** [v0.2.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.2.0) — first breaking release (ADR 0005): drop `openApiFileExists`/`DEFAULT_OPENAPI_RELATIVE` exports, `executor`→`queryExecutor`, Node 24 LTS minimum, `TokenVerifier.verify`→Promise. Road-to-1.0 gate 1 (ADR 0004).
+- **npm:** [v0.1.26](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.26) — FT178–187 deep-FT phase: 11 new framework helpers
 - **npm:** [v0.1.23](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.23) — Redis integration test + CI service job (#110)
 - **npm:** [v0.1.22](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.22) — MySQL/PG unit mocks, CI `npm audit`, 0.2.0 inventory (#108)
 
