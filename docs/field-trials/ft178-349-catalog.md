@@ -51,8 +51,8 @@ are the priority; the 6 📄 are doc-only catch-ups).
 
 | FT    | PHP howto                       | type | note                                                                     |
 | ----- | ------------------------------- | ---- | ------------------------------------------------------------------------ |
-| FT256 | `mass-assignment-defence.md`    | ATK  | mass assignment 防御（入力バインド境界）                                 |
-| FT264 | `sql-injection-defence.md`      | ATK  | SQL インジェクション防御（パラメタライズド徹底の検証）                   |
+| FT256 | `mass-assignment-defence.md`    | ATK  | ✅ **covered by FT183** (`applyMergePatch` `allowed`/`immutable` guards) |
+| FT264 | `sql-injection-defence.md`      | ATK  | ✅ **done → node FT187** (`escapeLikePattern` + ft187 SQLite sandbox)    |
 | FT267 | `encrypted-field-storage.md`    | VULN | フィールド暗号化（鍵分離・nonce・タグ検証）                              |
 | FT279 | `rbac-jwt-auth.md`              | VULN | RBAC + JWT 認可境界                                                      |
 | FT280 | `account-lockout.md`            | ATK  | アカウントロックアウト（ブルートフォース耐性）                           |
