@@ -28,8 +28,8 @@
     "url": "https://github.com/hideyukiMORI/nene2-node/issues"
   },
   "engines": {
-    "node": ">=22 <25",
-    "npm": ">=10 <12"
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
   },
   "packageManager": "npm@11",
   "scripts": {

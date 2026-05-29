@@ -2,7 +2,8 @@
 
 Quality checks are explicit, fast, and required before merge. This policy mirrors NENE2 `docs/development/quality-tools.md`, adapted for Node.js.
 
-**Note:** Vitest uses `node:sqlite` on Node 22+. You may see `ExperimentalWarning: SQLite is an experimental feature` in test output (FT#16).
+**Note:** Vitest uses `node:sqlite`. On the supported Node 24 LTS baseline it is
+stable (no `ExperimentalWarning`); on older Node 22 it emits one (FT#16).
 
 ## Public API surface guard
 
