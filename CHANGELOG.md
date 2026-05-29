@@ -32,6 +32,10 @@ _Targeting `0.1.26`._
   three-state (closed/open/half-open) in-memory circuit breaker with configurable
   `failureThreshold`/`resetTimeoutMs`, lazy half-open transition, single-probe concurrency,
   and injectable clock. 13 unit tests; how-to + FT180 report (FT180)
+- `createLockManager` + `InMemoryLockStorage` in `src/concurrency/distributed-lock.ts` — a
+  leased distributed lock with owner verification and TTL expiry: `acquire` (null when held
+  by another), `release`/`renew` (owner-verified, `forbidden` on mismatch), `status`, and a
+  pluggable `LockStorage` adapter. 13 unit tests covering ATK-01–04; how-to + FT181 report (FT181)
 
 ## [0.1.25] - 2026-05-27
 

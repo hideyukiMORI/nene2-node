@@ -46,6 +46,16 @@ export {
   type CircuitState,
 } from './resilience/circuit-breaker.js';
 export {
+  createLockManager,
+  InMemoryLockStorage,
+  type LockManager,
+  type LockManagerOptions,
+  type LockStorage,
+  type LockRecord,
+  type ReleaseResult,
+  type RenewResult,
+} from './concurrency/distributed-lock.js';
+export {
   DEFAULT_OPENAPI_RELATIVE,
   openApiFileExists,
   resolveOpenApiPath,

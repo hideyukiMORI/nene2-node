@@ -187,3 +187,4 @@ Legend: 🔒 = FT# % 3 = 0; 🔍 = FT# % 4 = 0.
 | 178 | 2026-05-29 | [2026-05-field-trial-178-etag-conditional-requests.md](2026-05-field-trial-178-etag-conditional-requests.md) | ETag & Conditional Requests | — | 🔍 |
 | 179 | 2026-05-29 | [2026-05-field-trial-179-sort-injection.md](2026-05-field-trial-179-sort-injection.md) | ORDER BY Injection Prevention (`parseSortQuery`) | 🔒 | 🔍 |
 | 180 | 2026-05-29 | [2026-05-field-trial-180-circuit-breaker.md](2026-05-field-trial-180-circuit-breaker.md) | Circuit Breaker (resilience) | — | — |
+| 181 | 2026-05-29 | [2026-05-field-trial-181-distributed-lock.md](2026-05-field-trial-181-distributed-lock.md) | Distributed Lock (owner-verified, TTL) | 🔒 | — |
