@@ -85,10 +85,12 @@ to FT178.
 
 ### Where the proof lives
 
-| FT shape                                     | Proof                                                                                                                       |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Pure framework helper (ETag, pagination)     | **In-tree Vitest unit tests** — sufficient; no sandbox needed (FT178).                                                      |
-| App-surface security / behaviour (🔒 bucket) | **`../nene2-node-FT/ftNNN-*` D3+ sandbox + executable ATK/VULN tests** — turn "BLOCKED" claims into runnable attack probes. |
+| FT shape                                     | Proof                                                                                                                                                                                                                                                                    |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pure framework helper (ETag, pagination)     | **In-tree Vitest unit tests** — sufficient; no sandbox needed (FT178).                                                                                                                                                                                                   |
+| App-surface security / behaviour (🔒 bucket) | **An in-tree integration test** (`tests/security/…`, `createApp` / in-memory SQLite) so the attack matrix runs in CI (FT179, FT187). A `../nene2-node-FT/ftNNN-*` sandbox + `probe.mjs` is an **optional exploratory companion** — local-only, not the system of record. |
+
+Proof must be **reproducible in CI**, not local-only: prefer the in-tree test.
 
 ### Guardrails (do not copy PHP wholesale)
 
