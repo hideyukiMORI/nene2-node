@@ -9,7 +9,7 @@ Node.js port of [NENE2](https://github.com/hideyukiMORI/NENE2) with **functional
 
 Ship `@hideyukimori/nene2-framework` where a team can run a NENE2-compatible API on Node without PHP — same JSON contracts, Node-idiomatic internals.
 
-**Current release:** [v0.1.25](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.25) (2026-05-27).
+**Current release:** [v0.1.26](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.26) (2026-05-29).
 
 | Principle           | Practice                                         |
 | ------------------- | ------------------------------------------------ |
@@ -107,6 +107,18 @@ FT campaign **FT149–177** complete (see [backlog](field-trials/ft149-177-backl
 - [x] `parseCursorQuery` cursor-based pagination helper (FT153, v0.1.24)
 - [x] `parsePaginationQuery` boundary-attack hardening — overflow guard, ReDoS-immune digit check (FT177 🔒, v0.1.25)
 - [x] CI `npm audit` job + 0.2.0 breaking inventory draft (v0.1.22); Redis 7 integration test + CI service job (v0.1.23)
+
+---
+
+## Phase 8 — Deep field trials (FT178–187) ✅
+
+Depth over breadth (see [catalog](field-trials/ft178-349-catalog.md)) — 11 new framework helpers, **released as v0.1.26** (2026-05-29).
+
+- [x] HTTP: ETag conditional requests (FT178), `parseSortQuery` ORDER-BY allowlist (FT179), `applyMergePatch` RFC 7396 (FT183)
+- [x] Resilience / concurrency: `createCircuitBreaker` (FT180), `createLockManager` (FT181)
+- [x] Validation: `createValidationCollector` nested paths (FT182), `validateTextField` Unicode-safe (FT184)
+- [x] Security: `checkUrlSafety` SSRF guard (FT185), `assertTenantScope` multi-tenant 404 (FT186), `escapeLikePattern` + SQLi proof sandbox (FT187)
+- [x] Auth-flow FTs reclassified as app-domain (out of framework scope); executable-proof sandboxes in `../nene2-node-FT/`
 
 ---
 

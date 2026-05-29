@@ -1,6 +1,6 @@
 # Publish checklist — `@hideyukimori/nene2-framework`
 
-**Latest:** `0.1.25` — [v0.1.25](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.25) (2026-05-27). Phase 2 patch cadence: one npm release per completed FT on `main` (`0.1.2` … `0.1.25`).
+**Latest:** `0.1.26` — [v0.1.26](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.1.26) (2026-05-29). Releases are cut at checkpoints via a GitHub Release (OIDC publish); see `docs/development/release-process.md`. npm history skips `0.1.24`/`0.1.25` (tagged, never published).
 
 ## Pre-release (every patch)
 
