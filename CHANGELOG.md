@@ -11,6 +11,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/). Versioning foll
 
 ## [Unreleased]
 
+_No changes yet._
+
+## [0.3.0] - 2026-05-29
+
 ### Added
 
 - `RedisLockStorage` (`src/concurrency/redis-lock-storage.ts`) — a cross-instance

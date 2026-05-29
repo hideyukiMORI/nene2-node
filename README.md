@@ -104,7 +104,7 @@ Relationship details: [docs/integrations/relationship-to-nene2.md](docs/integrat
 
 ## Current release
 
-**Latest (npm): [v0.2.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.2.0)** (2026-05-29) — first breaking release; **requires Node 24+**. See [CHANGELOG](CHANGELOG.md) for migration.
+**Latest (npm): [v0.3.0](https://github.com/hideyukiMORI/nene2-node/releases/tag/v0.3.0)** (2026-05-29) — adds distributed lock (`RedisLockStorage`, atomic acquire). Requires Node 24+.
 
 Highlights at `0.1.x`:
 
