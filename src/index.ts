@@ -88,6 +88,10 @@ export {
 } from './error/classify-database-error.js';
 export { ValidationError, type ValidationErrorJSON } from './validation/validation-error.js';
 export { ValidationException } from './validation/validation-exception.js';
+export {
+  createValidationCollector,
+  type ValidationCollector,
+} from './validation/validation-collector.js';
 export { LocalBearerTokenVerifier } from './auth/local-bearer-token-verifier.js';
 export { createJoseJwtVerifier, type JoseJwtVerifierOptions } from './auth/jose-jwt-verifier.js';
 export { TokenVerificationException } from './auth/token-verification-exception.js';
