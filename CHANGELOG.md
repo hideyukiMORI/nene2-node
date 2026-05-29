@@ -36,6 +36,10 @@ _Targeting `0.1.26`._
   leased distributed lock with owner verification and TTL expiry: `acquire` (null when held
   by another), `release`/`renew` (owner-verified, `forbidden` on mismatch), `status`, and a
   pluggable `LockStorage` adapter. 13 unit tests covering ATK-01–04; how-to + FT181 report (FT181)
+- `createValidationCollector` in `src/validation/validation-collector.ts` — accumulates
+  `ValidationError`s with `scope(prefix)` for nested indexed paths (`items.0.product_id`) and
+  `throwIfAny()` to raise a single `ValidationException` (→ 422) with every error. 7 unit tests;
+  how-to + FT182 report (FT182)
 
 ## [0.1.25] - 2026-05-27
 
